@@ -153,12 +153,10 @@ void Level1::moveVertically() {
                 timeAfterJump = 0;
                 isFalling = true;
             }
-
         } else {
             float deltaY = min((fallFunction(timeAfterJump) - (timeAfterJump == 0 ? 0 : fallFunction(timeAfterJump - deltaTime))), TERMINAL_VELOCITY);
             abdo->moveBy(0, -deltaY);
             timeAfterJump += deltaTime;
-
         }
     }
 }

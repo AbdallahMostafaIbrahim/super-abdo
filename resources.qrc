@@ -3,5 +3,7 @@
         <file>maps/map_1.txt</file>
         <file>images/mario.png</file>
         <file>images/splash.png</file>
+        <file>images/employee-idle.png</file>
+        <file>images/employee-walking.png</file>
     </qresource>
 </RCC>
