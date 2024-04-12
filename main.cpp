@@ -1,7 +1,7 @@
 #include <QApplication>
 #include <QSplashScreen>
 #include <QTimer>
-#include "mainmenu.h"
+#include "game.h"
 
 int main(int argc, char *argv[])
 {

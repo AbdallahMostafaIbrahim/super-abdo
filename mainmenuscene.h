@@ -2,6 +2,7 @@
 #define MAINMENUSCENE_H
 
 #include <QGraphicsScene>
+#include <QPushButton>
 #include "game.h"
 
 class MainMenuScene : public QGraphicsScene
@@ -11,6 +12,8 @@ public:
     MainMenuScene(Game* game);
 private:
     Game* game;
+    QPushButton* newGameButton;
+    QPushButton* continueButton;
 private slots:
     void new_game();
 };
