@@ -7,7 +7,6 @@ Game::Game(int width, int height) {
     this->setFixedSize(width, height);
     setViewportMargins(-2, -10, -2, -10);
 
-
     currentScene = new MainMenuScene(this);
     this->setScene(currentScene);
 }

@@ -17,16 +17,22 @@ protected:
 private:
     void initScene();
     float jumpFunction(int time);
+    float fallFunction(int time);
+
+    void moveHorizontally();
+    void moveVertically();
 
     Game* game;
     Abdo* abdo;
 
     int timeAfterJump;
+    int heightBeforeJump;
+    int timeWhenStartedFalling;
     bool isJumping;
+    bool isFalling;
     float jumpWidth;
     float jumpHeight;
 
-    int horizontal;
     float speed;
     float speedJumpFactor;
 

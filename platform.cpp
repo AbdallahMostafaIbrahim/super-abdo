@@ -16,4 +16,7 @@ void Platform::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, 
 
     painter->drawRect(rect);
     painter->fillRect(rect, brush);
+
+    Q_UNUSED(widget);
+    Q_UNUSED(option);
 }

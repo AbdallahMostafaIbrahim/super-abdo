@@ -11,6 +11,7 @@ CONFIG += c++17
 SOURCES += \
     abdo.cpp \
     game.cpp \
+    groundentity.cpp \
     level1.cpp \
     main.cpp \
     mainmenuscene.cpp \
@@ -19,6 +20,7 @@ SOURCES += \
 HEADERS += \
     abdo.h \
     game.h \
+    groundentity.h \
     level1.h \
     mainmenuscene.h \
     platform.h

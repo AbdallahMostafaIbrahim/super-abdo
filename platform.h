@@ -2,8 +2,9 @@
 #define PLATFORM_H
 
 #include <QGraphicsItem>
+#include "groundentity.h"
 
-class Platform: public QGraphicsItem
+class Platform: public GroundEntity
 {
 public:
     Platform(int w, int h);

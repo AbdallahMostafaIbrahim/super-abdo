@@ -5,6 +5,7 @@
 #include <QPixmap>
 #include <QPainter>
 #include <QRectF>
+#include "groundentity.h"
 
 enum PlayerState {
     IDLE,
@@ -20,6 +21,9 @@ public:
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
     QRectF boundingRect() const override;
     void setDirection(int direction);
+    GroundEntity* isGrounded();
+    GroundEntity* isBlockedHorizontally(int&);
+    GroundEntity* isTouchingHead();
 
 private:
     PlayerState currentState;
@@ -27,6 +31,8 @@ private:
     int direction;
 
     QPixmap currentPixmap;
+private slots:
+    void clearRect(QRectF*);
 
 };
 

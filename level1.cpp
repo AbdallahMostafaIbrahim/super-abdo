@@ -22,15 +22,16 @@ Level1::Level1(Game* game) : QGraphicsScene() {
     spacePressed = false;
 
     // The interval will be 1000 / 60, so the gameLoop function is called 60 times in one second
-    deltaTime = 1000.0 / 60.0;
+    deltaTime = 5;
 
-    horizontal = 0;
-    speed = 10;
+    speed = 3;
     timeAfterJump = 0;
-    speedJumpFactor = 0.7f;
-    jumpWidth = 660;
-    jumpHeight = 100;
+    timeWhenStartedFalling = 0;
+    speedJumpFactor = 0.6f;
+    jumpWidth = 30;
+    jumpHeight = 160;
     isJumping = false;
+    isFalling = true;
 
     // Connect and start the game loop
     connect(timer, SIGNAL(timeout()), this, SLOT(gameLoop()));
@@ -47,7 +48,7 @@ void Level1::initScene() {
     // Create the player (abdo)
     abdo = new Abdo();
 
-    abdo->setPos(50, game->height() - 200);
+    abdo->setPos(50, 0);
 
     this->addItem(abdo);
 
@@ -63,9 +64,9 @@ void Level1::initScene() {
     stream >> x >> y >> w >> h;
     while(!stream.atEnd()) {
         // Create Current Platform
-        // Platform* platform = new Platform(w, h);
-        // platform->setPos(x, game->height() - y);
-        // this->addItem(platform);
+        Platform* platform = new Platform(w, h);
+        platform->setPos(x, game->height() - y - h);
+        this->addItem(platform);
         stream >> x >> y >> w >> h;
     }
 
@@ -73,34 +74,78 @@ void Level1::initScene() {
 }
 
 float Level1::jumpFunction(int time) {
-    return -(1/jumpWidth) * pow(time - sqrt(jumpHeight * jumpWidth), 2) + jumpHeight;
+    return -pow((time/jumpWidth) - sqrt(jumpHeight), 2) + jumpHeight;
+}
+
+float Level1::fallFunction(int time) {
+    return -pow(time / jumpWidth, 2);
+}
+
+void Level1::moveHorizontally() {
+    if(leftPressed && rightPressed) return;
+    if(!leftPressed && !rightPressed) return;
+    if(abdo->x() <= 0 && leftPressed) return;
+
+    int direction = 0;
+    GroundEntity* blocked = abdo->isBlockedHorizontally(direction);
+
+    if(direction == 1 && rightPressed && blocked) {
+        return;
+    }
+    if(direction == -1 && leftPressed && blocked) {
+        return;
+    }
+
+    abdo->moveBy(speed * (leftPressed ? -1 : 1) * ((isJumping | isFalling) ? speedJumpFactor : 1), 0);
+}
+
+void Level1::moveVertically() {
+    GroundEntity* ground = abdo->isGrounded();
+    if(ground) {
+        isFalling = false;
+        if(spacePressed && !isJumping) {
+            isJumping = true;
+            abdo->moveBy(0, -1);
+            timeAfterJump = deltaTime;
+        } else {
+            abdo->setPos(abdo->x(), ground->y() - abdo->boundingRect().height());
+            isJumping = false;
+            timeAfterJump = 0;
+        }
+    } else {
+        if(isJumping) {
+            float deltaY = (jumpFunction(timeAfterJump) - (jumpFunction(timeAfterJump - deltaTime)));
+            abdo->moveBy(0, -deltaY);
+            timeAfterJump += deltaTime;
+
+            // Character is falling now
+            if(deltaY < 0) {
+                isJumping = false;
+                timeAfterJump = 0;
+                isFalling = true;
+            }
+
+            // Check if something is touching my head
+            GroundEntity* ceiling = abdo->isTouchingHead();
+            if(ceiling) {
+                isJumping = false;
+                timeAfterJump = 0;
+                isFalling = true;
+            }
+
+        } else {
+            float deltaY = (fallFunction(timeAfterJump) - (timeAfterJump == 0 ? 0 : fallFunction(timeAfterJump - deltaTime)));
+            abdo->moveBy(0, -deltaY);
+            timeAfterJump += deltaTime;
+        }
+    }
 }
 
 void Level1::gameLoop() {
-    if(abdo) {
-        if((leftPressed || rightPressed) && !(leftPressed && rightPressed)) {
-            if(abdo->x() > 0 || rightPressed)
-                abdo->moveBy(speed * (leftPressed ? -1 : 1) * (isJumping ? speedJumpFactor : 1), 0);
-        }
-
-        if(spacePressed && !isJumping) {
-            isJumping = true;
-            timeAfterJump = 0;
-        }
-
-        if(isJumping) {
-            abdo->moveBy(0, -(jumpFunction(timeAfterJump) - (timeAfterJump == 0 ? 0 : jumpFunction(timeAfterJump - deltaTime))));
-            timeAfterJump += deltaTime;
-            if(game->height() - abdo->y() < 199) {
-                isJumping = false;
-                timeAfterJump = 0;
-                abdo->setPos(abdo->x(), game->height() - 200);
-            }
-        }
-
-        game->ensureVisible(abdo, 500, 0);
-        update();
-    }
+    moveHorizontally();
+    moveVertically();
+    game->ensureVisible(abdo, 500, 0);
+    update();
 }
 
 void Level1::keyPressEvent(QKeyEvent *event) {
@@ -111,15 +156,12 @@ void Level1::keyPressEvent(QKeyEvent *event) {
         case Qt::Key_Right:
             rightPressed = true;
             abdo->setDirection(1);
-            // horizontal = 1;
             break;
         case Qt::Key_Left:
             leftPressed = true;
             abdo->setDirection(-1);
-            // horizontal = -1;
             break;
     }
-    update();
 }
 
 void Level1::keyReleaseEvent(QKeyEvent *event) {
@@ -134,5 +176,4 @@ void Level1::keyReleaseEvent(QKeyEvent *event) {
         spacePressed = false;
         break;
     }
-    update();
 }
