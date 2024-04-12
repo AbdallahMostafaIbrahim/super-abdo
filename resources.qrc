@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/images">
+        <file>supermariosplash.png</file>
+    </qresource>
+</RCC>
