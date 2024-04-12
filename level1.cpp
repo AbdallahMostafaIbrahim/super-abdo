@@ -11,6 +11,8 @@
 #include <QKeyEvent>
 #include <QDebug>
 
+#define TERMINAL_VELOCITY 4.0
+
 Level1::Level1(Game* game) : QGraphicsScene() {
     this->game = game;
 
@@ -20,6 +22,7 @@ Level1::Level1(Game* game) : QGraphicsScene() {
     rightPressed = false;
     leftPressed = false;
     spacePressed = false;
+    galabeyaGlideEnabled = true;
 
     deltaTime = 5;
 
@@ -77,7 +80,15 @@ float Level1::jumpFunction(int time) {
 }
 
 float Level1::fallFunction(int time) {
-    return -pow(time / jumpWidth, 2);
+    if(galabeyaGlideEnabled){
+        if(spacePressed) {
+            return -pow(time / (jumpWidth * 3), 2);
+        } else {
+            return -pow(time / (jumpWidth), 2);
+        }
+    } else {
+        return -pow(time / jumpWidth, 2);
+    }
 }
 
 void Level1::moveHorizontally() {
@@ -98,6 +109,17 @@ void Level1::moveHorizontally() {
     abdo->moveBy(speed * (leftPressed ? -1 : 1) * ((isJumping | isFalling) ? speedJumpFactor : 1), 0);
 }
 
+float min(float l, float r) {
+    if(abs(l) < abs(r)) return l;
+    else {
+        if(l < 0) {
+            return -abs(r);
+        } else {
+            return abs(r);
+        }
+    }
+}
+
 void Level1::moveVertically() {
     GroundEntity* ground = abdo->isGrounded();
     if(ground) {
@@ -113,7 +135,7 @@ void Level1::moveVertically() {
         }
     } else {
         if(isJumping) {
-            float deltaY = (jumpFunction(timeAfterJump) - (jumpFunction(timeAfterJump - deltaTime)));
+            float deltaY = min(jumpFunction(timeAfterJump) - (jumpFunction(timeAfterJump - deltaTime)), TERMINAL_VELOCITY);
             abdo->moveBy(0, -deltaY);
             timeAfterJump += deltaTime;
 
@@ -133,9 +155,10 @@ void Level1::moveVertically() {
             }
 
         } else {
-            float deltaY = (fallFunction(timeAfterJump) - (timeAfterJump == 0 ? 0 : fallFunction(timeAfterJump - deltaTime)));
+            float deltaY = min((fallFunction(timeAfterJump) - (timeAfterJump == 0 ? 0 : fallFunction(timeAfterJump - deltaTime))), TERMINAL_VELOCITY);
             abdo->moveBy(0, -deltaY);
             timeAfterJump += deltaTime;
+
         }
     }
 }

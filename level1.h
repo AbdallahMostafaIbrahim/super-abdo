@@ -39,6 +39,7 @@ private:
     int deltaTime;
 
     bool leftPressed, rightPressed, spacePressed;
+    bool galabeyaGlideEnabled;
 
 
 private slots:
