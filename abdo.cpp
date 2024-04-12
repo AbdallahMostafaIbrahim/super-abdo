@@ -48,13 +48,13 @@ GroundEntity* Abdo::isBlockedHorizontally(int& direction) {
     for(QGraphicsItem* item : items) {
         GroundEntity* entity = dynamic_cast<GroundEntity*>(item);
         if(entity != nullptr) {
-            QRectF rect(x(), y(), boundingRect().height(), boundingRect().width());
-            QRectF leftRect(item->x(), item->y() + 1, 10, item->boundingRect().height() - 1);
+            QRectF rect(x(), y(), boundingRect().width(), boundingRect().height());
+            QRectF leftRect(item->x(), item->y(), 10, item->boundingRect().height());
             if (rect.intersects(leftRect)) {
                 direction = 1;
                 return entity;
             }
-            QRectF rightRect(item->x() + item->boundingRect().width(), item->y() + 1, 10, item->boundingRect().height() - 1);
+            QRectF rightRect(item->x() + item->boundingRect().width(), item->y(), 10, item->boundingRect().height());
             if (rect.intersects(rightRect)) {
                 direction = -1;
                 return entity;
