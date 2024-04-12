@@ -7,5 +7,8 @@
         <file>images/abdo.png</file>
         <file>images/office-tile.png</file>
         <file>images/desk-1.png</file>
+        <file>images/ceiling-light.png</file>
+        <file>images/tile-1.png</file>
+        <file>images/background-1.png</file>
     </qresource>
 </RCC>

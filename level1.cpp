@@ -45,7 +45,8 @@ Level1::Level1(Game* game) : QGraphicsScene() {
 
 void Level1::initScene() {
     // Set the scene width to be a big number
-    this->setSceneRect(0, 0, 5000, game->height());
+    this->setSceneRect(0, 0, 10000, game->height());
+    this->setBackgroundBrush(QBrush(QPixmap(":/images/background-1.png").scaledToHeight(game->height())));
 
     // Create the player (abdo)
     abdo = new Abdo();
@@ -69,7 +70,7 @@ void Level1::initScene() {
         // Create Current Platform
         QPixmap p = QPixmap(url);
         if(tile == 1) {
-            p = p.scaled(h, h);
+            p = p.scaledToHeight(h);
         } else {
             p = p.scaled(w, h);
         }
