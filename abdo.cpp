@@ -7,16 +7,16 @@
 Abdo::Abdo() {
     currentState = IDLE;
     setFlag(ItemClipsToShape);
-    currentPixmap = QPixmap(":/images/mario.png");
+    currentPixmap = QPixmap(":/images/abdo.png");
     direction = 1;
 }
 
 QRectF Abdo::boundingRect() const{
-    return QRectF(0,0,50,94);
+    return QRectF(0,0,50,118);
 }
 
 void Abdo::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) {
-    painter->drawPixmap(0,0, 50, 94, direction == 1 ? currentPixmap : currentPixmap.transformed(QTransform().scale(direction,1)));
+    painter->drawPixmap(0,0, 50, 118, direction == 1 ? currentPixmap : currentPixmap.transformed(QTransform().scale(direction,1)));
 
     Q_UNUSED(widget);
     Q_UNUSED(option);
