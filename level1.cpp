@@ -62,14 +62,21 @@ void Level1::initScene() {
 
     QTextStream stream(&file);
 
-    int x, y, w, h;
-    stream >> x >> y >> w >> h;
+    int x, y, w, h, tile;
+    QString url;
+    stream >> x >> y >> w >> h >> url >> tile;
     while(!stream.atEnd()) {
         // Create Current Platform
-        Platform* platform = new Platform(w, h);
+        QPixmap p = QPixmap(url);
+        if(tile == 1) {
+            p = p.scaled(h, h);
+        } else {
+            p = p.scaled(w, h);
+        }
+        Platform* platform = new Platform(w, h, p);
         platform->setPos(x, game->height() - y - h);
         this->addItem(platform);
-        stream >> x >> y >> w >> h;
+        stream >> x >> y >> w >> h >> url >> tile;
     }
 
     file.close();
