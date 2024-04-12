@@ -13,13 +13,15 @@ SOURCES += \
     game.cpp \
     level1.cpp \
     main.cpp \
-    mainmenuscene.cpp
+    mainmenuscene.cpp \
+    platform.cpp
 
 HEADERS += \
     abdo.h \
     game.h \
     level1.h \
-    mainmenuscene.h
+    mainmenuscene.h \
+    platform.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

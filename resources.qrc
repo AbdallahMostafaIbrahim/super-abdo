@@ -1,6 +1,7 @@
 <RCC>
-    <qresource prefix="/images">
-        <file>supermariosplash.png</file>
-        <file>mario.png</file>
+    <qresource prefix="/">
+        <file>maps/map_1.txt</file>
+        <file>images/mario.png</file>
+        <file>images/splash.png</file>
     </qresource>
 </RCC>

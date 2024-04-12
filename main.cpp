@@ -9,7 +9,7 @@ int main(int argc, char *argv[])
 
     // Adding Splash Screen Before Showing Main Menu
     QSplashScreen *splash = new QSplashScreen;
-    splash->setPixmap(QPixmap(":/images/supermariosplash.png"));
+    splash->setPixmap(QPixmap(":/images/splash.png"));
     splash->show();
 
     Game game(1280, 720);

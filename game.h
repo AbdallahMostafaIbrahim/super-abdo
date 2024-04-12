@@ -10,7 +10,6 @@ class Game : public QGraphicsView
     Q_OBJECT
 public:
     Game(int, int);
-
 private:
     QGraphicsScene* currentScene;
 

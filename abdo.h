@@ -19,11 +19,12 @@ public:
     Abdo();
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
     QRectF boundingRect() const override;
-        int direction;
+    void setDirection(int direction);
+
 private:
     PlayerState currentState;
     int currentFrame;
-
+    int direction;
 
     QPixmap currentPixmap;
 
