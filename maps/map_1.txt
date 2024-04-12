@@ -1,2 +1,2 @@
-0 0 2400 40 :/images/office-tile.png 1
-450 220 500 40 :/images/office-tile.png 1
+0 0 2400 55 :/images/tile-1.png 1
+450 140 500 50 :/images/office-tile.png 1
