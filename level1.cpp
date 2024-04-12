@@ -21,7 +21,6 @@ Level1::Level1(Game* game) : QGraphicsScene() {
     leftPressed = false;
     spacePressed = false;
 
-    // The interval will be 1000 / 60, so the gameLoop function is called 60 times in one second
     deltaTime = 5;
 
     speed = 3;
