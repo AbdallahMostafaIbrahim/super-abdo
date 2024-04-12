@@ -7,11 +7,12 @@
 class Platform: public GroundEntity
 {
 public:
-    Platform(int w, int h);
+    Platform(int w, int h, QPixmap pixmap);
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
     QRectF boundingRect() const override;
 private:
     int width, height;
+    QPixmap pixmap;
 };
 
 #endif // PLATFORM_H

@@ -10,6 +10,7 @@ CONFIG += c++17
 
 SOURCES += \
     abdo.cpp \
+    coin.cpp \
     game.cpp \
     groundentity.cpp \
     level1.cpp \
@@ -19,6 +20,7 @@ SOURCES += \
 
 HEADERS += \
     abdo.h \
+    coin.h \
     game.h \
     groundentity.h \
     level1.h \

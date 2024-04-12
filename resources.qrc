@@ -5,5 +5,7 @@
         <file>images/employee-idle.png</file>
         <file>images/employee-walking.png</file>
         <file>images/abdo.png</file>
+        <file>images/office-tile.png</file>
+        <file>images/desk-1.png</file>
     </qresource>
 </RCC>
