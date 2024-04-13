@@ -1,7 +1,8 @@
 #ifndef SOUNDWAVE_H
 #define SOUNDWAVE_H
-#include"platform.h"
-#include<QObject>
+
+#include <QGraphicsItem>
+#include <QObject>
 
 class SoundWave : public QObject, public QGraphicsItem
 {

@@ -1,6 +1,7 @@
 #include "level1.h"
 #include "abdo.h"
 #include "platform.h"
+#include "soundwave.h"
 #include <QGraphicsScene>
 #include <QGraphicsTextItem>
 #include <QTimer>

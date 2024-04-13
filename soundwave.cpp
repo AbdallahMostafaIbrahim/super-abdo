@@ -27,7 +27,16 @@ void SoundWave::paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
 }
 
 void SoundWave::move(){
-        moveBy(2 * dir,0);
+    moveBy(2 * dir,0);
+
+    QList<QGraphicsItem*> items = collidingItems();
+
+    for(QGraphicsItem* item : items) {
+        GroundEntity* entity = dynamic_cast<GroundEntity*>(item);
+        if(entity != nullptr) {
+            return byebye();
+        }
+    }
 }
 
 void SoundWave::byebye(){

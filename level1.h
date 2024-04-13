@@ -5,7 +5,6 @@
 #include <QObject>
 #include "game.h"
 #include "abdo.h"
-#include"soundwave.h"
 
 class Level1 : public QGraphicsScene
 {
