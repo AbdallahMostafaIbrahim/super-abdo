@@ -1,6 +1,5 @@
 <RCC>
     <qresource prefix="/">
-        <file>maps/map_1.txt</file>
         <file>images/splash.png</file>
         <file>images/employee-idle.png</file>
         <file>images/employee-walking.png</file>
@@ -10,5 +9,7 @@
         <file>images/ceiling-light.png</file>
         <file>images/tile-1.png</file>
         <file>images/background-1.png</file>
+        <file>maps/map-1/platforms.txt</file>
+        <file>images/office-ceiling-lights.png</file>
     </qresource>
 </RCC>

@@ -3,6 +3,7 @@
 #include <QDebug>
 #include <QGraphicsScene>
 #include <QTimer>
+#include <QList>
 
 Abdo::Abdo() {
     currentState = IDLE;
@@ -28,12 +29,11 @@ void Abdo::setDirection(int dir) {
 
 GroundEntity* Abdo::isGrounded() {
     QList<QGraphicsItem*> items = collidingItems();
-
     for(QGraphicsItem* item : items) {
         GroundEntity* entity = dynamic_cast<GroundEntity*>(item);
         if(entity != nullptr) {
             QRectF rect(x(), y() + boundingRect().height() - 5, boundingRect().width(), 5);
-            QRectF otherRect(item->x(), item->y(), item->boundingRect().width(), 5);
+            QRectF otherRect(item->x() + item->boundingRect().x(), item->y() + item->boundingRect().y(), item->boundingRect().width(), 5);
             if (rect.intersects(otherRect)) {
                 return entity;
             }

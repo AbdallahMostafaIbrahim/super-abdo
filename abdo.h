@@ -5,7 +5,7 @@
 #include <QPixmap>
 #include <QPainter>
 #include <QRectF>
-#include "groundentity.h"
+#include "level_props/groundentity.h"
 
 enum PlayerState {
     IDLE,
@@ -31,8 +31,7 @@ private:
     int direction;
 
     QPixmap currentPixmap;
-private slots:
-    void clearRect(QRectF*);
+
 
 };
 
