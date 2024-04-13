@@ -22,7 +22,7 @@ Level1::Level1(Game* game) : QGraphicsScene() {
     rightPressed = false;
     leftPressed = false;
     spacePressed = false;
-    galabeyaGlideEnabled = true;
+    galabeyaGlideEnabled = false;
     doubleJump = true;
 
     deltaTime = 5;
@@ -154,7 +154,7 @@ void Level1::moveVertically() {
                     timeAfterJump = deltaTime;
                     max_jump++;
                     }
-                    //spacePressed = false;
+
                 }
             }
 
@@ -169,6 +169,16 @@ void Level1::moveVertically() {
             float deltaY = min((fallFunction(timeAfterJump) - (timeAfterJump == 0 ? 0 : fallFunction(timeAfterJump - deltaTime))), TERMINAL_VELOCITY);
             abdo->moveBy(0, -deltaY);
             timeAfterJump += deltaTime;
+            if(doubleJump && spacePressed) //double jump if enabled
+            {
+                if(max_jump < 1){
+                    isJumping = true;
+                    abdo->moveBy(0, -1);
+                    timeAfterJump = deltaTime;
+                    max_jump++;
+                }
+
+            }
         }
     }
 }
