@@ -10,9 +10,10 @@ public:
     Platform(int w, int h, QPixmap pixmap);
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
     QRectF boundingRect() const override;
+    QPainterPath shape() const override;
 private:
     int width, height;
-    QPixmap pixmap;
+    QPixmap platformPixmap;
 };
 
 #endif // PLATFORM_H

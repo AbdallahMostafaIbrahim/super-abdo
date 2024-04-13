@@ -10,22 +10,26 @@ CONFIG += c++17
 
 SOURCES += \
     abdo.cpp \
-    coin.cpp \
     game.cpp \
-    groundentity.cpp \
     level1.cpp \
+    level_props/coin.cpp \
+    level_props/desk.cpp \
+    level_props/groundentity.cpp \
+    level_props/platform.cpp \
+    level_props/shelf.cpp \
     main.cpp \
-    mainmenuscene.cpp \
-    platform.cpp
+    mainmenuscene.cpp
 
 HEADERS += \
     abdo.h \
-    coin.h \
     game.h \
-    groundentity.h \
     level1.h \
-    mainmenuscene.h \
-    platform.h
+    level_props/coin.h \
+    level_props/desk.h \
+    level_props/groundentity.h \
+    level_props/platform.h \
+    level_props/shelf.h \
+    mainmenuscene.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

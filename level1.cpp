@@ -1,6 +1,7 @@
 #include "level1.h"
 #include "abdo.h"
-#include "platform.h"
+#include "level_props/platform.h"
+#include "level_props/desk.h"
 #include <QGraphicsScene>
 #include <QGraphicsTextItem>
 #include <QTimer>
@@ -56,7 +57,7 @@ void Level1::initScene() {
     this->addItem(abdo);
 
     // Open Map File to load the platforms
-    QFile file(":/maps/map_1.txt");
+    QFile file(":/maps/map-1/platforms.txt");
     if(!file.open(QIODevice::ReadOnly)) {
         QMessageBox::critical(0, "Error", "Couldn't load level");
     }
@@ -81,6 +82,10 @@ void Level1::initScene() {
     }
 
     file.close();
+
+    Desk *desk = new Desk();
+    desk->setPos(150, game->height() - 60 - 55);
+    this->addItem(desk);
 }
 
 float Level1::jumpFunction(int time) {
@@ -137,7 +142,7 @@ void Level1::moveVertically() {
             abdo->moveBy(0, -1);
             timeAfterJump = deltaTime;
         } else {
-            abdo->setPos(abdo->x(), ground->y() - abdo->boundingRect().height());
+            abdo->setPos(abdo->x(), ground->y() + ground->boundingRect().y() - abdo->boundingRect().height());
             isJumping = false;
             timeAfterJump = 0;
         }
