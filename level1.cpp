@@ -24,7 +24,7 @@ Level1::Level1(Game* game) : QGraphicsScene() {
     spacePressed = false;
     galabeyaGlideEnabled = true;
     doubleJumpEnabled = true;
-
+    soundWaveEnabled = true;
     deltaTime = 5;
 
     speed = 3;
@@ -195,9 +195,11 @@ void Level1::keyPressEvent(QKeyEvent *event) {
             abdo->setDirection(-1);
             break;
         case Qt::Key_Z:
+            if(soundWaveEnabled){
             SoundWave* s = new SoundWave(abdo->getDirection());
             s->setPos(abdo->x()+20 * abdo->getDirection(),abdo->y()+abdo->boundingRect().height()/4);
             this->addItem(s);
+            }
     }
 }
 

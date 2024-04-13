@@ -45,6 +45,7 @@ private:
     int currentJumpCount;
     int maxJumps;
 
+    bool soundWaveEnabled;
 
 private slots:
     void gameLoop();
