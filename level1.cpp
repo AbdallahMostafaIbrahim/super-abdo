@@ -194,6 +194,10 @@ void Level1::keyPressEvent(QKeyEvent *event) {
             leftPressed = true;
             abdo->setDirection(-1);
             break;
+        case Qt::Key_Z:
+            SoundWave* s = new SoundWave(abdo->getDirection());
+            s->setPos(abdo->x()+2,abdo->y()+abdo->boundingRect().height()/2);
+            this->addItem(s);
     }
 }
 
