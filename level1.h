@@ -40,6 +40,8 @@ private:
 
     bool leftPressed, rightPressed, spacePressed;
     bool galabeyaGlideEnabled;
+    bool doubleJump;
+    int max_jump;
 
 
 private slots:

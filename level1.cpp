@@ -23,6 +23,7 @@ Level1::Level1(Game* game) : QGraphicsScene() {
     leftPressed = false;
     spacePressed = false;
     galabeyaGlideEnabled = true;
+    doubleJump = true;
 
     deltaTime = 5;
 
@@ -132,6 +133,7 @@ void Level1::moveVertically() {
             abdo->setPos(abdo->x(), ground->y() - abdo->boundingRect().height());
             isJumping = false;
             timeAfterJump = 0;
+            max_jump = 0;
         }
     } else {
         if(isJumping) {
@@ -144,6 +146,16 @@ void Level1::moveVertically() {
                 isJumping = false;
                 timeAfterJump = 0;
                 isFalling = true;
+                if(doubleJump && spacePressed) //double jump if enabled
+                {
+                    if(max_jump < 1){
+                    isJumping = true;
+                    abdo->moveBy(0, -1);
+                    timeAfterJump = deltaTime;
+                    max_jump++;
+                    }
+                    //spacePressed = false;
+                }
             }
 
             // Check if something is touching my head
