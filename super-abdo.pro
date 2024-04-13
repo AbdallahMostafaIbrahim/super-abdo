@@ -12,11 +12,15 @@ SOURCES += \
     abdo.cpp \
     game.cpp \
     level1.cpp \
+    level_props/ceilinglight.cpp \
     level_props/coin.cpp \
     level_props/desk.cpp \
     level_props/groundentity.cpp \
+    level_props/officewindow.cpp \
+    level_props/pictureframe.cpp \
     level_props/platform.cpp \
     level_props/shelf.cpp \
+    levelloader.cpp \
     main.cpp \
     mainmenuscene.cpp
 
@@ -24,11 +28,15 @@ HEADERS += \
     abdo.h \
     game.h \
     level1.h \
+    level_props/ceilinglight.h \
     level_props/coin.h \
     level_props/desk.h \
     level_props/groundentity.h \
+    level_props/officewindow.h \
+    level_props/pictureframe.h \
     level_props/platform.h \
     level_props/shelf.h \
+    levelloader.h \
     mainmenuscene.h
 
 # Default rules for deployment.

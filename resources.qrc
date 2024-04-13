@@ -9,7 +9,10 @@
         <file>images/ceiling-light.png</file>
         <file>images/tile-1.png</file>
         <file>images/background-1.png</file>
-        <file>maps/map-1/platforms.txt</file>
+        <file>maps/map-1/main.txt</file>
         <file>images/office-ceiling-lights.png</file>
+        <file>images/office-picture.png</file>
+        <file>images/office-window.png</file>
+        <file>maps/map-1/main_copy.txt</file>
     </qresource>
 </RCC>

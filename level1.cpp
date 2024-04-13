@@ -2,6 +2,10 @@
 #include "abdo.h"
 #include "level_props/platform.h"
 #include "level_props/desk.h"
+#include "level_props/pictureframe.h"
+#include "level_props/ceilinglight.h"
+#include "level_props/officewindow.h"
+#include "levelloader.h"
 #include <QGraphicsScene>
 #include <QGraphicsTextItem>
 #include <QTimer>
@@ -57,10 +61,12 @@ void Level1::initScene() {
     this->addItem(abdo);
 
     // Open Map File to load the platforms
-    QFile file(":/maps/map-1/platforms.txt");
+    QFile file(":/maps/map-1/main.txt");
     if(!file.open(QIODevice::ReadOnly)) {
-        QMessageBox::critical(0, "Error", "Couldn't load level");
+        QMessageBox::critical(0, "Error", "Couldn't load level", file.errorString());
     }
+    // LevelLoader loader(file);
+    // loader.fillScene(this);
 
     QTextStream stream(&file);
 
@@ -69,6 +75,7 @@ void Level1::initScene() {
     stream >> x >> y >> w >> h >> url >> tile;
     while(!stream.atEnd()) {
         // Create Current Platform
+        qDebug() << url;
         QPixmap p = QPixmap(url);
         if(tile == 1) {
             p = p.scaledToHeight(h);
@@ -86,6 +93,21 @@ void Level1::initScene() {
     Desk *desk = new Desk();
     desk->setPos(150, game->height() - 60 - 55);
     this->addItem(desk);
+
+    PictureFrame *frame = new PictureFrame();
+    frame->setPos(360, game->height() / 2);
+    frame->setZValue(-1);
+    this->addItem(frame);
+
+    CeilingLight *light = new CeilingLight();
+    light->setPos(320, 0);
+    light->setZValue(-1);
+    this->addItem(light);
+
+    OfficeWindow *window = new OfficeWindow();
+    window->setPos(720, (game->height() / 2) + window->pixmap().height() / 2);
+    window->setZValue(-1);
+    this->addItem(window);
 }
 
 float Level1::jumpFunction(int time) {
