@@ -61,53 +61,50 @@ void Level1::initScene() {
     this->addItem(abdo);
 
     // Open Map File to load the platforms
-    QFile file(":/maps/map-1/main.txt");
-    if(!file.open(QIODevice::ReadOnly)) {
-        QMessageBox::critical(0, "Error", "Couldn't load level", file.errorString());
-    }
-    // LevelLoader loader(file);
-    // loader.fillScene(this);
+    QFile file(":/maps/map-1/map.txt");
+    LevelLoader loader(file);
+    loader.fillScene(this);
 
-    QTextStream stream(&file);
 
-    int x, y, w, h, tile;
-    QString url;
-    stream >> x >> y >> w >> h >> url >> tile;
-    while(!stream.atEnd()) {
-        // Create Current Platform
-        qDebug() << url;
-        QPixmap p = QPixmap(url);
-        if(tile == 1) {
-            p = p.scaledToHeight(h);
-        } else {
-            p = p.scaled(w, h);
-        }
-        Platform* platform = new Platform(w, h, p);
-        platform->setPos(x, game->height() - y - h);
-        this->addItem(platform);
-        stream >> x >> y >> w >> h >> url >> tile;
-    }
 
-    file.close();
+    // int x, y, w, h, tile;
+    // QString url;
+    // stream >> x >> y >> w >> h >> url >> tile;
+    // while(!stream.atEnd()) {
+    //     // Create Current Platform
+    //     qDebug() << url;
+    //     QPixmap p = QPixmap(url);
+    //     if(tile == 1) {
+    //         p = p.scaledToHeight(h);
+    //     } else {
+    //         p = p.scaled(w, h);
+    //     }
+    //     Platform* platform = new Platform(w, h, p);
+    //     platform->setPos(x, game->height() - y - h);
+    //     this->addItem(platform);
+    //     stream >> x >> y >> w >> h >> url >> tile;
+    // }
 
-    Desk *desk = new Desk();
-    desk->setPos(150, game->height() - 60 - 55);
-    this->addItem(desk);
+    // file.close();
 
-    PictureFrame *frame = new PictureFrame();
-    frame->setPos(360, game->height() / 2);
-    frame->setZValue(-1);
-    this->addItem(frame);
+    // Desk *desk = new Desk();
+    // desk->setPos(150, game->height() - 60 - 55);
+    // this->addItem(desk);
 
-    CeilingLight *light = new CeilingLight();
-    light->setPos(320, 0);
-    light->setZValue(-1);
-    this->addItem(light);
+    // PictureFrame *frame = new PictureFrame();
+    // frame->setPos(360, game->height() / 2);
+    // frame->setZValue(-1);
+    // this->addItem(frame);
 
-    OfficeWindow *window = new OfficeWindow();
-    window->setPos(720, (game->height() / 2) + window->pixmap().height() / 2);
-    window->setZValue(-1);
-    this->addItem(window);
+    // CeilingLight *light = new CeilingLight();
+    // light->setPos(320, 0);
+    // light->setZValue(-1);
+    // this->addItem(light);
+
+    // OfficeWindow *window = new OfficeWindow();
+    // window->setPos(720, (game->height() / 2) + window->pixmap().height() / 2);
+    // window->setZValue(-1);
+    // this->addItem(window);
 }
 
 float Level1::jumpFunction(int time) {

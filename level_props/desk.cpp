@@ -23,3 +23,7 @@ QPainterPath Desk::shape() const {
     path.addRect(boundingRect());
     return path;
 }
+
+QPixmap* Desk::getPixmap() {
+    return &pixmap;
+}

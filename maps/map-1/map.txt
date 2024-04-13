@@ -1,0 +1,17 @@
+platform 0 0 2400 55 :/images/tile-1.png
+
+office_desk 150 55
+office_desk 320 55
+office_desk 470 55
+office_desk 650 55
+
+ceiling_light 320 0
+ceiling_light 860 0
+ceiling_light 1450 0
+ceiling_light 1930 0
+
+office_window 720 42
+office_window 960 42
+
+office_picture_frame 360 0
+office_picture_frame 1160 0
