@@ -8,6 +8,7 @@ class SoundWave : public QObject, public QGraphicsItem
     Q_OBJECT
 private:
     int dir;
+    QPixmap pixmap;
  public:
     SoundWave(int);
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;

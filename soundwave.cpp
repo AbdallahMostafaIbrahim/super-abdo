@@ -7,6 +7,8 @@
 
 SoundWave::SoundWave(int direction) : QObject()
 {
+    pixmap = QPixmap(":/images/sound-wave.png");
+
     dir = direction;
     QTimer *timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(move()));
@@ -14,15 +16,11 @@ SoundWave::SoundWave(int direction) : QObject()
     QTimer::singleShot(1000,this,SLOT(byebye()));
 }
 QRectF SoundWave::boundingRect() const {
-    return QRectF(0, 0, 20, 20);
+    return QRectF(0, 0, 40, 40);
 }
 
 void SoundWave::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) {
-    QRectF rect = boundingRect();
-    QBrush brush(Qt::black);
-
-    painter->drawRect(rect);
-    painter->fillRect(rect, brush);
+    painter->drawPixmap(0,0, 40, 40, dir == 1 ? pixmap : pixmap.transformed(QTransform().scale(dir,1)));
 
     Q_UNUSED(widget);
     Q_UNUSED(option);

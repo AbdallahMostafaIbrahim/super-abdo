@@ -196,7 +196,7 @@ void Level1::keyPressEvent(QKeyEvent *event) {
             break;
         case Qt::Key_Z:
             SoundWave* s = new SoundWave(abdo->getDirection());
-            s->setPos(abdo->x()+2,abdo->y()+abdo->boundingRect().height()/2);
+            s->setPos(abdo->x()+20 * abdo->getDirection(),abdo->y()+abdo->boundingRect().height()/4);
             this->addItem(s);
     }
 }
