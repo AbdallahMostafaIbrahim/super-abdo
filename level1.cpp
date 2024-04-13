@@ -22,8 +22,8 @@ Level1::Level1(Game* game) : QGraphicsScene() {
     rightPressed = false;
     leftPressed = false;
     spacePressed = false;
-    galabeyaGlideEnabled = false;
-    doubleJump = true;
+    galabeyaGlideEnabled = true;
+    doubleJumpEnabled = true;
 
     deltaTime = 5;
 
@@ -35,6 +35,9 @@ Level1::Level1(Game* game) : QGraphicsScene() {
     jumpHeight = 160;
     isJumping = false;
     isFalling = true;
+
+    currentJumpCount = 0;
+    maxJumps = 2;
 
     // Connect and start the game loop
     connect(timer, SIGNAL(timeout()), this, SLOT(gameLoop()));
@@ -133,7 +136,7 @@ void Level1::moveVertically() {
             abdo->setPos(abdo->x(), ground->y() - abdo->boundingRect().height());
             isJumping = false;
             timeAfterJump = 0;
-            max_jump = 0;
+            currentJumpCount = 0;
         }
     } else {
         if(isJumping) {
@@ -146,16 +149,6 @@ void Level1::moveVertically() {
                 isJumping = false;
                 timeAfterJump = 0;
                 isFalling = true;
-                if(doubleJump && spacePressed) //double jump if enabled
-                {
-                    if(max_jump < 1){
-                    isJumping = true;
-                    abdo->moveBy(0, -1);
-                    timeAfterJump = deltaTime;
-                    max_jump++;
-                    }
-
-                }
             }
 
             // Check if something is touching my head
@@ -169,16 +162,6 @@ void Level1::moveVertically() {
             float deltaY = min((fallFunction(timeAfterJump) - (timeAfterJump == 0 ? 0 : fallFunction(timeAfterJump - deltaTime))), TERMINAL_VELOCITY);
             abdo->moveBy(0, -deltaY);
             timeAfterJump += deltaTime;
-            if(doubleJump && spacePressed) //double jump if enabled
-            {
-                if(max_jump < 1){
-                    isJumping = true;
-                    abdo->moveBy(0, -1);
-                    timeAfterJump = deltaTime;
-                    max_jump++;
-                }
-
-            }
         }
     }
 }
@@ -193,6 +176,14 @@ void Level1::gameLoop() {
 void Level1::keyPressEvent(QKeyEvent *event) {
     switch(event->key()){
         case Qt::Key_Space:
+        if(doubleJumpEnabled && (isJumping || isFalling)) {
+                if(currentJumpCount < maxJumps - 1) {
+                    isJumping = true;
+                    abdo->moveBy(0, -1);
+                    timeAfterJump = deltaTime;
+                    currentJumpCount++;
+                }
+            }
             spacePressed = true;
             break;
         case Qt::Key_Right:
