@@ -1,6 +1,7 @@
 #include "level1.h"
 #include "abdo.h"
 #include "platform.h"
+#include "soundwave.h"
 #include <QGraphicsScene>
 #include <QGraphicsTextItem>
 #include <QTimer>
@@ -23,7 +24,8 @@ Level1::Level1(Game* game) : QGraphicsScene() {
     leftPressed = false;
     spacePressed = false;
     galabeyaGlideEnabled = true;
-
+    doubleJumpEnabled = true;
+    soundWaveEnabled = true;
     deltaTime = 5;
 
     speed = 3;
@@ -34,6 +36,9 @@ Level1::Level1(Game* game) : QGraphicsScene() {
     jumpHeight = 160;
     isJumping = false;
     isFalling = true;
+
+    currentJumpCount = 0;
+    maxJumps = 2;
 
     // Connect and start the game loop
     connect(timer, SIGNAL(timeout()), this, SLOT(gameLoop()));
@@ -132,6 +137,7 @@ void Level1::moveVertically() {
             abdo->setPos(abdo->x(), ground->y() - abdo->boundingRect().height());
             isJumping = false;
             timeAfterJump = 0;
+            currentJumpCount = 0;
         }
     } else {
         if(isJumping) {
@@ -171,6 +177,14 @@ void Level1::gameLoop() {
 void Level1::keyPressEvent(QKeyEvent *event) {
     switch(event->key()){
         case Qt::Key_Space:
+        if(doubleJumpEnabled && (isJumping || isFalling)) {
+                if(currentJumpCount < maxJumps - 1) {
+                    isJumping = true;
+                    abdo->moveBy(0, -1);
+                    timeAfterJump = deltaTime;
+                    currentJumpCount++;
+                }
+            }
             spacePressed = true;
             break;
         case Qt::Key_Right:
@@ -181,6 +195,12 @@ void Level1::keyPressEvent(QKeyEvent *event) {
             leftPressed = true;
             abdo->setDirection(-1);
             break;
+        case Qt::Key_Z:
+            if(soundWaveEnabled){
+            SoundWave* s = new SoundWave(abdo->getDirection());
+            s->setPos(abdo->x()+20 * abdo->getDirection(),abdo->y()+abdo->boundingRect().height()/4);
+            this->addItem(s);
+            }
     }
 }
 

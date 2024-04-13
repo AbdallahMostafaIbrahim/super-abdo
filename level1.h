@@ -40,7 +40,11 @@ private:
 
     bool leftPressed, rightPressed, spacePressed;
     bool galabeyaGlideEnabled;
+    bool doubleJumpEnabled;
+    int currentJumpCount;
+    int maxJumps;
 
+    bool soundWaveEnabled;
 
 private slots:
     void gameLoop();
