@@ -21,12 +21,12 @@ private:
 
     void moveHorizontally();
     void moveVertically();
+    void checkCoins();
 
     Game* game;
     Abdo* abdo;
 
     int timeAfterJump;
-    int heightBeforeJump;
     int timeWhenStartedFalling;
     bool isJumping;
     bool isFalling;

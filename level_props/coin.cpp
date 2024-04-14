@@ -1,16 +1,17 @@
 #include "coin.h"
 #include <QPainter>
 
-Coin::Coin() {}
+Coin::Coin() {
+    pixmap = QPixmap(":/images/coin.png");
+}
 
 
 QRectF Coin::boundingRect() const{
-    return QRectF(0,0,30,30);
+    return QRectF(0,0,40,40);
 }
 
 void Coin::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) {
-    painter->drawEllipse(boundingRect());
-    painter->fillRect(boundingRect(), QBrush(Qt::yellow));
+    painter->drawPixmap(0,0, 40, 40, pixmap);
 
     Q_UNUSED(widget);
     Q_UNUSED(option);

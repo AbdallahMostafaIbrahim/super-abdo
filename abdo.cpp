@@ -1,6 +1,5 @@
 #include "abdo.h"
 #include <QBrush>
-#include <QDebug>
 #include <QGraphicsScene>
 #include <QTimer>
 #include <QList>

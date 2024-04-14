@@ -22,7 +22,8 @@ SOURCES += \
     level_props/shelf.cpp \
     levelloader.cpp \
     main.cpp \
-    mainmenuscene.cpp
+    mainmenuscene.cpp \
+    utils.cpp
 
 HEADERS += \
     abdo.h \
@@ -37,7 +38,8 @@ HEADERS += \
     level_props/platform.h \
     level_props/shelf.h \
     levelloader.h \
-    mainmenuscene.h
+    mainmenuscene.h \
+    utils.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

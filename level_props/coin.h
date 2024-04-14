@@ -11,6 +11,8 @@ public:
     Coin();
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
     QRectF boundingRect() const override;
+private:
+    QPixmap pixmap;
 };
 
 #endif // COIN_H

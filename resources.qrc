@@ -13,5 +13,6 @@
         <file>images/office-picture.png</file>
         <file>images/office-window.png</file>
         <file>maps/map-1/map.txt</file>
+        <file>images/coin.png</file>
     </qresource>
 </RCC>

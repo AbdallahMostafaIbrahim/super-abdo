@@ -13,6 +13,7 @@ QRectF Platform::boundingRect() const {
 }
 
 void Platform::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) {
+    // TODO: Look at drawTiledPixmap
     int count = boundingRect().width() / platformPixmap.width();
     for(int i = 0; i < count; i++) {
         painter->drawPixmap(i * platformPixmap.width(), 0, platformPixmap);

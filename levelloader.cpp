@@ -4,6 +4,7 @@
 #include "level_props/ceilinglight.h"
 #include "level_props/officewindow.h"
 #include "level_props/pictureframe.h"
+#include "level_props/coin.h"
 
 #include <QMessageBox>
 #include <QTextStream>
@@ -22,27 +23,34 @@ void LevelLoader::fillScene(QGraphicsScene* scene) {
     QMap<QString, std::function<void(int x, int y)>> constructorMap = {
         {"office_desk", [scene](int x, int y) -> void {
             Desk* desk = new Desk();
+
             desk->setPos(x, scene->height() - y - desk->getPixmap()->height());
             scene->addItem(desk);
         }},
         {"ceiling_light", [scene](int x, int) -> void {
             CeilingLight *light = new CeilingLight();
             light->setPos(x, 0);
-            light->setZValue(-1);
+            light->setZValue(-2);
             scene->addItem(light);
         }},
         {"office_window", [scene](int x, int y) -> void {
             OfficeWindow *window = new OfficeWindow();
             window->setPos(x, (scene->height() / 2) + window->pixmap().height() / 2 + y);
-            window->setZValue(-1);
+            window->setZValue(-2);
             scene->addItem(window);
         }},
         {"office_picture_frame", [scene](int x, int y) -> void {
             PictureFrame *frame = new PictureFrame();
             frame->setPos(x, scene->height() / 2 + y);
-            frame->setZValue(-1);
+            frame->setZValue(-2);
             scene->addItem(frame);
         }},
+        {"coin", [scene](int x, int y) -> void {
+             Coin *coin = new Coin();
+             coin->setPos(x, scene->height() - y - coin->boundingRect().height());
+             coin->setZValue(-1);
+             scene->addItem(coin);
+         }},
     };
 
     QString line;
@@ -84,7 +92,6 @@ void LevelLoader::fillScene(QGraphicsScene* scene) {
             QMessageBox::warning(nullptr, "Warning", "Invalid numeric values.");
             continue;
         }
-        qDebug() << type;
         if(isPlatform) {
             QPixmap p = QPixmap(platformTexture);
             p = p.scaledToHeight(height);
