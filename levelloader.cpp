@@ -5,6 +5,7 @@
 #include "level_props/officewindow.h"
 #include "level_props/pictureframe.h"
 #include "level_props/coin.h"
+#include "level_props/shelf.h"
 
 #include <QMessageBox>
 #include <QTextStream>
@@ -72,7 +73,7 @@ void LevelLoader::fillScene(QGraphicsScene* scene) {
 
         QString type = parts[0];
 
-        bool isPlatform = type == "platform";
+        bool isPlatform = type == "platform" || type == "shelf";
 
         if(isPlatform && parts.size() < 6) {
             continue;
@@ -92,12 +93,19 @@ void LevelLoader::fillScene(QGraphicsScene* scene) {
             QMessageBox::warning(nullptr, "Warning", "Invalid numeric values.");
             continue;
         }
+
         if(isPlatform) {
-            QPixmap p = QPixmap(platformTexture);
-            p = p.scaledToHeight(height);
-            Platform* platform = new Platform(width, height, p);
-            platform->setPos(x, scene->height() - y - height);
-            scene->addItem(platform);
+            if(type == "platform") {
+                QPixmap p = QPixmap(platformTexture);
+                p = p.scaledToHeight(height);
+                Platform* platform = new Platform(width, height, p);
+                platform->setPos(x, scene->height() - y - platform->boundingRect().height());
+                scene->addItem(platform);
+            } else {
+                Shelf* shelf = new Shelf(width);
+                shelf->setPos(x, scene->height() - y - shelf->boundingRect().height());
+                scene->addItem(shelf);
+            }
         }
         else if (constructorMap.contains(type)) {
             constructorMap[type](x, y);

@@ -1,20 +1,18 @@
 #ifndef SHELF_H
 #define SHELF_H
 
-#include "groundentity.h"
+#include "platform.h"
 #include <QPixmap>
 
-class Shelf : public GroundEntity
+class Shelf : public Platform
 {
 public:
-    Shelf();
-    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
-    QRectF boundingRect() const override;
-    // QPainterPath shape() const override;
+    Shelf(int w);
+    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
+    QRectF boundingRect() const;
 private:
-    QPixmap mainPixmap;
-    QPixmap edgePixmap;
-
+    QPixmap leftPixmap;
+    QPixmap rightPixmap;
 };
 
 #endif // SHELF_H

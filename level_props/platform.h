@@ -11,9 +11,10 @@ public:
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
     QRectF boundingRect() const override;
     QPainterPath shape() const override;
-private:
-    int width, height;
-    QPixmap platformPixmap;
+protected:
+   QPixmap platformPixmap;
+   int width, height;
+
 };
 
 #endif // PLATFORM_H

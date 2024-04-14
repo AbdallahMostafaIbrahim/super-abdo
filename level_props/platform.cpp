@@ -3,9 +3,8 @@
 #include <QRectF>
 #include <QBrush>
 
-Platform::Platform(int w, int h, QPixmap pixmap) : width(w), height(h)
+Platform::Platform(int w, int h, QPixmap pixmap) : width(w), height(h), platformPixmap(pixmap)
 {
-    this->platformPixmap = pixmap;
 }
 
 QRectF Platform::boundingRect() const {
