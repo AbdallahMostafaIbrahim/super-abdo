@@ -14,5 +14,7 @@
         <file>images/office-window.png</file>
         <file>maps/map-1/map.txt</file>
         <file>images/coin.png</file>
+        <file>fonts/Minecraft.ttf</file>
+        <file>images/heart.png</file>
     </qresource>
 </RCC>

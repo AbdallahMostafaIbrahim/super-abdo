@@ -3,6 +3,8 @@
 
 #include <QGraphicsScene>
 #include <QObject>
+#include <QPainter>
+#include <QRectF>
 #include "game.h"
 #include "abdo.h"
 
@@ -12,9 +14,11 @@ Q_OBJECT
 public:
     Level1(Game* game);
 protected:
-    void keyPressEvent(QKeyEvent *event);
-    void keyReleaseEvent(QKeyEvent *event);
+    void keyPressEvent(QKeyEvent *event) override;
+    void keyReleaseEvent(QKeyEvent *event) override;
 private:
+    void drawForeground(QPainter *painter, const QRectF &rect) override;
+
     void initScene();
     float jumpFunction(int time);
     float fallFunction(int time);
@@ -35,6 +39,9 @@ private:
 
     float speed;
     float speedJumpFactor;
+
+    int health;
+    int collectedCoins;
 
     int deltaTime;
 

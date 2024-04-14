@@ -9,5 +9,7 @@ Game::Game(int width, int height) {
 
     currentScene = new MainMenuScene(this);
     this->setScene(currentScene);
+
+
 }
 

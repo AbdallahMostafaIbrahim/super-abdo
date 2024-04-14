@@ -10,8 +10,10 @@
 #include <QUrl>
 #include <QMessageBox>
 #include <QKeyEvent>
+#include <QScrollBar>
 
 #define TERMINAL_VELOCITY 4.0
+#define MAX_HEALTH 3
 
 Level1::Level1(Game* game) : QGraphicsScene() {
     this->game = game;
@@ -26,6 +28,7 @@ Level1::Level1(Game* game) : QGraphicsScene() {
 
     deltaTime = 5;
 
+    // Movement
     speed = 3;
     timeAfterJump = 0;
     timeWhenStartedFalling = 0;
@@ -34,6 +37,10 @@ Level1::Level1(Game* game) : QGraphicsScene() {
     jumpHeight = 160;
     isJumping = false;
     isFalling = true;
+
+    // Stats
+    health = MAX_HEALTH;
+    collectedCoins = 0;
 
     // Connect and start the game loop
     connect(timer, SIGNAL(timeout()), this, SLOT(gameLoop()));
@@ -59,6 +66,13 @@ void Level1::initScene() {
     QFile file(":/maps/map-1/map.txt");
     LevelLoader loader(file);
     loader.fillScene(this);
+}
+
+void Level1::drawForeground(QPainter *painter, const QRectF &rect) {
+    painter->resetTransform();
+    for(int i = 0; i < health; i++) {
+        painter->drawPixmap(i * 45 + 10, 25, 40, 40, QPixmap(":/images/heart.png").scaled(40, 40));
+    }
 }
 
 float Level1::jumpFunction(int time) {
