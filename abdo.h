@@ -6,6 +6,7 @@
 #include <QPainter>
 #include <QRectF>
 #include "level_props/groundentity.h"
+#include "level_props/coin.h"
 
 enum PlayerState {
     IDLE,
@@ -24,6 +25,7 @@ public:
     GroundEntity* isGrounded();
     GroundEntity* isBlockedHorizontally(int&);
     GroundEntity* isTouchingHead();
+    Coin* isTouchingCoin();
 
 private:
     PlayerState currentState;

@@ -1,6 +1,7 @@
 #include <QApplication>
 #include <QSplashScreen>
 #include <QTimer>
+#include <QFontDatabase>
 #include "game.h"
 
 int main(int argc, char *argv[])
@@ -12,10 +13,9 @@ int main(int argc, char *argv[])
     splash->setPixmap(QPixmap(":/images/splash.png"));
     splash->show();
 
+    QFontDatabase::addApplicationFont(":/fonts/Minecraft.ttf");
+
     Game game(1280, 720);
-
-    // this->move(x, y);
-
 
     QTimer::singleShot(300,splash,SLOT(close()));
     QTimer::singleShot(300,&game,SLOT(show()));

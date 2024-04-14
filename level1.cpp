@@ -73,6 +73,13 @@ void Level1::drawForeground(QPainter *painter, const QRectF &rect) {
     for(int i = 0; i < health; i++) {
         painter->drawPixmap(i * 45 + 10, 25, 40, 40, QPixmap(":/images/heart.png").scaled(40, 40));
     }
+
+
+    painter->drawPixmap(10, 75, 40, 40, QPixmap(":/images/coin.png").scaled(40,40));
+
+    painter->setPen(Qt::white);
+    painter->setFont(QFont("Minecraft", 24));
+    painter->drawText(55, 75 + 30,"x" + QString::number(collectedCoins));
 }
 
 float Level1::jumpFunction(int time) {
@@ -151,7 +158,12 @@ void Level1::moveVertically() {
 }
 
 void Level1::checkCoins() {
-    // TODO: Check if a coin intersects with abdo, then delete the coin and update the coin counter
+    Coin* coin = abdo->isTouchingCoin();
+
+    if(coin){
+        removeItem(coin);
+        collectedCoins++;
+    }
 }
 
 void Level1::gameLoop() {

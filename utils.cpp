@@ -1,5 +1,6 @@
 #include "utils.h"
 #include <cstdlib>
+#include <QFontDatabase>
 
 float Utils::minMagnitude(float l, float r) {
     if(abs(l) < abs(r)) return l;

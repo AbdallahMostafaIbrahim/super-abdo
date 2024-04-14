@@ -78,3 +78,14 @@ GroundEntity* Abdo::isTouchingHead(){
     }
     return nullptr;
 }
+
+Coin* Abdo::isTouchingCoin(){
+    QList<QGraphicsItem*> items = collidingItems();
+    for(QGraphicsItem* item : items) {
+        Coin* coin = dynamic_cast<Coin*>(item);
+        if(coin != nullptr) {
+            return coin;
+        }
+    }
+    return nullptr;
+}
