@@ -7,16 +7,23 @@
 Abdo::Abdo() {
     currentState = IDLE;
     setFlag(ItemClipsToShape);
-    currentPixmap = QPixmap(":/images/abdo.png");
+    idle1Pixmap = QPixmap(":/images/abdo/idle1.png");
+    idle2Pixmap = QPixmap(":/images/abdo/idle2.png");
+    currentUrl = ":/images/abdo/idle1.png";
+    currentPixmap = idle1Pixmap;
     direction = 1;
+
+    QTimer* timer = new QTimer();
+    connect(timer, SIGNAL(timeout()), this, SLOT(animate()));
+    timer->start(500);
 }
 
 QRectF Abdo::boundingRect() const{
-    return QRectF(0,0,50,118);
+    return QRectF(0,0,50,109);
 }
 
 void Abdo::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) {
-    painter->drawPixmap(0,0, 50, 118, direction == 1 ? currentPixmap : currentPixmap.transformed(QTransform().scale(direction,1)));
+    painter->drawPixmap(0,0, 50, 109, direction == 1 ? currentPixmap : currentPixmap.transformed(QTransform().scale(direction,1)));
 
     Q_UNUSED(widget);
     Q_UNUSED(option);
@@ -92,4 +99,19 @@ Coin* Abdo::isTouchingCoin(){
         }
     }
     return nullptr;
+}
+
+void Abdo::setState(PlayerState state) {
+    this->setState(state);
+}
+
+void Abdo::animate() {
+    qDebug() << "HEllo";
+    if(currentUrl == ":/images/abdo/idle1.png") {
+        currentPixmap = idle2Pixmap;
+        currentUrl = ":/images/abdo/idle2.png";
+    } else {
+        currentPixmap = idle1Pixmap;
+         currentUrl = ":/images/abdo/idle1.png";
+    }
 }

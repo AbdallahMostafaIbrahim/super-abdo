@@ -3,7 +3,6 @@
         <file>images/splash.png</file>
         <file>images/employee-idle.png</file>
         <file>images/employee-walking.png</file>
-        <file>images/abdo.png</file>
         <file>images/office-tile.png</file>
         <file>images/desk-1.png</file>
         <file>images/ceiling-light.png</file>
@@ -20,5 +19,7 @@
         <file>images/shelf/middle.png</file>
         <file>images/shelf/right.png</file>
         <file>images/sound-wave.png</file>
+        <file>images/abdo/idle1.png</file>
+        <file>images/abdo/idle2.png</file>
     </qresource>
 </RCC>
