@@ -216,7 +216,7 @@ void Level1::keyPressEvent(QKeyEvent *event)
     switch (event->key())
     {
     case Qt::Key_Space:
-        if (doubleJumpEnabled && (isJumping || isFalling))
+        if (doubleJumpEnabled && (isJumping || isFalling) && !spacePressed)
         {
             if (currentJumpCount < maxJumps - 1)
             {
