@@ -23,8 +23,7 @@ SOURCES += \
     levelloader.cpp \
     main.cpp \
     mainmenuscene.cpp \
-    utils.cpp
-    platform.cpp \
+    utils.cpp \
     soundwave.cpp
 
 HEADERS += \
@@ -41,8 +40,7 @@ HEADERS += \
     level_props/shelf.h \
     levelloader.h \
     mainmenuscene.h \
-    utils.h
-    platform.h \
+    utils.h \
     soundwave.h
 
 # Default rules for deployment.

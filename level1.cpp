@@ -2,7 +2,6 @@
 #include "abdo.h"
 #include "levelloader.h"
 #include "utils.h"
-#include "platform.h"
 #include "soundwave.h"
 #include <QGraphicsScene>
 #include <QGraphicsTextItem>
