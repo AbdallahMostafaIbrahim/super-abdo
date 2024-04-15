@@ -22,10 +22,12 @@ public:
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
     QRectF boundingRect() const override;
     void setDirection(int direction);
+    int getDirection();
     GroundEntity* isGrounded();
     GroundEntity* isBlockedHorizontally(int&);
     GroundEntity* isTouchingHead();
     Coin* isTouchingCoin();
+
 
 private:
     PlayerState currentState;

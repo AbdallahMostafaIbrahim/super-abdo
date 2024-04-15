@@ -24,6 +24,8 @@ SOURCES += \
     main.cpp \
     mainmenuscene.cpp \
     utils.cpp
+    platform.cpp \
+    soundwave.cpp
 
 HEADERS += \
     abdo.h \
@@ -40,6 +42,8 @@ HEADERS += \
     levelloader.h \
     mainmenuscene.h \
     utils.h
+    platform.h \
+    soundwave.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

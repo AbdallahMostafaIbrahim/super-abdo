@@ -26,6 +26,10 @@ void Abdo::setDirection(int dir) {
     direction = dir;
 }
 
+int Abdo::getDirection(){
+    return direction;
+}
+
 GroundEntity* Abdo::isGrounded() {
     QList<QGraphicsItem*> items = collidingItems();
     for(QGraphicsItem* item : items) {
