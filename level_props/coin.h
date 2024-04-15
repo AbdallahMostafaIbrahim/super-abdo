@@ -1,17 +1,18 @@
-#ifndef PLATFORM_H
-#define PLATFORM_H
+#ifndef COIN_H
+#define COIN_H
 
 #include <QGraphicsItem>
-#include "groundentity.h"
+#include <QPixmap>
+#include <QRectF>
 
-class Platform: public GroundEntity
+class Coin : public QGraphicsItem
 {
 public:
-    Platform(int w, int h);
+    Coin();
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
     QRectF boundingRect() const override;
 private:
-    int width, height;
+    QPixmap pixmap;
 };
 
-#endif // PLATFORM_H
+#endif // COIN_H

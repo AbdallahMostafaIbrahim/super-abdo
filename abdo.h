@@ -5,7 +5,8 @@
 #include <QPixmap>
 #include <QPainter>
 #include <QRectF>
-#include "groundentity.h"
+#include "level_props/groundentity.h"
+#include "level_props/coin.h"
 
 enum PlayerState {
     IDLE,
@@ -25,6 +26,7 @@ public:
     GroundEntity* isGrounded();
     GroundEntity* isBlockedHorizontally(int&);
     GroundEntity* isTouchingHead();
+    Coin* isTouchingCoin();
 
 
 private:
@@ -33,8 +35,7 @@ private:
     int direction;
 
     QPixmap currentPixmap;
-private slots:
-    void clearRect(QRectF*);
+
 
 };
 

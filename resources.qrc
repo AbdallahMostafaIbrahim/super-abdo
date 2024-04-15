@@ -1,10 +1,24 @@
 <RCC>
     <qresource prefix="/">
-        <file>maps/map_1.txt</file>
         <file>images/splash.png</file>
         <file>images/employee-idle.png</file>
         <file>images/employee-walking.png</file>
         <file>images/abdo.png</file>
+        <file>images/office-tile.png</file>
+        <file>images/desk-1.png</file>
+        <file>images/ceiling-light.png</file>
+        <file>images/tile-1.png</file>
+        <file>images/background-1.png</file>
+        <file>images/office-ceiling-lights.png</file>
+        <file>images/office-picture.png</file>
+        <file>images/office-window.png</file>
+        <file>maps/map-1/map.txt</file>
+        <file>images/coin.png</file>
+        <file>fonts/Minecraft.ttf</file>
+        <file>images/heart.png</file>
+        <file>images/shelf/left.png</file>
+        <file>images/shelf/middle.png</file>
+        <file>images/shelf/right.png</file>
         <file>images/sound-wave.png</file>
     </qresource>
 </RCC>

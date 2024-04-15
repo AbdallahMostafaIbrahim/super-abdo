@@ -1,5 +1,5 @@
 #include "soundwave.h"
-#include "platform.h"
+#include "level_props/platform.h"
 #include <QTimer>
 #include<QPainter>
 #include<QGraphicsItem>

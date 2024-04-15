@@ -1,8 +1,8 @@
 #include "abdo.h"
 #include <QBrush>
-#include <QDebug>
 #include <QGraphicsScene>
 #include <QTimer>
+#include <QList>
 
 Abdo::Abdo() {
     currentState = IDLE;
@@ -32,12 +32,11 @@ int Abdo::getDirection(){
 
 GroundEntity* Abdo::isGrounded() {
     QList<QGraphicsItem*> items = collidingItems();
-
     for(QGraphicsItem* item : items) {
         GroundEntity* entity = dynamic_cast<GroundEntity*>(item);
         if(entity != nullptr) {
             QRectF rect(x(), y() + boundingRect().height() - 5, boundingRect().width(), 5);
-            QRectF otherRect(item->x(), item->y(), item->boundingRect().width(), 5);
+            QRectF otherRect(item->x() + item->boundingRect().x(), item->y() + item->boundingRect().y(), item->boundingRect().width(), 5);
             if (rect.intersects(otherRect)) {
                 return entity;
             }
@@ -79,6 +78,17 @@ GroundEntity* Abdo::isTouchingHead(){
             if (rect.intersects(otherRect)) {
                 return entity;
             }
+        }
+    }
+    return nullptr;
+}
+
+Coin* Abdo::isTouchingCoin(){
+    QList<QGraphicsItem*> items = collidingItems();
+    for(QGraphicsItem* item : items) {
+        Coin* coin = dynamic_cast<Coin*>(item);
+        if(coin != nullptr) {
+            return coin;
         }
     }
     return nullptr;
