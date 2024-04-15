@@ -37,9 +37,10 @@ private:
 
     QString currentUrl;
     QPixmap currentPixmap;
-    QPixmap idle1Pixmap;
-    QPixmap idle2Pixmap;
-
+    QList<QPixmap> idlePixmaps;
+    QList<QPixmap> runPixmaps;
+    QPixmap jumpPixmap;
+    QPixmap fallPixmap;
 private slots:
     void animate();
 

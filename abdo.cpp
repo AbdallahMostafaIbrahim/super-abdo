@@ -7,23 +7,34 @@
 Abdo::Abdo() {
     currentState = IDLE;
     setFlag(ItemClipsToShape);
-    idle1Pixmap = QPixmap(":/images/abdo/idle1.png");
-    idle2Pixmap = QPixmap(":/images/abdo/idle2.png");
+    idlePixmaps << QPixmap(":/images/abdo/idle1.png") << QPixmap(":/images/abdo/idle2.png");
+    runPixmaps << QPixmap(":/images/abdo/idle1.png") << QPixmap(":/abdo/idle2.png");
+    fallPixmap = QPixmap(":/images/abdo/idle1.png");
+    jumpPixmap = QPixmap(":/images/abdo/idle1.png");
+
     currentUrl = ":/images/abdo/idle1.png";
-    currentPixmap = idle1Pixmap;
     direction = 1;
+
+    currentFrame = 0;
 
     QTimer* timer = new QTimer();
     connect(timer, SIGNAL(timeout()), this, SLOT(animate()));
-    timer->start(500);
+    timer->start(450);
 }
 
 QRectF Abdo::boundingRect() const{
-    return QRectF(0,0,50,109);
+    return QRectF(0,0, 50, 115);
 }
 
 void Abdo::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) {
-    painter->drawPixmap(0,0, 50, 109, direction == 1 ? currentPixmap : currentPixmap.transformed(QTransform().scale(direction,1)));
+    // TODO: Fix this. I don't really know what's wrong with the animations but this makes it look a little bit better.
+    int y = 0;
+    if(currentState == IDLE) {
+        y = currentFrame % idlePixmaps.size() == 0 ? 2 : 6;
+    }
+    // TODO: Optimize This
+    float LtoRRatio =  (float)currentPixmap.height() / (float)currentPixmap.width();
+    painter->drawPixmap(0, y, 50, 50 * LtoRRatio, direction == 1 ? currentPixmap : currentPixmap.transformed(QTransform().scale(direction,1)));
 
     Q_UNUSED(widget);
     Q_UNUSED(option);
@@ -102,16 +113,27 @@ Coin* Abdo::isTouchingCoin(){
 }
 
 void Abdo::setState(PlayerState state) {
-    this->setState(state);
+    bool willAnimate = currentState != state;
+    currentState = state;
+    if(willAnimate) animate();
 }
 
 void Abdo::animate() {
-    qDebug() << "HEllo";
-    if(currentUrl == ":/images/abdo/idle1.png") {
-        currentPixmap = idle2Pixmap;
-        currentUrl = ":/images/abdo/idle2.png";
-    } else {
-        currentPixmap = idle1Pixmap;
-         currentUrl = ":/images/abdo/idle1.png";
+    switch (currentState) {
+        case IDLE:
+            currentPixmap = (idlePixmaps[currentFrame % idlePixmaps.size()]);
+            break;
+        case RUNNING:
+            currentPixmap = (runPixmaps[currentFrame % runPixmaps.size()]);
+            break;
+        case JUMPING:
+            currentPixmap = (jumpPixmap);
+            break;
+        case FALLING:
+            currentPixmap = (fallPixmap);
+            break;
     }
+
+    currentFrame++;
+    update();
 }
