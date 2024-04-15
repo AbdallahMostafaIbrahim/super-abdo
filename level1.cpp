@@ -12,6 +12,7 @@
 #include <QMessageBox>
 #include <QKeyEvent>
 #include <QScrollBar>
+#include"soundplayer.h"
 
 #define TERMINAL_VELOCITY 4.0
 #define MAX_HEALTH 3
@@ -216,6 +217,7 @@ void Level1::keyPressEvent(QKeyEvent *event)
     switch (event->key())
     {
     case Qt::Key_Space:
+        SoundPlayer::hitAbdo();
         if (doubleJumpEnabled && (isJumping || isFalling))
         {
             if (currentJumpCount < maxJumps - 1)

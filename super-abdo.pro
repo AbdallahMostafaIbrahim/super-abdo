@@ -1,4 +1,5 @@
-QT       += core gui
+QT       += core gui\
+            multimedia
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -23,6 +24,7 @@ SOURCES += \
     levelloader.cpp \
     main.cpp \
     mainmenuscene.cpp \
+    soundplayer.cpp \
     utils.cpp \
     soundwave.cpp
 
@@ -40,6 +42,7 @@ HEADERS += \
     level_props/shelf.h \
     levelloader.h \
     mainmenuscene.h \
+    soundplayer.h \
     utils.h \
     soundwave.h
 

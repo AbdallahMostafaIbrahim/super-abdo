@@ -20,5 +20,6 @@
         <file>images/shelf/middle.png</file>
         <file>images/shelf/right.png</file>
         <file>images/sound-wave.png</file>
+        <file>sound effects/AbdoHit.m4a</file>
     </qresource>
 </RCC>
