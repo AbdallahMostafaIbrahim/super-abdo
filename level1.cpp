@@ -54,6 +54,9 @@ Level1::Level1(Game *game) : QGraphicsScene()
 
     // Scene Init
     initScene();
+
+    //gameTheme
+    SoundPlayer::gameTheme();
 }
 
 void Level1::initScene()
@@ -217,17 +220,19 @@ void Level1::keyPressEvent(QKeyEvent *event)
     switch (event->key())
     {
     case Qt::Key_Space:
-        SoundPlayer::hitAbdo();
         if (doubleJumpEnabled && (isJumping || isFalling))
         {
             if (currentJumpCount < maxJumps - 1)
             {
+                SoundPlayer::doubleFart();
                 isJumping = true;
                 abdo->moveBy(0, -1);
                 timeAfterJump = deltaTime;
                 currentJumpCount++;
             }
         }
+        if(currentJumpCount == 0)
+            SoundPlayer::abdoJump();
         spacePressed = true;
         break;
     case Qt::Key_Right:
@@ -241,6 +246,7 @@ void Level1::keyPressEvent(QKeyEvent *event)
     case Qt::Key_Z:
         if (soundWaveEnabled)
         {
+            SoundPlayer::fireSoundWave();
             SoundWave *s = new SoundWave(abdo->getDirection());
             s->setPos(abdo->x() + 20 * abdo->getDirection(), abdo->y() + abdo->boundingRect().height() / 4);
             this->addItem(s);

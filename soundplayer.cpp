@@ -43,7 +43,7 @@ void SoundPlayer::hitAbdo()
 {
     mediaPlayer_hitAbdo->setSource(QUrl("qrc:/sound effects/AbdoHit.m4a"));
     mediaPlayer_hitAbdo->setAudioOutput(audioOutput_hitAbdo);
-    audioOutput_hitAbdo->setVolume(50);
+    audioOutput_hitAbdo->setVolume(1);
     mediaPlayer_hitAbdo->play();
 }
 
@@ -51,7 +51,7 @@ void SoundPlayer::killAbdo()
 {
     mediaPlayer_killAbdo->setSource(QUrl("qrc:/sounds/sounds/soundtrack.mp3"));
     mediaPlayer_killAbdo->setAudioOutput(audioOutput_killAbdo);
-    audioOutput_killAbdo->setVolume(50);
+    audioOutput_killAbdo->setVolume(1);
     mediaPlayer_killAbdo->play();
 }
 
@@ -59,31 +59,31 @@ void SoundPlayer::gameOver()
 {
     mediaPlayer_gameOver->setSource(QUrl("qrc:/sounds/sounds/soundtrack.mp3"));
     mediaPlayer_gameOver->setAudioOutput(audioOutput_gameOver);
-    audioOutput_gameOver->setVolume(50);
+    audioOutput_gameOver->setVolume(1);
     mediaPlayer_gameOver->play();
 }
 
 void SoundPlayer::doubleFart()
 {
-    mediaPlayer_doubleFart->setSource(QUrl("qrc:/sounds/sounds/soundtrack.mp3"));
+    mediaPlayer_doubleFart->setSource(QUrl("qrc:/sound effects/short-fart-185140.mp3"));
     mediaPlayer_doubleFart->setAudioOutput(audioOutput_doubleFart);
-    audioOutput_doubleFart->setVolume(50);
+    audioOutput_doubleFart->setVolume(1);
     mediaPlayer_doubleFart->play();
 }
 
 void SoundPlayer::fireSoundWave()
 {
-    mediaPlayer_fireSoundWave->setSource(QUrl("qrc:/sounds/sounds/soundtrack.mp3"));
+    mediaPlayer_fireSoundWave->setSource(QUrl("qrc:/sound effects/beep-sound-of-1000-hz-95208-[AudioTrimmer.com].mp3"));
     mediaPlayer_fireSoundWave->setAudioOutput(audioOutput_fireSoundWave);
-    audioOutput_fireSoundWave->setVolume(50);
+    audioOutput_fireSoundWave->setVolume(0.5);
     mediaPlayer_fireSoundWave->play();
 }
 
 void SoundPlayer::abdoJump()
 {
-    mediaPlayer_abdoJump->setSource(QUrl("qrc:/sounds/sounds/soundtrack.mp3"));
+    mediaPlayer_abdoJump->setSource(QUrl("qrc:/sound effects/AbdoJump.m4a"));
     mediaPlayer_abdoJump->setAudioOutput(audioOutput_abdoJump);
-    audioOutput_abdoJump->setVolume(50);
+    audioOutput_abdoJump->setVolume(1);
     mediaPlayer_abdoJump->play();
 }
 
@@ -91,15 +91,15 @@ void SoundPlayer::levelFinish()
 {
     mediaPlayer_levelFinish->setSource(QUrl("qrc:/sounds/sounds/soundtrack.mp3"));
     mediaPlayer_levelFinish->setAudioOutput(audioOutput_levelFinish);
-    audioOutput_levelFinish->setVolume(50);
+    audioOutput_levelFinish->setVolume(1);
     mediaPlayer_levelFinish->play();
 }
 
 void SoundPlayer::gameTheme()
 {
-    mediaPlayer_gameTheme->setSource(QUrl("qrc:/sounds/sounds/soundtrack.mp3"));
+    mediaPlayer_gameTheme->setSource(QUrl("qrc:/sound effects/gameTheme Abdo yta7ada el rambo.mp3"));
     mediaPlayer_gameTheme->setAudioOutput(audioOutput_gameTheme);
-    audioOutput_gameTheme->setVolume(50);
-    mediaPlayer_gameTheme->setLoops(1000);
+    audioOutput_gameTheme->setVolume(0.15);
+    mediaPlayer_gameTheme->setLoops(100);
     mediaPlayer_gameTheme->play();
 }
