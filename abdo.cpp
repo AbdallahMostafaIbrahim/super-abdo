@@ -7,15 +7,17 @@
 Abdo::Abdo() {
     currentState = IDLE;
     setFlag(ItemClipsToShape);
-    idlePixmaps << QPixmap(":/images/abdo/idle1.png") << QPixmap(":/images/abdo/idle2.png");
-    runPixmaps << QPixmap(":/images/abdo/idle1.png") << QPixmap(":/abdo/idle2.png");
-    fallPixmap = QPixmap(":/images/abdo/idle1.png");
-    jumpPixmap = QPixmap(":/images/abdo/idle1.png");
+    idlePixmaps << QPixmap(":/images/abdo/idle1.png").scaled(50,115) << QPixmap(":/images/abdo/idle2.png").scaled(50,115);
+    runPixmaps << QPixmap(":/images/abdo/idle1.png").scaled(50,115) << QPixmap(":/abdo/idle2.png").scaled(50,115);
+    fallPixmap = QPixmap(":/images/abdo/idle1.png").scaled(50,115);
+    jumpPixmap = QPixmap(":/images/abdo/idle1.png").scaled(50,115);
 
     currentUrl = ":/images/abdo/idle1.png";
     direction = 1;
 
     currentFrame = 0;
+
+    animate();
 
     QTimer* timer = new QTimer();
     connect(timer, SIGNAL(timeout()), this, SLOT(animate()));
@@ -27,14 +29,8 @@ QRectF Abdo::boundingRect() const{
 }
 
 void Abdo::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) {
-    // TODO: Fix this. I don't really know what's wrong with the animations but this makes it look a little bit better.
-    int y = 0;
-    if(currentState == IDLE) {
-        y = currentFrame % idlePixmaps.size() == 0 ? 2 : 6;
-    }
-    // TODO: Optimize This
-    float LtoRRatio =  (float)currentPixmap.height() / (float)currentPixmap.width();
-    painter->drawPixmap(0, y, 50, 50 * LtoRRatio, direction == 1 ? currentPixmap : currentPixmap.transformed(QTransform().scale(direction,1)));
+    QPixmap directedPixmap = direction == 1 ? currentPixmap : currentPixmap.transformed(QTransform().scale(direction,1));
+    painter->drawPixmap(0, 0, currentPixmap.width(), currentPixmap.height(), directedPixmap);
 
     Q_UNUSED(widget);
     Q_UNUSED(option);
