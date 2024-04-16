@@ -21,7 +21,7 @@ Abdo::Abdo() {
 
     QTimer* timer = new QTimer();
     connect(timer, SIGNAL(timeout()), this, SLOT(animate()));
-    timer->start(450);
+    timer->start(320);
 }
 
 QRectF Abdo::boundingRect() const{
