@@ -13,6 +13,7 @@
 #include <QKeyEvent>
 #include <QScrollBar>
 #include"soundplayer.h"
+#include<QPushButton>
 
 #define TERMINAL_VELOCITY 4.0
 #define MAX_HEALTH 3
@@ -57,6 +58,18 @@ Level1::Level1(Game *game) : QGraphicsScene()
 
     //gameTheme
     SoundPlayer::gameTheme();
+
+    //mute button
+   /* muteButton = new QPushButton();
+    muteButton->setText("Mute");
+    muteButton->setObjectName(QString("Mute"));
+    muteButton->setToolTip("Mute");
+    muteButton->setGeometry(QRect((this->width() / 2) - 100 / 2, 360, 100, 32));
+    muteButton->setAutoFillBackground(false);
+
+    this->addWidget(muteButton);
+    connect(muteButton, SIGNAL(clicked()), this, SLOT(new_game()));
+*/
 }
 
 void Level1::initScene()
@@ -224,7 +237,7 @@ void Level1::keyPressEvent(QKeyEvent *event)
         {
             if (currentJumpCount < maxJumps - 1)
             {
-                SoundPlayer::doubleFart();
+                SoundPlayer::doubleJump();
                 isJumping = true;
                 abdo->moveBy(0, -1);
                 timeAfterJump = deltaTime;

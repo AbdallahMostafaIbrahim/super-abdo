@@ -63,9 +63,9 @@ void SoundPlayer::gameOver()
     mediaPlayer_gameOver->play();
 }
 
-void SoundPlayer::doubleFart()
+void SoundPlayer::doubleJump()
 {
-    mediaPlayer_doubleFart->setSource(QUrl("qrc:/sound effects/short-fart-185140.mp3"));
+    mediaPlayer_doubleFart->setSource(QUrl("qrc:/sound effects/8-bit-jump-sfx-37007.mp3"));
     mediaPlayer_doubleFart->setAudioOutput(audioOutput_doubleFart);
     audioOutput_doubleFart->setVolume(1);
     mediaPlayer_doubleFart->play();
@@ -73,7 +73,7 @@ void SoundPlayer::doubleFart()
 
 void SoundPlayer::fireSoundWave()
 {
-    mediaPlayer_fireSoundWave->setSource(QUrl("qrc:/sound effects/beep-sound-of-1000-hz-95208-[AudioTrimmer.com].mp3"));
+    mediaPlayer_fireSoundWave->setSource(QUrl("qrc:/sound effects/gun-shots-from-a-distance-7-96391.mp3"));
     mediaPlayer_fireSoundWave->setAudioOutput(audioOutput_fireSoundWave);
     audioOutput_fireSoundWave->setVolume(0.5);
     mediaPlayer_fireSoundWave->play();
@@ -99,7 +99,13 @@ void SoundPlayer::gameTheme()
 {
     mediaPlayer_gameTheme->setSource(QUrl("qrc:/sound effects/gameTheme Abdo yta7ada el rambo.mp3"));
     mediaPlayer_gameTheme->setAudioOutput(audioOutput_gameTheme);
-    audioOutput_gameTheme->setVolume(0.15);
+    audioOutput_gameTheme->setVolume(0.1);
     mediaPlayer_gameTheme->setLoops(100);
     mediaPlayer_gameTheme->play();
+}
+
+void SoundPlayer::muteTheme()
+{
+    mediaPlayer_gameTheme->pause();
+
 }

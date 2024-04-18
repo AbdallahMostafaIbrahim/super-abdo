@@ -2,10 +2,12 @@
 #define SOUNDPLAYER_H
 #include <QMediaPlayer>
 #include <QAudioOutput>
+#include <QPushButton>
 
 class SoundPlayer
 {
 private:
+
     static QMediaPlayer* mediaPlayer_hitAbdo;
     static QAudioOutput* audioOutput_hitAbdo;
 
@@ -35,11 +37,14 @@ public:
     static void hitAbdo();
     static void killAbdo();
     static void gameOver();
-    static void doubleFart();
+    static void doubleJump();
     static void fireSoundWave();
     static void abdoJump();
     static void levelFinish();
     static void gameTheme();
+    static void muteTheme();
+
+
     // TODO: add sounds after killing enemies
 };
 
