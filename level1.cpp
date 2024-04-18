@@ -87,6 +87,7 @@ void Level1::drawForeground(QPainter *painter, const QRectF &rect)
     painter->setPen(Qt::white);
     painter->setFont(QFont("Minecraft", 24));
     painter->drawText(55, 75 + 30, "x" + QString::number(collectedCoins));
+    Q_UNUSED(rect);
 }
 
 float Level1::jumpFunction(int time)
@@ -137,6 +138,20 @@ void Level1::moveHorizontally()
     abdo->moveBy(speed * (leftPressed ? -1 : 1) * ((isJumping | isFalling) ? speedJumpFactor : 1), 0);
 }
 
+void Level1::jumpPlayer() {
+    isJumping = true;
+    abdo->moveBy(0, -1);
+    timeAfterJump = deltaTime;
+    abdo->setState(JUMPING);
+}
+
+void Level1::fallPlayer() {
+    isJumping = false;
+    timeAfterJump = 0;
+    isFalling = true;
+    abdo->setState(FALLING);
+}
+
 void Level1::moveVertically()
 {
     GroundEntity *ground = abdo->isGrounded();
@@ -144,17 +159,14 @@ void Level1::moveVertically()
     {
         isFalling = false;
         if (spacePressed && !isJumping)
-        {
-            isJumping = true;
-            abdo->moveBy(0, -1);
-            timeAfterJump = deltaTime;
-        }
+            jumpPlayer();
         else
         {
             abdo->setPos(abdo->x(), ground->y() + ground->boundingRect().y() - abdo->boundingRect().height());
             isJumping = false;
             timeAfterJump = 0;
             currentJumpCount = 0;
+            abdo->setState(IDLE);
         }
     }
     else
@@ -167,20 +179,13 @@ void Level1::moveVertically()
 
             // Character is falling now
             if (deltaY < 0)
-            {
-                isJumping = false;
-                timeAfterJump = 0;
-                isFalling = true;
-            }
+                fallPlayer();
+
 
             // Check if something is touching my head
             GroundEntity *ceiling = abdo->isTouchingHead();
             if (ceiling)
-            {
-                isJumping = false;
-                timeAfterJump = 0;
-                isFalling = true;
-            }
+                fallPlayer();
         }
         else
         {
@@ -220,9 +225,7 @@ void Level1::keyPressEvent(QKeyEvent *event)
         {
             if (currentJumpCount < maxJumps - 1)
             {
-                isJumping = true;
-                abdo->moveBy(0, -1);
-                timeAfterJump = deltaTime;
+                jumpPlayer();
                 currentJumpCount++;
             }
         }

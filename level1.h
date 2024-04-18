@@ -25,6 +25,8 @@ private:
 
     void moveHorizontally();
     void moveVertically();
+    void jumpPlayer();
+    void fallPlayer();
     void checkCoins();
 
     Game* game;

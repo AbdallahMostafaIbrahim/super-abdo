@@ -15,8 +15,9 @@ enum PlayerState {
     JUMPING
 };
 
-class Abdo: public QGraphicsItem
+class Abdo: public QObject, public QGraphicsItem
 {
+Q_OBJECT
 public:
     Abdo();
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
@@ -27,14 +28,21 @@ public:
     GroundEntity* isBlockedHorizontally(int&);
     GroundEntity* isTouchingHead();
     Coin* isTouchingCoin();
-
+    void setState(PlayerState s);
 
 private:
     PlayerState currentState;
     int currentFrame;
     int direction;
 
+    QString currentUrl;
     QPixmap currentPixmap;
+    QList<QPixmap> idlePixmaps;
+    QList<QPixmap> runPixmaps;
+    QPixmap jumpPixmap;
+    QPixmap fallPixmap;
+private slots:
+    void animate();
 
 
 };

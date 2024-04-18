@@ -7,16 +7,30 @@
 Abdo::Abdo() {
     currentState = IDLE;
     setFlag(ItemClipsToShape);
-    currentPixmap = QPixmap(":/images/abdo.png");
+    idlePixmaps << QPixmap(":/images/abdo/idle1.png").scaled(50,115) << QPixmap(":/images/abdo/idle2.png").scaled(50,115);
+    runPixmaps << QPixmap(":/images/abdo/idle1.png").scaled(50,115) << QPixmap(":/abdo/idle2.png").scaled(50,115);
+    fallPixmap = QPixmap(":/images/abdo/idle1.png").scaled(50,115);
+    jumpPixmap = QPixmap(":/images/abdo/idle1.png").scaled(50,115);
+
+    currentUrl = ":/images/abdo/idle1.png";
     direction = 1;
+
+    currentFrame = 0;
+
+    animate();
+
+    QTimer* timer = new QTimer();
+    connect(timer, SIGNAL(timeout()), this, SLOT(animate()));
+    timer->start(320);
 }
 
 QRectF Abdo::boundingRect() const{
-    return QRectF(0,0,50,118);
+    return QRectF(0,0, 50, 115);
 }
 
 void Abdo::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) {
-    painter->drawPixmap(0,0, 50, 118, direction == 1 ? currentPixmap : currentPixmap.transformed(QTransform().scale(direction,1)));
+    QPixmap directedPixmap = direction == 1 ? currentPixmap : currentPixmap.transformed(QTransform().scale(direction,1));
+    painter->drawPixmap(0, 0, currentPixmap.width(), currentPixmap.height(), directedPixmap);
 
     Q_UNUSED(widget);
     Q_UNUSED(option);
@@ -92,4 +106,30 @@ Coin* Abdo::isTouchingCoin(){
         }
     }
     return nullptr;
+}
+
+void Abdo::setState(PlayerState state) {
+    bool willAnimate = currentState != state;
+    currentState = state;
+    if(willAnimate) animate();
+}
+
+void Abdo::animate() {
+    switch (currentState) {
+        case IDLE:
+            currentPixmap = (idlePixmaps[currentFrame % idlePixmaps.size()]);
+            break;
+        case RUNNING:
+            currentPixmap = (runPixmaps[currentFrame % runPixmaps.size()]);
+            break;
+        case JUMPING:
+            currentPixmap = (jumpPixmap);
+            break;
+        case FALLING:
+            currentPixmap = (fallPixmap);
+            break;
+    }
+
+    currentFrame++;
+    update();
 }
