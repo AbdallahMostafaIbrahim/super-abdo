@@ -30,10 +30,12 @@ private:
     void jumpPlayer();
     void fallPlayer();
     void checkCoins();
+    void moveEnemies();
 
     Game* game;
     Abdo* abdo;
 
+    int elapsedTime;
     int timeAfterJump;
     int timeWhenStartedFalling;
     bool isJumping;

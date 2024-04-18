@@ -3,6 +3,7 @@
 #include "levelloader.h"
 #include "utils.h"
 #include "soundwave.h"
+#include "enemy/baseenemy.h"
 #include <QGraphicsScene>
 #include <QGraphicsTextItem>
 #include <QTimer>
@@ -34,6 +35,7 @@ Level1::Level1(Game *game) : QGraphicsScene()
     deltaTime = 5;
 
     // Movement
+    elapsedTime = 0;
     speed = 3;
     timeAfterJump = 0;
     timeWhenStartedFalling = 0;
@@ -75,7 +77,8 @@ void Level1::initScene()
 
     // Open Map File to load the platforms
     QFile file(":/maps/map-1/map.txt");
-    LevelLoader loader(file);
+    QFile enemiesFile(":/maps/map-1/enemies.txt");
+    LevelLoader loader(file, enemiesFile);
     loader.fillScene(this);
 }
 
@@ -213,11 +216,23 @@ void Level1::checkCoins()
     }
 }
 
+void Level1::moveEnemies()
+{
+    QList<QGraphicsItem*> things = items();
+    for(int i = 0; i < things.length(); i++) {
+        BaseEnemy* enemy = dynamic_cast<BaseEnemy*>(things[i]);
+        if(enemy)
+            enemy->move(elapsedTime, deltaTime);
+    }
+}
+
 void Level1::gameLoop()
 {
+    elapsedTime += deltaTime;
     moveHorizontally();
     moveVertically();
     checkCoins();
+    moveEnemies();
     game->ensureVisible(abdo, 500, 0);
     update();
 }
