@@ -12,6 +12,8 @@
 #include <QMessageBox>
 #include <QKeyEvent>
 #include <QScrollBar>
+#include "soundplayer.h"
+#include <QPushButton>
 
 #define TERMINAL_VELOCITY 4.0
 #define MAX_HEALTH 3
@@ -53,6 +55,9 @@ Level1::Level1(Game *game) : QGraphicsScene()
 
     // Scene Init
     initScene();
+
+    // gameTheme
+    SoundPlayer::gameTheme();
 }
 
 void Level1::initScene()
@@ -138,14 +143,16 @@ void Level1::moveHorizontally()
     abdo->moveBy(speed * (leftPressed ? -1 : 1) * ((isJumping | isFalling) ? speedJumpFactor : 1), 0);
 }
 
-void Level1::jumpPlayer() {
+void Level1::jumpPlayer()
+{
     isJumping = true;
     abdo->moveBy(0, -1);
     timeAfterJump = deltaTime;
     abdo->setState(JUMPING);
 }
 
-void Level1::fallPlayer() {
+void Level1::fallPlayer()
+{
     isJumping = false;
     timeAfterJump = 0;
     isFalling = true;
@@ -180,7 +187,6 @@ void Level1::moveVertically()
             // Character is falling now
             if (deltaY < 0)
                 fallPlayer();
-
 
             // Check if something is touching my head
             GroundEntity *ceiling = abdo->isTouchingHead();
@@ -226,9 +232,11 @@ void Level1::keyPressEvent(QKeyEvent *event)
             if (currentJumpCount < maxJumps - 1)
             {
                 jumpPlayer();
-                currentJumpCount++;
+                SoundPlayer::doubleJump();
             }
         }
+        if (currentJumpCount == 0)
+            SoundPlayer::abdoJump();
         spacePressed = true;
         break;
     case Qt::Key_Right:
@@ -242,6 +250,7 @@ void Level1::keyPressEvent(QKeyEvent *event)
     case Qt::Key_Z:
         if (soundWaveEnabled)
         {
+            SoundPlayer::fireSoundWave();
             SoundWave *s = new SoundWave(abdo->getDirection());
             s->setPos(abdo->x() + 20 * abdo->getDirection(), abdo->y() + abdo->boundingRect().height() / 4);
             this->addItem(s);

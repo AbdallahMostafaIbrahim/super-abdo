@@ -7,12 +7,14 @@
 #include <QRectF>
 #include "game.h"
 #include "abdo.h"
+#include<QPushButton>
 
 class Level1 : public QGraphicsScene
 {
 Q_OBJECT
 public:
     Level1(Game* game);
+    QPushButton* muteButton;
 protected:
     void keyPressEvent(QKeyEvent *event) override;
     void keyReleaseEvent(QKeyEvent *event) override;
