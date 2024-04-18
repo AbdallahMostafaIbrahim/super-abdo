@@ -3,21 +3,34 @@
 #include <QRectF>
 
 EmployeeEnemy::EmployeeEnemy(int left, int right, int initialPos, int speed) : GroundEnemy(left,right,initialPos,speed) {
-    pixmap = QPixmap(":/images/employee-idle.png").scaledToWidth(50);
+    idle = QPixmap(":/images/employee-idle.png").scaledToWidth(50);
+    walking = QPixmap(":/images/employee-walking.png").scaledToWidth(50);
+    pixmap = &idle;
+    isIdle = true;
 }
 
 void EmployeeEnemy::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
-    QPixmap directedPixmap = direction == 1 ? pixmap : pixmap.transformed(QTransform().scale(direction, 1));
+    QPixmap directedPixmap = direction == 1 ? *pixmap : pixmap->transformed(QTransform().scale(direction, 1));
     painter->drawPixmap(0, 0, directedPixmap);
 }
 
 QRectF EmployeeEnemy::boundingRect() const
 {
-    return QRectF(0, 0, pixmap.width(), pixmap.height());
+    return QRectF(0, 0, pixmap->width(), pixmap->height());
 }
 
 const QPixmap* EmployeeEnemy::getPixmap()
 {
-    return &pixmap;
+    return pixmap;
+}
+
+void EmployeeEnemy::animate()
+{
+    if(isIdle)
+        pixmap = &walking;
+    else
+        pixmap = &idle;
+
+    isIdle = !isIdle;
 }

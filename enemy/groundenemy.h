@@ -14,6 +14,7 @@ private:
     int left, right, initialPos, initialTime;
     float speed;
     int offset;
+    virtual void animate() = 0;
 };
 
 #endif // GROUNDENEMY_H

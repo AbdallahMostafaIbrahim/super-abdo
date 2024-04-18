@@ -12,7 +12,7 @@ GroundEnemy::GroundEnemy(int left, int right, int initialPos, float speed) : Bas
 
 }
 
-void GroundEnemy::move(int elapsedTime, int)
+void GroundEnemy::move(int elapsedTime, int delta)
 {
     int currentDistance = direction * speed * (elapsedTime - initialTime) + initialPos + offset;
 
@@ -28,4 +28,7 @@ void GroundEnemy::move(int elapsedTime, int)
         direction = direction * -1;
     }
     setPos(currentDistance, y());
+
+    if(elapsedTime % 32 == 0)
+        animate();
 }

@@ -11,7 +11,11 @@ public:
     QRectF boundingRect() const override;
     const QPixmap* getPixmap();
 private:
-    QPixmap pixmap;
+    QPixmap idle;
+    QPixmap walking;
+    QPixmap* pixmap;
+    bool isIdle;
+    void animate() override;
 };
 
 #endif // EMPLOYEEENEMY_H

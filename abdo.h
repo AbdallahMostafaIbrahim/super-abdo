@@ -43,8 +43,6 @@ private:
     QPixmap fallPixmap;
 private slots:
     void animate();
-
-
 };
 
 #endif // ABDO_H
