@@ -232,6 +232,7 @@ void Level1::keyPressEvent(QKeyEvent *event)
             if (currentJumpCount < maxJumps - 1)
             {
                 jumpPlayer();
+                currentJumpCount++;
                 SoundPlayer::doubleJump();
             }
         }
