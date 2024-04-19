@@ -14,6 +14,8 @@ private:
     Game* game;
     QPushButton* newGameButton;
     QPushButton* continueButton;
+    QPushButton* shopButton;
+    QPushButton* settingsButton;
 private slots:
     void new_game();
 };
