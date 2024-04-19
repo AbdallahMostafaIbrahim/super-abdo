@@ -30,6 +30,7 @@ private:
     void jumpPlayer();
     void fallPlayer();
     void checkCoins();
+    void checkEnemies();
     void moveEnemies();
 
     Game* game;
@@ -60,6 +61,8 @@ private:
 
     bool soundWaveEnabled;
 
+    bool isGameOver;
+    int finishedTime;
 private slots:
     void gameLoop();
 };

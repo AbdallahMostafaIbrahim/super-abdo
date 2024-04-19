@@ -3,8 +3,9 @@
 
 #include <QGraphicsItem>
 #include <QTimer>
+#include "harmfulentity.h"
 
-class BaseEnemy : public QObject, public QGraphicsItem
+class BaseEnemy : public QObject, public QGraphicsItem, public HarmfulEntity
 {
 Q_OBJECT
 private:
@@ -13,7 +14,7 @@ protected:
     QTimer damageTimer;
     bool showDamage;
 public:
-    BaseEnemy(int initialHealth);
+    BaseEnemy(int initialHealth, int damage);
     virtual void move(int, int) = 0;
     void damage(int);
     int getHealth();

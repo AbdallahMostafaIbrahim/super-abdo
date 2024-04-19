@@ -14,6 +14,7 @@ SOURCES += \
     enemy/baseenemy.cpp \
     enemy/employeeenemy.cpp \
     enemy/groundenemy.cpp \
+    enemy/harmfulentity.cpp \
     game.cpp \
     level1.cpp \
     level_props/ceilinglight.cpp \
@@ -36,6 +37,7 @@ HEADERS += \
     enemy/baseenemy.h \
     enemy/employeeenemy.h \
     enemy/groundenemy.h \
+    enemy/harmfulentity.h \
     game.h \
     level1.h \
     level_props/ceilinglight.h \

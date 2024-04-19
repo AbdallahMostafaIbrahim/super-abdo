@@ -6,7 +6,7 @@
 class GroundEnemy : public BaseEnemy
 {
 public:
-    GroundEnemy(int left, int right, int initialPos, float speed, int health);
+    GroundEnemy(int left, int right, int initialPos, float speed, int health, int damage);
     void move(int, int) override;
 protected:
     int direction;
