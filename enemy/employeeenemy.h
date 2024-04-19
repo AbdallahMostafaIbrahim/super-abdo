@@ -14,6 +14,8 @@ private:
     QPixmap idle;
     QPixmap walking;
     QPixmap* pixmap;
+    QPainterPath idlePath;
+    QPainterPath walkingPath;
     bool isIdle;
     void animate() override;
 };

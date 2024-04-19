@@ -1,6 +1,6 @@
 #include "groundenemy.h"
 
-GroundEnemy::GroundEnemy(int left, int right, int initialPos, float speed) : BaseEnemy(1) {
+GroundEnemy::GroundEnemy(int left, int right, int initialPos, float speed, int health) : BaseEnemy(health) {
     this->left = left;
     this->right =right;
     this->initialPos = initialPos;

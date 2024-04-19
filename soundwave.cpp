@@ -1,5 +1,6 @@
 #include "soundwave.h"
-#include "level_props/platform.h"
+#include "enemy/baseenemy.h"
+#include "level_props/groundentity.h"
 #include <QTimer>
 #include<QPainter>
 #include<QGraphicsItem>
@@ -27,13 +28,18 @@ void SoundWave::paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
 }
 
 void SoundWave::move(){
-    moveBy(2 * dir,0);
+    moveBy(2 * dir, 0);
 
     QList<QGraphicsItem*> items = collidingItems();
 
     for(QGraphicsItem* item : items) {
         GroundEntity* entity = dynamic_cast<GroundEntity*>(item);
-        if(entity != nullptr) {
+        if(entity) {
+            return byebye();
+        }
+        BaseEnemy* enemy = dynamic_cast<BaseEnemy*>(item);
+        if(enemy) {
+            enemy->damage(1);
             return byebye();
         }
     }
