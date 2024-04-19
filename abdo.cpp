@@ -44,8 +44,7 @@ int Abdo::getDirection(){
     return direction;
 }
 
-GroundEntity* Abdo::isGrounded() {
-    QList<QGraphicsItem*> items = collidingItems();
+GroundEntity* Abdo::isGrounded(const QList<QGraphicsItem*>& items) {
     for(QGraphicsItem* item : items) {
         GroundEntity* entity = dynamic_cast<GroundEntity*>(item);
         if(entity != nullptr) {
@@ -60,8 +59,7 @@ GroundEntity* Abdo::isGrounded() {
 }
 
 
-GroundEntity* Abdo::isBlockedHorizontally(int& direction) {
-    QList<QGraphicsItem*> items = collidingItems();
+GroundEntity* Abdo::isBlockedHorizontally(const QList<QGraphicsItem*>& items, int& direction) {
     for(QGraphicsItem* item : items) {
         GroundEntity* entity = dynamic_cast<GroundEntity*>(item);
         if(entity != nullptr) {
@@ -82,8 +80,7 @@ GroundEntity* Abdo::isBlockedHorizontally(int& direction) {
 }
 
 
-GroundEntity* Abdo::isTouchingHead(){
-    QList<QGraphicsItem*> items = collidingItems();
+GroundEntity* Abdo::isTouchingHead(const QList<QGraphicsItem*>& items){
     for(QGraphicsItem* item : items) {
         GroundEntity* entity = dynamic_cast<GroundEntity*>(item);
         if(entity != nullptr) {
@@ -97,8 +94,7 @@ GroundEntity* Abdo::isTouchingHead(){
     return nullptr;
 }
 
-Coin* Abdo::isTouchingCoin(){
-    QList<QGraphicsItem*> items = collidingItems();
+Coin* Abdo::isTouchingCoin(const QList<QGraphicsItem*>& items){
     for(QGraphicsItem* item : items) {
         Coin* coin = dynamic_cast<Coin*>(item);
         if(coin != nullptr) {

@@ -132,7 +132,7 @@ void Level1::moveHorizontally()
         return;
 
     int direction = 0;
-    GroundEntity *blocked = abdo->isBlockedHorizontally(direction);
+    GroundEntity *blocked = abdo->isBlockedHorizontally(collidingItems, direction);
 
     if (direction == 1 && rightPressed && blocked)
     {
@@ -164,7 +164,7 @@ void Level1::fallPlayer()
 
 void Level1::moveVertically()
 {
-    GroundEntity *ground = abdo->isGrounded();
+    GroundEntity *ground = abdo->isGrounded(collidingItems);
     if (ground)
     {
         isFalling = false;
@@ -192,7 +192,7 @@ void Level1::moveVertically()
                 fallPlayer();
 
             // Check if something is touching my head
-            GroundEntity *ceiling = abdo->isTouchingHead();
+            GroundEntity *ceiling = abdo->isTouchingHead(collidingItems);
             if (ceiling)
                 fallPlayer();
         }
@@ -207,7 +207,7 @@ void Level1::moveVertically()
 
 void Level1::checkCoins()
 {
-    Coin *coin = abdo->isTouchingCoin();
+    Coin *coin = abdo->isTouchingCoin(collidingItems);
 
     if (coin)
     {
@@ -229,6 +229,7 @@ void Level1::moveEnemies()
 void Level1::gameLoop()
 {
     elapsedTime += deltaTime;
+    collidingItems = abdo->collidingItems();
     moveHorizontally();
     moveVertically();
     checkCoins();

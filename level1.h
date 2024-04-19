@@ -34,6 +34,7 @@ private:
 
     Game* game;
     Abdo* abdo;
+    QList<QGraphicsItem*> collidingItems;
 
     int elapsedTime;
     int timeAfterJump;

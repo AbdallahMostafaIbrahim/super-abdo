@@ -24,10 +24,10 @@ public:
     QRectF boundingRect() const override;
     void setDirection(int direction);
     int getDirection();
-    GroundEntity* isGrounded();
-    GroundEntity* isBlockedHorizontally(int&);
-    GroundEntity* isTouchingHead();
-    Coin* isTouchingCoin();
+    GroundEntity* isGrounded(const QList<QGraphicsItem*>&);
+    GroundEntity* isBlockedHorizontally(const QList<QGraphicsItem*>&, int&);
+    GroundEntity* isTouchingHead(const QList<QGraphicsItem*>&);
+    Coin* isTouchingCoin(const QList<QGraphicsItem*>&);
     void setState(PlayerState s);
 
 private:
