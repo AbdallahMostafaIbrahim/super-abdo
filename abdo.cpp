@@ -1,4 +1,5 @@
 #include "abdo.h"
+#include "utils.h"
 #include <QBrush>
 #include <QGraphicsScene>
 #include <QTimer>
@@ -12,6 +13,11 @@ Abdo::Abdo() {
     fallPixmap = QPixmap(":/images/abdo/idle1.png").scaled(50,115);
     jumpPixmap = QPixmap(":/images/abdo/idle1.png").scaled(50,115);
 
+    idlePaths << *Utils::createPathFromPixmap(idlePixmaps[0]) << *Utils::createPathFromPixmap(idlePixmaps[1]);
+    runPaths << *Utils::createPathFromPixmap(runPixmaps[0]);
+    fallPath = *Utils::createPathFromPixmap(fallPixmap);
+    jumpPath = *Utils::createPathFromPixmap(jumpPixmap);
+
     currentUrl = ":/images/abdo/idle1.png";
     direction = 1;
 
@@ -22,6 +28,11 @@ Abdo::Abdo() {
     QTimer* timer = new QTimer();
     connect(timer, SIGNAL(timeout()), this, SLOT(animate()));
     timer->start(320);
+
+    showDamage = false;
+    damageTimer.setInterval(1000); // 1 second between each hit
+    damageTimer.setSingleShot(true);
+    connect(&damageTimer, SIGNAL(timeout()), this, SLOT(removeDamageEffect()));
 }
 
 QRectF Abdo::boundingRect() const{
@@ -31,6 +42,17 @@ QRectF Abdo::boundingRect() const{
 void Abdo::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) {
     QPixmap directedPixmap = direction == 1 ? currentPixmap : currentPixmap.transformed(QTransform().scale(direction,1));
     painter->drawPixmap(0, 0, currentPixmap.width(), currentPixmap.height(), directedPixmap);
+
+    if (showDamage) {
+        if(direction == -1) {
+            QTransform transform = QTransform().scale(direction, 1).translate(-currentPixmap.width(), 0);
+            painter->setClipPath(transform.map(currentPath));
+        } else {
+            painter->setClipPath(currentPath);
+        }
+
+        painter->fillRect(boundingRect(), QColor(255, 0, 0, 25)); // red overlay
+    }
 
     Q_UNUSED(widget);
     Q_UNUSED(option);
@@ -44,8 +66,7 @@ int Abdo::getDirection(){
     return direction;
 }
 
-GroundEntity* Abdo::isGrounded() {
-    QList<QGraphicsItem*> items = collidingItems();
+GroundEntity* Abdo::isGrounded(const QList<QGraphicsItem*>& items) {
     for(QGraphicsItem* item : items) {
         GroundEntity* entity = dynamic_cast<GroundEntity*>(item);
         if(entity != nullptr) {
@@ -60,8 +81,7 @@ GroundEntity* Abdo::isGrounded() {
 }
 
 
-GroundEntity* Abdo::isBlockedHorizontally(int& direction) {
-    QList<QGraphicsItem*> items = collidingItems();
+GroundEntity* Abdo::isBlockedHorizontally(const QList<QGraphicsItem*>& items, int& direction) {
     for(QGraphicsItem* item : items) {
         GroundEntity* entity = dynamic_cast<GroundEntity*>(item);
         if(entity != nullptr) {
@@ -82,8 +102,7 @@ GroundEntity* Abdo::isBlockedHorizontally(int& direction) {
 }
 
 
-GroundEntity* Abdo::isTouchingHead(){
-    QList<QGraphicsItem*> items = collidingItems();
+GroundEntity* Abdo::isTouchingHead(const QList<QGraphicsItem*>& items){
     for(QGraphicsItem* item : items) {
         GroundEntity* entity = dynamic_cast<GroundEntity*>(item);
         if(entity != nullptr) {
@@ -97,8 +116,7 @@ GroundEntity* Abdo::isTouchingHead(){
     return nullptr;
 }
 
-Coin* Abdo::isTouchingCoin(){
-    QList<QGraphicsItem*> items = collidingItems();
+Coin* Abdo::isTouchingCoin(const QList<QGraphicsItem*>& items){
     for(QGraphicsItem* item : items) {
         Coin* coin = dynamic_cast<Coin*>(item);
         if(coin != nullptr) {
@@ -108,28 +126,63 @@ Coin* Abdo::isTouchingCoin(){
     return nullptr;
 }
 
+HarmfulEntity* Abdo::isTouchingHarmfulEntity(const QList<QGraphicsItem *>& items)
+{
+    for(QGraphicsItem* item : items) {
+        HarmfulEntity* entity = dynamic_cast<HarmfulEntity*>(item);
+        if(entity != nullptr) {
+            return entity;
+        }
+    }
+    return nullptr;
+}
+
+
 void Abdo::setState(PlayerState state) {
     bool willAnimate = currentState != state;
     currentState = state;
     if(willAnimate) animate();
 }
 
+bool Abdo::takeDamage()
+{
+    if(showDamage == true)
+        return false;
+
+    showDamage = true;
+    update();
+    damageTimer.start();
+
+    return true;
+}
+
 void Abdo::animate() {
     switch (currentState) {
         case IDLE:
             currentPixmap = (idlePixmaps[currentFrame % idlePixmaps.size()]);
+            currentPath = (idlePaths[currentFrame % idlePaths.size()]);
             break;
         case RUNNING:
             currentPixmap = (runPixmaps[currentFrame % runPixmaps.size()]);
+            currentPath = (runPaths[currentFrame % runPaths.size()]);
             break;
         case JUMPING:
             currentPixmap = (jumpPixmap);
+            currentPath = (jumpPath);
             break;
         case FALLING:
             currentPixmap = (fallPixmap);
+            currentPath = (fallPath);
             break;
     }
 
     currentFrame++;
     update();
 }
+
+void Abdo::removeDamageEffect()
+{
+    showDamage = false;
+    update();
+}
+

@@ -30,10 +30,14 @@ private:
     void jumpPlayer();
     void fallPlayer();
     void checkCoins();
+    void checkEnemies();
+    void moveEnemies();
 
     Game* game;
     Abdo* abdo;
+    QList<QGraphicsItem*> collidingItems;
 
+    int elapsedTime;
     int timeAfterJump;
     int timeWhenStartedFalling;
     bool isJumping;
@@ -57,6 +61,8 @@ private:
 
     bool soundWaveEnabled;
 
+    bool isGameOver;
+    int finishedTime;
 private slots:
     void gameLoop();
 };

@@ -25,3 +25,7 @@ coin 540 165
 coin 600 165
 coin 660 165
 coin 720 165
+
+coin 1120 70
+coin 1180 70
+coin 1240 70

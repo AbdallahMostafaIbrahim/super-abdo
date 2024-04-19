@@ -24,6 +24,7 @@ QPainterPath Desk::shape() const {
     return path;
 }
 
+// TODO: const
 QPixmap* Desk::getPixmap() {
     return &pixmap;
 }

@@ -11,6 +11,10 @@ CONFIG += c++17
 
 SOURCES += \
     abdo.cpp \
+    enemy/baseenemy.cpp \
+    enemy/employeeenemy.cpp \
+    enemy/groundenemy.cpp \
+    enemy/harmfulentity.cpp \
     game.cpp \
     level1.cpp \
     level_props/ceilinglight.cpp \
@@ -30,6 +34,10 @@ SOURCES += \
 
 HEADERS += \
     abdo.h \
+    enemy/baseenemy.h \
+    enemy/employeeenemy.h \
+    enemy/groundenemy.h \
+    enemy/harmfulentity.h \
     game.h \
     level1.h \
     level_props/ceilinglight.h \

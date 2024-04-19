@@ -5,8 +5,10 @@
 #include <QPixmap>
 #include <QPainter>
 #include <QRectF>
+#include <QTimer>
 #include "level_props/groundentity.h"
 #include "level_props/coin.h"
+#include "enemy/harmfulentity.h"
 
 enum PlayerState {
     IDLE,
@@ -24,11 +26,13 @@ public:
     QRectF boundingRect() const override;
     void setDirection(int direction);
     int getDirection();
-    GroundEntity* isGrounded();
-    GroundEntity* isBlockedHorizontally(int&);
-    GroundEntity* isTouchingHead();
-    Coin* isTouchingCoin();
+    GroundEntity* isGrounded(const QList<QGraphicsItem*>&);
+    GroundEntity* isBlockedHorizontally(const QList<QGraphicsItem*>&, int&);
+    GroundEntity* isTouchingHead(const QList<QGraphicsItem*>&);
+    Coin* isTouchingCoin(const QList<QGraphicsItem*>&);
+    HarmfulEntity* isTouchingHarmfulEntity(const QList<QGraphicsItem*>&);
     void setState(PlayerState s);
+    bool takeDamage();
 
 private:
     PlayerState currentState;
@@ -41,10 +45,18 @@ private:
     QList<QPixmap> runPixmaps;
     QPixmap jumpPixmap;
     QPixmap fallPixmap;
+
+    QPainterPath currentPath;
+    QList<QPainterPath> idlePaths;
+    QList<QPainterPath> runPaths;
+    QPainterPath jumpPath;
+    QPainterPath fallPath;
+
+    QTimer damageTimer;
+    bool showDamage;
 private slots:
     void animate();
-
-
+    void removeDamageEffect();
 };
 
 #endif // ABDO_H

@@ -3,6 +3,8 @@
 #include "levelloader.h"
 #include "utils.h"
 #include "soundwave.h"
+#include "enemy/baseenemy.h"
+#include "mainmenuscene.h"
 #include <QGraphicsScene>
 #include <QGraphicsTextItem>
 #include <QTimer>
@@ -34,6 +36,7 @@ Level1::Level1(Game *game) : QGraphicsScene()
     deltaTime = 5;
 
     // Movement
+    elapsedTime = 0;
     speed = 3;
     timeAfterJump = 0;
     timeWhenStartedFalling = 0;
@@ -48,6 +51,8 @@ Level1::Level1(Game *game) : QGraphicsScene()
     collectedCoins = 0;
     currentJumpCount = 0;
     maxJumps = 2;
+    isGameOver = false;
+    finishedTime = 0;
 
     // Connect and start the game loop
     connect(timer, SIGNAL(timeout()), this, SLOT(gameLoop()));
@@ -75,24 +80,40 @@ void Level1::initScene()
 
     // Open Map File to load the platforms
     QFile file(":/maps/map-1/map.txt");
-    LevelLoader loader(file);
+    QFile enemiesFile(":/maps/map-1/enemies.txt");
+    LevelLoader loader(file, enemiesFile);
     loader.fillScene(this);
 }
 
 void Level1::drawForeground(QPainter *painter, const QRectF &rect)
 {
     painter->resetTransform();
-    for (int i = 0; i < health; i++)
-    {
-        painter->drawPixmap(i * 45 + 10, 25, 40, 40, QPixmap(":/images/heart.png").scaled(40, 40));
+    if(!isGameOver) {
+        for (int i = 0; i < health; i++)
+        {
+            painter->drawPixmap(i * 45 + 10, 25, 40, 40, QPixmap(":/images/heart.png").scaled(40, 40));
+        }
+
+        painter->drawPixmap(10, 75, 40, 40, QPixmap(":/images/coin.png").scaled(40, 40));
+
+        painter->setPen(Qt::white);
+        painter->setFont(QFont("Minecraft", 24));
+        painter->drawText(55, 75 + 30, "x" + QString::number(collectedCoins));
+    } else {
+        painter->drawRect(sceneRect());
+        painter->fillRect(sceneRect(), QColor(0, 0, 0, 120));
+        painter->setPen(Qt::white);
+        painter->setFont(QFont("Minecraft", 48));
+        painter->drawText(rect.width() / 2 - 200, rect.height() / 2 - 50, "GAME OVER");
+
+        painter->setFont(QFont("Minecraft", 24));
+        painter->drawText(rect.width() / 2 - 200, rect.height() / 2, "Coins Collected: " + QString::number(collectedCoins));
+        painter->drawText(rect.width() / 2 - 200, rect.height() / 2 + 35, "Time spent: " + QString::number(finishedTime / (1000)) + " seconds");
+
+        painter->setFont(QFont("Minecraft", 18));
+        painter->drawText(rect.width() / 2 - 200, rect.height() / 2 + 75, "Press R to restart.");
+        painter->drawText(rect.width() / 2 - 200, rect.height() / 2 + 100, "Press ESC to go to main menu.");
     }
-
-    painter->drawPixmap(10, 75, 40, 40, QPixmap(":/images/coin.png").scaled(40, 40));
-
-    painter->setPen(Qt::white);
-    painter->setFont(QFont("Minecraft", 24));
-    painter->drawText(55, 75 + 30, "x" + QString::number(collectedCoins));
-    Q_UNUSED(rect);
 }
 
 float Level1::jumpFunction(int time)
@@ -129,7 +150,7 @@ void Level1::moveHorizontally()
         return;
 
     int direction = 0;
-    GroundEntity *blocked = abdo->isBlockedHorizontally(direction);
+    GroundEntity *blocked = abdo->isBlockedHorizontally(collidingItems, direction);
 
     if (direction == 1 && rightPressed && blocked)
     {
@@ -161,7 +182,7 @@ void Level1::fallPlayer()
 
 void Level1::moveVertically()
 {
-    GroundEntity *ground = abdo->isGrounded();
+    GroundEntity *ground = abdo->isGrounded(collidingItems);
     if (ground)
     {
         isFalling = false;
@@ -189,7 +210,7 @@ void Level1::moveVertically()
                 fallPlayer();
 
             // Check if something is touching my head
-            GroundEntity *ceiling = abdo->isTouchingHead();
+            GroundEntity *ceiling = abdo->isTouchingHead(collidingItems);
             if (ceiling)
                 fallPlayer();
         }
@@ -204,7 +225,7 @@ void Level1::moveVertically()
 
 void Level1::checkCoins()
 {
-    Coin *coin = abdo->isTouchingCoin();
+    Coin *coin = abdo->isTouchingCoin(collidingItems);
 
     if (coin)
     {
@@ -213,64 +234,123 @@ void Level1::checkCoins()
     }
 }
 
+void Level1::checkEnemies() {
+    HarmfulEntity *harmfulEntity = abdo->isTouchingHarmfulEntity(collidingItems);
+
+    if (harmfulEntity)
+    {
+        bool ok = abdo->takeDamage();
+        if(ok){
+            SoundPlayer::hitAbdo();
+            health -= harmfulEntity->getDamage();
+            if(health <= 0) {
+                removeItem(abdo);
+                isGameOver = true;
+                finishedTime = elapsedTime;
+                // TODO: Game Over Sound
+            }
+        }
+    }
+}
+
+void Level1::moveEnemies()
+{
+    QList<QGraphicsItem*> things = items();
+    for(int i = 0; i < things.length(); i++) {
+        BaseEnemy* enemy = dynamic_cast<BaseEnemy*>(things[i]);
+        if(enemy)
+            enemy->move(elapsedTime, deltaTime);
+    }
+}
+
 void Level1::gameLoop()
 {
-    moveHorizontally();
-    moveVertically();
-    checkCoins();
-    game->ensureVisible(abdo, 500, 0);
+    elapsedTime += deltaTime;
+
+    if(!isGameOver) {
+        collidingItems = abdo->collidingItems();
+        moveHorizontally();
+        moveVertically();
+        checkCoins();
+        checkEnemies();
+        game->ensureVisible(abdo, 500, 0);
+    }
+
+    moveEnemies();
     update();
 }
 
 void Level1::keyPressEvent(QKeyEvent *event)
 {
-    switch (event->key())
-    {
-    case Qt::Key_Space:
-        if (doubleJumpEnabled && (isJumping || isFalling) && !spacePressed)
+    if(!isGameOver) {
+        switch (event->key())
         {
-            if (currentJumpCount < maxJumps - 1)
+        case Qt::Key_Space:
+            if (doubleJumpEnabled && (isJumping || isFalling) && !spacePressed)
             {
-                jumpPlayer();
-                currentJumpCount++;
-                SoundPlayer::doubleJump();
+                if (currentJumpCount < maxJumps - 1)
+                {
+                    jumpPlayer();
+                    currentJumpCount++;
+                    SoundPlayer::doubleJump();
+                }
+            }
+            if (currentJumpCount == 0)
+                SoundPlayer::abdoJump();
+            spacePressed = true;
+            break;
+        case Qt::Key_Right:
+            rightPressed = true;
+            abdo->setDirection(1);
+            break;
+        case Qt::Key_Left:
+            leftPressed = true;
+            abdo->setDirection(-1);
+            break;
+        case Qt::Key_Z:
+            if (soundWaveEnabled)
+            {
+                SoundPlayer::fireSoundWave();
+                SoundWave *s = new SoundWave(abdo->getDirection());
+                s->setPos(abdo->x() + 20 * abdo->getDirection(), abdo->y() + abdo->boundingRect().height() / 4);
+                this->addItem(s);
             }
         }
-        if (currentJumpCount == 0)
-            SoundPlayer::abdoJump();
-        spacePressed = true;
-        break;
-    case Qt::Key_Right:
-        rightPressed = true;
-        abdo->setDirection(1);
-        break;
-    case Qt::Key_Left:
-        leftPressed = true;
-        abdo->setDirection(-1);
-        break;
-    case Qt::Key_Z:
-        if (soundWaveEnabled)
+    }
+    else {
+        switch (event->key())
         {
-            SoundPlayer::fireSoundWave();
-            SoundWave *s = new SoundWave(abdo->getDirection());
-            s->setPos(abdo->x() + 20 * abdo->getDirection(), abdo->y() + abdo->boundingRect().height() / 4);
-            this->addItem(s);
+        case Qt::Key_R:
+        {
+            Level1* level1 = new Level1(game);
+            game->setScene(level1);
+            delete this;
+        }
+            break;
+        case Qt::Key_Escape:
+        {
+            MainMenuScene* mainMenuScene = new MainMenuScene(game);
+            game->setScene(mainMenuScene);
+            delete this;
+        }
+            break;
         }
     }
 }
 
 void Level1::keyReleaseEvent(QKeyEvent *event)
 {
-    switch (event->key())
-    {
-    case Qt::Key_Right:
-        rightPressed = false;
-        break;
-    case Qt::Key_Left:
-        leftPressed = false;
-        break;
-    case Qt::Key_Space:
-        spacePressed = false;
-        break;
-    }
+    if(!isGameOver)
+        switch (event->key())
+        {
+        case Qt::Key_Right:
+            rightPressed = false;
+            break;
+        case Qt::Key_Left:
+            leftPressed = false;
+            break;
+        case Qt::Key_Space:
+            spacePressed = false;
+            break;
+        }
 }

@@ -7,10 +7,13 @@
 class LevelLoader
 {
 public:
-    LevelLoader(QFile& levelFile);
+    LevelLoader(QFile& mapFile, QFile& enemiesFile);
     void fillScene(QGraphicsScene* scene);
 private:
+    void loadMap(QGraphicsScene*);
+    void loadEnemies(QGraphicsScene*);
     QFile* file;
+    QFile* enemiesFile;
 };
 
 #endif // LEVELLOADER_H
