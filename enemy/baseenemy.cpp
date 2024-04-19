@@ -1,7 +1,7 @@
 #include "baseenemy.h"
 #include <QGraphicsScene>
 
-BaseEnemy::BaseEnemy(int initialHealth) : health(initialHealth) {
+BaseEnemy::BaseEnemy(int initialHealth, int damage) : HarmfulEntity(damage), health(initialHealth) {
     showDamage = false;
     damageTimer.setInterval(200); // 200 milliseconds
     damageTimer.setSingleShot(true);
