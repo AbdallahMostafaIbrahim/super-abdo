@@ -32,6 +32,7 @@ private:
     static QMediaPlayer* mediaPlayer_gameTheme;
     static QAudioOutput* audioOutput_gameTheme;
 
+    static float volumeFactor;
 public:
     SoundPlayer();
     static void hitAbdo();
@@ -43,6 +44,8 @@ public:
     static void levelFinish();
     static void gameTheme();
     static void muteTheme();
+    static void setVolume(float v);
+    static float getVolume();
 
 
     // TODO: add sounds after killing enemies
