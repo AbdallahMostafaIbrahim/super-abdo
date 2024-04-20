@@ -1,6 +1,7 @@
 #ifndef UTILS_H
 #define UTILS_H
 #include <QFont>
+#include<QPainterPath>
 
 class Utils
 {
