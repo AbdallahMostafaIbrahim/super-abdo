@@ -29,5 +29,6 @@
         <file>sound effects/8-bit-jump-sfx-37007.mp3</file>
         <file>sound effects/gun-shots-from-a-distance-7-96391.mp3</file>
         <file>maps/map-1/enemies.txt</file>
+        <file>images/hazard-sign.png</file>
     </qresource>
 </RCC>

@@ -7,6 +7,7 @@
 #include "level_props/coin.h"
 #include "level_props/shelf.h"
 
+#include "enemy/hazardsign.h"
 #include "enemy/employeeenemy.h"
 
 #include <QMessageBox>
@@ -132,6 +133,13 @@ void LevelLoader::loadEnemies(QGraphicsScene* scene) {
              employee->setPos(x, scene->height() - y - employee->getPixmap()->height());
              employee->setZValue(-1);
              scene->addItem(employee);
+         }},
+
+        {"hazard", [scene](int x, int y, int left, int right, int speed) -> void {
+             HazardSign* hazard = new HazardSign();
+             hazard->setPos(x, scene->height() - y - hazard->getPixmap()->height());
+             hazard->setZValue(-1);
+             scene->addItem(hazard);
          }},
     };
 

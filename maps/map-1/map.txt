@@ -1,7 +1,14 @@
 platform 0 0 2400 55 :/images/tile-1.png
+platform 2600 0 400 55 :/images/tile-1.png
+platform 3100 0 1000 55 :/images/tile-1.png
+platform 4500 0 400 55 :/images/tile-1.png
+
 
 shelf 400 135 500 40 lol
 shelf 1100 185 380 40 lol
+-shelf 2800 230 380 40 lol
+-shelf 3800 210 240 40 lol
+
 
 office_desk 150 55
 office_desk 430 55
@@ -29,3 +36,7 @@ coin 720 165
 coin 1120 70
 coin 1180 70
 coin 1240 70
+
+coin 2820 250
+coin 2880 250
+coin 2940 250

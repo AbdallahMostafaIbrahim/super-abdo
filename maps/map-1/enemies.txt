@@ -1,2 +1,8 @@
 employee 1150 55 150 100 4
 employee 1440 55 100 50 3
+
+hazard 2000 55 0 0 0
+
+hazard 3200 55 0 0 0
+hazard 3500 55 0 0 0
+hazard 3800 55 0 0 0
