@@ -3,6 +3,6 @@ employee 1440 55 100 50 3
 
 hazard 2000 55 0 0 0
 
-hazard 3200 55 0 0 0
-hazard 3500 55 0 0 0
-hazard 3800 55 0 0 0
+hazard 2800 55 0 0 0
+hazard 3100 55 0 0 0
+hazard 3400 55 0 0 0

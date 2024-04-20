@@ -30,8 +30,8 @@ Level1::Level1(Game *game) : QGraphicsScene()
     rightPressed = false;
     leftPressed = false;
     spacePressed = false;
-    galabeyaGlideEnabled = true;
-    doubleJumpEnabled = true;
+    galabeyaGlideEnabled = false;
+    doubleJumpEnabled = false;
     soundWaveEnabled = true;
     deltaTime = 5;
 
@@ -68,7 +68,7 @@ Level1::Level1(Game *game) : QGraphicsScene()
 void Level1::initScene()
 {
     // Set the scene width to be a big number
-    this->setSceneRect(0, 0, 10000, game->height());
+    this->setSceneRect(0, 0, 8100, game->height());
     this->setBackgroundBrush(QBrush(QPixmap(":/images/background-1.png").scaledToHeight(game->height())));
 
     // Create the player (abdo)
@@ -147,6 +147,8 @@ void Level1::moveHorizontally()
     if (!leftPressed && !rightPressed)
         return;
     if (abdo->x() <= 0 && leftPressed)
+        return;
+    if (abdo->x() >= sceneRect().width()-abdo->boundingRect().width() && rightPressed)
         return;
 
     int direction = 0;
