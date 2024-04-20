@@ -21,14 +21,13 @@
         <file>images/sound-wave.png</file>
         <file>images/abdo/idle1.png</file>
         <file>images/abdo/idle2.png</file>
-        <file>sound effects/AbdoHit.m4a</file>
-        <file>sound effects/beep-sound-of-1000-hz-95208-[AudioTrimmer.com].mp3</file>
-        <file>sound effects/gameTheme Abdo yta7ada el rambo.mp3</file>
-        <file>sound effects/short-fart-185140.mp3</file>
-        <file>sound effects/AbdoJump.m4a</file>
-        <file>sound effects/8-bit-jump-sfx-37007.mp3</file>
-        <file>sound effects/gun-shots-from-a-distance-7-96391.mp3</file>
         <file>maps/map-1/enemies.txt</file>
         <file>images/hazard-sign.png</file>
+        <file>sound-effects/double-jump.mp3</file>
+        <file>sound-effects/fart.mp3</file>
+        <file>sound-effects/game-theme.mp3</file>
+        <file>sound-effects/gun-shot.mp3</file>
+        <file>sound-effects/jump.m4a</file>
+        <file>sound-effects/ouch.m4a</file>
     </qresource>
 </RCC>

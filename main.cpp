@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
 
     // Adding Splash Screen Before Showing Main Menu
     QSplashScreen *splash = new QSplashScreen;
-    splash->setPixmap(QPixmap(":/images/splash.png"));
+    splash->setPixmap(QPixmap(":/images/splash.png").scaledToWidth(600));
     splash->show();
 
     QFontDatabase::addApplicationFont(":/fonts/Minecraft.ttf");

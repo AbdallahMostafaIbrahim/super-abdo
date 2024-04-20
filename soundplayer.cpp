@@ -2,17 +2,11 @@
 #include <QMediaPlayer>
 #include <QAudioOutput>
 
+
 SoundPlayer::SoundPlayer() {
-
-    // QAudioOutput* audioOutput = new QAudioOutput();
-    // QMediaPlayer* mediaPlayer = new QMediaPlayer();
-    // mediaPlayer->setSource(QUrl("qrc:/sounds/sounds/soundtrack.mp3"));
-    // mediaPlayer->setAudioOutput(audioOutput);
-    // audioOutput->setVolume(50);
-    // mediaPlayer->setLoops(1000);
-    // mediaPlayer->play();
-
 }
+
+float SoundPlayer::volumeFactor = 1.0;
 
 QAudioOutput* SoundPlayer::audioOutput_hitAbdo = new QAudioOutput();
 QMediaPlayer* SoundPlayer::mediaPlayer_hitAbdo = new QMediaPlayer();
@@ -38,10 +32,17 @@ QMediaPlayer* SoundPlayer::mediaPlayer_levelFinish = new QMediaPlayer();
 QAudioOutput* SoundPlayer::audioOutput_gameTheme = new QAudioOutput();
 QMediaPlayer* SoundPlayer::mediaPlayer_gameTheme = new QMediaPlayer();
 
+void SoundPlayer::setVolume(float v) {
+    volumeFactor = v;
+}
+
+float SoundPlayer::getVolume() {
+    return volumeFactor;
+}
 
 void SoundPlayer::hitAbdo()
 {
-    mediaPlayer_hitAbdo->setSource(QUrl("qrc:/sound effects/AbdoHit.m4a"));
+    mediaPlayer_hitAbdo->setSource(QUrl("qrc:/sound-effects/ouch.m4a"));
     mediaPlayer_hitAbdo->setAudioOutput(audioOutput_hitAbdo);
     audioOutput_hitAbdo->setVolume(1);
     mediaPlayer_hitAbdo->play();
@@ -49,7 +50,7 @@ void SoundPlayer::hitAbdo()
 
 void SoundPlayer::killAbdo()
 {
-    mediaPlayer_killAbdo->setSource(QUrl("qrc:/sounds/sounds/soundtrack.mp3"));
+    mediaPlayer_killAbdo->setSource(QUrl("qrc:/sound-effects/ouch.m4a"));
     mediaPlayer_killAbdo->setAudioOutput(audioOutput_killAbdo);
     audioOutput_killAbdo->setVolume(1);
     mediaPlayer_killAbdo->play();
@@ -57,7 +58,7 @@ void SoundPlayer::killAbdo()
 
 void SoundPlayer::gameOver()
 {
-    mediaPlayer_gameOver->setSource(QUrl("qrc:/sounds/sounds/soundtrack.mp3"));
+    mediaPlayer_gameOver->setSource(QUrl("qrc:/sound-effects/ouch.m4a"));
     mediaPlayer_gameOver->setAudioOutput(audioOutput_gameOver);
     audioOutput_gameOver->setVolume(1);
     mediaPlayer_gameOver->play();
@@ -65,7 +66,7 @@ void SoundPlayer::gameOver()
 
 void SoundPlayer::doubleJump()
 {
-    mediaPlayer_doubleFart->setSource(QUrl("qrc:/sound effects/8-bit-jump-sfx-37007.mp3"));
+    mediaPlayer_doubleFart->setSource(QUrl("qrc:/sound-effects/double-jump.mp3"));
     mediaPlayer_doubleFart->setAudioOutput(audioOutput_doubleFart);
     audioOutput_doubleFart->setVolume(1);
     mediaPlayer_doubleFart->play();
@@ -73,7 +74,7 @@ void SoundPlayer::doubleJump()
 
 void SoundPlayer::fireSoundWave()
 {
-    mediaPlayer_fireSoundWave->setSource(QUrl("qrc:/sound effects/gun-shots-from-a-distance-7-96391.mp3"));
+    mediaPlayer_fireSoundWave->setSource(QUrl("qrc:/sound-effects/gun-shot.mp3"));
     mediaPlayer_fireSoundWave->setAudioOutput(audioOutput_fireSoundWave);
     audioOutput_fireSoundWave->setVolume(0.5);
     mediaPlayer_fireSoundWave->play();
@@ -81,7 +82,7 @@ void SoundPlayer::fireSoundWave()
 
 void SoundPlayer::abdoJump()
 {
-    mediaPlayer_abdoJump->setSource(QUrl("qrc:/sound effects/AbdoJump.m4a"));
+    mediaPlayer_abdoJump->setSource(QUrl("qrc:/sound-effects/jump.m4a"));
     mediaPlayer_abdoJump->setAudioOutput(audioOutput_abdoJump);
     audioOutput_abdoJump->setVolume(1);
     mediaPlayer_abdoJump->play();
@@ -89,7 +90,7 @@ void SoundPlayer::abdoJump()
 
 void SoundPlayer::levelFinish()
 {
-    mediaPlayer_levelFinish->setSource(QUrl("qrc:/sounds/sounds/soundtrack.mp3"));
+    mediaPlayer_levelFinish->setSource(QUrl("qrc:/sound-effects/gun-shot.mp3"));
     mediaPlayer_levelFinish->setAudioOutput(audioOutput_levelFinish);
     audioOutput_levelFinish->setVolume(1);
     mediaPlayer_levelFinish->play();
@@ -97,7 +98,7 @@ void SoundPlayer::levelFinish()
 
 void SoundPlayer::gameTheme()
 {
-    mediaPlayer_gameTheme->setSource(QUrl("qrc:/sound effects/gameTheme Abdo yta7ada el rambo.mp3"));
+    mediaPlayer_gameTheme->setSource(QUrl("qrc:/sound-effects/game-theme.mp3"));
     mediaPlayer_gameTheme->setAudioOutput(audioOutput_gameTheme);
     audioOutput_gameTheme->setVolume(0.1);
     mediaPlayer_gameTheme->setLoops(100);
@@ -107,5 +108,4 @@ void SoundPlayer::gameTheme()
 void SoundPlayer::muteTheme()
 {
     mediaPlayer_gameTheme->pause();
-
 }
