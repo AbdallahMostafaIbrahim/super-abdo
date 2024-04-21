@@ -32,6 +32,7 @@ private:
     void checkCoins();
     void checkEnemies();
     void moveEnemies();
+    void moveBullets();
 
     Game* game;
     Abdo* abdo;
@@ -53,7 +54,7 @@ private:
 
     int deltaTime;
 
-    bool leftPressed, rightPressed, spacePressed;
+    bool leftPressed, rightPressed, spacePressed, shootPressed;
     bool galabeyaGlideEnabled;
     bool doubleJumpEnabled;
     int currentJumpCount;

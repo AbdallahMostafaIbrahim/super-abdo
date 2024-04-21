@@ -1,6 +1,6 @@
-#include "groundenemy.h"
+#include "movingenemy.h"
 
-GroundEnemy::GroundEnemy(int left, int right, int initialPos, float speed, int health, int damage) : BaseEnemy(health, damage) {
+MovingEnemy::MovingEnemy(int left, int right, int initialPos, float speed, int health, int damage, bool animates) : BaseEnemy(health, damage, animates) {
     this->left = left;
     this->right =right;
     this->initialPos = initialPos;
@@ -9,10 +9,9 @@ GroundEnemy::GroundEnemy(int left, int right, int initialPos, float speed, int h
     // TODO : Randomize this
     this->direction = 1;
     this->offset =0;
-
 }
 
-void GroundEnemy::move(int elapsedTime, int delta)
+void MovingEnemy::move(int elapsedTime, int delta)
 {
     int currentDistance = direction * speed * (elapsedTime - initialTime) + initialPos + offset;
 
@@ -28,7 +27,4 @@ void GroundEnemy::move(int elapsedTime, int delta)
         direction = direction * -1;
     }
     setPos(currentDistance, y());
-
-    if(elapsedTime % 32 == 0)
-        animate();
 }

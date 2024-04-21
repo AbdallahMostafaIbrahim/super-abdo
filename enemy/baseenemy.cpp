@@ -1,11 +1,19 @@
 #include "baseenemy.h"
 #include <QGraphicsScene>
 
-BaseEnemy::BaseEnemy(int initialHealth, int damage) : HarmfulEntity(damage), health(initialHealth) {
+void BaseEnemy::animate() {}
+
+BaseEnemy::BaseEnemy(int initialHealth, int damage, bool animates) : HarmfulEntity(damage), health(initialHealth) {
     showDamage = false;
     damageTimer.setInterval(200); // 200 milliseconds
     damageTimer.setSingleShot(true);
     connect(&damageTimer, SIGNAL(timeout()), this, SLOT(removeDamageEffect()));
+
+    if(animates) {
+        QTimer animationTimer;
+        animationTimer.setInterval(300);
+        connect(&animationTimer, SIGNAL(timeout()), this, SLOT(animate()));
+    }
 }
 
 void BaseEnemy::damage(int h) {
@@ -13,7 +21,6 @@ void BaseEnemy::damage(int h) {
     if(health <= 0) {
         scene()->removeItem(this);
         delete this;
-        return;
     } else {
         showDamage = true;
         update();

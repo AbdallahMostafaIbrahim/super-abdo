@@ -6,17 +6,17 @@
 
 class SoundWave : public QObject, public QGraphicsItem
 {
-    Q_OBJECT
+Q_OBJECT
 private:
     int dir;
     QPixmap pixmap;
- public:
+public:
     SoundWave(int);
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
     QRectF boundingRect() const override;
-public slots:
+private slots:
     void move();
-    void byebye();
+    void kill();
 };
 
 #endif // SOUNDWAVE_H

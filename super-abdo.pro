@@ -11,11 +11,14 @@ CONFIG += c++17
 
 SOURCES += \
     abdo.cpp \
+    basebullet.cpp \
     enemy/baseenemy.cpp \
     enemy/employeeenemy.cpp \
-    enemy/groundenemy.cpp \
+    enemy/enemybullet.cpp \
     enemy/harmfulentity.cpp \
     enemy/hazardsign.cpp \
+    enemy/movingenemy.cpp \
+    enemy/shootingenemy.cpp \
     enemy/staticenemy.cpp \
     game.cpp \
     level1.cpp \
@@ -36,11 +39,14 @@ SOURCES += \
 
 HEADERS += \
     abdo.h \
+    basebullet.h \
     enemy/baseenemy.h \
     enemy/employeeenemy.h \
-    enemy/groundenemy.h \
+    enemy/enemybullet.h \
     enemy/harmfulentity.h \
     enemy/hazardsign.h \
+    enemy/movingenemy.h \
+    enemy/shootingenemy.h \
     enemy/staticenemy.h \
     game.h \
     level1.h \

@@ -1,9 +1,9 @@
 #ifndef EMPLOYEEENEMY_H
 #define EMPLOYEEENEMY_H
 
-#include "groundenemy.h"
+#include "movingenemy.h"
 
-class EmployeeEnemy : public GroundEnemy
+class EmployeeEnemy : public MovingEnemy
 {
 public:
     EmployeeEnemy(int, int, int, int);
@@ -17,6 +17,7 @@ private:
     QPainterPath idlePath;
     QPainterPath walkingPath;
     bool isIdle;
+protected slots:
     void animate() override;
 };
 

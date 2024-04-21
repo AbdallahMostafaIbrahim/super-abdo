@@ -29,5 +29,9 @@
         <file>sound-effects/gun-shot.mp3</file>
         <file>sound-effects/jump.m4a</file>
         <file>sound-effects/ouch.m4a</file>
+        <file>images/printer/printer-1.png</file>
+        <file>images/printer/printer-2.png</file>
+        <file>images/printer/printer-3.png</file>
+        <file>images/printer/printer-4.png</file>
     </qresource>
 </RCC>

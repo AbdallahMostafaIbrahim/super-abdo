@@ -3,7 +3,7 @@
 #include <QPainter>
 #include <QRectF>
 
-EmployeeEnemy::EmployeeEnemy(int left, int right, int initialPos, int speed) : GroundEnemy(left, right, initialPos, speed, 3, 1) {
+EmployeeEnemy::EmployeeEnemy(int left, int right, int initialPos, int speed) : MovingEnemy(left, right, initialPos, speed, 3, 1) {
     idle = QPixmap(":/images/employee-idle.png").scaledToWidth(50);
     walking = QPixmap(":/images/employee-walking.png").scaledToWidth(50);
     pixmap = &idle;

@@ -5,6 +5,7 @@
 #include "soundwave.h"
 #include "enemy/baseenemy.h"
 #include "mainmenuscene.h"
+#include "basebullet.h"
 #include <QGraphicsScene>
 #include <QGraphicsTextItem>
 #include <QTimer>
@@ -30,6 +31,7 @@ Level1::Level1(Game *game) : QGraphicsScene()
     rightPressed = false;
     leftPressed = false;
     spacePressed = false;
+    shootPressed = false;
     galabeyaGlideEnabled = false;
     doubleJumpEnabled = false;
     soundWaveEnabled = true;
@@ -40,7 +42,7 @@ Level1::Level1(Game *game) : QGraphicsScene()
     speed = 3;
     timeAfterJump = 0;
     timeWhenStartedFalling = 0;
-    speedJumpFactor = 0.6f;
+    speedJumpFactor = 0.8f;
     jumpWidth = 30;
     jumpHeight = 160;
     isJumping = false;
@@ -259,9 +261,23 @@ void Level1::moveEnemies()
 {
     QList<QGraphicsItem*> things = items();
     for(int i = 0; i < things.length(); i++) {
+        if(!things[i]) continue;
         BaseEnemy* enemy = dynamic_cast<BaseEnemy*>(things[i]);
         if(enemy)
             enemy->move(elapsedTime, deltaTime);
+    }
+}
+
+void Level1::moveBullets()
+{
+    QList<QGraphicsItem*> things = items();
+    for(int i = 0; i < things.length(); i++) {
+        if(!things[i]) continue;
+        BaseBullet* bullet = dynamic_cast<BaseBullet*>(things[i]);
+        if(bullet)
+        {
+            bullet->move();
+        }
     }
 }
 
@@ -278,7 +294,9 @@ void Level1::gameLoop()
         game->ensureVisible(abdo, 500, 0);
     }
 
+    moveBullets();
     moveEnemies();
+
     update();
 }
 
@@ -310,12 +328,13 @@ void Level1::keyPressEvent(QKeyEvent *event)
             abdo->setDirection(-1);
             break;
         case Qt::Key_Z:
-            if (soundWaveEnabled)
+            if (soundWaveEnabled && !shootPressed)
             {
                 SoundPlayer::fireSoundWave();
                 SoundWave *s = new SoundWave(abdo->getDirection());
                 s->setPos(abdo->x() + 20 * abdo->getDirection(), abdo->y() + abdo->boundingRect().height() / 4);
                 this->addItem(s);
+                shootPressed = true;
             }
         }
     }
@@ -354,5 +373,9 @@ void Level1::keyReleaseEvent(QKeyEvent *event)
         case Qt::Key_Space:
             spacePressed = false;
             break;
+        case Qt::Key_Z:
+            shootPressed = false;
+            break;
         }
+
 }

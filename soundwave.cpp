@@ -2,20 +2,22 @@
 #include "enemy/baseenemy.h"
 #include "level_props/groundentity.h"
 #include <QTimer>
-#include<QPainter>
-#include<QGraphicsItem>
-#include<QGraphicsScene>
+#include <QPainter>
+#include <QGraphicsItem>
+#include <QGraphicsScene>
 
-SoundWave::SoundWave(int direction) : QObject()
+SoundWave::SoundWave(int direction)
 {
     pixmap = QPixmap(":/images/sound-wave.png");
-
     dir = direction;
+
+    QTimer::singleShot(1000, this, SLOT(kill()));
+
     QTimer *timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(move()));
-    timer->start(5);
-    QTimer::singleShot(1000,this,SLOT(byebye()));
+    timer->start(1000 / 60);
 }
+
 QRectF SoundWave::boundingRect() const {
     return QRectF(0, 0, 40, 40);
 }
@@ -28,24 +30,27 @@ void SoundWave::paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
 }
 
 void SoundWave::move(){
-    moveBy(2 * dir, 0);
+    moveBy(7 * dir, 0);
 
     QList<QGraphicsItem*> items = collidingItems();
 
     for(QGraphicsItem* item : items) {
+        if (!item) continue;
+
         GroundEntity* entity = dynamic_cast<GroundEntity*>(item);
         if(entity) {
-            return byebye();
+            return kill();
         }
         BaseEnemy* enemy = dynamic_cast<BaseEnemy*>(item);
         if(enemy) {
             enemy->damage(1);
-            return byebye();
+            return kill();
         }
     }
 }
 
-void SoundWave::byebye(){
+
+void SoundWave::kill() {
     scene()->removeItem(this);
     delete this;
 }
