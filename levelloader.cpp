@@ -9,6 +9,7 @@
 
 #include "enemy/hazardsign.h"
 #include "enemy/employeeenemy.h"
+#include "enemy/printerenemy.h"
 
 #include <QMessageBox>
 #include <QTextStream>
@@ -134,12 +135,17 @@ void LevelLoader::loadEnemies(QGraphicsScene* scene) {
              employee->setZValue(-1);
              scene->addItem(employee);
          }},
-
         {"hazard", [scene](int x, int y, int left, int right, int speed) -> void {
              HazardSign* hazard = new HazardSign();
              hazard->setPos(x, scene->height() - y - hazard->getPixmap()->height());
              hazard->setZValue(-1);
              scene->addItem(hazard);
+         }},
+        {"printer", [scene](int x, int y, int left, int right, int speed) -> void {
+             PrinterEnemy* printer = new PrinterEnemy();
+             printer->setPos(x, y);
+             printer->setZValue(-1);
+             scene->addItem(printer);
          }},
     };
 

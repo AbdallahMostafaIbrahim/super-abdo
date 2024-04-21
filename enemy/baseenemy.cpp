@@ -10,9 +10,9 @@ BaseEnemy::BaseEnemy(int initialHealth, int damage, bool animates) : HarmfulEnti
     connect(&damageTimer, SIGNAL(timeout()), this, SLOT(removeDamageEffect()));
 
     if(animates) {
-        QTimer animationTimer;
         animationTimer.setInterval(300);
         connect(&animationTimer, SIGNAL(timeout()), this, SLOT(animate()));
+        qDebug() << "What the";
     }
 }
 

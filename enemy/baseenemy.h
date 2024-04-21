@@ -12,6 +12,7 @@ private:
     int health;
 protected:
     QTimer damageTimer;
+    QTimer animationTimer;
     bool showDamage;
 public:
     BaseEnemy(int initialHealth, int damage, bool animates = false);

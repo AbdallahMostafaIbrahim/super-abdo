@@ -18,6 +18,7 @@ SOURCES += \
     enemy/harmfulentity.cpp \
     enemy/hazardsign.cpp \
     enemy/movingenemy.cpp \
+    enemy/printerenemy.cpp \
     enemy/shootingenemy.cpp \
     enemy/staticenemy.cpp \
     game.cpp \
@@ -46,6 +47,7 @@ HEADERS += \
     enemy/harmfulentity.h \
     enemy/hazardsign.h \
     enemy/movingenemy.h \
+    enemy/printerenemy.h \
     enemy/shootingenemy.h \
     enemy/staticenemy.h \
     game.h \
