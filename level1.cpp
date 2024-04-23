@@ -6,6 +6,8 @@
 #include "enemy/baseenemy.h"
 #include "mainmenuscene.h"
 #include "enemy/enemybullet.h"
+#include "enemy/boss.h"
+#include "enemy/karen.h"
 #include <QGraphicsScene>
 #include <QGraphicsTextItem>
 #include <QTimer>
@@ -55,6 +57,10 @@ Level1::Level1(Game *game) : QGraphicsScene()
     maxJumps = 2;
     isGameOver = false;
     finishedTime = 0;
+
+    // Boss Init
+    triggerBossLoc = 6000;
+    isFightingBoss = false;
 
     // Connect and start the game loop
     connect(timer, SIGNAL(timeout()), this, SLOT(gameLoop()));
@@ -291,6 +297,13 @@ void Level1::gameLoop()
         moveVertically();
         checkCoins();
         checkEnemies();
+        if(abdo->x()>= triggerBossLoc && !isFightingBoss)
+        {
+            Karen* karen = new Karen;
+            karen->setPos(sceneRect().width()-karen->boundingRect().width()-50,sceneRect().height()-55 - karen->boundingRect().height());
+            isFightingBoss = true;
+            addItem(karen);
+        }
         game->ensureVisible(abdo, 500, 0);
     }
 

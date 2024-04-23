@@ -6,9 +6,9 @@
 #include <QRandomGenerator>
 
 
-int width = 100;
 
 PrinterEnemy::PrinterEnemy() : BaseEnemy(100,1,true) {
+    int width = 100;
     pixmaps << QPixmap(":/images/printer/printer-1.png").scaledToWidth(width) << QPixmap(":/images/printer/printer-2.png").scaledToWidth(width) << QPixmap(":/images/printer/printer-3.png").scaledToWidth(width) << QPixmap(":/images/printer/printer-4.png").scaledToWidth(width);
     currentPixmap = pixmaps[0];
     currentFrame = 0;

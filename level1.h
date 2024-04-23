@@ -64,6 +64,8 @@ private:
 
     bool isGameOver;
     int finishedTime;
+    bool isFightingBoss;
+    int triggerBossLoc;
 private slots:
     void gameLoop();
 };

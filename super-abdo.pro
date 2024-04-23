@@ -13,10 +13,12 @@ SOURCES += \
     abdo.cpp \
     basebullet.cpp \
     enemy/baseenemy.cpp \
+    enemy/boss.cpp \
     enemy/employeeenemy.cpp \
     enemy/enemybullet.cpp \
     enemy/harmfulentity.cpp \
     enemy/hazardsign.cpp \
+    enemy/karen.cpp \
     enemy/movingenemy.cpp \
     enemy/printerbullet.cpp \
     enemy/printerenemy.cpp \
@@ -43,10 +45,12 @@ HEADERS += \
     abdo.h \
     basebullet.h \
     enemy/baseenemy.h \
+    enemy/boss.h \
     enemy/employeeenemy.h \
     enemy/enemybullet.h \
     enemy/harmfulentity.h \
     enemy/hazardsign.h \
+    enemy/karen.h \
     enemy/movingenemy.h \
     enemy/printerbullet.h \
     enemy/printerenemy.h \
