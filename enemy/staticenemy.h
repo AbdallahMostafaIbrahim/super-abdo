@@ -12,6 +12,8 @@ public:
     QRectF boundingRect() const override;
     void move(int, int) override;
     const QPixmap* getPixmap();
+private slots:
+    void animate() override;
 private:
     QPixmap pixmap;
 };

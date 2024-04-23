@@ -1,7 +1,6 @@
 #include "baseenemy.h"
 #include <QGraphicsScene>
 
-void BaseEnemy::animate() {}
 
 BaseEnemy::BaseEnemy(int initialHealth, int damage, bool animates) : HarmfulEntity(damage), health(initialHealth) {
     showDamage = false;
@@ -10,9 +9,9 @@ BaseEnemy::BaseEnemy(int initialHealth, int damage, bool animates) : HarmfulEnti
     connect(&damageTimer, SIGNAL(timeout()), this, SLOT(removeDamageEffect()));
 
     if(animates) {
-        animationTimer.setInterval(300);
+        animationTimer.setInterval(150);
         connect(&animationTimer, SIGNAL(timeout()), this, SLOT(animate()));
-        qDebug() << "What the";
+        animationTimer.start();
     }
 }
 
@@ -37,3 +36,4 @@ void BaseEnemy::removeDamageEffect()
     showDamage = false;
     update();
 }
+

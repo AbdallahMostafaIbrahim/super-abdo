@@ -24,3 +24,7 @@ const QPixmap* StaticEnemy::getPixmap()
 {
     return &pixmap;
 }
+
+void StaticEnemy::animate()
+{
+}

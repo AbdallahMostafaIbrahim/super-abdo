@@ -12,6 +12,7 @@ public:
 private:
     QList<QPixmap> pixmaps;
     QPixmap currentPixmap;
+    int currentFrame;
 private slots:
     void animate() override;
 };

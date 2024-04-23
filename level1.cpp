@@ -5,7 +5,7 @@
 #include "soundwave.h"
 #include "enemy/baseenemy.h"
 #include "mainmenuscene.h"
-#include "basebullet.h"
+#include "enemy/enemybullet.h"
 #include <QGraphicsScene>
 #include <QGraphicsTextItem>
 #include <QTimer>
@@ -273,7 +273,7 @@ void Level1::moveBullets()
     QList<QGraphicsItem*> things = items();
     for(int i = 0; i < things.length(); i++) {
         if(!things[i]) continue;
-        BaseBullet* bullet = dynamic_cast<BaseBullet*>(things[i]);
+        EnemyBullet* bullet = dynamic_cast<EnemyBullet*>(things[i]);
         if(bullet)
         {
             bullet->move();

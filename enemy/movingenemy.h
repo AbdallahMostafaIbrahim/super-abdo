@@ -10,6 +10,7 @@ public:
     void move(int, int) override;
 protected:
     int direction;
+    void animate() override;
 private:
     int left, right, initialPos, initialTime;
     float speed;

@@ -19,10 +19,9 @@ public:
     virtual void move(int, int) = 0;
     void damage(int);
     int getHealth();
-protected slots:
-    virtual void animate();
 private slots:
     void removeDamageEffect();
+    virtual void animate() = 0;
 };
 
 #endif // BASEENEMY_H

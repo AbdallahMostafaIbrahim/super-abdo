@@ -28,3 +28,8 @@ void MovingEnemy::move(int elapsedTime, int delta)
     }
     setPos(currentDistance, y());
 }
+
+void MovingEnemy::animate()
+{
+    qDebug() << "Im killing myslef";
+}

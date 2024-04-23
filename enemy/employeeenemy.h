@@ -5,6 +5,7 @@
 
 class EmployeeEnemy : public MovingEnemy
 {
+Q_OBJECT
 public:
     EmployeeEnemy(int, int, int, int);
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;

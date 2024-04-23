@@ -33,5 +33,6 @@
         <file>images/printer/printer-2.png</file>
         <file>images/printer/printer-3.png</file>
         <file>images/printer/printer-4.png</file>
+        <file>images/printer/printer-bullet.png</file>
     </qresource>
 </RCC>
