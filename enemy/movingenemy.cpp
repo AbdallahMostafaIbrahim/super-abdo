@@ -1,4 +1,5 @@
 #include "movingenemy.h"
+#include <QRandomGenerator>
 
 MovingEnemy::MovingEnemy(int left, int right, int initialPos, float speed, int health, int damage, bool animates) : BaseEnemy(health, damage, animates) {
     this->left = left;
@@ -9,10 +10,13 @@ MovingEnemy::MovingEnemy(int left, int right, int initialPos, float speed, int h
     // TODO : Randomize this
     this->direction = 1;
     this->offset =0;
+    startRand = QRandomGenerator::global()->bounded(3000) + 0;
 }
 
 void MovingEnemy::move(int elapsedTime, int delta)
 {
+    if(elapsedTime < startRand)
+        return;
     int currentDistance = direction * speed * (elapsedTime - initialTime) + initialPos + offset;
 
     if (currentDistance >= right + initialPos && direction > 0) {

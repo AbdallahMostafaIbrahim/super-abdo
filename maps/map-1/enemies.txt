@@ -1,10 +1,31 @@
 employee 1150 55 150 100 4
 employee 1440 55 100 50 3
+employee 2800 55 100 100 3
+employee 3100 55 100 100 3
+employee 3400 55 100 100 3
 
 hazard 2000 55 0 0 0
 
 hazard 2800 55 0 0 0
 hazard 3100 55 0 0 0
 hazard 3400 55 0 0 0
+hazard 4500 55 0 0 0
+hazard 4900 55 0 0 0
+hazard 5300 55 0 0 0
+
 
 printer 2000 30 0 0 0
+printer 4000 30 0 0 0
+printer 4150 30 0 0 0
+printer 4300 30 0 0 0
+-printer 4450 30 0 0 0
+-printer 4600 30 0 0 0
+printer 4750 30 0 0 0
+-printer 4900 30 0 0 0
+printer 5050 30 0 0 0
+printer 5200 30 0 0 0
+-printer 5350 30 0 0 0
+printer 5500 30 0 0 0
+printer 5650 30 0 0 0
+printer 5800 30 0 0 0
+-printer 5950 30 0 0 0

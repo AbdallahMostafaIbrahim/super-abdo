@@ -13,6 +13,7 @@ private:
     QList<QPixmap> pixmaps;
     QPixmap currentPixmap;
     int currentFrame;
+    int dropRate;
 private slots:
     void animate() override;
 };

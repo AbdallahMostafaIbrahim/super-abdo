@@ -15,6 +15,7 @@ private:
     int left, right, initialPos, initialTime;
     float speed;
     int offset;
+    int startRand;
 };
 
 #endif // MOVINGENEMY_H
