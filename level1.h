@@ -7,6 +7,7 @@
 #include <QRectF>
 #include "game.h"
 #include "abdo.h"
+#include "enemy/boss.h"
 #include<QPushButton>
 
 class Level1 : public QGraphicsScene
@@ -15,6 +16,7 @@ Q_OBJECT
 public:
     Level1(Game* game);
     QPushButton* muteButton;
+    void killBoss();
 protected:
     void keyPressEvent(QKeyEvent *event) override;
     void keyReleaseEvent(QKeyEvent *event) override;
@@ -36,6 +38,7 @@ private:
 
     Game* game;
     Abdo* abdo;
+    Boss* boss;
     QList<QGraphicsItem*> collidingItems;
 
     int elapsedTime;
@@ -66,6 +69,7 @@ private:
     int finishedTime;
     bool isFightingBoss;
     int triggerBossLoc;
+    bool isGoodGame;
 private slots:
     void gameLoop();
 };

@@ -2,7 +2,7 @@
 #include <QGraphicsScene>
 
 
-BaseEnemy::BaseEnemy(int initialHealth, int damage, bool animates) : HarmfulEntity(damage), health(initialHealth) {
+BaseEnemy::BaseEnemy(int initialH, int damage, bool animates) : HarmfulEntity(damage), health(initialH), initialHealth(initialH) {
     showDamage = false;
     damageTimer.setInterval(200); // 200 milliseconds
     damageTimer.setSingleShot(true);
@@ -18,8 +18,7 @@ BaseEnemy::BaseEnemy(int initialHealth, int damage, bool animates) : HarmfulEnti
 void BaseEnemy::damage(int h) {
     health -= h;
     if(health <= 0) {
-        scene()->removeItem(this);
-        delete this;
+        kill();
     } else {
         showDamage = true;
         update();
@@ -29,6 +28,16 @@ void BaseEnemy::damage(int h) {
 
 int BaseEnemy::getHealth(){
     return health;
+}
+
+int BaseEnemy::getInitialHealth() {
+    return initialHealth;
+}
+
+void BaseEnemy::kill()
+{
+    scene()->removeItem(this);
+    delete this;
 }
 
 void BaseEnemy::removeDamageEffect()

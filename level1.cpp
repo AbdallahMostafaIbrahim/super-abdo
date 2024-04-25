@@ -56,6 +56,7 @@ Level1::Level1(Game *game) : QGraphicsScene()
     currentJumpCount = 0;
     maxJumps = 2;
     isGameOver = false;
+    isGoodGame = false;
     finishedTime = 0;
 
     // Boss Init
@@ -73,6 +74,13 @@ Level1::Level1(Game *game) : QGraphicsScene()
     SoundPlayer::gameTheme();
 }
 
+void Level1::killBoss()
+{
+    isFightingBoss = false;
+    isGoodGame = true;
+    finishedTime = elapsedTime;
+}
+
 void Level1::initScene()
 {
     // Set the scene width to be a big number
@@ -82,9 +90,11 @@ void Level1::initScene()
     // Create the player (abdo)
     abdo = new Abdo();
 
-    abdo->setPos(50, 0);
+    abdo->setPos(200, game->height() - abdo->boundingRect().height() - 100);
 
     this->addItem(abdo);
+
+    boss = nullptr;
 
     // Open Map File to load the platforms
     QFile file(":/maps/map-1/map.txt");
@@ -96,7 +106,21 @@ void Level1::initScene()
 void Level1::drawForeground(QPainter *painter, const QRectF &rect)
 {
     painter->resetTransform();
-    if(!isGameOver) {
+    if(isGoodGame) {
+        painter->drawRect(sceneRect());
+        painter->fillRect(sceneRect(), QColor(0, 0, 0, 120));
+        painter->setPen(Qt::white);
+        painter->setFont(QFont("Minecraft", 48));
+        painter->drawText(rect.width() / 2 - 200, rect.height() / 2 - 50, "GOOD GAME BRO");
+
+        painter->setFont(QFont("Minecraft", 24));
+        painter->drawText(rect.width() / 2 - 200, rect.height() / 2, "Coins Collected: " + QString::number(collectedCoins));
+        painter->drawText(rect.width() / 2 - 200, rect.height() / 2 + 35, "Time spent: " + QString::number(finishedTime / (1000)) + " seconds");
+
+        painter->setFont(QFont("Minecraft", 18));
+        painter->drawText(rect.width() / 2 - 200, rect.height() / 2 + 75, "Press Enter to continue.");
+    }
+    else if (!isGameOver) {
         for (int i = 0; i < health; i++)
         {
             painter->drawPixmap(i * 45 + 10, 25, 40, 40, QPixmap(":/images/heart.png").scaled(40, 40));
@@ -107,6 +131,17 @@ void Level1::drawForeground(QPainter *painter, const QRectF &rect)
         painter->setPen(Qt::white);
         painter->setFont(QFont("Minecraft", 24));
         painter->drawText(55, 75 + 30, "x" + QString::number(collectedCoins));
+
+        if(isFightingBoss) {
+            int healthBarWidth = 400;
+            if(!boss) return;
+            QRectF outerHealthBar(game->width() / 2 - healthBarWidth / 2, 50, healthBarWidth, 20);
+            painter->drawRoundedRect(outerHealthBar, 5, 5);
+            int width = ((double)boss->getHealth() / (double)boss->getInitialHealth()) * healthBarWidth;
+            QRectF innerHealth(game->width() / 2 - healthBarWidth / 2, 50, width, 20);
+            painter->drawRoundedRect(innerHealth, 5, 5);
+            painter->fillRect(innerHealth, QBrush(Qt::red));
+        }
     } else {
         painter->drawRect(sceneRect());
         painter->fillRect(sceneRect(), QColor(0, 0, 0, 120));
@@ -291,7 +326,7 @@ void Level1::gameLoop()
 {
     elapsedTime += deltaTime;
 
-    if(!isGameOver) {
+    if(!isGameOver && !isGoodGame) {
         collidingItems = abdo->collidingItems();
         moveHorizontally();
         moveVertically();
@@ -299,10 +334,10 @@ void Level1::gameLoop()
         checkEnemies();
         if(abdo->x()>= triggerBossLoc && !isFightingBoss)
         {
-            Karen* karen = new Karen;
-            karen->setPos(sceneRect().width()-karen->boundingRect().width()-50,sceneRect().height()-55 - karen->boundingRect().height());
+            boss = new Karen;
+            boss->setPos(sceneRect().width() - boss->boundingRect().width()-50, sceneRect().height()-55 - boss->boundingRect().height());
             isFightingBoss = true;
-            addItem(karen);
+            addItem(boss);
         }
         game->ensureVisible(abdo, 500, 0);
     }
@@ -313,9 +348,10 @@ void Level1::gameLoop()
     update();
 }
 
+
 void Level1::keyPressEvent(QKeyEvent *event)
 {
-    if(!isGameOver) {
+    if(!isGameOver && !isGoodGame) {
         switch (event->key())
         {
         case Qt::Key_Space:
@@ -351,7 +387,7 @@ void Level1::keyPressEvent(QKeyEvent *event)
             }
         }
     }
-    else {
+    else if(isGameOver) {
         switch (event->key())
         {
         case Qt::Key_R:
@@ -374,7 +410,7 @@ void Level1::keyPressEvent(QKeyEvent *event)
 
 void Level1::keyReleaseEvent(QKeyEvent *event)
 {
-    if(!isGameOver)
+    if(!isGameOver && !isGoodGame)
         switch (event->key())
         {
         case Qt::Key_Right:

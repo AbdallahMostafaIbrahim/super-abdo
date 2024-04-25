@@ -10,6 +10,7 @@ class BaseEnemy : public QObject, public QGraphicsItem, public HarmfulEntity
 Q_OBJECT
 private:
     int health;
+    int initialHealth;
 protected:
     QTimer damageTimer;
     QTimer animationTimer;
@@ -19,6 +20,8 @@ public:
     virtual void move(int, int) = 0;
     void damage(int);
     int getHealth();
+    int getInitialHealth();
+    virtual void kill();
 private slots:
     void removeDamageEffect();
     virtual void animate() = 0;

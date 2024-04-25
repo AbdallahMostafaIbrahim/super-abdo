@@ -13,8 +13,11 @@ public:
     QRectF boundingRect() const override;
 private:
     void animate() override;
+    void kill() override;
     QList<QPixmap> pixmaps;
+    QList<QPainterPath> paths;
     QPixmap currentPixmap;
+    QPainterPath currentPath;
     int currentFrame;
 protected:
     int dropRate;
