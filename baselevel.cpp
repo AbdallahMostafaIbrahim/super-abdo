@@ -381,10 +381,12 @@ void BaseLevel::keyPressEvent(QKeyEvent *event)
             spacePressed = true;
             break;
         case Qt::Key_Right:
+            case Qt::Key_D:
             rightPressed = true;
             abdo->setDirection(1);
             break;
         case Qt::Key_Left:
+            case Qt::Key_A:
             leftPressed = true;
             abdo->setDirection(-1);
             break;
@@ -425,9 +427,11 @@ void BaseLevel::keyReleaseEvent(QKeyEvent *event)
         switch (event->key())
         {
         case Qt::Key_Right:
+            case Qt::Key_D:
             rightPressed = false;
             break;
         case Qt::Key_Left:
+            case Qt::Key_A:
             leftPressed = false;
             break;
         case Qt::Key_Space:
