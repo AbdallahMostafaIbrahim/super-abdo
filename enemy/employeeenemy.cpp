@@ -42,10 +42,13 @@ const QPixmap* EmployeeEnemy::getPixmap()
 
 void EmployeeEnemy::animate()
 {
-    if(isIdle)
-        pixmap = &walking;
-    else
-        pixmap = &idle;
+    if(animationTimer.elapsed() >= 200) {
+        if(isIdle)
+            pixmap = &walking;
+        else
+            pixmap = &idle;
 
-    isIdle = !isIdle;
+        isIdle = !isIdle;
+        animationTimer.restart();
+    }
 }

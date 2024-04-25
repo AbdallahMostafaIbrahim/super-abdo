@@ -36,6 +36,7 @@ private:
     void checkEnemies();
     void moveEnemies();
     void moveBullets();
+    void spawnBoss();
 
     QElapsedTimer elapsedTimer;
 

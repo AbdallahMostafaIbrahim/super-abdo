@@ -11,7 +11,7 @@ Boss::Boss(QList<QPixmap> pixie, int h) : BaseEnemy(h, 1, false)
     int width = 250;
     pixmaps = pixie;
     for(int i = 0; i < pixmaps.length(); i++) {
-        paths.append(*Utils::createPathFromPixmap(pixmaps[i]));
+        paths.append(*Utils::createPathFromPixmap(pixmaps[i], 10));
     }
     currentPixmap = pixmaps[0];
     currentPath = paths[0];
@@ -51,9 +51,12 @@ QRectF Boss::boundingRect() const
 
 void Boss::animate()
 {
-    currentPixmap = (pixmaps[currentFrame % pixmaps.size()]);
-    currentPath = (paths[currentFrame % paths.size()]);
-    currentFrame++;
+    if(animationTimer.elapsed() >= 100) {
+        currentPixmap = (pixmaps[currentFrame % pixmaps.size()]);
+        currentPath = (paths[currentFrame % paths.size()]);
+        currentFrame++;
+        animationTimer.restart();
+    }
 }
 
 void Boss::kill()

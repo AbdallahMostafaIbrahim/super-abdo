@@ -6,13 +6,8 @@ BaseEnemy::BaseEnemy(int initialH, int damage, bool animates) : HarmfulEntity(da
     showDamage = false;
     damageTimer.setInterval(200); // 200 milliseconds
     damageTimer.setSingleShot(true);
+    animationTimer.start();
     connect(&damageTimer, SIGNAL(timeout()), this, SLOT(removeDamageEffect()));
-
-    if(animates) {
-        animationTimer.setInterval(150);
-        connect(&animationTimer, SIGNAL(timeout()), this, SLOT(animate()));
-        animationTimer.start();
-    }
 }
 
 void BaseEnemy::damage(int h) {

@@ -3,6 +3,7 @@
 
 #include <QGraphicsItem>
 #include <QTimer>
+#include <QElapsedTimer>
 #include "harmfulentity.h"
 
 class BaseEnemy : public QObject, public QGraphicsItem, public HarmfulEntity
@@ -13,7 +14,7 @@ private:
     int initialHealth;
 protected:
     QTimer damageTimer;
-    QTimer animationTimer;
+    QElapsedTimer animationTimer;
     bool showDamage;
 public:
     BaseEnemy(int initialHealth, int damage, bool animates = false);
@@ -24,6 +25,7 @@ public:
     virtual void kill();
 private slots:
     void removeDamageEffect();
+public slots:
     virtual void animate() = 0;
 };
 

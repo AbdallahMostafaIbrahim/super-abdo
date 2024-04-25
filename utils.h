@@ -7,7 +7,7 @@ class Utils
 {
 public:
     static float minMagnitude(float l, float r);
-    static QPainterPath* createPathFromPixmap(const QPixmap &pixmap);
+    static QPainterPath* createPathFromPixmap(const QPixmap &pixmap, int precision = 4);
 };
 
 #endif // UTILS_H

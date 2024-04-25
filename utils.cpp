@@ -16,9 +16,9 @@ float Utils::minMagnitude(float l, float r) {
     }
 }
 
-int precision = 4;
 
-QPainterPath* Utils::createPathFromPixmap(const QPixmap &pixmap)
+
+QPainterPath* Utils::createPathFromPixmap(const QPixmap &pixmap, int precision)
 {
     QPainterPath *path = new QPainterPath();
     QImage image = pixmap.toImage();

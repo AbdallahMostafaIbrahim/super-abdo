@@ -34,5 +34,4 @@ void MovingEnemy::move(int elapsedTime, int delta)
 
 void MovingEnemy::animate()
 {
-    qDebug() << "Im killing myslef";
 }

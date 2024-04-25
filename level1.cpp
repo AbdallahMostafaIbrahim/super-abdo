@@ -313,6 +313,7 @@ void Level1::moveEnemies()
         BaseEnemy* enemy = dynamic_cast<BaseEnemy*>(things[i]);
         if(enemy) {
             enemy->move(elapsedTime, deltaTime);
+            enemy->animate();
         }
 
     }
@@ -331,6 +332,16 @@ void Level1::moveBullets()
     }
 }
 
+void Level1::spawnBoss() {
+    if(abdo->x()>= triggerBossLoc && !isFightingBoss)
+    {
+        boss = new Karen;
+        boss->setPos(sceneRect().width() - boss->boundingRect().width()-50, sceneRect().height()-55 - boss->boundingRect().height());
+        isFightingBoss = true;
+        addItem(boss);
+    }
+}
+
 void Level1::gameLoop()
 {
     deltaTime = elapsedTimer.restart();
@@ -342,13 +353,7 @@ void Level1::gameLoop()
         moveVertically();
         checkCoins();
         checkEnemies();
-        if(abdo->x()>= triggerBossLoc && !isFightingBoss)
-        {
-            boss = new Karen;
-            boss->setPos(sceneRect().width() - boss->boundingRect().width()-50, sceneRect().height()-55 - boss->boundingRect().height());
-            isFightingBoss = true;
-            addItem(boss);
-        }
+        spawnBoss();
         game->ensureVisible(abdo, 500, 0);
     }
 
