@@ -36,6 +36,7 @@ SOURCES += \
     level_props/platform.cpp \
     level_props/shelf.cpp \
     levelloader.cpp \
+    levelselector.cpp \
     levelsettings.cpp \
     main.cpp \
     mainmenuscene.cpp \
@@ -70,6 +71,7 @@ HEADERS += \
     level_props/platform.h \
     level_props/shelf.h \
     levelloader.h \
+    levelselector.h \
     levelsettings.h \
     mainmenuscene.h \
     soundplayer.h \
