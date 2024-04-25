@@ -2,6 +2,7 @@
 #include "mainmenuscene.h"
 #include "baselevel.h"
 #include "level1.h"
+#include "levelselector.h"
 
 Game::Game(int width, int height) {
     setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
@@ -12,6 +13,8 @@ Game::Game(int width, int height) {
     currentLevelIndex = -1;
 
     mainMenuScene = new MainMenuScene(this);
+    lSelector = new levelSelector(this);
+
     setScene(mainMenuScene);
 }
 
@@ -34,6 +37,11 @@ void Game::startLevel(int index)
         connect(currentLevel, &BaseLevel::quit, this, &Game::quitLevel);
         setScene(currentLevel);
     }
+}
+
+void Game::goToLevelSelector()
+{
+    setScene(lSelector);
 }
 
 void Game::restartLevel() {

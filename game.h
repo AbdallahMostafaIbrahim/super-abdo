@@ -8,6 +8,7 @@
 // I am so smart :)
 class BaseLevel;
 class MainMenuScene;
+class levelSelector;
 
 class Game : public QGraphicsView
 {
@@ -16,10 +17,12 @@ public:
     Game(int, int);
     void switchScene(QGraphicsScene*);
     void startLevel(int index);
+    void goToLevelSelector();
 private:
     // TODO: GameState
     BaseLevel* currentLevel;
     MainMenuScene* mainMenuScene;
+    levelSelector* lSelector;
     int currentLevelIndex;
 public slots:
     void restartLevel();

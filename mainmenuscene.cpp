@@ -1,6 +1,4 @@
 #include "mainmenuscene.h"
-#include "level1.h"
-#include "levelselector.h"
 #include <QPushButton>
 #include <QGraphicsScene>
 #include <QGraphicsProxyWidget>
@@ -108,11 +106,7 @@ MainMenuScene::MainMenuScene(Game* game): QGraphicsScene(game) {
 }
 
 void MainMenuScene::new_game() {
-    // Remove Buttons
-    playButton->close();
-
-    // Create Level 1 and add the scene to the game
-    game->startLevel(1);
+    game->goToLevelSelector();
 }
 
 

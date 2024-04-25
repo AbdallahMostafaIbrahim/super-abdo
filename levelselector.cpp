@@ -1,5 +1,4 @@
 #include "levelselector.h"
-#include "level1.h"
 
 levelSelector::levelSelector(Game*game) : QGraphicsScene() {
     this->game = game;
@@ -155,81 +154,31 @@ levelSelector::levelSelector(Game*game) : QGraphicsScene() {
 
     // Event Handlers
     connect(Level_1, SIGNAL(clicked()), this, SLOT(new_game_1()));
-    // connect(Level_2, SIGNAL(clicked()), this, SLOT(new_game_2()));
-    // connect(Level_3, SIGNAL(clicked()), this, SLOT(new_game_3()));
-    // connect(Level_4, SIGNAL(clicked()), this, SLOT(new_game_4()));
-    // connect(Level_5, SIGNAL(clicked()), this, SLOT(new_game_5()));
+    connect(Level_2, SIGNAL(clicked()), this, SLOT(new_game_2()));
+    connect(Level_3, SIGNAL(clicked()), this, SLOT(new_game_3()));
+    connect(Level_4, SIGNAL(clicked()), this, SLOT(new_game_4()));
+    connect(Level_5, SIGNAL(clicked()), this, SLOT(new_game_5()));
 
 }
 
 void levelSelector::new_game_1()
 {
-    // Remove Buttons
-    Level_1->close();
-    Level_2->close();
-    Level_3->close();
-    Level_4->close();
-    Level_5->close();
-
-
-    // Create Level 1 and add the scene to the game
-    Level1* level1 = new Level1(game);
-    game->setScene(level1);
+    game->startLevel(1);
 }
 
 void levelSelector::new_game_2()
 {
-    // Remove Buttons
-    Level_1->close();
-    Level_2->close();
-    Level_3->close();
-    Level_4->close();
-    Level_5->close();
-
-
-    // Create Level 1 and add the scene to the game
-    Level1* level2 = new Level1(game);
-    game->setScene(level2);
+    game->startLevel(2);
 }
 void levelSelector::new_game_3()
 {
-    // Remove Buttons
-    Level_1->close();
-    Level_2->close();
-    Level_3->close();
-    Level_4->close();
-    Level_5->close();
-
-
-    // Create Level 1 and add the scene to the game
-    Level1* level3 = new Level1(game);
-    game->setScene(level3);
+    game->startLevel(3);
 }
 void levelSelector::new_game_4()
 {
-    // Remove Buttons
-    Level_1->close();
-    Level_2->close();
-    Level_3->close();
-    Level_4->close();
-    Level_5->close();
-
-
-    // Create Level 1 and add the scene to the game
-    Level1* level4 = new Level1(game);
-    game->setScene(level4);
+    game->startLevel(4);
 }
 void levelSelector::new_game_5()
 {
-    // Remove Buttons
-    Level_1->close();
-    Level_2->close();
-    Level_3->close();
-    Level_4->close();
-    Level_5->close();
-
-
-    // Create Level 1 and add the scene to the game
-    Level1* level5 = new Level1(game);
-    game->setScene(level5);
+    game->startLevel(5);
 }
