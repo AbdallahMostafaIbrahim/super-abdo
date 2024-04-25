@@ -1,5 +1,6 @@
 #include "mainmenuscene.h"
 #include "level1.h"
+#include "levelselector.h"
 #include <QPushButton>
 #include <QGraphicsScene>
 #include <QGraphicsProxyWidget>
@@ -16,15 +17,15 @@ MainMenuScene::MainMenuScene(Game* game): QGraphicsScene(game) {
     this->setBackgroundBrush(bgBrush);
 
     // Create the buttons
-    newGameButton = new QPushButton();
-    newGameButton->setText("New Game");
-    newGameButton->setObjectName(QString("newGameButton"));
-    newGameButton->setToolTip("New Game");
-    newGameButton->setGeometry(QRect((this->width() / 2) - 135 / 2, 360, 100, 32));
-    newGameButton->setAutoFillBackground(false);
-    newGameButton->setCursor(Qt::PointingHandCursor);
+    playButton = new QPushButton();
+    playButton->setText("Play");
+    playButton->setObjectName(QString("playButton"));
+    playButton->setToolTip("Play");
+    playButton->setGeometry(QRect((this->width() / 2) - 210 / 2, 300, 100, 32));
+    playButton->setAutoFillBackground(false);
+    playButton->setCursor(Qt::PointingHandCursor);
 
-    newGameButton->setStyleSheet(
+    playButton->setStyleSheet(
         "QPushButton {"
         "   background-color: #4CAF50; " // Green background
         "   color: white; "              // White text
@@ -42,37 +43,13 @@ MainMenuScene::MainMenuScene(Game* game): QGraphicsScene(game) {
         "   background-color: #397D39;" // Even darker green when pressed
         "}");
 
-    continueButton = new QPushButton();
-    continueButton->setText("Continue...");
-    continueButton->setObjectName(QString("newGameButton"));
-    continueButton->setToolTip("Continue");
-    continueButton->setGeometry(QRect((this->width() / 2) - 135 / 2, 420, 100, 32));
-    continueButton->setAutoFillBackground(false);
-    continueButton->setCursor(Qt::PointingHandCursor);
 
-    continueButton->setStyleSheet(
-        "QPushButton {"
-        "   background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 #2196F3, stop:1 #64B5F6); " // Gradient blue background
-        "   color: white; "              // White text
-        "   border-style: solid; "
-        "   border-width: 2px; "
-        "   border-color: #1976D2; "     // Darker blue border
-        "   font: bold 14px; "
-        "   min-width: 10em; "
-        "   padding: 6px; "
-        "}"
-        "QPushButton:hover {"
-        "   background-color: #1976D2;" // Darker blue on hover
-        "}"
-        "QPushButton:pressed {"
-        "   background-color: #1565C0;" // Even darker blue when pressed
-        "}");
 
     shopButton = new QPushButton();
     shopButton->setText("Shop");
     shopButton->setObjectName(QString("shopButton"));
     shopButton->setToolTip("View Shop");
-    shopButton->setGeometry(QRect((this->width() / 2) - 135 / 2, 480, 100, 32));
+    shopButton->setGeometry(QRect((this->width() / 2) - 210 / 2, 360, 100, 32));
     shopButton->setAutoFillBackground(false);
     shopButton->setCursor(Qt::PointingHandCursor);
 
@@ -98,7 +75,7 @@ MainMenuScene::MainMenuScene(Game* game): QGraphicsScene(game) {
     settingsButton->setText("Settings");
     settingsButton->setObjectName(QString("settingsButton"));
     settingsButton->setToolTip("View Settings");
-    settingsButton->setGeometry(QRect((this->width() / 2) - 135 / 2, 540, 100, 32));
+    settingsButton->setGeometry(QRect((this->width() / 2) - 210 / 2, 420, 100, 32));
     settingsButton->setAutoFillBackground(false);
     settingsButton->setCursor(Qt::PointingHandCursor);
 
@@ -122,19 +99,17 @@ MainMenuScene::MainMenuScene(Game* game): QGraphicsScene(game) {
 
 
     // Add Buttons to Scene
-    addWidget(newGameButton);
-    addWidget(continueButton);
+    addWidget(playButton);
     addWidget(shopButton);
     addWidget(settingsButton);
 
     // Event Handlers
-    connect(newGameButton, SIGNAL(clicked()), this, SLOT(new_game()));
+    connect(playButton, SIGNAL(clicked()), this, SLOT(new_game()));
 }
 
 void MainMenuScene::new_game() {
     // Remove Buttons
-    newGameButton->close();
-    continueButton->close();
+    playButton->close();
 
     // Create Level 1 and add the scene to the game
     game->startLevel(1);

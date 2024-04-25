@@ -12,8 +12,7 @@ public:
     MainMenuScene(Game* game);
 private:
     Game* game;
-    QPushButton* newGameButton;
-    QPushButton* continueButton;
+    QPushButton* playButton;
     QPushButton* shopButton;
     QPushButton* settingsButton;
 private slots:
