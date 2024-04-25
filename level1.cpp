@@ -311,8 +311,10 @@ void Level1::moveEnemies()
     for(int i = 0; i < things.length(); i++) {
         if(!things[i]) continue;
         BaseEnemy* enemy = dynamic_cast<BaseEnemy*>(things[i]);
-        if(enemy)
+        if(enemy) {
             enemy->move(elapsedTime, deltaTime);
+        }
+
     }
 }
 
