@@ -11,6 +11,7 @@
 #include <QGraphicsScene>
 #include <QGraphicsTextItem>
 #include <QTimer>
+#include <QTime>
 #include <QFile>
 #include <QTextStream>
 #include <QUrl>
@@ -41,7 +42,7 @@ Level1::Level1(Game *game) : QGraphicsScene()
 
     // Movement
     elapsedTime = 0;
-    speed = 3;
+    speed = 750; // I think this means 750 pixels in 1 second
     timeAfterJump = 0;
     timeWhenStartedFalling = 0;
     speedJumpFactor = 0.8f;
@@ -65,7 +66,8 @@ Level1::Level1(Game *game) : QGraphicsScene()
 
     // Connect and start the game loop
     connect(timer, SIGNAL(timeout()), this, SLOT(gameLoop()));
-    timer->start(deltaTime);
+    timer->start(0);
+    elapsedTimer.start();
 
     // Scene Init
     initScene();
@@ -93,8 +95,6 @@ void Level1::initScene()
     abdo->setPos(200, game->height() - abdo->boundingRect().height() - 100);
 
     this->addItem(abdo);
-
-    boss = nullptr;
 
     // Open Map File to load the platforms
     QFile file(":/maps/map-1/map.txt");
@@ -131,6 +131,8 @@ void Level1::drawForeground(QPainter *painter, const QRectF &rect)
         painter->setPen(Qt::white);
         painter->setFont(QFont("Minecraft", 24));
         painter->drawText(55, 75 + 30, "x" + QString::number(collectedCoins));
+
+        painter->drawText(game->width() - 300, 80, QString::number(1000.0f/deltaTime) + "Updates Per Second");
 
         if(isFightingBoss) {
             int healthBarWidth = 400;
@@ -206,7 +208,7 @@ void Level1::moveHorizontally()
         return;
     }
 
-    abdo->moveBy(speed * (leftPressed ? -1 : 1) * ((isJumping | isFalling) ? speedJumpFactor : 1), 0);
+    abdo->moveBy(speed * (leftPressed ? -1 : 1) * ((isJumping | isFalling) ? speedJumpFactor : 1) * (deltaTime / 1000.0f), 0);
 }
 
 void Level1::jumpPlayer()
@@ -264,6 +266,11 @@ void Level1::moveVertically()
             float deltaY = Utils::minMagnitude((fallFunction(timeAfterJump) - (timeAfterJump == 0 ? 0 : fallFunction(timeAfterJump - deltaTime))), TERMINAL_VELOCITY);
             abdo->moveBy(0, -deltaY);
             timeAfterJump += deltaTime;
+        }
+        if(abdo->y() > game->height() + 50) {
+            removeItem(abdo);
+            isGameOver = true;
+            finishedTime = elapsedTime;
         }
     }
 }
@@ -324,6 +331,7 @@ void Level1::moveBullets()
 
 void Level1::gameLoop()
 {
+    deltaTime = elapsedTimer.restart();
     elapsedTime += deltaTime;
 
     if(!isGameOver && !isGoodGame) {

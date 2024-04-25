@@ -5,6 +5,7 @@
 #include <QObject>
 #include <QPainter>
 #include <QRectF>
+#include <QElapsedTimer>
 #include "game.h"
 #include "abdo.h"
 #include "enemy/boss.h"
@@ -35,6 +36,8 @@ private:
     void checkEnemies();
     void moveEnemies();
     void moveBullets();
+
+    QElapsedTimer elapsedTimer;
 
     Game* game;
     Abdo* abdo;
