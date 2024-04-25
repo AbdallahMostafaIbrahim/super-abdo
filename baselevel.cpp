@@ -81,7 +81,7 @@ void BaseLevel::initScene() {
 
     abdo = new Abdo();
 
-    abdo->setPos(200, game->height() - abdo->boundingRect().height() - 100);
+    abdo->setPos(6400, game->height() - abdo->boundingRect().height() - 100);
 
     addItem(abdo);
 
