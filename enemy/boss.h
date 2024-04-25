@@ -8,7 +8,7 @@ class Boss : public BaseEnemy
 public:
     Boss(QList<QPixmap>, int);
     void move(int, int) override;
-    virtual void shoot(int);
+    virtual void shoot() = 0;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
     QRectF boundingRect() const override;
 private:
@@ -18,9 +18,9 @@ private:
     QList<QPainterPath> paths;
     QPixmap currentPixmap;
     QPainterPath currentPath;
-    int currentFrame;
 protected:
     int dropRate;
+    int currentFrame;
 };
 
 #endif // BOSS_H

@@ -20,6 +20,7 @@ SOURCES += \
     enemy/harmfulentity.cpp \
     enemy/hazardsign.cpp \
     enemy/karen.cpp \
+    enemy/karenbullet.cpp \
     enemy/movingenemy.cpp \
     enemy/printerbullet.cpp \
     enemy/printerenemy.cpp \
@@ -55,6 +56,7 @@ HEADERS += \
     enemy/harmfulentity.h \
     enemy/hazardsign.h \
     enemy/karen.h \
+    enemy/karenbullet.h \
     enemy/movingenemy.h \
     enemy/printerbullet.h \
     enemy/printerenemy.h \

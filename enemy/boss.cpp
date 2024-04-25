@@ -24,15 +24,6 @@ void Boss::move(int, int)
 
 }
 
-void Boss::shoot(int)
-{
-    // if(currentFrame % dropRate == 0) {
-    //     PrinterBullet* bullet = new PrinterBullet();
-    //     bullet->setPos(x() + bullet->boundingRect().width() / 4, y() + currentPixmap.height());
-    //     scene()->addItem(bullet);
-    // }
-}
-
 void Boss::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
     painter->drawPixmap(0, 0, currentPixmap);
@@ -51,6 +42,7 @@ QRectF Boss::boundingRect() const
 
 void Boss::animate()
 {
+    shoot();
     if(animationTimer.elapsed() >= 100) {
         currentPixmap = (pixmaps[currentFrame % pixmaps.size()]);
         currentPath = (paths[currentFrame % paths.size()]);

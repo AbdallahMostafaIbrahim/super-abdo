@@ -6,9 +6,7 @@ class Karen : public Boss
 {
 public:
     Karen();
-    void shoot(int) override;
-
-
+    void shoot() override;
 };
 
 #endif // KAREN_H
