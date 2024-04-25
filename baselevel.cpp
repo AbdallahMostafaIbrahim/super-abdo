@@ -61,7 +61,7 @@ BaseLevel::BaseLevel(Game *game) : QGraphicsScene()
 
     // Connect and start the game loop
     connect(timer, SIGNAL(timeout()), this, SLOT(gameLoop()));
-    timer->start(0);
+    timer->start(5);
     elapsedTimer.start();
 
     // gameTheme
@@ -82,7 +82,7 @@ void BaseLevel::initScene() {
 
     abdo = new Abdo();
 
-    abdo->setPos(6400, game->height() - abdo->boundingRect().height() - 100);
+    abdo->setPos(200, game->height() - abdo->boundingRect().height() - 100);
 
     addItem(abdo);
 
@@ -332,6 +332,7 @@ void BaseLevel::moveBullets()
 void BaseLevel::spawnBoss() {
     if(abdo->x() >= getLevelSettings().triggerBossLoc && !isFightingBoss)
     {
+        health += 2;
         boss = new Karen;
         boss->setPos(sceneRect().width() - boss->boundingRect().width()-50, sceneRect().height()-55 - boss->boundingRect().height());
         isFightingBoss = true;

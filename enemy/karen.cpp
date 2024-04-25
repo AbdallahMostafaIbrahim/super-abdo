@@ -5,7 +5,7 @@
 #include <QRandomGenerator>
 #include "employeeenemy.h"
 
-Karen::Karen() : Boss({QPixmap(":/images/boss.png")}, 30)
+Karen::Karen() : Boss({QPixmap(":/images/boss.png")}, 25)
 {
     bulletTimer.start();
     spawnTimer.start();

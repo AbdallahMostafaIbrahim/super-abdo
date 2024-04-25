@@ -6,7 +6,7 @@ platform 6100 0 2000 55 :/images/tile-1.png
 
 shelf 400 135 500 40 lol
 shelf 1100 185 380 40 lol
-shelf 4450 200 200 40 lol
+shelf 4450 180 200 40 lol
 -shelf 3800 210 240 40 lol
 
 
