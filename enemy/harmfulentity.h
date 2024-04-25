@@ -1,6 +1,7 @@
 #ifndef HARMFULENTITY_H
 #define HARMFULENTITY_H
 
+// Anything that will damage abdo
 class HarmfulEntity
 {
 private:

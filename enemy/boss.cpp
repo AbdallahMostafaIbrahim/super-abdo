@@ -8,6 +8,7 @@
 
 Boss::Boss(QList<QPixmap> pixie, int h) : BaseEnemy(h, 1, false)
 {
+    // Setup pixmaps
     pixmaps = pixie;
     for(int i = 0; i < pixmaps.length(); i++) {
         paths.append(*Utils::createPathFromPixmap(pixmaps[i], 20));
@@ -15,13 +16,10 @@ Boss::Boss(QList<QPixmap> pixie, int h) : BaseEnemy(h, 1, false)
     currentPixmap = pixmaps[0];
     currentPath = paths[0];
     currentFrame = 0;
-    dropRate = QRandomGenerator::global()->bounded(10) + 7;
 }
 
-void Boss::move(int, int)
-{
-
-}
+// Boss Doesn't Move
+void Boss::move(int, int) { }
 
 void Boss::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {

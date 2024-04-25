@@ -10,6 +10,7 @@ PrinterBullet::PrinterBullet() : EnemyBullet(10000) {
 
 void PrinterBullet::move()
 {
+    // Keeps moving down
     moveBy(0, 2);
 
     QList<QGraphicsItem*> items = collidingItems();

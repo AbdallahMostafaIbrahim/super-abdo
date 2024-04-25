@@ -4,6 +4,7 @@
 #include <QAudioOutput>
 #include <QPushButton>
 
+// Static Class that plays audio :)
 class SoundPlayer
 {
 private:

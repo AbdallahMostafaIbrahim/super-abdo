@@ -3,6 +3,7 @@
 #include <QFont>
 #include<QPainterPath>
 
+// Utitlies Class
 class Utils
 {
 public:

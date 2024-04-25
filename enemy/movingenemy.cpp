@@ -15,6 +15,7 @@ MovingEnemy::MovingEnemy(int left, int right, int initialPos, float speed, int h
 
 void MovingEnemy::move(int elapsedTime, int delta)
 {
+    // Patrols the enemy from left to right
     float deltaTimeSeconds = delta / 1000.0f;
 
     float distanceToMove = direction * speed * deltaTimeSeconds;

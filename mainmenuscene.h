@@ -5,6 +5,7 @@
 #include <QPushButton>
 #include "game.h"
 
+// Home Screen
 class MainMenuScene : public QGraphicsScene
 {
 Q_OBJECT

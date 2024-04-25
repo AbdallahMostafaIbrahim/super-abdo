@@ -31,5 +31,5 @@ printer 5800 30 0 0 0
 -printer 5950 30 0 0 0
 
 
-printer 7000 30 0 0 0
-printer 7500 30 0 0 0
+printer 7200 30 0 0 0
+printer 7800 30 0 0 0

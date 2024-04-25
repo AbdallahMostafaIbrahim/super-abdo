@@ -3,12 +3,13 @@
 #include "baseenemy.h"
 #include <QPixmap>
 
+// Base Boss Class
 class Boss : public BaseEnemy
 {
 public:
     Boss(QList<QPixmap>, int);
     void move(int, int) override;
-    virtual void shoot() = 0;
+    virtual void shoot() = 0; // Shoot Function that will be overrided in children
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
     QRectF boundingRect() const override;
 private:
@@ -19,7 +20,6 @@ private:
     QPixmap currentPixmap;
     QPainterPath currentPath;
 protected:
-    int dropRate;
     int currentFrame;
 };
 

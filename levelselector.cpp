@@ -1,6 +1,6 @@
 #include "levelselector.h"
 
-levelSelector::levelSelector(Game*game) : QGraphicsScene() {
+LevelSelector::LevelSelector(Game*game) : QGraphicsScene() {
     this->game = game;
     this->setSceneRect(0,0, game->width(), game->height());
 
@@ -153,6 +153,7 @@ levelSelector::levelSelector(Game*game) : QGraphicsScene() {
 
 
     // Event Handlers
+    // TODO: Make this better somehow using one function. probably just give the slot a parameter.
     connect(Level_1, SIGNAL(clicked()), this, SLOT(new_game_1()));
     connect(Level_2, SIGNAL(clicked()), this, SLOT(new_game_2()));
     connect(Level_3, SIGNAL(clicked()), this, SLOT(new_game_3()));
@@ -161,24 +162,24 @@ levelSelector::levelSelector(Game*game) : QGraphicsScene() {
 
 }
 
-void levelSelector::new_game_1()
+void LevelSelector::new_game_1()
 {
     game->startLevel(1);
 }
 
-void levelSelector::new_game_2()
+void LevelSelector::new_game_2()
 {
     game->startLevel(2);
 }
-void levelSelector::new_game_3()
+void LevelSelector::new_game_3()
 {
     game->startLevel(3);
 }
-void levelSelector::new_game_4()
+void LevelSelector::new_game_4()
 {
     game->startLevel(4);
 }
-void levelSelector::new_game_5()
+void LevelSelector::new_game_5()
 {
     game->startLevel(5);
 }

@@ -16,8 +16,7 @@ float Utils::minMagnitude(float l, float r) {
     }
 }
 
-
-
+// Creates QPainterPath that is drawn arround the edges of a pixmap. This is used for the red overlay that indicates damage over the pixmaps.
 QPainterPath* Utils::createPathFromPixmap(const QPixmap &pixmap, int precision)
 {
     QPainterPath *path = new QPainterPath();

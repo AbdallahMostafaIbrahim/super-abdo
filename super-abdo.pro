@@ -11,7 +11,6 @@ CONFIG += c++17
 
 SOURCES += \
     abdo.cpp \
-    basebullet.cpp \
     baselevel.cpp \
     enemy/baseenemy.cpp \
     enemy/boss.cpp \
@@ -24,7 +23,6 @@ SOURCES += \
     enemy/movingenemy.cpp \
     enemy/printerbullet.cpp \
     enemy/printerenemy.cpp \
-    enemy/shootingenemy.cpp \
     enemy/staticenemy.cpp \
     game.cpp \
     level1.cpp \
@@ -47,7 +45,6 @@ SOURCES += \
 
 HEADERS += \
     abdo.h \
-    basebullet.h \
     baselevel.h \
     enemy/baseenemy.h \
     enemy/boss.h \
@@ -60,7 +57,6 @@ HEADERS += \
     enemy/movingenemy.h \
     enemy/printerbullet.h \
     enemy/printerenemy.h \
-    enemy/shootingenemy.h \
     enemy/staticenemy.h \
     game.h \
     level1.h \

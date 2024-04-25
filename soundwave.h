@@ -4,6 +4,7 @@
 #include <QGraphicsItem>
 #include <QObject>
 
+// Player Bullet
 class SoundWave : public QObject, public QGraphicsItem
 {
 Q_OBJECT

@@ -6,27 +6,31 @@
 #include <QWidget>
 
 // I am so smart :)
+// This is used to prevent recursive importing errors.
 class BaseLevel;
 class MainMenuScene;
-class levelSelector;
+class LevelSelector;
 
 class Game : public QGraphicsView
 {
     Q_OBJECT
 public:
     Game(int, int);
-    void switchScene(QGraphicsScene*);
     void startLevel(int index);
     void goToLevelSelector();
 private:
-    // TODO: GameState
+    // TODO: GameState like total coins and level reached
+
+    // Storing pointers to scenes that will be set on the view
     BaseLevel* currentLevel;
     MainMenuScene* mainMenuScene;
-    levelSelector* lSelector;
+    LevelSelector* lSelector;
     int currentLevelIndex;
 public slots:
+    // Event Handlers for events that will happen in the levels
     void restartLevel();
     void quitLevel();
+    void completeLevel();
 };
 
 #endif // GAME_H

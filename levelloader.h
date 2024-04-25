@@ -4,6 +4,7 @@
 #include <QFile>
 #include <QGraphicsScene>
 
+// Utility Class to Load Levels from file
 class LevelLoader
 {
 public:

@@ -4,11 +4,12 @@
 #include <QPushButton>
 #include "game.h"
 
-class levelSelector : public QGraphicsScene
+// Level Selector Scene
+class LevelSelector : public QGraphicsScene
 {
 Q_OBJECT
 public:
-    levelSelector(Game* game);
+    LevelSelector(Game* game);
 private:
     QPushButton* Level_1;
     QPushButton* Level_2;

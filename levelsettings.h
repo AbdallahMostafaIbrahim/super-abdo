@@ -3,6 +3,7 @@
 
 #include <QString>
 
+// Class (we can make it a struct) that contains all level-specific settings.
 class LevelSettings
 {
 public:

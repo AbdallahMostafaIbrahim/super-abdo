@@ -18,7 +18,6 @@ Abdo::Abdo() {
     fallPath = *Utils::createPathFromPixmap(fallPixmap);
     jumpPath = *Utils::createPathFromPixmap(jumpPixmap);
 
-    currentUrl = ":/images/abdo/idle1.png";
     direction = 1;
 
     currentFrame = 0;
@@ -40,9 +39,11 @@ QRectF Abdo::boundingRect() const{
 }
 
 void Abdo::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) {
+    // Draws the player's pixmap
     QPixmap directedPixmap = direction == 1 ? currentPixmap : currentPixmap.transformed(QTransform().scale(direction,1));
     painter->drawPixmap(0, 0, currentPixmap.width(), currentPixmap.height(), directedPixmap);
 
+    // If he is being damaged, draw the red overlay using the setClipPath method.
     if (showDamage) {
         if(direction == -1) {
             QTransform transform = QTransform().scale(direction, 1).translate(-currentPixmap.width(), 0);
@@ -66,6 +67,7 @@ int Abdo::getDirection(){
     return direction;
 }
 
+// Checks if player is touching a groundentity from his feet
 GroundEntity* Abdo::isGrounded(const QList<QGraphicsItem*>& items) {
     for(QGraphicsItem* item : items) {
         GroundEntity* entity = dynamic_cast<GroundEntity*>(item);
@@ -80,7 +82,7 @@ GroundEntity* Abdo::isGrounded(const QList<QGraphicsItem*>& items) {
     return nullptr;
 }
 
-
+// Checks if player is touching a groundentity from the sides.
 GroundEntity* Abdo::isBlockedHorizontally(const QList<QGraphicsItem*>& items, int& direction) {
     for(QGraphicsItem* item : items) {
         GroundEntity* entity = dynamic_cast<GroundEntity*>(item);
@@ -101,7 +103,7 @@ GroundEntity* Abdo::isBlockedHorizontally(const QList<QGraphicsItem*>& items, in
     return nullptr;
 }
 
-
+// Checks if player is touching a groundenitity from his head.
 GroundEntity* Abdo::isTouchingHead(const QList<QGraphicsItem*>& items){
     for(QGraphicsItem* item : items) {
         GroundEntity* entity = dynamic_cast<GroundEntity*>(item);
@@ -116,6 +118,7 @@ GroundEntity* Abdo::isTouchingHead(const QList<QGraphicsItem*>& items){
     return nullptr;
 }
 
+// Checks if player collided with coin
 Coin* Abdo::isTouchingCoin(const QList<QGraphicsItem*>& items){
     for(QGraphicsItem* item : items) {
         Coin* coin = dynamic_cast<Coin*>(item);
@@ -126,6 +129,7 @@ Coin* Abdo::isTouchingCoin(const QList<QGraphicsItem*>& items){
     return nullptr;
 }
 
+// Checks if player collided with any harmful entity
 HarmfulEntity* Abdo::isTouchingHarmfulEntity(const QList<QGraphicsItem *>& items)
 {
     for(QGraphicsItem* item : items) {
@@ -137,13 +141,14 @@ HarmfulEntity* Abdo::isTouchingHarmfulEntity(const QList<QGraphicsItem *>& items
     return nullptr;
 }
 
-
+// Changes Animation State of Player (still work in progress)
 void Abdo::setState(PlayerState state) {
     bool willAnimate = currentState != state;
     currentState = state;
     if(willAnimate) animate();
 }
 
+// Gets Called when touches harmful entity to show red overlay over player (it is throttled)
 bool Abdo::takeDamage()
 {
     if(showDamage == true)
@@ -156,6 +161,7 @@ bool Abdo::takeDamage()
     return true;
 }
 
+// Cycle Through pixmaps depending on state
 void Abdo::animate() {
     switch (currentState) {
         case IDLE:

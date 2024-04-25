@@ -2,7 +2,7 @@
 #include <QPainter>
 #include <QRectF>
 
-KarenBullet::KarenBullet() : EnemyBullet(10000){
+KarenBullet::KarenBullet() : EnemyBullet(6000){
     pixmap = QPixmap(":/images/printer/printer-bullet.png").scaledToWidth(60);
 }
 

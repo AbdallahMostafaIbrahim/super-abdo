@@ -6,8 +6,6 @@ class HazardSign : public StaticEnemy
 {
 public:
     HazardSign();
-
-
 };
 
 #endif // HAZARDSIGN_H

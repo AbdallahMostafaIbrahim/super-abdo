@@ -17,11 +17,13 @@ enum PlayerState {
     JUMPING
 };
 
+// The player
 class Abdo: public QObject, public QGraphicsItem
 {
 Q_OBJECT
 public:
     Abdo();
+    // Paint Function that gets called every scene update to draw the pixmap
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
     QRectF boundingRect() const override;
     void setDirection(int direction);
@@ -39,7 +41,6 @@ private:
     int currentFrame;
     int direction;
 
-    QString currentUrl;
     QPixmap currentPixmap;
     QList<QPixmap> idlePixmaps;
     QList<QPixmap> runPixmaps;

@@ -29,6 +29,7 @@ LevelLoader::LevelLoader(QFile& mapFile, QFile& enemiesFile) {
 void LevelLoader::loadMap(QGraphicsScene* scene) {
     QTextStream stream(file);
 
+    // This is a map between entity name and the function called to create it.
     QMap<QString, std::function<void(int x, int y)>> constructorMap = {
         {"office_desk", [scene](int x, int y) -> void {
              Desk* desk = new Desk();
@@ -65,6 +66,7 @@ void LevelLoader::loadMap(QGraphicsScene* scene) {
     int x, y, width, height;
     QString platformTexture;
 
+    // Go line by line, identify each entity, call the corresponding function to create and add the entity to the scene.
     while (!stream.atEnd()) {
         line = stream.readLine().trimmed();
         if (line.isEmpty() || line.startsWith("-")) {

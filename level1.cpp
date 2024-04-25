@@ -2,6 +2,7 @@
 #include <QFile>
 
 Level1::Level1(Game *game) : BaseLevel(game) {
+    // Setting Level Settings
     levelSettings.doubleJumpEnabled = false;
     levelSettings.galabeyaGlideEnabled = false;
     levelSettings.soundWaveEnabled = true;
@@ -10,6 +11,7 @@ Level1::Level1(Game *game) : BaseLevel(game) {
     levelSettings.enemiesFile = ":/maps/map-1/enemies.txt";
     levelSettings.sceneWidth = 8100;
 
+    // Call Init Scene to load level using the settings
     initScene();
 }
 

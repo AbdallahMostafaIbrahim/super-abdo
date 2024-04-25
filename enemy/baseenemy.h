@@ -6,6 +6,7 @@
 #include <QElapsedTimer>
 #include "harmfulentity.h"
 
+// Base Class for any enemy
 class BaseEnemy : public QObject, public QGraphicsItem, public HarmfulEntity
 {
 Q_OBJECT

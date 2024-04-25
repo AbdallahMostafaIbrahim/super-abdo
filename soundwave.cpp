@@ -11,8 +11,9 @@ SoundWave::SoundWave(int direction)
     pixmap = QPixmap(":/images/sound-wave.png");
     dir = direction;
 
-    QTimer::singleShot(1000, this, SLOT(kill()));
+    QTimer::singleShot(2000, this, SLOT(kill()));
 
+    // Bullet timer initialization.
     QTimer *timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(move()));
     timer->start(1000 / 60);
@@ -30,10 +31,13 @@ void SoundWave::paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
 }
 
 void SoundWave::move(){
+    // Gets called 60 times per second and moves in the direction the player was facing.
     moveBy(7 * dir, 0);
 
     QList<QGraphicsItem*> items = collidingItems();
 
+    // If collides with enemy or ground entity it deletes itself
+    // If it collides with enemy it damages the enemy.
     for(QGraphicsItem* item : items) {
         if (!item) continue;
 
