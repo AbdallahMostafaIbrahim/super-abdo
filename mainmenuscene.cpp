@@ -137,8 +137,7 @@ void MainMenuScene::new_game() {
     continueButton->close();
 
     // Create Level 1 and add the scene to the game
-    Level1* level1 = new Level1(game);
-    game->setScene(level1);
+    game->startLevel(1);
 }
 
 

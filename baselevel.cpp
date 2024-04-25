@@ -4,7 +4,6 @@
 #include "utils.h"
 #include "soundwave.h"
 #include "enemy/baseenemy.h"
-#include "mainmenuscene.h"
 #include "enemy/enemybullet.h"
 #include "enemy/boss.h"
 #include "enemy/karen.h"
@@ -404,15 +403,12 @@ void BaseLevel::keyPressEvent(QKeyEvent *event)
         {
         case Qt::Key_R:
         {
-            // BaseLevel* BaseLevel = new BaseLevel(game);
-            // game->setScene(BaseLevel);
-            // delete this;
+            emit restart();
         }
         break;
         case Qt::Key_Escape:
         {
-            MainMenuScene* mainMenuScene = new MainMenuScene(game);
-            game->switchScene(mainMenuScene);
+            emit quit();
         }
         break;
         }

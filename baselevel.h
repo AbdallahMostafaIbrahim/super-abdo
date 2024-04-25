@@ -74,6 +74,9 @@ private:
     bool isGoodGame;
 private slots:
     void gameLoop();
+signals:
+    void restart();  // Signal to notify the view of the restart event
+    void quit();
 };
 
 #endif // BASELEVEL_H
