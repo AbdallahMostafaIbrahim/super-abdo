@@ -96,13 +96,16 @@ void SoundPlayer::levelFinish()
     mediaPlayer_levelFinish->play();
 }
 
-void SoundPlayer::gameTheme()
+void SoundPlayer::gameTheme(bool start)
 {
     mediaPlayer_gameTheme->setSource(QUrl("qrc:/sound-effects/game-theme.mp3"));
     mediaPlayer_gameTheme->setAudioOutput(audioOutput_gameTheme);
     audioOutput_gameTheme->setVolume(0.1);
     mediaPlayer_gameTheme->setLoops(100);
-    mediaPlayer_gameTheme->play();
+    if(start)
+        mediaPlayer_gameTheme->play();
+    else
+        mediaPlayer_gameTheme->stop();
 }
 
 void SoundPlayer::muteTheme()

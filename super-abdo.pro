@@ -12,6 +12,7 @@ CONFIG += c++17
 SOURCES += \
     abdo.cpp \
     basebullet.cpp \
+    baselevel.cpp \
     enemy/baseenemy.cpp \
     enemy/boss.cpp \
     enemy/employeeenemy.cpp \
@@ -35,6 +36,7 @@ SOURCES += \
     level_props/platform.cpp \
     level_props/shelf.cpp \
     levelloader.cpp \
+    levelsettings.cpp \
     main.cpp \
     mainmenuscene.cpp \
     soundplayer.cpp \
@@ -44,6 +46,7 @@ SOURCES += \
 HEADERS += \
     abdo.h \
     basebullet.h \
+    baselevel.h \
     enemy/baseenemy.h \
     enemy/boss.h \
     enemy/employeeenemy.h \
@@ -67,6 +70,7 @@ HEADERS += \
     level_props/platform.h \
     level_props/shelf.h \
     levelloader.h \
+    levelsettings.h \
     mainmenuscene.h \
     soundplayer.h \
     utils.h \

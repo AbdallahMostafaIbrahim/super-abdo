@@ -10,9 +10,8 @@ class Game : public QGraphicsView
     Q_OBJECT
 public:
     Game(int, int);
+    void switchScene(QGraphicsScene*);
 private:
-    QGraphicsScene* currentScene;
-
     // TODO: GameState
 
 };

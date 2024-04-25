@@ -42,7 +42,7 @@ public:
     static void fireSoundWave();
     static void abdoJump();
     static void levelFinish();
-    static void gameTheme();
+    static void gameTheme(bool start = true);
     static void muteTheme();
     static void setVolume(float v);
     static float getVolume();
