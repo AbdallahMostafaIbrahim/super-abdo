@@ -5,13 +5,12 @@
 #include <QRandomGenerator>
 #include "employeeenemy.h"
 
-Karen::Karen() : Boss({QPixmap(":/images/boss.png")}, 20)
+Karen::Karen() : Boss({QPixmap(":/images/boss.png")}, 30)
 {
- bulletTimer.start();
- spawnTimer.start();
- recoilRate = QRandomGenerator::global()->bounded(1500) + 700;
- newLoc = QRandomGenerator::global()->bounded(12) + 9;
-
+    bulletTimer.start();
+    spawnTimer.start();
+    recoilRate = QRandomGenerator::global()->bounded(1500) + 700;
+    newLoc = QRandomGenerator::global()->bounded(12) + 9;
 }
 
 void Karen::shoot()
@@ -24,7 +23,6 @@ void Karen::shoot()
         scene()->addItem(bullet);
         bulletTimer.restart();
     }
-
 
     if (spawnTimer.elapsed() >=8000){
         EmployeeEnemy * pawn = new EmployeeEnemy(600, 0, x(), 300);

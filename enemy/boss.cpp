@@ -8,10 +8,9 @@
 
 Boss::Boss(QList<QPixmap> pixie, int h) : BaseEnemy(h, 1, false)
 {
-    int width = 250;
     pixmaps = pixie;
     for(int i = 0; i < pixmaps.length(); i++) {
-        paths.append(*Utils::createPathFromPixmap(pixmaps[i], 10));
+        paths.append(*Utils::createPathFromPixmap(pixmaps[i], 20));
     }
     currentPixmap = pixmaps[0];
     currentPath = paths[0];

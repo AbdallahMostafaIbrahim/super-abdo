@@ -40,6 +40,7 @@ BaseLevel::BaseLevel(Game *game) : QGraphicsScene()
     speed = 750; // I think this means 750 pixels in 1 second
     timeAfterJump = 0;
     timeWhenStartedFalling = 0;
+    timeWhenShot = 0;
     speedJumpFactor = 0.8f;
     jumpWidth = 32;
     jumpHeight = 180;
@@ -342,6 +343,7 @@ void BaseLevel::gameLoop()
 {
     deltaTime = elapsedTimer.restart();
     elapsedTime += deltaTime;
+    timeWhenShot += deltaTime;
 
     if(!isGameOver && !isGoodGame) {
         collidingItems = abdo->collidingItems();
@@ -392,11 +394,14 @@ void BaseLevel::keyPressEvent(QKeyEvent *event)
         case Qt::Key_Z:
             if (getLevelSettings().soundWaveEnabled && !shootPressed)
             {
-                SoundPlayer::fireSoundWave();
-                SoundWave *s = new SoundWave(abdo->getDirection());
-                s->setPos(abdo->x() + 20 * abdo->getDirection(), abdo->y() + abdo->boundingRect().height() / 4);
-                this->addItem(s);
-                shootPressed = true;
+                if(timeWhenShot >= 250) {
+                    SoundPlayer::fireSoundWave();
+                    SoundWave *s = new SoundWave(abdo->getDirection());
+                    s->setPos(abdo->x() + 20 * abdo->getDirection(), abdo->y() + abdo->boundingRect().height() / 4);
+                    this->addItem(s);
+                    shootPressed = true;
+                    timeWhenShot = 0;
+                }
             }
         }
     }

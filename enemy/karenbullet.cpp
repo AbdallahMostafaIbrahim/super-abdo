@@ -8,7 +8,7 @@ KarenBullet::KarenBullet() : EnemyBullet(10000){
 
 void KarenBullet::move()
 {
-    moveBy(-2, 0);
+    moveBy(-1.5, 0);
 }
 
 void KarenBullet::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)

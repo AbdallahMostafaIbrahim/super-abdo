@@ -48,6 +48,7 @@ private:
     int elapsedTime;
     int timeAfterJump;
     int timeWhenStartedFalling;
+    int timeWhenShot;
     bool isJumping;
     bool isFalling;
     float jumpWidth;
