@@ -1,4 +1,5 @@
 #include "level1.h"
+#include "enemy/karen.h"
 #include <QFile>
 
 Level1::Level1(Game *game) : BaseLevel(game) {
@@ -18,4 +19,9 @@ Level1::Level1(Game *game) : BaseLevel(game) {
 
 LevelSettings Level1::getLevelSettings() {
     return levelSettings;
+}
+
+Boss *Level1::newBoss()
+{
+    return new Karen;
 }

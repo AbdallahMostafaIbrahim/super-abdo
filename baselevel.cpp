@@ -369,7 +369,7 @@ void BaseLevel::spawnBoss() {
     if(abdo->x() >= getLevelSettings().triggerBossLoc && !isFightingBoss)
     {
         health += 2;
-        boss = new Karen;
+        boss = newBoss();
         boss->setPos(sceneRect().width() - boss->boundingRect().width()-50, sceneRect().height()-55 - boss->boundingRect().height());
         isFightingBoss = true;
         addItem(boss);

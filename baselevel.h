@@ -84,6 +84,7 @@ private:
 
     // This function will be overrided for each level
     virtual LevelSettings getLevelSettings() = 0;
+    virtual Boss* newBoss() = 0;
 
     // Stores the time after the game has ended
     int finishedTime;
