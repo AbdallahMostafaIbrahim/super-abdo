@@ -78,7 +78,7 @@ BaseLevel::~BaseLevel()
 
 void BaseLevel::initScene() {
     setSceneRect(0, 0, getLevelSettings().sceneWidth, game->height()); // Uses the Level Settings to set the size of the scene.
-    setBackgroundBrush(QBrush(QPixmap(":/images/background-1.png").scaledToHeight(game->height()))); // Setting Background for scene. TODO: Put this image in Level Settings.
+    setBackgroundBrush(QBrush(QPixmap(getLevelSettings().backgroundImage).scaledToHeight(game->height()))); // Setting Background for scene. TODO: Put this image in Level Settings.
 
     // Creating the player
     abdo = new Abdo();

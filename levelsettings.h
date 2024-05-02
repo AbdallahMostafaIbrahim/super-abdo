@@ -15,6 +15,7 @@ public:
     int sceneWidth;
     QString mapFile;
     QString enemiesFile;
+    QString backgroundImage;
 };
 
 #endif // LEVELSETTINGS_H
