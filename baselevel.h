@@ -98,7 +98,7 @@ private slots:
 signals:
     void restart();  // Signal to notify the view of the restart event
     void quit();
-    void complete();
+    void complete(int coinsCollected, int timeSpendinMs);
 };
 
 #endif // BASELEVEL_H

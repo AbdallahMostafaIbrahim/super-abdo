@@ -25,6 +25,7 @@ SOURCES += \
     enemy/printerenemy.cpp \
     enemy/staticenemy.cpp \
     game.cpp \
+    gamestate.cpp \
     level1.cpp \
     level_props/ceilinglight.cpp \
     level_props/coin.cpp \
@@ -59,6 +60,7 @@ HEADERS += \
     enemy/printerenemy.h \
     enemy/staticenemy.h \
     game.h \
+    gamestate.h \
     level1.h \
     level_props/ceilinglight.h \
     level_props/coin.h \

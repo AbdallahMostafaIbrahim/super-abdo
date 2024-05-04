@@ -475,7 +475,7 @@ void BaseLevel::keyPressEvent(QKeyEvent *event)
         {
             case Qt::Key_Space:
             {
-                emit complete(); // Emit the complete event when Enter is pressed. This complete event is handled in the Game class
+                emit complete(collectedCoins, finishedTime); // Emit the complete event when Enter is pressed. This complete event is handled in the Game class
             }
             break;
         }

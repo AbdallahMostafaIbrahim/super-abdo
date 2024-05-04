@@ -30,3 +30,34 @@ QPainterPath* Utils::createPathFromPixmap(const QPixmap &pixmap, int precision)
     }
     return path;
 }
+
+QPushButton *Utils::createPushButton(QString text, int x, int y, int w, int h, QString color)
+{
+    QPushButton* button = new QPushButton();
+    button->setText(text);
+    button->setObjectName(QString(text));
+    button->setToolTip(text);
+    button->setGeometry(QRect(x, y, w, h));
+    button->setAutoFillBackground(false);
+    button->setCursor(Qt::PointingHandCursor);
+
+    button->setStyleSheet(
+        "QPushButton {"
+        "   background-color: " + color +
+        "   ;color: white; "
+        "   border-style: solid; "
+        "   border-width: 2px; "
+        "   border-color: #429646; "
+        "   font: bold 14px; "
+        "   min-width: 10em; "
+        "   padding: 6px; "
+        "}"
+        "QPushButton:hover {"
+        "   background-color: #45A049;" // darker green on hover
+        "}"
+        "QPushButton:pressed {"
+        "   background-color: #397D39;" // Even darker green when pressed
+        "}");
+
+    return button;
+}

@@ -30,7 +30,7 @@ public slots:
     // Event Handlers for events that will happen in the levels
     void restartLevel();
     void quitLevel();
-    void completeLevel();
+    void completeLevel(int coinsCollected, int timeSpentinMs);
 };
 
 #endif // GAME_H

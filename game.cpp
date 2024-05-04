@@ -3,6 +3,7 @@
 #include "baselevel.h"
 #include "level1.h"
 #include "levelselector.h"
+#include "gamestate.h"
 
 Game::Game(int width, int height) {
     // Remove Scrollbars
@@ -66,10 +67,12 @@ void Game::quitLevel() {
     setScene(mainMenuScene);
 }
 
-void Game::completeLevel() {
+void Game::completeLevel(int coinsCollected, int timeSpent) {
     if (currentLevel) {
         delete currentLevel;
     }
+    GameState::coinsCollected += coinsCollected;
+    GameState::totalTimeSpendinMs += timeSpent;
     goToLevelSelector();
 }
 
