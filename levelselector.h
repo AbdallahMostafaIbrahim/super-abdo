@@ -11,15 +11,11 @@ Q_OBJECT
 public:
     LevelSelector(Game* game);
 private:
-    QPushButton* Level_1;
-    QPushButton* Level_2;
-    QPushButton* Level_3;
-    QPushButton* Level_4;
-    QPushButton* level5Button;
     QList<QPushButton*> levelButtons;
     Game* game;
 private slots:
     void new_game(int index);
+    void back();
 };
 
 #endif // LEVELSELECTOR_H

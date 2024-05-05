@@ -6,7 +6,6 @@
 #include "enemy/baseenemy.h"
 #include "enemy/enemybullet.h"
 #include "enemy/boss.h"
-#include "enemy/karen.h"
 #include <QGraphicsScene>
 #include <QGraphicsTextItem>
 #include <QTimer>
@@ -42,7 +41,7 @@ BaseLevel::BaseLevel(Game *game) : QGraphicsScene()
     timeAfterJump = 0;
     timeWhenStartedFalling = 0;
     timeWhenShot = 0;
-    speedJumpFactor = 0.8f;
+    speedJumpFactor = 0.9f;
     jumpWidth = 32;
     jumpHeight = 180;
     isJumping = false;
@@ -475,7 +474,7 @@ void BaseLevel::keyPressEvent(QKeyEvent *event)
         {
             case Qt::Key_Space:
             {
-                emit complete(collectedCoins, finishedTime); // Emit the complete event when Enter is pressed. This complete event is handled in the Game class
+                emit complete(collectedCoins, finishedTime, getLevelIndex()); // Emit the complete event when Enter is pressed. This complete event is handled in the Game class
             }
             break;
         }

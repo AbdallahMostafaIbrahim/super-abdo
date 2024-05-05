@@ -3,6 +3,7 @@
 #include <QFont>
 #include <QPainterPath>
 #include <QPushButton>
+#include <QColor>
 
 // Utitlies Class
 class Utils
@@ -10,7 +11,7 @@ class Utils
 public:
     static float minMagnitude(float l, float r);
     static QPainterPath* createPathFromPixmap(const QPixmap &pixmap, int precision = 4);
-    static QPushButton* createPushButton(QString text, int x, int y, int w, int h, QString color);
+    static QPushButton* createPushButton(QString text, int x, int y, int w, int h, QColor color);
 };
 
 #endif // UTILS_H

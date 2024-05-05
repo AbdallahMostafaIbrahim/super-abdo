@@ -18,6 +18,7 @@ public:
     Game(int, int);
     void startLevel(int index);
     void goToLevelSelector();
+    void goToMainMenu();
 private:
     // TODO: GameState like total coins and level reached
 
@@ -30,7 +31,7 @@ public slots:
     // Event Handlers for events that will happen in the levels
     void restartLevel();
     void quitLevel();
-    void completeLevel(int coinsCollected, int timeSpentinMs);
+    void completeLevel(int coinsCollected, int timeSpentinMs, int levelIndex);
 };
 
 #endif // GAME_H

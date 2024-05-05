@@ -1,5 +1,6 @@
 #include "levelselector.h"
 #include "utils.h"
+#include "gamestate.h"
 
 LevelSelector::LevelSelector(Game*game) : QGraphicsScene() {
     this->game = game;
@@ -16,8 +17,13 @@ LevelSelector::LevelSelector(Game*game) : QGraphicsScene() {
                  << Utils::createPushButton("Level 4", (width() / 2) - 210 / 2, 420, 100, 32, "#4CAF50")
                  << Utils::createPushButton("Level 5", (width() / 2) - 210 / 2, 500, 100, 32, "#4CAF50");
 
+    QPushButton* backButton = Utils::createPushButton("Back", (width() / 2) - 210 / 2, 100, 100, 32, "#3281a8");
+
     // Add Buttons to Scene with their corresponding event handler
     for(int i = 0; i < levelButtons.size(); i++) {
+        if(GameState::levelReached < i + 1) {
+            levelButtons[i]->setDisabled(true);
+        }
         addWidget(levelButtons[i]);
         connect(levelButtons[i], &QPushButton::clicked, this, [this, i]() {
             new_game(i + 1);
@@ -28,5 +34,11 @@ LevelSelector::LevelSelector(Game*game) : QGraphicsScene() {
 void LevelSelector::new_game(int index)
 {
     game->startLevel(index);
+}
+
+
+void LevelSelector::back()
+{
+    game->goToMainMenu();
 }
 

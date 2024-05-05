@@ -85,6 +85,7 @@ private:
     // This function will be overrided for each level
     virtual LevelSettings getLevelSettings() = 0;
     virtual Boss* newBoss() = 0;
+    virtual int getLevelIndex() = 0;
 
     // Stores the time after the game has ended
     int finishedTime;
@@ -98,7 +99,7 @@ private slots:
 signals:
     void restart();  // Signal to notify the view of the restart event
     void quit();
-    void complete(int coinsCollected, int timeSpendinMs);
+    void complete(int coinsCollected, int timeSpendinMs, int levelIndex);
 };
 
 #endif // BASELEVEL_H

@@ -26,3 +26,7 @@ Boss *Level1::newBoss()
 {
     return new Karen;
 }
+
+int Level1::getLevelIndex()  {
+    return 1;
+}

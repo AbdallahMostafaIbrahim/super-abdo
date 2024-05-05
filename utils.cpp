@@ -31,7 +31,7 @@ QPainterPath* Utils::createPathFromPixmap(const QPixmap &pixmap, int precision)
     return path;
 }
 
-QPushButton *Utils::createPushButton(QString text, int x, int y, int w, int h, QString color)
+QPushButton* Utils::createPushButton(QString text, int x, int y, int w, int h, QColor color)
 {
     QPushButton* button = new QPushButton();
     button->setText(text);
@@ -43,21 +43,25 @@ QPushButton *Utils::createPushButton(QString text, int x, int y, int w, int h, Q
 
     button->setStyleSheet(
         "QPushButton {"
-        "   background-color: " + color +
+        "   background-color: " + color.name() +
         "   ;color: white; "
         "   border-style: solid; "
         "   border-width: 2px; "
-        "   border-color: #429646; "
-        "   font: bold 14px; "
+        "   border-color: " + color.darker(140).name() +
+        "   ;font: bold 14px; "
         "   min-width: 10em; "
         "   padding: 6px; "
         "}"
         "QPushButton:hover {"
-        "   background-color: #45A049;" // darker green on hover
-        "}"
+        "   background-color: " + color.darker(150).name() +
+        ";}"
         "QPushButton:pressed {"
-        "   background-color: #397D39;" // Even darker green when pressed
-        "}");
+        "   background-color: " + color.darker(170).name() +
+        ";}"
+        "QPushButton:disabled {"
+        "   background-color: " + color.darker(170).name() +
+        ";}"
+        );
 
     return button;
 }

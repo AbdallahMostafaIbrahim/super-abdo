@@ -50,7 +50,14 @@ void Game::startLevel(int index)
 
 void Game::goToLevelSelector()
 {
+    lSelector = new LevelSelector(this);
     setScene(lSelector);
+}
+
+void Game::goToMainMenu()
+{
+    mainMenuScene = new MainMenuScene(this);
+    setScene(mainMenuScene);
 }
 
 void Game::restartLevel() {
@@ -67,10 +74,11 @@ void Game::quitLevel() {
     setScene(mainMenuScene);
 }
 
-void Game::completeLevel(int coinsCollected, int timeSpent) {
+void Game::completeLevel(int coinsCollected, int timeSpent, int levelIndex) {
     if (currentLevel) {
         delete currentLevel;
     }
+    GameState::levelReached = levelIndex + 1;
     GameState::coinsCollected += coinsCollected;
     GameState::totalTimeSpendinMs += timeSpent;
     goToLevelSelector();

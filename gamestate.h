@@ -9,6 +9,7 @@ public:
     static int totalTimeSpendinMs;
     static bool galabeyaGlideBought;
     static bool doubleJumpBought;
+    static int levelReached;
 };
 
 #endif // GAMESTATE_H
