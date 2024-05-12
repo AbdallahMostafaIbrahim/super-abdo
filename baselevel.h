@@ -94,6 +94,13 @@ private:
     bool isGameOver;
     bool isFightingBoss;
     bool isGoodGame;
+
+    // Settings From Gamestate
+    bool galabeyaGlideEnabled;
+    bool doubleJumpEnabled;
+    bool soundWaveEnabled;
+    bool firstTimeGliding;
+    bool firstTimeDoubleJumping;
 private slots:
     void gameLoop();
 signals:

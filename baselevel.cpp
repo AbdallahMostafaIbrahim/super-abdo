@@ -6,6 +6,8 @@
 #include "enemy/baseenemy.h"
 #include "enemy/enemybullet.h"
 #include "enemy/boss.h"
+#include "gamestate.h"
+#include "soundplayer.h"
 #include <QGraphicsScene>
 #include <QGraphicsTextItem>
 #include <QTimer>
@@ -16,7 +18,6 @@
 #include <QMessageBox>
 #include <QKeyEvent>
 #include <QScrollBar>
-#include "soundplayer.h"
 #include <QPushButton>
 
 // Some Constants
@@ -28,6 +29,13 @@ BaseLevel::BaseLevel(Game *game) : QGraphicsScene()
     this->game = game;
 
     QTimer *timer = new QTimer(this);
+
+    // Level Settings Init
+    doubleJumpEnabled = GameState::itemsBought.contains(DOUBLE_JUMP);
+    galabeyaGlideEnabled = GameState::itemsBought.contains(GALABEYA_GLIDE);
+    soundWaveEnabled = true;
+    firstTimeDoubleJumping = GameState::newlyPurchased.contains(DOUBLE_JUMP);
+    firstTimeGliding = GameState::newlyPurchased.contains(GALABEYA_GLIDE);
 
     // KeyPresses default to false
     rightPressed = false;
@@ -42,7 +50,7 @@ BaseLevel::BaseLevel(Game *game) : QGraphicsScene()
     timeWhenStartedFalling = 0;
     timeWhenShot = 0;
     speedJumpFactor = 0.9f;
-    jumpWidth = 32;
+    jumpWidth = 30;
     jumpHeight = 180;
     isJumping = false;
     isFalling = true;
@@ -149,7 +157,15 @@ void BaseLevel::drawForeground(QPainter *painter, const QRectF &rect)
         painter->setFont(QFont("Minecraft", 24));
         painter->drawText(55, 75 + 30, "x" + QString::number(collectedCoins));
 
-        // painter->drawText(game->width() - 300, 80, QString::number(1000.0f/deltaTime) + "FPS");
+        if(firstTimeGliding) {
+            painter->setFont(QFont("Minecraft", 12));
+            painter->drawText(game->width() - 450, 50, "Galabeya Glide is unlocked. Try holding space to glide");
+        }
+        if(firstTimeDoubleJumping) {
+            painter->setFont(QFont("Minecraft", 12));
+            painter->drawText(game->width() - 450, 80, "Double Jump is unlocked. Try double pressing space");
+        }
+
 
         // Display Boss Health Bar if we are fighting the boss.
         if(isFightingBoss) {
@@ -176,7 +192,7 @@ float BaseLevel::jumpFunction(int time)
 float BaseLevel::fallFunction(int time)
 {
     // If glide is enabled, slow down the jump.
-    if (getLevelSettings().galabeyaGlideEnabled)
+    if (galabeyaGlideEnabled)
     {
         if (spacePressed)
         {
@@ -417,7 +433,7 @@ void BaseLevel::keyPressEvent(QKeyEvent *event)
         {
         case Qt::Key_Space: // Jump when space is pressed
             // This allows for double jump if it is enabled.
-            if (getLevelSettings().doubleJumpEnabled && (isJumping || isFalling) && !spacePressed)
+            if (doubleJumpEnabled && (isJumping || isFalling) && !spacePressed)
             {
                 if (currentJumpCount < maxJumps - 1)
                 {
@@ -442,7 +458,7 @@ void BaseLevel::keyPressEvent(QKeyEvent *event)
             break;
         case Qt::Key_Z:
             // If sound wave (bullet) is enabled, and I am not holding the shoot button, then we can create a new bullet from the player's location
-            if (getLevelSettings().soundWaveEnabled && !shootPressed)
+            if (soundWaveEnabled && !shootPressed)
             {
                 if(timeWhenShot >= 250) {
                     SoundPlayer::fireSoundWave();

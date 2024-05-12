@@ -65,3 +65,23 @@ QPushButton* Utils::createPushButton(QString text, int x, int y, int w, int h, Q
 
     return button;
 }
+
+QLabel *Utils::createLabel(QString text, int x, int y, int w, int h, int size, QColor color)
+{
+    QLabel* label = new QLabel();
+    label->setText(text);
+    label->setFont(QFont("Minecraft", size));
+    label->setObjectName(QString(text));
+    label->setToolTip(text);
+
+    label->setGeometry(x, y, w, h);
+
+    label->setStyleSheet(
+        "QLabel {"
+        "   color: white ;"
+        "   background-color: transparent;"
+        "}"
+        );
+
+    return label;
+}

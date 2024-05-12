@@ -1,14 +1,21 @@
 #ifndef GAMESTATE_H
 #define GAMESTATE_H
 
+#include <QSet>
+
+enum ShopItem {
+    DOUBLE_JUMP = 0,
+    GALABEYA_GLIDE
+};
+
 class GameState
 {
 public:
     GameState();
     static int coinsCollected;
     static int totalTimeSpendinMs;
-    static bool galabeyaGlideBought;
-    static bool doubleJumpBought;
+    static QSet<ShopItem> itemsBought;
+    static QSet<ShopItem> newlyPurchased;
     static int levelReached;
 };
 

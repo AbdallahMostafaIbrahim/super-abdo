@@ -1,13 +1,9 @@
 #include "level1.h"
 #include "enemy/karen.h"
-#include "gamestate.h"
 #include <QFile>
 
 Level1::Level1(Game *game) : BaseLevel(game) {
     // Setting Level Settings
-    levelSettings.doubleJumpEnabled = GameState::doubleJumpBought;
-    levelSettings.galabeyaGlideEnabled = GameState::galabeyaGlideBought;
-    levelSettings.soundWaveEnabled = true;
     levelSettings.triggerBossLoc = 6000;
     levelSettings.mapFile = ":/maps/map-1/map.txt";
     levelSettings.enemiesFile = ":/maps/map-1/enemies.txt";

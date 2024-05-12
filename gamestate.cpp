@@ -2,9 +2,8 @@
 
 int GameState::coinsCollected = 0;
 int GameState::totalTimeSpendinMs = 0;
-bool GameState::galabeyaGlideBought = false;
-bool GameState::doubleJumpBought = false;
+QSet<ShopItem> GameState::itemsBought = QSet<ShopItem>();
+QSet<ShopItem> GameState::newlyPurchased = QSet<ShopItem>();
 int GameState::levelReached = 1;
-
 
 GameState::GameState() {}

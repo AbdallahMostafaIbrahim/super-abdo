@@ -19,6 +19,7 @@ private:
     QPushButton* settingsButton;
 private slots:
     void new_game();
+    void shop();
 };
 
 #endif // MAINMENUSCENE_H

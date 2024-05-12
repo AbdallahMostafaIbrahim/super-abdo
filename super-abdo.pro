@@ -40,6 +40,7 @@ SOURCES += \
     levelsettings.cpp \
     main.cpp \
     mainmenuscene.cpp \
+    shopscene.cpp \
     soundplayer.cpp \
     utils.cpp \
     soundwave.cpp
@@ -74,6 +75,7 @@ HEADERS += \
     levelselector.h \
     levelsettings.h \
     mainmenuscene.h \
+    shopscene.h \
     soundplayer.h \
     utils.h \
     soundwave.h
