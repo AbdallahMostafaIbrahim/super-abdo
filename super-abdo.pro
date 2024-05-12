@@ -20,12 +20,14 @@ SOURCES += \
     enemy/hazardsign.cpp \
     enemy/karen.cpp \
     enemy/karenbullet.cpp \
+    enemy/leonardo.cpp \
     enemy/movingenemy.cpp \
     enemy/printerbullet.cpp \
     enemy/printerenemy.cpp \
     enemy/staticenemy.cpp \
     game.cpp \
     level1.cpp \
+    level3.cpp \
     level_props/ceilinglight.cpp \
     level_props/coin.cpp \
     level_props/desk.cpp \
@@ -54,12 +56,14 @@ HEADERS += \
     enemy/hazardsign.h \
     enemy/karen.h \
     enemy/karenbullet.h \
+    enemy/leonardo.h \
     enemy/movingenemy.h \
     enemy/printerbullet.h \
     enemy/printerenemy.h \
     enemy/staticenemy.h \
     game.h \
     level1.h \
+    level3.h \
     level_props/ceilinglight.h \
     level_props/coin.h \
     level_props/desk.h \
@@ -83,3 +87,9 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 RESOURCES += \
     resources.qrc
+
+DISTFILES += \
+    maps/map-1/enemies.txt \
+    maps/map-1/main_copy_copy.txt \
+    maps/map-1/map.txt \
+    maps/map-1/platforms.txt

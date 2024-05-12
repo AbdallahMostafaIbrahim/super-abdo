@@ -149,6 +149,30 @@ void LevelLoader::loadEnemies(QGraphicsScene* scene) {
              printer->setZValue(-1);
              scene->addItem(printer);
          }},
+        {"leo", [scene](int x, int y, int left, int right, int speed) -> void {
+             PrinterEnemy* printer = new PrinterEnemy();
+             printer->setPos(x, y);
+             printer->setZValue(-1);
+             scene->addItem(printer);
+         }},
+        {"raph", [scene](int x, int y, int left, int right, int speed) -> void {
+             PrinterEnemy* printer = new PrinterEnemy();
+             printer->setPos(x, y);
+             printer->setZValue(-1);
+             scene->addItem(printer);
+         }},
+        {"mike", [scene](int x, int y, int left, int right, int speed) -> void {
+             PrinterEnemy* printer = new PrinterEnemy();
+             printer->setPos(x, y);
+             printer->setZValue(-1);
+             scene->addItem(printer);
+         }},
+        {"trash", [scene](int x, int y, int left, int right, int speed) -> void {
+             PrinterEnemy* printer = new PrinterEnemy();
+             printer->setPos(x, y);
+             printer->setZValue(-1);
+             scene->addItem(printer);
+         }},
     };
 
     QString line;
