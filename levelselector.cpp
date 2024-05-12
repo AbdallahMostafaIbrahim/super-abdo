@@ -4,28 +4,30 @@
 
 LevelSelector::LevelSelector(Game*game) : QGraphicsScene() {
     this->game = game;
-    this->setSceneRect(0,0, game->width(), game->height());
+    setSceneRect(0,0, game->width(), game->height());
 
     // Set Background Image
     QBrush bgBrush(QColor(0, 1, 26));
-    this->setBackgroundBrush(bgBrush);
+    setBackgroundBrush(bgBrush);
 
-    // Create the buttons
-    levelButtons << Utils::createPushButton("Level 1", (width() / 2) - 210 / 2, 180, 100, 32, "#4CAF50")
-                 << Utils::createPushButton("Level 2", (width() / 2) - 210 / 2, 260, 100, 32, "#4CAF50")
-                 << Utils::createPushButton("Level 3", (width() / 2) - 210 / 2, 340, 100, 32, "#4CAF50")
-                 << Utils::createPushButton("Level 4", (width() / 2) - 210 / 2, 420, 100, 32, "#4CAF50")
-                 << Utils::createPushButton("Level 5", (width() / 2) - 210 / 2, 500, 100, 32, "#4CAF50");
+    backButton = Utils::createPushButton("Back", (width() / 2) - 210 / 2, 100, 100, 32, QColor::fromString("#3281a8"));
+    connect(backButton, SIGNAL(clicked()), this, SLOT(back()));
+    addWidget(backButton);
+}
 
-    QPushButton* backButton = Utils::createPushButton("Back", (width() / 2) - 210 / 2, 100, 100, 32, "#3281a8");
+void LevelSelector::update() {
+    for (auto &button : levelButtons) {
+        button->deleteLater();
+    }
+    levelButtons.clear();
 
-    // Add Buttons to Scene with their corresponding event handler
-    for(int i = 0; i < levelButtons.size(); i++) {
-        if(GameState::levelReached < i + 1) {
-            levelButtons[i]->setDisabled(true);
-        }
-        addWidget(levelButtons[i]);
-        connect(levelButtons[i], &QPushButton::clicked, this, [this, i]() {
+    for (int i = 0; i < 5; ++i) {
+        QString buttonLabel = QString("Level ") + QString::number(i + 1);
+        QPushButton* button = Utils::createPushButton(buttonLabel, (width() / 2) - 210 / 2, 180 + 80 * i, 100, 32, QColor::fromString("#4CAF50"));
+        levelButtons.append(button);
+        addWidget(button);
+        button->setDisabled(GameState::levelReached <= i);
+        connect(button, &QPushButton::clicked, this, [this, i]() {
             new_game(i + 1);
         });
     }

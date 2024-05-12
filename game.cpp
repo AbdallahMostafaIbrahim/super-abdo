@@ -50,13 +50,12 @@ void Game::startLevel(int index)
 
 void Game::goToLevelSelector()
 {
-    lSelector = new LevelSelector(this);
+    lSelector->update();
     setScene(lSelector);
 }
 
 void Game::goToMainMenu()
 {
-    mainMenuScene = new MainMenuScene(this);
     setScene(mainMenuScene);
 }
 

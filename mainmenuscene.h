@@ -11,6 +11,7 @@ class MainMenuScene : public QGraphicsScene
 Q_OBJECT
 public:
     MainMenuScene(Game* game);
+    ~MainMenuScene();
 private:
     Game* game;
     QPushButton* playButton;

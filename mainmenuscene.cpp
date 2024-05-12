@@ -105,6 +105,12 @@ MainMenuScene::MainMenuScene(Game* game): QGraphicsScene(game) {
     connect(playButton, SIGNAL(clicked()), this, SLOT(new_game()));
 }
 
+MainMenuScene::~MainMenuScene()
+{
+    clear();
+    disconnect();
+}
+
 void MainMenuScene::new_game() {
     game->goToLevelSelector();
 }
