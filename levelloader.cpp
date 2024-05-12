@@ -10,6 +10,7 @@
 #include "enemy/hazardsign.h"
 #include "enemy/employeeenemy.h"
 #include "enemy/printerenemy.h"
+#include "enemy/leonardo.h"
 
 #include <QMessageBox>
 #include <QTextStream>
@@ -150,10 +151,10 @@ void LevelLoader::loadEnemies(QGraphicsScene* scene) {
              scene->addItem(printer);
          }},
         {"leo", [scene](int x, int y, int left, int right, int speed) -> void {
-             PrinterEnemy* printer = new PrinterEnemy();
-             printer->setPos(x, y);
-             printer->setZValue(-1);
-             scene->addItem(printer);
+             Leonardo* leo = new Leonardo(left, right, x, speed);
+             leo->setPos(x, scene->height() - y - leo->getPixmap()->height());
+             leo->setZValue(-1);
+             scene->addItem(leo);
          }},
         {"raph", [scene](int x, int y, int left, int right, int speed) -> void {
              PrinterEnemy* printer = new PrinterEnemy();

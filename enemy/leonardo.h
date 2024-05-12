@@ -12,6 +12,7 @@ public:
     QRectF boundingRect() const override;
     const QPixmap* getPixmap();
 private:
+    QList<QPixmap> frames; /*= {QPixmap f0,QPixmap f1,QPixmap f2,QPixmap f3};*/
     QPixmap f0;
     QPixmap f1;
     QPixmap f2;
