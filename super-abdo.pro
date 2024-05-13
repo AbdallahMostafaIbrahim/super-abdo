@@ -24,9 +24,12 @@ SOURCES += \
     enemy/printerbullet.cpp \
     enemy/printerenemy.cpp \
     enemy/staticenemy.cpp \
+    enemy/streetcones.cpp \
     game.cpp \
     gamestate.cpp \
     level1.cpp \
+    level2.cpp \
+    level_props/bench.cpp \
     level_props/ceilinglight.cpp \
     level_props/coin.cpp \
     level_props/desk.cpp \
@@ -35,6 +38,8 @@ SOURCES += \
     level_props/pictureframe.cpp \
     level_props/platform.cpp \
     level_props/shelf.cpp \
+    level_props/streetbarrier.cpp \
+    level_props/teleportbuilding.cpp \
     levelloader.cpp \
     levelselector.cpp \
     levelsettings.cpp \
@@ -60,9 +65,12 @@ HEADERS += \
     enemy/printerbullet.h \
     enemy/printerenemy.h \
     enemy/staticenemy.h \
+    enemy/streetcones.h \
     game.h \
     gamestate.h \
     level1.h \
+    level2.h \
+    level_props/bench.h \
     level_props/ceilinglight.h \
     level_props/coin.h \
     level_props/desk.h \
@@ -71,6 +79,8 @@ HEADERS += \
     level_props/pictureframe.h \
     level_props/platform.h \
     level_props/shelf.h \
+    level_props/streetbarrier.h \
+    level_props/teleportbuilding.h \
     levelloader.h \
     levelselector.h \
     levelsettings.h \

@@ -339,12 +339,12 @@ void BaseLevel::checkEnemies() {
             SoundPlayer::hitAbdo();
             health -= harmfulEntity->getDamage();
             // If health becomes 0 or less, we game over.
-            if(health <= 0) {
-                removeItem(abdo);
-                isGameOver = true;
-                finishedTime = elapsedTime;
-                // TODO: Game Over Sound
-            }
+            // if(health <= 0) {
+            //     removeItem(abdo);
+            //     isGameOver = true;
+            //     finishedTime = elapsedTime;
+            //     // TODO: Game Over Sound
+            // }
         }
     }
 }
@@ -456,7 +456,7 @@ void BaseLevel::keyPressEvent(QKeyEvent *event)
             // Make Abdo face the left direction
             abdo->setDirection(-1);
             break;
-        case Qt::Key_Z:
+        case Qt::Key_Q:
             // If sound wave (bullet) is enabled, and I am not holding the shoot button, then we can create a new bullet from the player's location
             if (soundWaveEnabled && !shootPressed)
             {
@@ -469,6 +469,10 @@ void BaseLevel::keyPressEvent(QKeyEvent *event)
                     timeWhenShot = 0;
                 }
             }
+            break;
+        case Qt::Key_0:
+            emit complete(collectedCoins, finishedTime, getLevelIndex());
+            break;
         }
     }
     else if(isGameOver) {
@@ -514,7 +518,7 @@ void BaseLevel::keyReleaseEvent(QKeyEvent *event)
         case Qt::Key_Space:
             spacePressed = false;
             break;
-        case Qt::Key_Z:
+        case Qt::Key_Q:
             shootPressed = false;
             break;
         }

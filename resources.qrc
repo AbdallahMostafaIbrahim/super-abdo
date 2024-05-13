@@ -35,5 +35,14 @@
         <file>images/printer/printer-4.png</file>
         <file>images/printer/printer-bullet.png</file>
         <file>images/karen.png</file>
+        <file>images/street-cones.png</file>
+        <file>maps/map-2/enemies.txt</file>
+        <file>maps/map-2/map.txt</file>
+        <file>images/street.png</file>
+        <file>images/street-bench.png</file>
+        <file>images/street1.png</file>
+        <file>images/building-glide.png</file>
+        <file>images/building-glide1.png</file>
+        <file>images/street-barrier.png</file>
     </qresource>
 </RCC>

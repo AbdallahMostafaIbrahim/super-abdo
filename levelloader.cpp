@@ -5,9 +5,13 @@
 #include "level_props/officewindow.h"
 #include "level_props/pictureframe.h"
 #include "level_props/coin.h"
+#include "level_props/bench.h"
 #include "level_props/shelf.h"
+#include "level_props/teleportbuilding.h"
+#include "level_props/streetbarrier.h".h"
 
 #include "enemy/hazardsign.h"
+#include "enemy/streetcones.h"
 #include "enemy/employeeenemy.h"
 #include "enemy/printerenemy.h"
 
@@ -59,7 +63,24 @@ void LevelLoader::loadMap(QGraphicsScene* scene) {
              coin->setPos(x, scene->height() - y - coin->boundingRect().height());
              coin->setZValue(-1);
              scene->addItem(coin);
-         }}
+         }},
+        {"street-bench", [scene](int x, int y) -> void {
+             Bench *bench = new Bench();
+             bench->setPos(x, (scene->height() / 2) + bench->pixmap().height() / 2 + y);
+             bench->setZValue(-2);
+             scene->addItem(bench);
+         }},
+        {"GBuilding", [scene](int x, int y) -> void {
+             teleportBuilding* GBuilding = new teleportBuilding();
+             GBuilding->setPos(x, scene->height() / 2 + y);
+             GBuilding->setZValue(-2);
+             scene->addItem(GBuilding);
+         }},
+        {"street-barrier", [scene](int x, int y) -> void {
+             streetbarrier* barrier = new streetbarrier();
+             barrier->setPos(x, scene->height() - y - barrier->getPixmap()->height());
+             scene->addItem(barrier);
+         }},
     };
 
     QString line;
@@ -148,6 +169,12 @@ void LevelLoader::loadEnemies(QGraphicsScene* scene) {
              printer->setPos(x, y);
              printer->setZValue(-1);
              scene->addItem(printer);
+         }},
+        {"cone", [scene](int x, int y, int left, int right, int speed) -> void {
+             StreetCones* cone = new StreetCones();
+             cone->setPos(x, scene->height() - y - cone->getPixmap()->height());
+             cone->setZValue(-1);
+             scene->addItem(cone);
          }},
     };
 
