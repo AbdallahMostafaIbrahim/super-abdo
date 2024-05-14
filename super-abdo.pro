@@ -14,6 +14,7 @@ SOURCES += \
     baselevel.cpp \
     enemy/baseenemy.cpp \
     enemy/boss.cpp \
+    enemy/burningtrash.cpp \
     enemy/employeeenemy.cpp \
     enemy/enemybullet.cpp \
     enemy/harmfulentity.cpp \
@@ -26,6 +27,8 @@ SOURCES += \
     enemy/printerenemy.cpp \
     enemy/raphealo.cpp \
     enemy/shuriken.cpp \
+    enemy/splinter.cpp \
+    enemy/splinterbullet.cpp \
     enemy/staticenemy.cpp \
     game.cpp \
     level1.cpp \
@@ -52,6 +55,7 @@ HEADERS += \
     baselevel.h \
     enemy/baseenemy.h \
     enemy/boss.h \
+    enemy/burningtrash.h \
     enemy/employeeenemy.h \
     enemy/enemybullet.h \
     enemy/harmfulentity.h \
@@ -64,6 +68,8 @@ HEADERS += \
     enemy/printerenemy.h \
     enemy/raphealo.h \
     enemy/shuriken.h \
+    enemy/splinter.h \
+    enemy/splinterbullet.h \
     enemy/staticenemy.h \
     game.h \
     level1.h \

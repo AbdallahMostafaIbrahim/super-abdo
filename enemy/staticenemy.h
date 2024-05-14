@@ -8,6 +8,7 @@ class StaticEnemy : public BaseEnemy
 { 
 public:
     StaticEnemy(QPixmap);
+    StaticEnemy(QList<QPixmap>);
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
     QRectF boundingRect() const override;
     void move(int, int) override;
@@ -15,7 +16,7 @@ public:
 private slots:
     void animate() override;
 private:
-    QPixmap pixmap;
+    QPixmap currentPixmap;
 };
 
 #endif // STATICENEMY_H

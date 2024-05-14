@@ -78,5 +78,6 @@
         <file>images/Level 3/trash/frame_1_delay-0.07s.png</file>
         <file>images/Level 3/trash/frame_2_delay-0.07s.png</file>
         <file>images/Level 3/trash/frame_3_delay-0.07s.png</file>
+        <file>images/Level 3/pizza.png</file>
     </qresource>
 </RCC>

@@ -50,7 +50,12 @@ void Boss::animate()
 
 void Boss::kill()
 {
-    Level1* level = dynamic_cast<Level1*>(scene());
+    // Level1* level = dynamic_cast<Level1*>(scene());
+    // if(level) {
+    //     level->killBoss();
+    // }
+    // BaseEnemy::kill();
+    BaseLevel* level = dynamic_cast<BaseLevel*>(scene());
     if(level) {
         level->killBoss();
     }

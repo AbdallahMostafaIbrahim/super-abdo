@@ -1,5 +1,5 @@
 #include "level3.h"
-#include "enemy/karen.h"
+#include "enemy/splinter.h"
 #include <QFile>
 
 Level3::Level3(Game *game) : BaseLevel(game) {
@@ -23,5 +23,5 @@ LevelSettings Level3::getLevelSettings() {
 
 Boss *Level3::newBoss()
 {
-    return new Karen;
+    return new Splinter;
 }
