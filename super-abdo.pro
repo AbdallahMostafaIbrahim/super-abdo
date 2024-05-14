@@ -24,6 +24,8 @@ SOURCES += \
     enemy/movingenemy.cpp \
     enemy/printerbullet.cpp \
     enemy/printerenemy.cpp \
+    enemy/raphealo.cpp \
+    enemy/shuriken.cpp \
     enemy/staticenemy.cpp \
     game.cpp \
     level1.cpp \
@@ -60,6 +62,8 @@ HEADERS += \
     enemy/movingenemy.h \
     enemy/printerbullet.h \
     enemy/printerenemy.h \
+    enemy/raphealo.h \
+    enemy/shuriken.h \
     enemy/staticenemy.h \
     game.h \
     level1.h \

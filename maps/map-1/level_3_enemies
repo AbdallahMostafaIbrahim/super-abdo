@@ -14,7 +14,9 @@ hazard 4900 55 0 0 0
 hazard 5300 55 0 0 0
 
 
-printer 2000 30 0 0 0
+raph 2000 30 0 0 0
+raph 2400 30 0 0 0
+
 printer 4000 30 0 0 0
 printer 4150 30 0 0 0
 printer 4300 30 0 0 0

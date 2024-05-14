@@ -12,17 +12,11 @@ public:
     QRectF boundingRect() const override;
     const QPixmap* getPixmap();
 private:
-    QList<QPixmap> frames; /*= {QPixmap f0,QPixmap f1,QPixmap f2,QPixmap f3};*/
-    QPixmap f0;
-    QPixmap f1;
-    QPixmap f2;
-    QPixmap f3;
-    QPixmap* pixmap;
-    QPainterPath f0Path;
-    QPainterPath f1Path;
-    QPainterPath f2Path;
-    QPainterPath f3Path;
-    bool isChanged;
+    QList<QPixmap> frames;
+    QList<QPainterPath> framesPath;
+    QPixmap* currentPixmap;
+    int currentFrame;
+    QPainterPath currentPath;
 protected slots:
     void animate() override;
 };

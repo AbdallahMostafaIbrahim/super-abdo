@@ -11,6 +11,7 @@
 #include "enemy/employeeenemy.h"
 #include "enemy/printerenemy.h"
 #include "enemy/leonardo.h"
+#include "enemy/raphealo.h"
 
 #include <QMessageBox>
 #include <QTextStream>
@@ -157,10 +158,10 @@ void LevelLoader::loadEnemies(QGraphicsScene* scene) {
              scene->addItem(leo);
          }},
         {"raph", [scene](int x, int y, int left, int right, int speed) -> void {
-             PrinterEnemy* printer = new PrinterEnemy();
-             printer->setPos(x, y);
-             printer->setZValue(-1);
-             scene->addItem(printer);
+             Raphealo* raph = new Raphealo();
+             raph->setPos(x, y);
+             raph->setZValue(-1);
+             scene->addItem(raph);
          }},
         {"mike", [scene](int x, int y, int left, int right, int speed) -> void {
              PrinterEnemy* printer = new PrinterEnemy();

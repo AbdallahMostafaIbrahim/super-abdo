@@ -35,27 +35,27 @@ QPainterPath* Utils::createPathFromPixmap(const QPixmap &pixmap, int precision)
 }
 
 
-void Utils::traverseFrames(QList<QPixmap> &frames, QPixmap &character, int frameRate) {
+// void Utils::traverseFrames(QList<QPixmap> &frames, QPixmap &character, int frameRate) {
 
-    static int currentFrameIndex = 0;
-    static QElapsedTimer timer; // Used to control the frame rate
+//     static int currentFrameIndex = 0;
+//     static QElapsedTimer timer; // Used to control the frame rate
 
-    // Check if the timer is not started yet
-    if (!timer.isValid()) {
-        timer.start(); // Start the timer
-    }
+//     // Check if the timer is not started yet
+//     if (!timer.isValid()) {
+//         timer.start(); // Start the timer
+//     }
 
-    // Check if enough time has passed since the last frame change
-    if (timer.elapsed() >= frameRate) {
-        // Update the pixmap of the character to the current frame
-        if (currentFrameIndex < frames.size()) {
-            character = frames[currentFrameIndex];
-            ++currentFrameIndex;
-        } else {
-            // If end of frames reached, reset to start
-            currentFrameIndex = 0;
-        }
+//     // Check if enough time has passed since the last frame change
+//     if (timer.elapsed() >= frameRate) {
+//         // Update the pixmap of the character to the current frame
+//         if (currentFrameIndex < frames.size()) {
+//             character = frames[currentFrameIndex];
+//             ++currentFrameIndex;
+//         } else {
+//             // If end of frames reached, reset to start
+//             currentFrameIndex = 0;
+//         }
 
-        timer.restart(); // Restart the timer for the next frame change
-    }
-}
+//         timer.restart(); // Restart the timer for the next frame change
+//     }
+// }
