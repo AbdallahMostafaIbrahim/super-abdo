@@ -47,7 +47,6 @@ void Mikey::animate()
             scythe1->setPos(x(), y() - 100);
             scythe2->setPos(x() + 100, y() - 50);
             scythe3->setPos(x() - 100, y() - 50);
-            qDebug() << scythe1->pos();
             scene()->addItem(scythe1);
             scene()->addItem(scythe2);
             scene()->addItem(scythe3);

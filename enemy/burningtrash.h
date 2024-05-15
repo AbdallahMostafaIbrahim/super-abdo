@@ -1,13 +1,19 @@
 #ifndef BURNINGTRASH_H
 #define BURNINGTRASH_H
-#include "staticenemy.h"
 
-class burningTrash : public StaticEnemy
+#include "baseenemy.h"
+
+class BurningTrash : public BaseEnemy
 {
 public:
-    burningTrash();
+    BurningTrash();
+    QPixmap* getPixmap();
+protected:
+    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
+    QRectF boundingRect() const override;
+    void move(int, int) override;
 private:
-    QPixmap currentPixmap;
+    QPixmap* currentPixmap;
     QList<QPixmap> pixmaps;
     int currentFrame;
 private slots:

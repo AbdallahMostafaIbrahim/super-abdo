@@ -71,9 +71,7 @@
         <file>images/Level 3/Splinter/frame_22_delay-0.04s.png</file>
         <file>images/Level 3/Splinter/frame_23_delay-0.04s.png</file>
         <file>images/Level 3/background.png</file>
-        <file>maps/map-1/level_3_map</file>
         <file>images/Level 3/shuriken.png</file>
-        <file>maps/map-1/level_3_enemies</file>
         <file>images/Level 3/trash/frame_0_delay-0.07s.png</file>
         <file>images/Level 3/trash/frame_1_delay-0.07s.png</file>
         <file>images/Level 3/trash/frame_2_delay-0.07s.png</file>
@@ -89,5 +87,7 @@
         <file>images/Level 3/Scythe/frame_07_delay-0.1s.png</file>
         <file>images/Level 3/Scythe/frame_08_delay-0.1s.png</file>
         <file>images/Level 3/Scythe/frame_09_delay-0.1s.png</file>
+        <file>maps/map-3/enemies.txt</file>
+        <file>maps/map-3/map.txt</file>
     </qresource>
 </RCC>

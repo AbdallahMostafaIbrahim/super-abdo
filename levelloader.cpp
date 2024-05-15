@@ -172,7 +172,7 @@ void LevelLoader::loadEnemies(QGraphicsScene* scene) {
              scene->addItem(mike);
          }},
         {"trash", [scene](int x, int y, int left, int right, int speed) -> void {
-             burningTrash* trash = new burningTrash();
+             BurningTrash* trash = new BurningTrash();
              trash->setPos(x, scene->height() - y - trash->getPixmap()->height());
              trash->setZValue(-1);
              scene->addItem(trash);

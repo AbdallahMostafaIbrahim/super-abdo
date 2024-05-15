@@ -8,8 +8,8 @@ Level3::Level3(Game *game) : BaseLevel(game) {
     levelSettings.galabeyaGlideEnabled = false;
     levelSettings.soundWaveEnabled = true;
     levelSettings.triggerBossLoc = 6000;
-    levelSettings.mapFile = ":/maps/map-1/level_3_map";
-    levelSettings.enemiesFile = ":/maps/map-1/level_3_enemies";
+    levelSettings.mapFile = ":/maps/map-3/map.txt";
+    levelSettings.enemiesFile = ":/maps/map-3/enemies.txt";
     levelSettings.backgroundImage = ":/images/Level 3/background.png";
     levelSettings.sceneWidth = 8100;
 

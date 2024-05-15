@@ -24,7 +24,6 @@ Scythe::Scythe() : EnemyBullet(1700) {
 void Scythe::move()
 {
     if(animationTimer.elapsed() >= 170) {
-        qDebug() << frames.size();
         currentPixmap = &(frames[currentFrame % frames.size()]);
         currentFrame++;
         animationTimer.restart();
