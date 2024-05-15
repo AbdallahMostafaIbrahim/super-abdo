@@ -1,0 +1,17 @@
+#ifndef OIL_H
+#define OIL_H
+#include <QGraphicsItem>
+#include <QPixmap>
+#include <QRectF>
+
+class Oil : public QGraphicsItem
+{
+public:
+    Oil();
+    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
+    QRectF boundingRect() const override;
+private:
+    QPixmap pixmap;
+};
+
+#endif // OIL_H

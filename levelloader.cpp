@@ -6,10 +6,11 @@
 #include "level_props/pictureframe.h"
 #include "level_props/coin.h"
 #include "level_props/shelf.h"
-#include "level_props/teleportbuilding.h"
+#include "level_props/building.h"
 #include "level_props/streetbarrier.h"
 #include "level_props/streetdumpster.h"
 #include "level_props/streetcarcrash.h"
+#include "level_props/oil.h"
 
 #include "enemy/hazardsign.h"
 #include "enemy/streetgarbage.h"
@@ -72,8 +73,8 @@ void LevelLoader::loadMap(QGraphicsScene* scene) {
          }},
 
         {"GBuilding", [scene](int x, int y) -> void {
-             teleportBuilding* GBuilding = new teleportBuilding();
-             GBuilding->setPos(x, scene->height() / 2 + y);
+             Building* GBuilding = new Building();
+             GBuilding->setPos(x, scene->height() - y - GBuilding->pixmap().height());
              GBuilding->setZValue(-2);
              scene->addItem(GBuilding);
          }},
@@ -92,6 +93,12 @@ void LevelLoader::loadMap(QGraphicsScene* scene) {
              StreetCarCrash* crash = new StreetCarCrash();
              crash->setPos(x, scene->height() - y - crash->getPixmap()->height());
              scene->addItem(crash);
+         }},
+        {"street-oil", [scene](int x, int y) -> void {
+             Oil *oil = new Oil();
+             oil->setPos(x, scene->height() - y - oil->boundingRect().height());
+             oil->setZValue(-1);
+             scene->addItem(oil);
          }},
     };
 

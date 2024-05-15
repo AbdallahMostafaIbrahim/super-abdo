@@ -38,6 +38,7 @@ private:
     void jumpPlayer();
     void fallPlayer();
     void checkCoins();
+    void checkOil();
     void checkEnemies();
     void moveEnemies();
     void moveBullets();
@@ -66,7 +67,7 @@ private:
     float jumpWidth;
     float jumpHeight;
 
-
+    float initalSpeed;
     float speed;
     // Factor to multipy by Speed when player is jumping
     float speedJumpFactor;

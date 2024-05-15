@@ -30,18 +30,19 @@ SOURCES += \
     gamestate.cpp \
     level1.cpp \
     level2.cpp \
+    level_props/building.cpp \
     level_props/ceilinglight.cpp \
     level_props/coin.cpp \
     level_props/desk.cpp \
     level_props/groundentity.cpp \
     level_props/officewindow.cpp \
+    level_props/oil.cpp \
     level_props/pictureframe.cpp \
     level_props/platform.cpp \
     level_props/shelf.cpp \
     level_props/streetbarrier.cpp \
     level_props/streetcarcrash.cpp \
     level_props/streetdumpster.cpp \
-    level_props/teleportbuilding.cpp \
     level_props/teleporter.cpp \
     levelloader.cpp \
     levelselector.cpp \
@@ -74,18 +75,19 @@ HEADERS += \
     gamestate.h \
     level1.h \
     level2.h \
+    level_props/building.h \
     level_props/ceilinglight.h \
     level_props/coin.h \
     level_props/desk.h \
     level_props/groundentity.h \
     level_props/officewindow.h \
+    level_props/oil.h \
     level_props/pictureframe.h \
     level_props/platform.h \
     level_props/shelf.h \
     level_props/streetbarrier.h \
     level_props/streetcarcrash.h \
     level_props/streetdumpster.h \
-    level_props/teleportbuilding.h \
     level_props/teleporter.h \
     levelloader.h \
     levelselector.h \

@@ -46,6 +46,7 @@ BaseLevel::BaseLevel(Game *game) : QGraphicsScene()
     // Movement
     elapsedTime = 0;
     speed = 750;
+    initalSpeed = speed;
     timeAfterJump = 0;
     timeWhenStartedFalling = 0;
     timeWhenShot = 0;
@@ -227,13 +228,14 @@ void BaseLevel::moveHorizontally()
     if (!leftPressed && !rightPressed)
         return;
 
-    if(abdo->x() > 1000 && abdo->x() < 5400){
-        isTeleport = true;
+    if(getLevelSettings().teleportStartX != -1){
+        if(abdo->x() > getLevelSettings().teleportStartX && abdo->x() < getLevelSettings().teleportEndX && abdo->y() < getLevelSettings().teleportStartY && abdo->y() > getLevelSettings().teleportEndY){
+            isTeleport = true;
+        }
+        else{
+            isTeleport = false;
+        }
     }
-    else{
-        isTeleport = false;
-    }
-
 
     // If abdo is at the edge of the screen don't move.
     if (abdo->x() <= 0 && leftPressed)
@@ -344,6 +346,19 @@ void BaseLevel::checkCoins()
     }
 }
 
+void BaseLevel::checkOil()
+{
+    Oil *oil = abdo->isTouchingOil(collidingItems);
+
+    if (oil)
+    {
+        speed = initalSpeed/2;
+    }
+    else{
+        speed = initalSpeed;
+    }
+}
+
 // Any Harmful Entity Abdo touches, we make abdo take damage.
 void BaseLevel::checkEnemies() {
     HarmfulEntity *harmfulEntity = abdo->isTouchingHarmfulEntity(collidingItems);
@@ -426,6 +441,8 @@ void BaseLevel::gameLoop()
         moveVertically();
         // Check if the player touched a coin.
         checkCoins();
+        // Check if the player touched oil.
+        checkOil();
         // Take Damage from any colliding harmful entity.
         checkEnemies();
         // Spawn Boss If not already spawned when player reaches certain location.
@@ -489,7 +506,7 @@ void BaseLevel::keyPressEvent(QKeyEvent *event)
             break;
         case Qt::Key_T:
             if(isTeleport){
-                abdo->setPos(5200, 10);
+                abdo->setPos(5200, 900);
                 isTeleport = false;
             }
             break;
