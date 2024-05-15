@@ -1,13 +1,13 @@
-employee 1150 55 260 100 150
-employee 1440 55 50 100 130
-employee 3100 55 100 100 135
-employee 3400 55 100 100 140
+street-oilenemy 1400 55 260 100 150
+street-oilenemy 1600 55 50 100 130
+street-oilenemy 1800 55 100 100 150
+street-oilenemy 2000 55 100 100 140
+street-oilenemy 2200 55 100 100 155
+street-oilenemy 3400 55 100 100 140
 
-cone 2000 54 0 0 0
-cone 3100 54 0 0 0
-cone 3400 54 0 0 0
-cone 4500 54 0 0 0
-cone 4900 54 0 0 0
+garbage 700 54 0 0 0
+garbage 3200 54 0 0 0
+-garbage 5200 54 0 0 0
 
 
 printer 2000 30 0 0 0

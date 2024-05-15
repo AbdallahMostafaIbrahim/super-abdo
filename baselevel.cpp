@@ -62,6 +62,7 @@ BaseLevel::BaseLevel(Game *game) : QGraphicsScene()
     maxJumps = 2;
     isGameOver = false;
     isGoodGame = false;
+    isTeleport = false;
     finishedTime = 0;
     isFightingBoss = false;
 
@@ -178,6 +179,14 @@ void BaseLevel::drawForeground(QPainter *painter, const QRectF &rect)
             painter->drawRoundedRect(innerHealth, 5, 5);
             painter->fillRect(innerHealth, QBrush(Qt::red));
         }
+
+        if(isTeleport){
+            painter->drawRect(sceneRect());
+            painter->fillRect(sceneRect(), QColor(0, 0, 0, 0));
+            painter->setPen(Qt::white);
+            painter->setFont(QFont("Minecraft", 40));
+            painter->drawText(rect.width() / 2 - 215, rect.height() / 2 - 100, "Press [T] to teleport");
+        }
     }
 }
 
@@ -217,6 +226,14 @@ void BaseLevel::moveHorizontally()
     // If you are doing neither, do nothing as well.
     if (!leftPressed && !rightPressed)
         return;
+
+    if(abdo->x() > 1000 && abdo->x() < 5400){
+        isTeleport = true;
+    }
+    else{
+        isTeleport = false;
+    }
+
 
     // If abdo is at the edge of the screen don't move.
     if (abdo->x() <= 0 && leftPressed)
@@ -468,6 +485,12 @@ void BaseLevel::keyPressEvent(QKeyEvent *event)
                     shootPressed = true;
                     timeWhenShot = 0;
                 }
+            }
+            break;
+        case Qt::Key_T:
+            if(isTeleport){
+                abdo->setPos(5200, 10);
+                isTeleport = false;
             }
             break;
         case Qt::Key_0:

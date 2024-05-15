@@ -24,12 +24,12 @@ SOURCES += \
     enemy/printerbullet.cpp \
     enemy/printerenemy.cpp \
     enemy/staticenemy.cpp \
-    enemy/streetcones.cpp \
+    enemy/streetgarbage.cpp \
+    enemy/streetoilenemy.cpp \
     game.cpp \
     gamestate.cpp \
     level1.cpp \
     level2.cpp \
-    level_props/bench.cpp \
     level_props/ceilinglight.cpp \
     level_props/coin.cpp \
     level_props/desk.cpp \
@@ -39,7 +39,10 @@ SOURCES += \
     level_props/platform.cpp \
     level_props/shelf.cpp \
     level_props/streetbarrier.cpp \
+    level_props/streetcarcrash.cpp \
+    level_props/streetdumpster.cpp \
     level_props/teleportbuilding.cpp \
+    level_props/teleporter.cpp \
     levelloader.cpp \
     levelselector.cpp \
     levelsettings.cpp \
@@ -65,12 +68,12 @@ HEADERS += \
     enemy/printerbullet.h \
     enemy/printerenemy.h \
     enemy/staticenemy.h \
-    enemy/streetcones.h \
+    enemy/streetgarbage.h \
+    enemy/streetoilenemy.h \
     game.h \
     gamestate.h \
     level1.h \
     level2.h \
-    level_props/bench.h \
     level_props/ceilinglight.h \
     level_props/coin.h \
     level_props/desk.h \
@@ -80,7 +83,10 @@ HEADERS += \
     level_props/platform.h \
     level_props/shelf.h \
     level_props/streetbarrier.h \
+    level_props/streetcarcrash.h \
+    level_props/streetdumpster.h \
     level_props/teleportbuilding.h \
+    level_props/teleporter.h \
     levelloader.h \
     levelselector.h \
     levelsettings.h \

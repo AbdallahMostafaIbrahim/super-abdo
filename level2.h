@@ -4,6 +4,7 @@
 #include "baselevel.h"
 #include "game.h"
 #include "levelsettings.h"
+#include <QGraphicsScene>
 
 class Level2 : public BaseLevel
 {

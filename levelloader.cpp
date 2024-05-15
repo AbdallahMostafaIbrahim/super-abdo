@@ -5,19 +5,25 @@
 #include "level_props/officewindow.h"
 #include "level_props/pictureframe.h"
 #include "level_props/coin.h"
-#include "level_props/bench.h"
 #include "level_props/shelf.h"
 #include "level_props/teleportbuilding.h"
-#include "level_props/streetbarrier.h".h"
+#include "level_props/streetbarrier.h"
+#include "level_props/streetdumpster.h"
+#include "level_props/streetcarcrash.h"
 
 #include "enemy/hazardsign.h"
-#include "enemy/streetcones.h"
+#include "enemy/streetgarbage.h"
 #include "enemy/employeeenemy.h"
 #include "enemy/printerenemy.h"
+#include "enemy/streetoilenemy.h"
+
+#include "baselevel.h"
+#include "abdo.h"
 
 #include <QMessageBox>
 #include <QTextStream>
 
+extern BaseLevel* base;
 
 LevelLoader::LevelLoader(QFile& mapFile, QFile& enemiesFile) {
     if(!mapFile.open(QIODevice::ReadOnly)) {
@@ -64,12 +70,7 @@ void LevelLoader::loadMap(QGraphicsScene* scene) {
              coin->setZValue(-1);
              scene->addItem(coin);
          }},
-        {"street-bench", [scene](int x, int y) -> void {
-             Bench *bench = new Bench();
-             bench->setPos(x, (scene->height() / 2) + bench->pixmap().height() / 2 + y);
-             bench->setZValue(-2);
-             scene->addItem(bench);
-         }},
+
         {"GBuilding", [scene](int x, int y) -> void {
              teleportBuilding* GBuilding = new teleportBuilding();
              GBuilding->setPos(x, scene->height() / 2 + y);
@@ -80,6 +81,17 @@ void LevelLoader::loadMap(QGraphicsScene* scene) {
              streetbarrier* barrier = new streetbarrier();
              barrier->setPos(x, scene->height() - y - barrier->getPixmap()->height());
              scene->addItem(barrier);
+         }},
+        {"street-dumpster", [scene](int x, int y) -> void {
+             StreetDumpster *dumpster = new StreetDumpster();
+             dumpster->setPos(x, (scene->height() / 2) + dumpster->pixmap().height() / 2 + y);
+             dumpster->setZValue(-2);
+             scene->addItem(dumpster);
+         }},
+        {"street-carcrash", [scene](int x, int y) -> void {
+             StreetCarCrash* crash = new StreetCarCrash();
+             crash->setPos(x, scene->height() - y - crash->getPixmap()->height());
+             scene->addItem(crash);
          }},
     };
 
@@ -170,11 +182,17 @@ void LevelLoader::loadEnemies(QGraphicsScene* scene) {
              printer->setZValue(-1);
              scene->addItem(printer);
          }},
-        {"cone", [scene](int x, int y, int left, int right, int speed) -> void {
-             StreetCones* cone = new StreetCones();
-             cone->setPos(x, scene->height() - y - cone->getPixmap()->height());
-             cone->setZValue(-1);
-             scene->addItem(cone);
+        {"garbage", [scene](int x, int y, int left, int right, int speed) -> void {
+             StreetGarbage* garbage = new StreetGarbage();
+             garbage->setPos(x, scene->height() - y - garbage->getPixmap()->height());
+             garbage->setZValue(-1);
+             scene->addItem(garbage);
+         }},
+        {"street-oilenemy", [scene](int x, int y, int left, int right, int speed) -> void {
+             StreetOilEnemy* oilenemy = new StreetOilEnemy(left, right, x, speed);
+             oilenemy->setPos(x, scene->height() - y - oilenemy->getPixmap()->height());
+             oilenemy->setZValue(-1);
+             scene->addItem(oilenemy);
          }},
     };
 

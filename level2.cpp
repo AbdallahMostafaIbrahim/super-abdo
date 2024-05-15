@@ -1,5 +1,9 @@
 #include "level2.h"
+#include "baselevel.h"
+#include "levelloader.h"
 #include "enemy/karen.h"
+#include "QGraphicsTextItem"
+#include "QGraphicsScene"
 #include <QFile>
 
 Level2::Level2(Game *game) : BaseLevel(game) {
@@ -7,11 +11,12 @@ Level2::Level2(Game *game) : BaseLevel(game) {
     levelSettings.triggerBossLoc = 6000;
     levelSettings.mapFile = ":/maps/map-2/map.txt";
     levelSettings.enemiesFile = ":/maps/map-2/enemies.txt";
-    levelSettings.backgroundImage = ":/images/background-1.png";
+    levelSettings.backgroundImage = ":/images/background-2.png";
     levelSettings.sceneWidth = 8100;
 
     // Call Init Scene to load level using the settings
     initScene();
+
 }
 
 LevelSettings Level2::getLevelSettings() {

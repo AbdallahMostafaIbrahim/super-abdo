@@ -41,8 +41,16 @@
         <file>images/street.png</file>
         <file>images/street-bench.png</file>
         <file>images/street1.png</file>
-        <file>images/building-glide.png</file>
         <file>images/building-glide1.png</file>
         <file>images/street-barrier.png</file>
+        <file>images/background-2.png</file>
+        <file>images/street-garbage1.png</file>
+        <file>images/street-dumpster.png</file>
+        <file>images/street-carcrash.png</file>
+        <file>images/street-oilspill.png</file>
+        <file>images/street-oilenemy1.gif</file>
+        <file>images/street-oilenemy2.gif</file>
+        <file>images/building-glideroof.png</file>
+        <file>images/building-glide.png</file>
     </qresource>
 </RCC>

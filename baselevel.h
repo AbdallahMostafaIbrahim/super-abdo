@@ -94,6 +94,7 @@ private:
     bool isGameOver;
     bool isFightingBoss;
     bool isGoodGame;
+    bool isTeleport;
 
     // Settings From Gamestate
     bool galabeyaGlideEnabled;
