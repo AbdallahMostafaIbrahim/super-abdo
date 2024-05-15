@@ -13,6 +13,7 @@
 #include "enemy/leonardo.h"
 #include "enemy/raphealo.h"
 #include "enemy/burningtrash.h"
+#include "enemy/mikey.h"
 
 #include <QMessageBox>
 #include <QTextStream>
@@ -165,12 +166,12 @@ void LevelLoader::loadEnemies(QGraphicsScene* scene) {
              scene->addItem(raph);
          }},
         {"mike", [scene](int x, int y, int left, int right, int speed) -> void {
-             PrinterEnemy* printer = new PrinterEnemy();
-             printer->setPos(x, y);
-             printer->setZValue(-1);
-             scene->addItem(printer);
+             Mikey* mike = new Mikey();
+             mike->setPos(x, scene->height() - y - mike->getPixmap()->height());
+             mike->setZValue(-1);
+             scene->addItem(mike);
          }},
-        {"tr", [scene](int x, int y, int left, int right, int speed) -> void {
+        {"trash", [scene](int x, int y, int left, int right, int speed) -> void {
              burningTrash* trash = new burningTrash();
              trash->setPos(x, scene->height() - y - trash->getPixmap()->height());
              trash->setZValue(-1);

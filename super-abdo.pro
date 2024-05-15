@@ -22,10 +22,12 @@ SOURCES += \
     enemy/karen.cpp \
     enemy/karenbullet.cpp \
     enemy/leonardo.cpp \
+    enemy/mikey.cpp \
     enemy/movingenemy.cpp \
     enemy/printerbullet.cpp \
     enemy/printerenemy.cpp \
     enemy/raphealo.cpp \
+    enemy/scythe.cpp \
     enemy/shuriken.cpp \
     enemy/splinter.cpp \
     enemy/splinterbullet.cpp \
@@ -63,10 +65,12 @@ HEADERS += \
     enemy/karen.h \
     enemy/karenbullet.h \
     enemy/leonardo.h \
+    enemy/mikey.h \
     enemy/movingenemy.h \
     enemy/printerbullet.h \
     enemy/printerenemy.h \
     enemy/raphealo.h \
+    enemy/scythe.h \
     enemy/shuriken.h \
     enemy/splinter.h \
     enemy/splinterbullet.h \

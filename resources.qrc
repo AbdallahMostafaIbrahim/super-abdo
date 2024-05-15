@@ -79,5 +79,15 @@
         <file>images/Level 3/trash/frame_2_delay-0.07s.png</file>
         <file>images/Level 3/trash/frame_3_delay-0.07s.png</file>
         <file>images/Level 3/pizza.png</file>
+        <file>images/Level 3/Scythe/frame_00_delay-0.1s.png</file>
+        <file>images/Level 3/Scythe/frame_01_delay-0.1s.png</file>
+        <file>images/Level 3/Scythe/frame_02_delay-0.1s.png</file>
+        <file>images/Level 3/Scythe/frame_03_delay-0.1s.png</file>
+        <file>images/Level 3/Scythe/frame_04_delay-0.1s.png</file>
+        <file>images/Level 3/Scythe/frame_05_delay-0.1s.png</file>
+        <file>images/Level 3/Scythe/frame_06_delay-0.1s.png</file>
+        <file>images/Level 3/Scythe/frame_07_delay-0.1s.png</file>
+        <file>images/Level 3/Scythe/frame_08_delay-0.1s.png</file>
+        <file>images/Level 3/Scythe/frame_09_delay-0.1s.png</file>
     </qresource>
 </RCC>
