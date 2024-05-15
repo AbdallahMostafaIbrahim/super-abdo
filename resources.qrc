@@ -38,7 +38,6 @@
         <file>images/street-cones.png</file>
         <file>maps/map-2/enemies.txt</file>
         <file>maps/map-2/map.txt</file>
-        <file>images/street.png</file>
         <file>images/street-bench.png</file>
         <file>images/street1.png</file>
         <file>images/building-glide1.png</file>
@@ -52,5 +51,6 @@
         <file>images/street-oilenemy2.gif</file>
         <file>images/building-glideroof.png</file>
         <file>images/building-glide.png</file>
+        <file>images/tile-2.png</file>
     </qresource>
 </RCC>

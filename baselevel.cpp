@@ -85,12 +85,12 @@ BaseLevel::~BaseLevel()
 }
 
 void BaseLevel::initScene() {
-    setSceneRect(0, 0, getLevelSettings().sceneWidth, game->height()); // Uses the Level Settings to set the size of the scene.
-    setBackgroundBrush(QBrush(QPixmap(getLevelSettings().backgroundImage).scaledToHeight(game->height()))); // Setting Background for scene. TODO: Put this image in Level Settings.
+    setSceneRect(0, 0, getLevelSettings().sceneWidth, getLevelSettings().sceneHeight); // Uses the Level Settings to set the size of the scene.
+    setBackgroundBrush(QBrush(QPixmap(getLevelSettings().backgroundImage).scaledToWidth(game->width()))); // Setting Background for scene. TODO: Put this image in Level Settings.
 
     // Creating the player
     abdo = new Abdo();
-    abdo->setPos(200, game->height() - abdo->boundingRect().height() - 100);
+    abdo->setPos(200, sceneRect().height() - abdo->boundingRect().height() - 100);
     addItem(abdo);
 
     // Uses Level Loader to load the level from file instead of creating objects manually.
@@ -324,7 +324,7 @@ void BaseLevel::moveVertically()
             timeAfterJump += deltaTime;
         }
         // If he has fallen down the scene. We game over.
-        if(abdo->y() > game->height() + 50) {
+        if(abdo->y() > sceneRect().height() + 50) {
             removeItem(abdo);
             isGameOver = true;
             finishedTime = elapsedTime;
@@ -431,7 +431,7 @@ void BaseLevel::gameLoop()
         // Spawn Boss If not already spawned when player reaches certain location.
         spawnBoss();
         // Makes the view scroll to make sure the player is always inside the window.
-        game->ensureVisible(abdo, 500, 0);
+        game->ensureVisible(abdo, 500, 300);
     }
 
     // Move The Remaining Entities.

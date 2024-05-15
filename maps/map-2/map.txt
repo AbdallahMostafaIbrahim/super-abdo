@@ -1,8 +1,8 @@
-platform 0 0 2600 55 :/images/street1.png
-platform 3000 0 1000 55 :/images/street1.png
-platform 3900 0 2000 55 :/images/street1.png
-platform 5000 500 408 880 :/images/street1.png
-platform 6100 0 2000 55 :/images/street1.png
+platform 0 0 2600 55 :/images/tile-2.png
+platform 3000 0 1000 55 :/images/tile-2.png
+platform 3900 0 2000 55 :/images/tile-2.png
+platform 5000 500 408 880 :/images/tile-2.png
+platform 6100 0 2000 55 :/images/tile-2.png
 
 shelf 4450 180 200 40 lol
 -shelf 3800 210 240 40 lol

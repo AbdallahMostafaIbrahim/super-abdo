@@ -13,10 +13,10 @@ Level2::Level2(Game *game) : BaseLevel(game) {
     levelSettings.enemiesFile = ":/maps/map-2/enemies.txt";
     levelSettings.backgroundImage = ":/images/background-2.png";
     levelSettings.sceneWidth = 8100;
+    levelSettings.sceneHeight = 2075;
 
     // Call Init Scene to load level using the settings
     initScene();
-
 }
 
 LevelSettings Level2::getLevelSettings() {
