@@ -6,6 +6,7 @@
 #include "level_props/pictureframe.h"
 #include "level_props/coin.h"
 #include "level_props/shelf.h"
+#include "level_props/sewerpipe.h"
 
 #include "enemy/hazardsign.h"
 #include "enemy/employeeenemy.h"
@@ -86,7 +87,7 @@ void LevelLoader::loadMap(QGraphicsScene* scene) {
 
         QString type = parts[0];
 
-        bool isPlatform = type == "platform" || type == "shelf";
+        bool isPlatform = type == "platform" || type == "shelf" || type == "pipe";
 
         if(isPlatform && parts.size() < 6) {
             continue;
@@ -114,10 +115,14 @@ void LevelLoader::loadMap(QGraphicsScene* scene) {
                 Platform* platform = new Platform(width, height, p);
                 platform->setPos(x, scene->height() - y - platform->boundingRect().height());
                 scene->addItem(platform);
-            } else {
+            } else if (type == "shelf") {
                 Shelf* shelf = new Shelf(width);
                 shelf->setPos(x, scene->height() - y - shelf->boundingRect().height());
                 scene->addItem(shelf);
+            } else if (type == "pipe"){
+                SewerPipe* pipe = new SewerPipe(width);
+                pipe->setPos(x, scene->height() - y - pipe->boundingRect().height());
+                scene->addItem(pipe);
             }
         }
         else if (constructorMap.contains(type)) {

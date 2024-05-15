@@ -43,6 +43,7 @@ SOURCES += \
     level_props/officewindow.cpp \
     level_props/pictureframe.cpp \
     level_props/platform.cpp \
+    level_props/sewerpipe.cpp \
     level_props/shelf.cpp \
     levelloader.cpp \
     levelselector.cpp \
@@ -87,6 +88,7 @@ HEADERS += \
     level_props/officewindow.h \
     level_props/pictureframe.h \
     level_props/platform.h \
+    level_props/sewerpipe.h \
     level_props/shelf.h \
     levelloader.h \
     levelselector.h \
