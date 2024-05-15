@@ -1,5 +1,4 @@
 #include "scythe.h"
-#include "level_props/groundentity.h"
 #include <QPainter>
 #include <QRectF>
 

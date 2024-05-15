@@ -1,5 +1,6 @@
 #include "splinter.h"
 #include "splinterbullet.h"
+#include "Splinterslime.h"
 #include <QPainter>
 #include <QGraphicsScene>
 #include <QRandomGenerator>
@@ -34,13 +35,22 @@ Splinter::Splinter() : Boss({QPixmap(":/images/Level 3/Splinter/frame_00_delay-0
     spawnTimer.start();
     recoilRate = QRandomGenerator::global()->bounded(1500) + 700;
     newLoc = QRandomGenerator::global()->bounded(12) + 9;
+    slimeLoc = QRandomGenerator::global()->bounded(12) + 9;
 }
 
 void Splinter::shoot()
 {
+    if(bulletTimer.elapsed() % 5000 == 0 ){
+        SplinterSlime* slime = new SplinterSlime();
+        slimeLoc = x() - QRandomGenerator::global()->bounded(700);
+        slime->setPos(slimeLoc, 0);
+        scene()->addItem(slime);
+    }
+
+
     if(bulletTimer.elapsed() > recoilRate)    {
         recoilRate = QRandomGenerator::global()->bounded(1500) + 700;
-        newLoc =  y() + boundingRect().height() - 65 - QRandomGenerator::global()->bounded(50) ;
+        newLoc =  y() + boundingRect().height() - 65 - QRandomGenerator::global()->bounded(50);
         SplinterBullet* bullet = new SplinterBullet();
         bullet->setPos(x(), newLoc);
         scene()->addItem(bullet);

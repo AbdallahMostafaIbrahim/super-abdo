@@ -12,6 +12,7 @@ CONFIG += c++17
 SOURCES += \
     abdo.cpp \
     baselevel.cpp \
+    enemy/Splinterslime.cpp \
     enemy/baseenemy.cpp \
     enemy/boss.cpp \
     enemy/burningtrash.cpp \
@@ -55,6 +56,7 @@ SOURCES += \
 HEADERS += \
     abdo.h \
     baselevel.h \
+    enemy/Splinterslime.h \
     enemy/baseenemy.h \
     enemy/boss.h \
     enemy/burningtrash.h \

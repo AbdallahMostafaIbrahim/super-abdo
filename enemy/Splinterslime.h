@@ -1,13 +1,13 @@
-#ifndef SCYTHE_H
-#define SCYTHE_H
+#ifndef SPLINTERSLIME_H
+#define SPLINTERSLIME_H
 
 #include <QElapsedTimer>
 #include "enemybullet.h"
 
-class Scythe : public EnemyBullet
+class SplinterSlime : public EnemyBullet
 {
 public:
-    Scythe();
+    SplinterSlime();
     void move() override;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
     QRectF boundingRect() const override;
@@ -18,4 +18,4 @@ private:
     QElapsedTimer animationTimer;
 };
 
-#endif // SCYTHE_H
+#endif // SPLINTERSLIME_H

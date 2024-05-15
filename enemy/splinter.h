@@ -14,6 +14,7 @@ private:
 
     int recoilRate;
     int newLoc;
+    int slimeLoc;
 };
 
 #endif // SPLINTER_H
