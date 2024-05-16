@@ -45,6 +45,7 @@ SOURCES += \
     level_props/platform.cpp \
     level_props/sewerpipe.cpp \
     level_props/shelf.cpp \
+    level_props/wall.cpp \
     levelloader.cpp \
     levelselector.cpp \
     levelsettings.cpp \
@@ -90,6 +91,7 @@ HEADERS += \
     level_props/platform.h \
     level_props/sewerpipe.h \
     level_props/shelf.h \
+    level_props/wall.h \
     levelloader.h \
     levelselector.h \
     levelsettings.h \

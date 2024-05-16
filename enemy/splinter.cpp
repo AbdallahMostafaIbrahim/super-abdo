@@ -29,27 +29,30 @@ Splinter::Splinter() : Boss({QPixmap(":/images/Level 3/Splinter/frame_00_delay-0
                QPixmap(":/images/Level 3/Splinter/frame_20_delay-0.04s.png").scaledToWidth(300),
                QPixmap(":/images/Level 3/Splinter/frame_21_delay-0.04s.png").scaledToWidth(300),
                QPixmap(":/images/Level 3/Splinter/frame_22_delay-0.04s.png").scaledToWidth(300),
-               QPixmap(":/images/Level 3/Splinter/frame_23_delay-0.04s.png").scaledToWidth(300)}, 25)
+               QPixmap(":/images/Level 3/Splinter/frame_23_delay-0.04s.png").scaledToWidth(300)}, 20)
 {
     bulletTimer.start();
     spawnTimer.start();
-    recoilRate = QRandomGenerator::global()->bounded(1500) + 700;
+    slimeTimer.start();
+    recoilRate = QRandomGenerator::global()->bounded(1500) + 1000;
+    slimeRate = QRandomGenerator::global()->bounded(1000) + 1000;
     newLoc = QRandomGenerator::global()->bounded(12) + 9;
     slimeLoc = QRandomGenerator::global()->bounded(12) + 9;
 }
 
 void Splinter::shoot()
 {
-    if(bulletTimer.elapsed() % 5000 == 0 ){
+    if(slimeTimer.elapsed() > slimeRate){
         SplinterSlime* slime = new SplinterSlime();
         slimeLoc = x() - QRandomGenerator::global()->bounded(700);
         slime->setPos(slimeLoc, 0);
         scene()->addItem(slime);
+        slimeTimer.restart();
     }
 
 
     if(bulletTimer.elapsed() > recoilRate)    {
-        recoilRate = QRandomGenerator::global()->bounded(1500) + 700;
+        recoilRate = QRandomGenerator::global()->bounded(1500) + 1000;
         newLoc =  y() + boundingRect().height() - 65 - QRandomGenerator::global()->bounded(50);
         SplinterBullet* bullet = new SplinterBullet();
         bullet->setPos(x(), newLoc);

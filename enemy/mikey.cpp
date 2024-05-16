@@ -10,7 +10,7 @@ Mikey::Mikey() : BaseEnemy(100,1,true) {
     currentPixmap = &pixmaps[0];
     currentFrame = 0;
     // The drop rate is a random number so that not all printers drop papers in sync.
-    dropRate = 15;
+    dropRate = QRandomGenerator::global()->bounded(5) + 25;
 }
 
 
@@ -21,7 +21,7 @@ void Mikey::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWi
 
 QRectF Mikey::boundingRect() const
 {
-    return QRectF(0, 0, currentPixmap->width(), currentPixmap->height());
+    return QRectF(0, 0, pixmaps[0].width(), pixmaps[0].height());
 }
 
 void Mikey::move(int, int)
@@ -50,6 +50,17 @@ void Mikey::animate()
             scene()->addItem(scythe1);
             scene()->addItem(scythe2);
             scene()->addItem(scythe3);
+
+            Scythe* scythe4 = new Scythe();
+            Scythe* scythe5 = new Scythe();
+            Scythe* scythe6 = new Scythe();
+
+            scythe4->setPos(x(), y() + 100);
+            scythe5->setPos(x() + 100, y() + 50);
+            scythe6->setPos(x() - 100, y() + 50);
+            scene()->addItem(scythe4);
+            scene()->addItem(scythe5);
+            scene()->addItem(scythe6);
         }
         animationTimer.restart();
     }

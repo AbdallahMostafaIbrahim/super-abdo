@@ -1,37 +1,26 @@
 leo 1150 55 260 100 150
-mike 1500 55 0 0 0
-employee 2800 55 100 100 163
-employee 3100 55 100 100 135
-employee 3400 55 100 100 140
+leo 500 55 260 100 150
 
-trash 2000 55 0 0 0
+trash 700 55 0 0 0
 
-trash 2800 55 0 0 0
-trash 3100 55 0 0 0
-trash 3400 55 0 0 0
-trash 4500 55 0 0 0
-trash 4900 55 0 0 0
-trash 5300 55 0 0 0
+mike 2800 210 100 100 163
+mike 3200 210 100 100 135
+mike 3600 210 100 100 140
 
+raph 1400 1 0 0 0
+raph 1500 1 0 0 0
+raph 1100 1 0 0 0
+raph 1200 1 0 0 0
 
-raph 2000 30 0 0 0
-raph 2400 30 0 0 0
-
-printer 4000 30 0 0 0
-printer 4150 30 0 0 0
-printer 4300 30 0 0 0
--printer 4450 30 0 0 0
--printer 4600 30 0 0 0
-printer 4750 30 0 0 0
--printer 4900 30 0 0 0
-printer 5050 30 0 0 0
-printer 5200 30 0 0 0
--printer 5350 30 0 0 0
-printer 5500 30 0 0 0
-printer 5650 30 0 0 0
-printer 5800 30 0 0 0
--printer 5950 30 0 0 0
+raph 4800 10 0 0 0
+raph 5000 10 0 0 0
+raph 5200 10 0 0 0
+raph 5400 10 0 0 0
+raph 5600 10 0 0 0
 
 
-printer 7200 30 0 0 0
-printer 7800 30 0 0 0
+mike 6300 390 0 0 0
+
+raph 5800 10 0 0 0
+raph 6000 10 0 0 0
+

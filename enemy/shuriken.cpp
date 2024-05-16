@@ -1,10 +1,12 @@
 #include "shuriken.h"
+#include "utils.h"
 #include "level_props/groundentity.h"
 #include <QPainter>
 #include <QRectF>
 
 Shuriken::Shuriken(): EnemyBullet(10000) {
     pixmap = QPixmap(":/images/Level 3/shuriken.png").scaledToWidth(60);
+    path = Utils::createPathFromPixmap(pixmap);
 }
 
 
@@ -33,4 +35,9 @@ void Shuriken::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, 
 QRectF Shuriken::boundingRect() const
 {
     return QRectF(0,0, pixmap.width(), pixmap.height());
+}
+
+QPainterPath Shuriken::shape() const
+{
+    return *path;
 }

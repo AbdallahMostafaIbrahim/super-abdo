@@ -19,11 +19,12 @@ QPixmap *BurningTrash::getPixmap()
 void BurningTrash::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
     painter->drawPixmap(0, 0, *currentPixmap);
+
 }
 
 QRectF BurningTrash::boundingRect() const
 {
-    return QRectF(0, 0, currentPixmap->width(), currentPixmap->height());
+    return QRectF(30, 10, currentPixmap->width() - 60, currentPixmap->height() - 20);
 }
 
 void BurningTrash::move(int, int)

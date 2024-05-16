@@ -11,10 +11,12 @@ public:
 private:
     QElapsedTimer bulletTimer;
     QElapsedTimer spawnTimer;
+    QElapsedTimer slimeTimer;
 
     int recoilRate;
     int newLoc;
     int slimeLoc;
+    int slimeRate;
 };
 
 #endif // SPLINTER_H
