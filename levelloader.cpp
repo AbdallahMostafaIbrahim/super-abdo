@@ -1,4 +1,7 @@
 #include "levelloader.h"
+#include "enemy/enemycart.h"
+#include "enemy/hagenemy.h"
+#include "level_props/cart.h"
 #include "level_props/platform.h"
 #include "level_props/desk.h"
 #include "level_props/ceilinglight.h"
@@ -10,6 +13,7 @@
 #include "enemy/hazardsign.h"
 #include "enemy/employeeenemy.h"
 #include "enemy/printerenemy.h"
+#include "level_props/tomatoframe.h"
 
 #include <QMessageBox>
 #include <QTextStream>
@@ -59,6 +63,17 @@ void LevelLoader::loadMap(QGraphicsScene* scene) {
              coin->setPos(x, scene->height() - y - coin->boundingRect().height());
              coin->setZValue(-1);
              scene->addItem(coin);
+         }},
+        {"cart", [scene](int x, int y) -> void {
+             Cart* cart = new Cart();
+             cart->setPos(x, scene->height() - y - cart->getPixmap()->height());
+             scene->addItem(cart);
+         }},
+        {"tomato_frame", [scene](int x, int y) -> void {
+             TomatoFrame *frame = new TomatoFrame();
+             frame->setPos(x, scene->height() / 2 + y);
+             frame->setZValue(-2);
+             scene->addItem(frame);
          }}
     };
 
@@ -148,6 +163,18 @@ void LevelLoader::loadEnemies(QGraphicsScene* scene) {
              printer->setPos(x, y);
              printer->setZValue(-1);
              scene->addItem(printer);
+         }},
+        {"hag", [scene](int x, int y, int left, int right, int speed) -> void {
+             HagEnemy* hag = new HagEnemy();
+             hag->setPos(x, y);
+             hag->setZValue(-1);
+             scene->addItem(hag);
+         }},
+        {"baby_cart", [scene](int x, int y, int left, int right, int speed) -> void {
+             EnemyCart* employee = new EnemyCart(left, right, x, speed);
+             employee->setPos(x, scene->height() - y - employee->getPixmap()->height());
+             employee->setZValue(-1);
+             scene->addItem(employee);
          }},
     };
 

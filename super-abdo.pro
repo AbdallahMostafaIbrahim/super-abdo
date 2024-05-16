@@ -14,8 +14,11 @@ SOURCES += \
     baselevel.cpp \
     enemy/baseenemy.cpp \
     enemy/boss.cpp \
+    enemy/broccoli.cpp \
     enemy/employeeenemy.cpp \
     enemy/enemybullet.cpp \
+    enemy/enemycart.cpp \
+    enemy/hagenemy.cpp \
     enemy/harmfulentity.cpp \
     enemy/hazardsign.cpp \
     enemy/karen.cpp \
@@ -24,9 +27,12 @@ SOURCES += \
     enemy/printerbullet.cpp \
     enemy/printerenemy.cpp \
     enemy/staticenemy.cpp \
+    enemy/tomatobullet.cpp \
     game.cpp \
     gamestate.cpp \
     level1.cpp \
+    level4.cpp \
+    level_props/cart.cpp \
     level_props/ceilinglight.cpp \
     level_props/coin.cpp \
     level_props/desk.cpp \
@@ -35,6 +41,7 @@ SOURCES += \
     level_props/pictureframe.cpp \
     level_props/platform.cpp \
     level_props/shelf.cpp \
+    level_props/tomatoframe.cpp \
     levelloader.cpp \
     levelselector.cpp \
     levelsettings.cpp \
@@ -50,8 +57,11 @@ HEADERS += \
     baselevel.h \
     enemy/baseenemy.h \
     enemy/boss.h \
+    enemy/broccoli.h \
     enemy/employeeenemy.h \
     enemy/enemybullet.h \
+    enemy/enemycart.h \
+    enemy/hagenemy.h \
     enemy/harmfulentity.h \
     enemy/hazardsign.h \
     enemy/karen.h \
@@ -60,9 +70,12 @@ HEADERS += \
     enemy/printerbullet.h \
     enemy/printerenemy.h \
     enemy/staticenemy.h \
+    enemy/tomatobullet.h \
     game.h \
     gamestate.h \
     level1.h \
+    level4.h \
+    level_props/cart.h \
     level_props/ceilinglight.h \
     level_props/coin.h \
     level_props/desk.h \
@@ -71,6 +84,7 @@ HEADERS += \
     level_props/pictureframe.h \
     level_props/platform.h \
     level_props/shelf.h \
+    level_props/tomatoframe.h \
     levelloader.h \
     levelselector.h \
     levelsettings.h \

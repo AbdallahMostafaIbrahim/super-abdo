@@ -33,6 +33,8 @@ private:
     static QMediaPlayer* mediaPlayer_gameTheme;
     static QAudioOutput* audioOutput_gameTheme;
 
+    static QMediaPlayer* mediaPlayer_babyCrying;
+    static QAudioOutput* audioOutput_babyCrying;
     static float volumeFactor;
 public:
     SoundPlayer();
@@ -47,7 +49,7 @@ public:
     static void muteTheme();
     static void setVolume(float v);
     static float getVolume();
-
+    static void babyCrying();
 
     // TODO: add sounds after killing enemies
 };

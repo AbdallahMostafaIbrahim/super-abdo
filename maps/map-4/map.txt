@@ -1,0 +1,44 @@
+platform 0 0 2482 55 :/images/tile-1.png
+platform 2700 0 1000 55 :/images/tile-1.png
+platform 3900 0 2000 55 :/images/tile-1.png
+platform 6100 0 2000 55 :/images/tile-1.png
+
+
+shelf 400 135 500 40 lol
+shelf 1100 185 380 40 lol
+shelf 4450 180 200 40 lol
+-shelf 3800 210 240 40 lol
+
+
+cart 850 55
+cart 1230 55
+
+office_desk 650 55
+
+
+tomato_frame 420 -250
+tomato_frame 2210 -250
+
+
+
+coin 420 165
+coin 480 165
+coin 540 165
+coin 600 165
+coin 660 165
+coin 720 165
+
+coin 1120 70
+coin 1180 70
+coin 1240 70
+
+coin 3600 70
+coin 3660 130
+coin 3720 190
+coin 3780 190
+coin 3840 130
+coin 3900 70
+
+-coin 2820 250
+-coin 2880 250
+-coin 2940 250
