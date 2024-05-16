@@ -1,6 +1,6 @@
 #include "staticenemy.h"
 
-StaticEnemy::StaticEnemy(QPixmap pix) : BaseEnemy(100, 1, false)
+StaticEnemy::StaticEnemy(QPixmap pix, int damage) : BaseEnemy(100, damage, false)
 {
     pixmap = pix;
 }

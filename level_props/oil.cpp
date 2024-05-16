@@ -1,16 +1,20 @@
 #include "oil.h"
 #include <QPainter>
 
-Oil::Oil() {
-    pixmap = QPixmap(":/images/street-oilspill.png");
+Oil::Oil(int w) : width(w) {
+    pixmap = QPixmap(":/images/street-oilspill.png").scaledToWidth(20);
 }
 
 QRectF Oil::boundingRect() const{
-    return QRectF(0,0,40,40);
+    return QRectF(0,0,width,20);
 }
 
 void Oil::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) {
-    painter->drawPixmap(0,0, 40, 40, pixmap);
+    painter->setOpacity(0.5);
+    for(int i = 0; i < width / pixmap.width(); i++) {
+        painter->drawPixmap(i * pixmap.width(), 0, pixmap);
+    }
+
 
     Q_UNUSED(widget);
     Q_UNUSED(option);

@@ -1,21 +1,21 @@
-#ifndef STATICENEMY_H
-#define STATICENEMY_H
+#ifndef BIRDENEMY_H
+#define BIRDENEMY_H
 #include "baseenemy.h"
-#include <QPainter>
 
-
-class StaticEnemy : public BaseEnemy
-{ 
+class BirdEnemy: public BaseEnemy
+{
 public:
-    StaticEnemy(QPixmap, int damage = 1);
+    BirdEnemy();
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
     QRectF boundingRect() const override;
     void move(int, int) override;
-    const QPixmap* getPixmap();
+private:
+    QList<QPixmap> pixmaps;
+    QPixmap currentPixmap;
+    int currentFrame;
+    int dropRate;
 private slots:
     void animate() override;
-private:
-    QPixmap pixmap;
 };
 
-#endif // STATICENEMY_H
+#endif // BIRDENEMY_H

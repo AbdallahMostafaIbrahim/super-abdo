@@ -8,14 +8,14 @@
 
 Level2::Level2(Game *game) : BaseLevel(game) {
     // Setting Level Settings
-    levelSettings.triggerBossLoc = 9000;
+    levelSettings.triggerBossLoc = 13000;
     levelSettings.mapFile = ":/maps/map-2/map.txt";
     levelSettings.enemiesFile = ":/maps/map-2/enemies.txt";
     levelSettings.backgroundImage = ":/images/background-2.png";
-    levelSettings.sceneWidth = 12000;
+    levelSettings.sceneWidth = 15000;
     levelSettings.sceneHeight = 2075;
-    levelSettings.teleportStartX = 5000;
-    levelSettings.teleportEndX = 5408;
+    levelSettings.teleportStartX = 7000;
+    levelSettings.teleportEndX = 7408;
     levelSettings.teleportStartY = 2075;
     levelSettings.teleportEndY = 1375;
 

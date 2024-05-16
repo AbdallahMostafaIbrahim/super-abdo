@@ -52,5 +52,15 @@
         <file>images/building-glideroof.png</file>
         <file>images/building-glide.png</file>
         <file>images/tile-2.png</file>
+        <file>images/rock-pile.png</file>
+        <file>images/street-bird1.gif</file>
+        <file>images/street-bird2.gif</file>
+        <file>images/street-bird3.gif</file>
+        <file>images/street-bird4.gif</file>
+        <file>images/street-birdegg.png</file>
+        <file>images/street-car1.png</file>
+        <file>images/street-car2.png</file>
+        <file>images/street-car3.png</file>
+        <file>images/street-car4.png</file>
     </qresource>
 </RCC>

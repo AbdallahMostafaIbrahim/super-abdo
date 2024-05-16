@@ -31,7 +31,7 @@ BaseLevel::BaseLevel(Game *game) : QGraphicsScene()
     QTimer *timer = new QTimer(this);
 
     // Level Settings Init
-    doubleJumpEnabled = GameState::itemsBought.contains(DOUBLE_JUMP);
+    doubleJumpEnabled = true || GameState::itemsBought.contains(DOUBLE_JUMP);
     galabeyaGlideEnabled = GameState::itemsBought.contains(GALABEYA_GLIDE);
     soundWaveEnabled = true;
     firstTimeDoubleJumping = GameState::newlyPurchased.contains(DOUBLE_JUMP);
@@ -60,7 +60,7 @@ BaseLevel::BaseLevel(Game *game) : QGraphicsScene()
     health = MAX_HEALTH;
     collectedCoins = 0;
     currentJumpCount = 0;
-    maxJumps = 2;
+    maxJumps = 200;
     isGameOver = false;
     isGoodGame = false;
     isTeleport = false;
@@ -506,7 +506,7 @@ void BaseLevel::keyPressEvent(QKeyEvent *event)
             break;
         case Qt::Key_T:
             if(isTeleport){
-                abdo->setPos(5200, 900);
+                abdo->setPos(7100, sceneRect().height() - 1300);
                 isTeleport = false;
             }
             break;

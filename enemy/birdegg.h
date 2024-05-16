@@ -1,18 +1,16 @@
-#ifndef OIL_H
-#define OIL_H
-#include <QGraphicsItem>
-#include <QPixmap>
-#include <QRectF>
+#ifndef BIRDEGG_H
+#define BIRDEGG_H
+#include "enemybullet.h"
 
-class Oil : public QGraphicsItem
+class BirdEgg: public EnemyBullet
 {
 public:
-    Oil(int w);
+    BirdEgg();
+    void move() override;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
     QRectF boundingRect() const override;
 private:
     QPixmap pixmap;
-    int width;
 };
 
-#endif // OIL_H
+#endif // BIRDEGG_H

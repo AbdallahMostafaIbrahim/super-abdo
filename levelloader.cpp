@@ -6,10 +6,11 @@
 #include "level_props/pictureframe.h"
 #include "level_props/coin.h"
 #include "level_props/shelf.h"
-#include "level_props/building.h"
+#include "level_props/lowbuilding.h"
+#include "level_props/mediumbuilding.h"
+#include "level_props/highbuilding.h"
 #include "level_props/streetbarrier.h"
 #include "level_props/streetdumpster.h"
-#include "level_props/streetcarcrash.h"
 #include "level_props/oil.h"
 
 #include "enemy/hazardsign.h"
@@ -17,6 +18,9 @@
 #include "enemy/employeeenemy.h"
 #include "enemy/printerenemy.h"
 #include "enemy/streetoilenemy.h"
+#include "enemy/vehicleenemy.h"
+#include "enemy/streetrocks.h"
+#include "enemy/birdenemy.h"
 
 #include "baselevel.h"
 #include "abdo.h"
@@ -71,12 +75,23 @@ void LevelLoader::loadMap(QGraphicsScene* scene) {
              coin->setZValue(-1);
              scene->addItem(coin);
          }},
-
-        {"GBuilding", [scene](int x, int y) -> void {
-             Building* GBuilding = new Building();
-             GBuilding->setPos(x, scene->height() - y - GBuilding->pixmap().height());
-             GBuilding->setZValue(-2);
-             scene->addItem(GBuilding);
+        {"street-lowbuilding", [scene](int x, int y) -> void {
+             LowBuilding* lowbuilding = new LowBuilding();
+             lowbuilding->setPos(x, scene->height() - y - lowbuilding->pixmap().height());
+             lowbuilding->setZValue(-2);
+             scene->addItem(lowbuilding);
+         }},
+        {"street-mediumbuilding", [scene](int x, int y) -> void {
+             MediumBuilding* mediumbuilding = new MediumBuilding();
+             mediumbuilding->setPos(x, scene->height() - y - mediumbuilding->pixmap().height());
+             mediumbuilding->setZValue(-2);
+             scene->addItem(mediumbuilding);
+         }},
+        {"street-highbuilding", [scene](int x, int y) -> void {
+             HighBuilding* highbuilding = new HighBuilding();
+             highbuilding->setPos(x, scene->height() - y - highbuilding->pixmap().height());
+             highbuilding->setZValue(-2);
+             scene->addItem(highbuilding);
          }},
         {"street-barrier", [scene](int x, int y) -> void {
              streetbarrier* barrier = new streetbarrier();
@@ -85,20 +100,8 @@ void LevelLoader::loadMap(QGraphicsScene* scene) {
          }},
         {"street-dumpster", [scene](int x, int y) -> void {
              StreetDumpster *dumpster = new StreetDumpster();
-             dumpster->setPos(x, (scene->height() / 2) + dumpster->pixmap().height() / 2 + y);
-             dumpster->setZValue(-2);
+             dumpster->setPos(x, scene->height() - y - dumpster->getPixmap()->height());
              scene->addItem(dumpster);
-         }},
-        {"street-carcrash", [scene](int x, int y) -> void {
-             StreetCarCrash* crash = new StreetCarCrash();
-             crash->setPos(x, scene->height() - y - crash->getPixmap()->height());
-             scene->addItem(crash);
-         }},
-        {"street-oil", [scene](int x, int y) -> void {
-             Oil *oil = new Oil();
-             oil->setPos(x, scene->height() - y - oil->boundingRect().height());
-             oil->setZValue(-1);
-             scene->addItem(oil);
          }},
     };
 
@@ -122,7 +125,7 @@ void LevelLoader::loadMap(QGraphicsScene* scene) {
 
         QString type = parts[0];
 
-        bool isPlatform = type == "platform" || type == "shelf";
+        bool isPlatform = type == "platform" || type == "shelf" || type == "oil";
 
         if(isPlatform && parts.size() < 6) {
             continue;
@@ -150,10 +153,15 @@ void LevelLoader::loadMap(QGraphicsScene* scene) {
                 Platform* platform = new Platform(width, height, p);
                 platform->setPos(x, scene->height() - y - platform->boundingRect().height());
                 scene->addItem(platform);
-            } else {
+            } else if(type == "shelf") {
                 Shelf* shelf = new Shelf(width);
                 shelf->setPos(x, scene->height() - y - shelf->boundingRect().height());
                 scene->addItem(shelf);
+            } else if(type == "oil") {
+                Oil *oil = new Oil(width);
+                oil->setPos(x, scene->height() - y - oil->boundingRect().height());
+                oil->setZValue(1);
+                scene->addItem(oil);
             }
         }
         else if (constructorMap.contains(type)) {
@@ -200,6 +208,24 @@ void LevelLoader::loadEnemies(QGraphicsScene* scene) {
              oilenemy->setPos(x, scene->height() - y - oilenemy->getPixmap()->height());
              oilenemy->setZValue(-1);
              scene->addItem(oilenemy);
+         }},
+        {"street-vehicle", [scene](int x, int y, int left, int right, int speed) -> void {
+             VehicleEnemy* vehicle = new VehicleEnemy(left, right, x, speed);
+             vehicle->setPos(x, scene->height() - y - vehicle->getPixmap()->height());
+             vehicle->setZValue(-1);
+             scene->addItem(vehicle);
+         }},
+        {"rocks", [scene](int x, int y, int left, int right, int speed) -> void {
+             StreetRocks* rocks = new StreetRocks();
+             rocks->setPos(x, scene->height() - y - rocks->getPixmap()->height());
+             rocks->setZValue(-1);
+             scene->addItem(rocks);
+         }},
+        {"bird", [scene](int x, int y, int left, int right, int speed) -> void {
+             BirdEnemy* bird = new BirdEnemy();
+             bird->setPos(x, y);
+             bird->setZValue(-1);
+             scene->addItem(bird);
          }},
     };
 
