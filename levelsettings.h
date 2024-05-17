@@ -11,6 +11,11 @@ public:
     // Stuff we override
     int triggerBossLoc;
     int sceneWidth;
+    int sceneHeight = 720;
+    int teleportStartX = -1;
+    int teleportEndX = -1;
+    int teleportStartY = -1;
+    int teleportEndY = -1;
     QString mapFile;
     QString enemiesFile;
     QString backgroundImage;

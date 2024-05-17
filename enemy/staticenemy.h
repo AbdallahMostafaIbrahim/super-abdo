@@ -7,7 +7,7 @@
 class StaticEnemy : public BaseEnemy
 { 
 public:
-    StaticEnemy(QPixmap);
+    StaticEnemy(QPixmap, int damage = 1);
     StaticEnemy(QList<QPixmap>);
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
     QRectF boundingRect() const override;

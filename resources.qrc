@@ -34,6 +34,38 @@
         <file>images/printer/printer-4.png</file>
         <file>images/printer/printer-bullet.png</file>
         <file>images/karen.png</file>
+        <file>maps/map-2/enemies.txt</file>
+        <file>maps/map-2/map.txt</file>
+        <file>images/level-2/street-bird/street-bird1.gif</file>
+        <file>images/level-2/street-bird/street-bird2.gif</file>
+        <file>images/level-2/street-bird/street-bird3.gif</file>
+        <file>images/level-2/street-bird/street-bird4.gif</file>
+        <file>images/level-2/street-car/street-car1.png</file>
+        <file>images/level-2/street-car/street-car2.png</file>
+        <file>images/level-2/street-car/street-car3.png</file>
+        <file>images/level-2/street-car/street-car4.png</file>
+        <file>images/level-2/street-oilenemy/street-oilenemy1.gif</file>
+        <file>images/level-2/street-oilenemy/street-oilenemy2.gif</file>
+        <file>images/level-2/background-2.png</file>
+        <file>images/level-2/building-glide.png</file>
+        <file>images/level-2/rock-pile.png</file>
+        <file>images/level-2/street-barrier.png</file>
+        <file>images/level-2/street-birdegg.png</file>
+        <file>images/level-2/street-cones.png</file>
+        <file>images/level-2/street-dumpster.png</file>
+        <file>images/level-2/street-garbage1.png</file>
+        <file>images/level-2/street-oilspill.png</file>
+        <file>images/level-2/tile-2.png</file>
+        <file>images/level-2/radar.png</file>
+        <file>images/level-2/drone-bullet.png</file>
+        <file>images/level-2/street-drones/street-drone1.png</file>
+        <file>images/level-2/street-drones/street-drone2.png</file>
+        <file>images/level-2/street-drones/street-drone3.png</file>
+        <file>images/level-2/street-drones/street-drone4.png</file>
+        <file>images/level-2/street-drones/street-drone5.png</file>
+        <file>images/level-2/street-drones/street-drone6.png</file>
+        <file>images/level-2/street-drones/street-drone7.png</file>
+        <file>images/level-2/street-drones/street-drone8.png</file>
         <file>maps/map-3/enemies.txt</file>
         <file>maps/map-3/map.txt</file>
         <file>images/level-3/leonardo/frame_0_delay-0.1s.png</file>

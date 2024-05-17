@@ -46,6 +46,7 @@ BaseLevel::BaseLevel(Game *game) : QGraphicsScene()
     // Movement
     elapsedTime = 0;
     speed = 750;
+    initalSpeed = speed;
     timeAfterJump = 0;
     timeWhenStartedFalling = 0;
     timeWhenShot = 0;
@@ -62,6 +63,7 @@ BaseLevel::BaseLevel(Game *game) : QGraphicsScene()
     maxJumps = 2;
     isGameOver = false;
     isGoodGame = false;
+    isTeleport = false;
     finishedTime = 0;
     isFightingBoss = false;
 
@@ -84,12 +86,12 @@ BaseLevel::~BaseLevel()
 }
 
 void BaseLevel::initScene() {
-    setSceneRect(0, 0, getLevelSettings().sceneWidth, game->height()); // Uses the Level Settings to set the size of the scene.
-    setBackgroundBrush(QBrush(QPixmap(getLevelSettings().backgroundImage).scaledToHeight(game->height()))); // Setting Background for scene. TODO: Put this image in Level Settings.
+    setSceneRect(0, 0, getLevelSettings().sceneWidth, getLevelSettings().sceneHeight); // Uses the Level Settings to set the size of the scene.
+    setBackgroundBrush(QBrush(QPixmap(getLevelSettings().backgroundImage).scaledToWidth(game->width()))); // Setting Background for scene. TODO: Put this image in Level Settings.
 
     // Creating the player
     abdo = new Abdo();
-    abdo->setPos(100, game->height() - abdo->boundingRect().height() - 100);
+    abdo->setPos(100, sceneRect().height() - abdo->boundingRect().height() - 100);
     addItem(abdo);
 
     // Uses Level Loader to load the level from file instead of creating objects manually.
@@ -178,6 +180,15 @@ void BaseLevel::drawForeground(QPainter *painter, const QRectF &rect)
             painter->drawRoundedRect(innerHealth, 5, 5);
             painter->fillRect(innerHealth, QBrush(Qt::red));
         }
+
+        if(isTeleport){
+            painter->drawRect(sceneRect());
+            painter->fillRect(sceneRect(), QColor(0, 0, 0, 120));
+            painter->setPen(Qt::white);
+            painter->setFont(QFont("Minecraft", 32));
+            painter->drawText(150, rect.height() / 2 - 100, "\'Looks like these buildings are getting revamped!\'");
+            painter->drawText(rect.width() / 2 - 200, rect.height() / 2, "Press [T] to break in.");
+        }
     }
 }
 
@@ -217,6 +228,15 @@ void BaseLevel::moveHorizontally()
     // If you are doing neither, do nothing as well.
     if (!leftPressed && !rightPressed)
         return;
+
+    if(getLevelSettings().teleportStartX != -1){
+        if(abdo->x() > getLevelSettings().teleportStartX && abdo->x() < getLevelSettings().teleportEndX && abdo->y() < getLevelSettings().teleportStartY && abdo->y() > getLevelSettings().teleportEndY){
+            isTeleport = true;
+        }
+        else{
+            isTeleport = false;
+        }
+    }
 
     // If abdo is at the edge of the screen don't move.
     if (abdo->x() <= 0 && leftPressed)
@@ -307,7 +327,7 @@ void BaseLevel::moveVertically()
             timeAfterJump += deltaTime;
         }
         // If he has fallen down the scene. We game over.
-        if(abdo->y() > game->height() + 50) {
+        if(abdo->y() > sceneRect().height() + 50) {
             removeItem(abdo);
             isGameOver = true;
             finishedTime = elapsedTime;
@@ -327,6 +347,19 @@ void BaseLevel::checkCoins()
     }
 }
 
+void BaseLevel::checkOil()
+{
+    Oil *oil = abdo->isTouchingOil(collidingItems);
+
+    if (oil)
+    {
+        speed = initalSpeed/2;
+    }
+    else{
+        speed = initalSpeed;
+    }
+}
+
 // Any Harmful Entity Abdo touches, we make abdo take damage.
 void BaseLevel::checkEnemies() {
     HarmfulEntity *harmfulEntity = abdo->isTouchingHarmfulEntity(collidingItems);
@@ -338,7 +371,7 @@ void BaseLevel::checkEnemies() {
         if(abdo->takeDamage()){
             SoundPlayer::hitAbdo();
             health -= harmfulEntity->getDamage();
-            // If health becomes 0 or less, we game over.
+            //If health becomes 0 or less, we game over.
             if(health <= 0) {
                 removeItem(abdo);
                 isGameOver = true;
@@ -409,12 +442,14 @@ void BaseLevel::gameLoop()
         moveVertically();
         // Check if the player touched a coin.
         checkCoins();
+        // Check if the player touched oil.
+        checkOil();
         // Take Damage from any colliding harmful entity.
         checkEnemies();
         // Spawn Boss If not already spawned when player reaches certain location.
         spawnBoss();
         // Makes the view scroll to make sure the player is always inside the window.
-        game->ensureVisible(abdo, 500, 0);
+        game->ensureVisible(abdo, 500, 300);
     }
 
     // Move The Remaining Entities.
@@ -432,6 +467,7 @@ void BaseLevel::keyPressEvent(QKeyEvent *event)
         switch (event->key())
         {
         case Qt::Key_Space: // Jump when space is pressed
+        case Qt::Key_W:
             // This allows for double jump if it is enabled.
             if (doubleJumpEnabled && (isJumping || isFalling) && !spacePressed)
             {
@@ -445,18 +481,18 @@ void BaseLevel::keyPressEvent(QKeyEvent *event)
             spacePressed = true;
             break;
         case Qt::Key_Right:
-            case Qt::Key_D:
+        case Qt::Key_D:
             rightPressed = true;
             // Make Abdo face the right direction
             abdo->setDirection(1);
             break;
         case Qt::Key_Left:
-            case Qt::Key_A:
+        case Qt::Key_A:
             leftPressed = true;
             // Make Abdo face the left direction
             abdo->setDirection(-1);
             break;
-        case Qt::Key_Z:
+        case Qt::Key_Q:
             // If sound wave (bullet) is enabled, and I am not holding the shoot button, then we can create a new bullet from the player's location
             if (soundWaveEnabled && !shootPressed)
             {
@@ -469,6 +505,16 @@ void BaseLevel::keyPressEvent(QKeyEvent *event)
                     timeWhenShot = 0;
                 }
             }
+            break;
+        case Qt::Key_T:
+            if(isTeleport){
+                abdo->setPos(7100, sceneRect().height() - 1300);
+                isTeleport = false;
+            }
+            break;
+        case Qt::Key_0:
+            emit complete(collectedCoins, finishedTime, getLevelIndex());
+            break;
         }
     }
     else if(isGameOver) {
@@ -514,7 +560,7 @@ void BaseLevel::keyReleaseEvent(QKeyEvent *event)
         case Qt::Key_Space:
             spacePressed = false;
             break;
-        case Qt::Key_Z:
+        case Qt::Key_Q:
             shootPressed = false;
             break;
         }

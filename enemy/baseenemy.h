@@ -17,6 +17,7 @@ protected:
     QTimer damageTimer;
     QElapsedTimer animationTimer;
     bool showDamage;
+    void resetHealth();
 public:
     BaseEnemy(int initialHealth, int damage, bool animates = false);
     virtual void move(int, int) = 0;

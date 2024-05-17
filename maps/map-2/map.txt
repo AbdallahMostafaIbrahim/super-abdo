@@ -1,0 +1,82 @@
+platform 0 0 18000 55 :/images/level-2/tile-2.png
+platform 7000 1025 556 50 no
+platform 7900 1175 650 50 no
+platform 9400 745 408 50 no
+-platform 10000 950 556 50 no
+
+street-dumpster 1000 55
+street-dumpster 1500 55
+street-dumpster 2100 55
+street-dumpster 2790 55
+
+street-barrier 3900 55
+street-barrier 5400 55
+
+oil 4000 50 1400 55 no
+
+street-mediumbuilding 7000 55
+street-barrier 7500 55
+street-barrier 7500 122
+street-barrier 7500 189
+street-barrier 7500 256
+street-barrier 7500 323
+street-highbuilding 7900 40
+street-lowbuilding 9400 55
+street-mediumbuilding 10200 55
+shelf 10250 600 150 40 lol
+shelf 10500 450 200 40 lol
+street-barrier 10650 55
+street-barrier 10650 122
+street-barrier 10650 189
+street-barrier 10650 256
+street-barrier 10650 323
+
+coin 1085 190
+coin 1170 240
+coin 1255 300
+coin 1340 300
+coin 1425 240
+coin 1510 190
+
+coin 2185 190
+coin 2270 225
+coin 2355 260
+coin 2440 295
+coin 2525 295
+coin 2610 260
+coin 2695 225
+coin 2780 190
+
+coin 1585 190
+coin 1670 225
+coin 1755 260
+coin 1840 295
+coin 1925 295
+coin 2010 260
+coin 2095 225
+coin 2180 190
+
+coin 4000 130
+coin 4060 190
+coin 4120 250
+coin 4180 250
+coin 4240 190
+coin 4300 130
+coin 4360 70
+coin 4600 70
+coin 4900 70
+coin 5200 70
+
+coin 8500 1300
+coin 8585 1360
+coin 8670 1420
+coin 8755 1420
+coin 8840 1360
+coin 8925 1300
+coin 9010 1240
+coin 9095 1180
+coin 9180 1120
+coin 9265 1060
+coin 9350 1000
+coin 9410 900
+

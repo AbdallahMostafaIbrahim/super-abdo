@@ -130,6 +130,17 @@ Coin* Abdo::isTouchingCoin(const QList<QGraphicsItem*>& items){
     return nullptr;
 }
 
+Oil *Abdo::isTouchingOil(const QList<QGraphicsItem *> & items)
+{
+    for(QGraphicsItem* items : items) {
+        Oil* oil = dynamic_cast<Oil*>(items);
+        if(oil != nullptr) {
+            return oil;
+        }
+    }
+    return nullptr;
+}
+
 // Checks if player collided with any harmful entity
 HarmfulEntity* Abdo::isTouchingHarmfulEntity(const QList<QGraphicsItem *>& items)
 {

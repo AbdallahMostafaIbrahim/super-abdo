@@ -8,6 +8,7 @@
 #include <QTimer>
 #include "level_props/groundentity.h"
 #include "level_props/coin.h"
+#include "level_props/oil.h"
 #include "enemy/harmfulentity.h"
 
 enum PlayerState {
@@ -32,6 +33,7 @@ public:
     GroundEntity* isBlockedHorizontally(const QList<QGraphicsItem*>&, int&);
     GroundEntity* isTouchingHead(const QList<QGraphicsItem*>&);
     Coin* isTouchingCoin(const QList<QGraphicsItem*>&);
+    Oil* isTouchingOil(const QList<QGraphicsItem*>&);
     HarmfulEntity* isTouchingHarmfulEntity(const QList<QGraphicsItem*>&);
     void setState(PlayerState s);
     bool takeDamage();

@@ -10,7 +10,6 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    abdo.cpp \
     baselevel.cpp \
     enemy/Splinterslime.cpp \
     enemy/baseenemy.cpp \
@@ -55,11 +54,28 @@ SOURCES += \
     shopscene.cpp \
     soundplayer.cpp \
     utils.cpp \
-    soundwave.cpp
+    soundwave.cpp \
+    abdo.cpp \
+    baselevel.cpp \
+    enemy/birdegg.cpp \
+    enemy/birdenemy.cpp \
+    enemy/radar.cpp \
+    enemy/streetdrone.cpp \
+    enemy/streetdronebullets.cpp \
+    enemy/streetgarbage.cpp \
+    enemy/streetoilenemy.cpp \
+    enemy/streetrocks.cpp \
+    enemy/vehicleenemy.cpp \
+    level2.cpp \
+    level_props/highbuilding.cpp \
+    level_props/lowbuilding.cpp \
+    level_props/mediumbuilding.cpp \
+    level_props/oil.cpp \
+    level_props/streetbarrier.cpp \
+    level_props/streetdumpster.cpp
 
 HEADERS += \
-    abdo.h \
-    baselevel.h \
+abdo.h \
     enemy/Splinterslime.h \
     enemy/baseenemy.h \
     enemy/boss.h \
@@ -102,7 +118,25 @@ HEADERS += \
     shopscene.h \
     soundplayer.h \
     utils.h \
-    soundwave.h
+    soundwave.h \
+    abdo.h \
+    baselevel.h \
+    enemy/birdegg.h \
+    enemy/birdenemy.h \
+    enemy/radar.h \
+    enemy/streetdrone.h \
+    enemy/streetdronebullets.h \
+    enemy/streetgarbage.h \
+    enemy/streetoilenemy.h \
+    enemy/streetrocks.h \
+    enemy/vehicleenemy.h \
+    level2.h \
+    level_props/highbuilding.h \
+    level_props/lowbuilding.h \
+    level_props/mediumbuilding.h \
+    level_props/oil.h \
+    level_props/streetbarrier.h \
+    level_props/streetdumpster.h 
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -111,9 +145,3 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 RESOURCES += \
     resources.qrc
-
-DISTFILES += \
-    maps/map-1/enemies.txt \
-    maps/map-1/main_copy_copy.txt \
-    maps/map-1/map.txt \
-    maps/map-1/platforms.txt

@@ -6,12 +6,27 @@
 #include "level_props/pictureframe.h"
 #include "level_props/coin.h"
 #include "level_props/shelf.h"
+#include "level_props/lowbuilding.h"
+#include "level_props/mediumbuilding.h"
+#include "level_props/highbuilding.h"
+#include "level_props/streetbarrier.h"
+#include "level_props/streetdumpster.h"
+#include "level_props/oil.h"
 #include "level_props/sewerpipe.h"
 #include "level_props/wall.h"
 
 #include "enemy/hazardsign.h"
+#include "enemy/streetgarbage.h"
 #include "enemy/employeeenemy.h"
 #include "enemy/printerenemy.h"
+#include "enemy/streetoilenemy.h"
+#include "enemy/vehicleenemy.h"
+#include "enemy/streetrocks.h"
+#include "enemy/birdenemy.h"
+#include "enemy/streetdrone.h"
+
+#include "baselevel.h"
+#include "abdo.h"
 #include "enemy/leonardo.h"
 #include "enemy/raphealo.h"
 #include "enemy/burningtrash.h"
@@ -20,6 +35,7 @@
 #include <QMessageBox>
 #include <QTextStream>
 
+extern BaseLevel* base;
 
 LevelLoader::LevelLoader(QFile& mapFile, QFile& enemiesFile) {
     if(!mapFile.open(QIODevice::ReadOnly)) {
@@ -65,7 +81,35 @@ void LevelLoader::loadMap(QGraphicsScene* scene) {
              coin->setPos(x, scene->height() - y - coin->boundingRect().height());
              coin->setZValue(-1);
              scene->addItem(coin);
-         }}
+         }},
+        {"street-lowbuilding", [scene](int x, int y) -> void {
+             LowBuilding* lowbuilding = new LowBuilding();
+             lowbuilding->setPos(x, scene->height() - y - lowbuilding->pixmap().height());
+             lowbuilding->setZValue(-2);
+             scene->addItem(lowbuilding);
+         }},
+        {"street-mediumbuilding", [scene](int x, int y) -> void {
+             MediumBuilding* mediumbuilding = new MediumBuilding();
+             mediumbuilding->setPos(x, scene->height() - y - mediumbuilding->pixmap().height());
+             mediumbuilding->setZValue(-2);
+             scene->addItem(mediumbuilding);
+         }},
+        {"street-highbuilding", [scene](int x, int y) -> void {
+             HighBuilding* highbuilding = new HighBuilding();
+             highbuilding->setPos(x, scene->height() - y - highbuilding->pixmap().height());
+             highbuilding->setZValue(-2);
+             scene->addItem(highbuilding);
+         }},
+        {"street-barrier", [scene](int x, int y) -> void {
+             streetbarrier* barrier = new streetbarrier();
+             barrier->setPos(x, scene->height() - y - barrier->getPixmap()->height());
+             scene->addItem(barrier);
+         }},
+        {"street-dumpster", [scene](int x, int y) -> void {
+             StreetDumpster *dumpster = new StreetDumpster();
+             dumpster->setPos(x, scene->height() - y - dumpster->getPixmap()->height());
+             scene->addItem(dumpster);
+         }},
     };
 
     QString line;
@@ -88,7 +132,7 @@ void LevelLoader::loadMap(QGraphicsScene* scene) {
 
         QString type = parts[0];
 
-        bool isPlatform = type == "platform" || type == "shelf" || type == "pipe" || type == "wall";
+        bool isPlatform = type == "platform" || type == "shelf" || type == "oil" || type == "pipe" || type == "wall";
 
         if(isPlatform && parts.size() < 6) {
             continue;
@@ -116,11 +160,16 @@ void LevelLoader::loadMap(QGraphicsScene* scene) {
                 Platform* platform = new Platform(width, height, p);
                 platform->setPos(x, scene->height() - y - platform->boundingRect().height());
                 scene->addItem(platform);
-            } else if (type == "shelf") {
+            } else if(type == "shelf") {
                 Shelf* shelf = new Shelf(width);
                 shelf->setPos(x, scene->height() - y - shelf->boundingRect().height());
                 scene->addItem(shelf);
-            } else if (type == "pipe"){
+            } else if(type == "oil") {
+                Oil *oil = new Oil(width);
+                oil->setPos(x, scene->height() - y - oil->boundingRect().height());
+                oil->setZValue(1);
+                scene->addItem(oil);
+            }  else if (type == "pipe"){
                 SewerPipe* pipe = new SewerPipe(width);
                 pipe->setPos(x, scene->height() - y - pipe->boundingRect().height());
                 scene->addItem(pipe);
@@ -163,6 +212,42 @@ void LevelLoader::loadEnemies(QGraphicsScene* scene) {
              printer->setZValue(-1);
              scene->addItem(printer);
          }},
+        {"garbage", [scene](int x, int y, int left, int right, int speed) -> void {
+             StreetGarbage* garbage = new StreetGarbage();
+             garbage->setPos(x, scene->height() - y - garbage->getPixmap()->height());
+             garbage->setZValue(-1);
+             scene->addItem(garbage);
+         }},
+        {"street-oilenemy", [scene](int x, int y, int left, int right, int speed) -> void {
+             StreetOilEnemy* oilenemy = new StreetOilEnemy(left, right, x, speed);
+             oilenemy->setPos(x, scene->height() - y - oilenemy->getPixmap()->height());
+             oilenemy->setZValue(-1);
+             scene->addItem(oilenemy);
+         }},
+        {"street-vehicle", [scene](int x, int y, int left, int right, int speed) -> void {
+             VehicleEnemy* vehicle = new VehicleEnemy(left, right, x, speed);
+             vehicle->setPos(x, scene->height() - y - vehicle->getPixmap()->height());
+             vehicle->setZValue(-1);
+             scene->addItem(vehicle);
+         }},
+        {"rocks", [scene](int x, int y, int left, int right, int speed) -> void {
+             StreetRocks* rocks = new StreetRocks();
+             rocks->setPos(x, scene->height() - y - rocks->getPixmap()->height());
+             rocks->setZValue(-1);
+             scene->addItem(rocks);
+         }},
+        {"bird", [scene](int x, int y, int left, int right, int speed) -> void {
+             BirdEnemy* bird = new BirdEnemy();
+             bird->setPos(x, y);
+             bird->setZValue(-1);
+             scene->addItem(bird);
+         }},
+        {"drone", [scene](int x, int y, int left, int right, int speed) -> void {
+             StreetDrone* drone = new StreetDrone(left, right, x, speed);
+             drone->setPos(x, y);
+             drone->setZValue(-1);
+             scene->addItem(drone);
+        }},
         {"leo", [scene](int x, int y, int left, int right, int speed) -> void {
              Leonardo* leo = new Leonardo(left, right, x, speed);
              leo->setPos(x, scene->height() - y - leo->getPixmap()->height());

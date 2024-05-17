@@ -2,6 +2,11 @@
 #include <QGraphicsScene>
 
 
+void BaseEnemy::resetHealth()
+{
+    health = initialHealth;
+}
+
 BaseEnemy::BaseEnemy(int initialH, int damage, bool animates) : HarmfulEntity(damage), health(initialH), initialHealth(initialH) {
     showDamage = false;
     damageTimer.setInterval(200); // 200 milliseconds
