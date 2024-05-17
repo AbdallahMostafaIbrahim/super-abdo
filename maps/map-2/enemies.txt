@@ -1,8 +1,8 @@
 street-oilenemy 4300 55 260 100 150
-street-oilenemy 4500 55 50 100 130
-street-oilenemy 4700 55 100 100 150
-street-oilenemy 4900 55 100 100 140
-street-oilenemy 5100 55 100 100 155
+street-oilenemy 4600 55 50 100 145
+street-oilenemy 4900 55 100 100 130
+street-oilenemy 5100 55 100 100 145
+-street-oilenemy 5400 55 100 100 130
 
 garbage 1150 54 0 0 0
 garbage 1250 54 0 0 0
@@ -58,10 +58,15 @@ rocks 10300 90 0 0 0
 rocks 10450 90 0 0 0
 
 bird 7400 600 0 0 0
-bird 8460 500 0 0 0
-bird 9750 1000 0 0 0
+bird 8460 450 0 0 0
+bird 9750 850 0 0 0
 
-street-vehicle 11000 55 260 100 150
-street-vehicle 14000 55 260 100 130
-street-vehicle 18000 55 260 100 140
+drone 11500 1400 260 100 120
+drone 12000 1400 260 100 110
+drone 12500 1400 260 100 110
+drone 13000 1400 260 100 120
+
+-street-vehicle 11000 55 260 100 150
+-street-vehicle 14000 55 260 100 130
+-street-vehicle 18000 55 260 100 140
 -street-vehicle 6600 55 260 100 150

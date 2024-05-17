@@ -1,5 +1,5 @@
 #include "highbuilding.h"
 
 HighBuilding::HighBuilding() {
-    setPixmap(QPixmap(":/images/building-glide.png").scaledToHeight(1400));
+    setPixmap(QPixmap(":/images/level-2/building-glide.png").scaledToHeight(1400));
 }

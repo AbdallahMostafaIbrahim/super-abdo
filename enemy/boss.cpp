@@ -1,6 +1,6 @@
 #include "boss.h"
 #include "utils.h"
-#include "level1.h"
+#include "baselevel.h"
 #include <QRandomGenerator>
 #include <QPainter>
 #include <QPainterPath>
@@ -50,7 +50,7 @@ void Boss::animate()
 
 void Boss::kill()
 {
-    Level1* level = dynamic_cast<Level1*>(scene());
+    BaseLevel* level = dynamic_cast<BaseLevel*>(scene());
     if(level) {
         level->killBoss();
     }

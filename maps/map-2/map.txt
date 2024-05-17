@@ -1,4 +1,4 @@
-platform 0 0 18000 55 :/images/tile-2.png
+platform 0 0 18000 55 :/images/level-2/tile-2.png
 platform 7000 1025 556 50 no
 platform 7900 1175 650 50 no
 platform 9400 745 408 50 no
@@ -12,7 +12,7 @@ street-dumpster 2790 55
 street-barrier 3900 55
 street-barrier 5400 55
 
-oil 4100 55 1000 55 no
+oil 4000 50 1400 55 no
 
 street-mediumbuilding 7000 55
 street-barrier 7500 55
@@ -56,21 +56,27 @@ coin 2010 260
 coin 2095 225
 coin 2180 190
 
-coin 420 165
-coin 480 165
-coin 540 165
-coin 600 165
-coin 660 165
-coin 720 165
+coin 4000 130
+coin 4060 190
+coin 4120 250
+coin 4180 250
+coin 4240 190
+coin 4300 130
+coin 4360 70
+coin 4600 70
+coin 4900 70
+coin 5200 70
 
-coin 3600 70
-coin 3660 130
-coin 3720 190
-coin 3780 190
-coin 3840 130
-coin 3900 70
-
--coin 2820 250
--coin 2880 250
--coin 2940 250
+coin 8500 1300
+coin 8585 1360
+coin 8670 1420
+coin 8755 1420
+coin 8840 1360
+coin 8925 1300
+coin 9010 1240
+coin 9095 1180
+coin 9180 1120
+coin 9265 1060
+coin 9350 1000
+coin 9410 900
 

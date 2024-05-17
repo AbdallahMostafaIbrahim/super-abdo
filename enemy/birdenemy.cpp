@@ -6,7 +6,7 @@
 
 BirdEnemy::BirdEnemy(): BaseEnemy(100,1,true) {
     int width = 150;
-    pixmaps << QPixmap(":/images/street-bird1.gif").scaledToWidth(width) << QPixmap(":/images/street-bird2.gif").scaledToWidth(width) << QPixmap(":/images/street-bird3.gif").scaledToWidth(width) << QPixmap(":/images/street-bird4.gif").scaledToWidth(width);
+    pixmaps << QPixmap(":/images/level-2/street-bird/street-bird1.gif").scaledToWidth(width) << QPixmap(":/images/level-2/street-bird/street-bird2.gif").scaledToWidth(width) << QPixmap(":/images/level-2/street-bird/street-bird3.gif").scaledToWidth(width) << QPixmap(":/images/level-2/street-bird/street-bird4.gif").scaledToWidth(width);
     currentPixmap = pixmaps[0];
     currentFrame = 0;
     // The drop rate is a random number so that not all printers drop papers in sync.

@@ -25,7 +25,10 @@ SOURCES += \
     enemy/movingenemy.cpp \
     enemy/printerbullet.cpp \
     enemy/printerenemy.cpp \
+    enemy/radar.cpp \
     enemy/staticenemy.cpp \
+    enemy/streetdrone.cpp \
+    enemy/streetdronebullets.cpp \
     enemy/streetgarbage.cpp \
     enemy/streetoilenemy.cpp \
     enemy/streetrocks.cpp \
@@ -74,7 +77,10 @@ HEADERS += \
     enemy/movingenemy.h \
     enemy/printerbullet.h \
     enemy/printerenemy.h \
+    enemy/radar.h \
     enemy/staticenemy.h \
+    enemy/streetdrone.h \
+    enemy/streetdronebullets.h \
     enemy/streetgarbage.h \
     enemy/streetoilenemy.h \
     enemy/streetrocks.h \

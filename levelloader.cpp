@@ -21,6 +21,7 @@
 #include "enemy/vehicleenemy.h"
 #include "enemy/streetrocks.h"
 #include "enemy/birdenemy.h"
+#include "enemy/streetdrone.h"
 
 #include "baselevel.h"
 #include "abdo.h"
@@ -226,6 +227,12 @@ void LevelLoader::loadEnemies(QGraphicsScene* scene) {
              bird->setPos(x, y);
              bird->setZValue(-1);
              scene->addItem(bird);
+         }},
+        {"drone", [scene](int x, int y, int left, int right, int speed) -> void {
+             StreetDrone* drone = new StreetDrone(left, right, x, speed);
+             drone->setPos(x, y);
+             drone->setZValue(-1);
+             scene->addItem(drone);
          }},
     };
 

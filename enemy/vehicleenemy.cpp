@@ -6,10 +6,10 @@
 #include <QGraphicsScene>
 #include <QRectF>
 
-VehicleEnemy::VehicleEnemy(int left, int right, int initialPos, int speed) : MovingEnemy(left,right,initialPos,speed,3, 1, true) {
-    int width = 325;
+VehicleEnemy::VehicleEnemy(int left, int right, int initialPos, int speed) : MovingEnemy(left,right,initialPos,speed,6, 1, true) {
+    int width = 275;
 
-    frames << QPixmap(":/images/street-car1.png").scaledToWidth(width) << QPixmap(":/images/street-car2.png").scaledToWidth(width) << QPixmap(":/images/street-car3.png").scaledToWidth(width) << QPixmap(":/images/street-car4.png").scaledToWidth(width);
+    frames << QPixmap(":/images/level-2/street-car/street-car1.png").scaledToWidth(width) << QPixmap(":/images/level-2/street-car/street-car2.png").scaledToWidth(width) << QPixmap(":/images/level-2/street-car/street-car3.png").scaledToWidth(width) << QPixmap(":/images/level-2/street-car/street-car4.png").scaledToWidth(width);
 
     currentPixmap = &frames[0];
     currentFrame = 0;

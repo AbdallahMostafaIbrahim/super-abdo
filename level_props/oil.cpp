@@ -2,7 +2,7 @@
 #include <QPainter>
 
 Oil::Oil(int w) : width(w) {
-    pixmap = QPixmap(":/images/street-oilspill.png").scaledToWidth(20);
+    pixmap = QPixmap(":/images/level-2/street-oilspill.png").scaledToWidth(20);
 }
 
 QRectF Oil::boundingRect() const{
@@ -10,7 +10,7 @@ QRectF Oil::boundingRect() const{
 }
 
 void Oil::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) {
-    painter->setOpacity(0.5);
+    painter->setOpacity(0.8);
     for(int i = 0; i < width / pixmap.width(); i++) {
         painter->drawPixmap(i * pixmap.width(), 0, pixmap);
     }

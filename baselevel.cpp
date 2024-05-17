@@ -31,7 +31,7 @@ BaseLevel::BaseLevel(Game *game) : QGraphicsScene()
     QTimer *timer = new QTimer(this);
 
     // Level Settings Init
-    doubleJumpEnabled = true || GameState::itemsBought.contains(DOUBLE_JUMP);
+    doubleJumpEnabled = GameState::itemsBought.contains(DOUBLE_JUMP);
     galabeyaGlideEnabled = GameState::itemsBought.contains(GALABEYA_GLIDE);
     soundWaveEnabled = true;
     firstTimeDoubleJumping = GameState::newlyPurchased.contains(DOUBLE_JUMP);
@@ -60,7 +60,7 @@ BaseLevel::BaseLevel(Game *game) : QGraphicsScene()
     health = MAX_HEALTH;
     collectedCoins = 0;
     currentJumpCount = 0;
-    maxJumps = 200;
+    maxJumps = 2;
     isGameOver = false;
     isGoodGame = false;
     isTeleport = false;
@@ -91,7 +91,7 @@ void BaseLevel::initScene() {
 
     // Creating the player
     abdo = new Abdo();
-    abdo->setPos(200, sceneRect().height() - abdo->boundingRect().height() - 100);
+    abdo->setPos(100, sceneRect().height() - abdo->boundingRect().height() - 100);
     addItem(abdo);
 
     // Uses Level Loader to load the level from file instead of creating objects manually.
@@ -183,10 +183,11 @@ void BaseLevel::drawForeground(QPainter *painter, const QRectF &rect)
 
         if(isTeleport){
             painter->drawRect(sceneRect());
-            painter->fillRect(sceneRect(), QColor(0, 0, 0, 0));
+            painter->fillRect(sceneRect(), QColor(0, 0, 0, 120));
             painter->setPen(Qt::white);
-            painter->setFont(QFont("Minecraft", 40));
-            painter->drawText(rect.width() / 2 - 215, rect.height() / 2 - 100, "Press [T] to teleport");
+            painter->setFont(QFont("Minecraft", 32));
+            painter->drawText(150, rect.height() / 2 - 100, "\'Looks like these buildings are getting revamped!\'");
+            painter->drawText(rect.width() / 2 - 200, rect.height() / 2, "Press [T] to break in.");
         }
     }
 }
@@ -370,13 +371,13 @@ void BaseLevel::checkEnemies() {
         if(abdo->takeDamage()){
             SoundPlayer::hitAbdo();
             health -= harmfulEntity->getDamage();
-            // If health becomes 0 or less, we game over.
-            // if(health <= 0) {
-            //     removeItem(abdo);
-            //     isGameOver = true;
-            //     finishedTime = elapsedTime;
-            //     // TODO: Game Over Sound
-            // }
+            //If health becomes 0 or less, we game over.
+            if(health <= 0) {
+                removeItem(abdo);
+                isGameOver = true;
+                finishedTime = elapsedTime;
+                // TODO: Game Over Sound
+            }
         }
     }
 }

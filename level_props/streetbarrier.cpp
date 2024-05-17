@@ -4,7 +4,7 @@
 
 streetbarrier::streetbarrier() {
 
-    pixmap = QPixmap(":/images/street-barrier.png").scaled(120, 80);
+    pixmap = QPixmap(":/images/level-2/street-barrier.png").scaled(120, 80);
 }
 
 void streetbarrier::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) {

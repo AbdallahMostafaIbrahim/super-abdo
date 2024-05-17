@@ -4,7 +4,7 @@
 #include <QRectF>
 
 BirdEgg::BirdEgg(): EnemyBullet(10000) {
-    pixmap = QPixmap(":/images/street-birdegg.png").scaledToWidth(40);
+    pixmap = QPixmap(":/images/level-2/street-birdegg.png").scaledToWidth(40);
 }
 
 void BirdEgg::move()

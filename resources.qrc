@@ -35,32 +35,37 @@
         <file>images/printer/printer-4.png</file>
         <file>images/printer/printer-bullet.png</file>
         <file>images/karen.png</file>
-        <file>images/street-cones.png</file>
         <file>maps/map-2/enemies.txt</file>
         <file>maps/map-2/map.txt</file>
-        <file>images/street-bench.png</file>
-        <file>images/street1.png</file>
-        <file>images/building-glide1.png</file>
-        <file>images/street-barrier.png</file>
-        <file>images/background-2.png</file>
-        <file>images/street-garbage1.png</file>
-        <file>images/street-dumpster.png</file>
-        <file>images/street-carcrash.png</file>
-        <file>images/street-oilspill.png</file>
-        <file>images/street-oilenemy1.gif</file>
-        <file>images/street-oilenemy2.gif</file>
-        <file>images/building-glideroof.png</file>
-        <file>images/building-glide.png</file>
-        <file>images/tile-2.png</file>
-        <file>images/rock-pile.png</file>
-        <file>images/street-bird1.gif</file>
-        <file>images/street-bird2.gif</file>
-        <file>images/street-bird3.gif</file>
-        <file>images/street-bird4.gif</file>
-        <file>images/street-birdegg.png</file>
-        <file>images/street-car1.png</file>
-        <file>images/street-car2.png</file>
-        <file>images/street-car3.png</file>
-        <file>images/street-car4.png</file>
+        <file>images/level-2/street-bird/street-bird1.gif</file>
+        <file>images/level-2/street-bird/street-bird2.gif</file>
+        <file>images/level-2/street-bird/street-bird3.gif</file>
+        <file>images/level-2/street-bird/street-bird4.gif</file>
+        <file>images/level-2/street-car/street-car1.png</file>
+        <file>images/level-2/street-car/street-car2.png</file>
+        <file>images/level-2/street-car/street-car3.png</file>
+        <file>images/level-2/street-car/street-car4.png</file>
+        <file>images/level-2/street-oilenemy/street-oilenemy1.gif</file>
+        <file>images/level-2/street-oilenemy/street-oilenemy2.gif</file>
+        <file>images/level-2/background-2.png</file>
+        <file>images/level-2/building-glide.png</file>
+        <file>images/level-2/rock-pile.png</file>
+        <file>images/level-2/street-barrier.png</file>
+        <file>images/level-2/street-birdegg.png</file>
+        <file>images/level-2/street-cones.png</file>
+        <file>images/level-2/street-dumpster.png</file>
+        <file>images/level-2/street-garbage1.png</file>
+        <file>images/level-2/street-oilspill.png</file>
+        <file>images/level-2/tile-2.png</file>
+        <file>images/level-2/radar.png</file>
+        <file>images/level-2/drone-bullet.png</file>
+        <file>images/level-2/street-drones/street-drone1.png</file>
+        <file>images/level-2/street-drones/street-drone2.png</file>
+        <file>images/level-2/street-drones/street-drone3.png</file>
+        <file>images/level-2/street-drones/street-drone4.png</file>
+        <file>images/level-2/street-drones/street-drone5.png</file>
+        <file>images/level-2/street-drones/street-drone6.png</file>
+        <file>images/level-2/street-drones/street-drone7.png</file>
+        <file>images/level-2/street-drones/street-drone8.png</file>
     </qresource>
 </RCC>

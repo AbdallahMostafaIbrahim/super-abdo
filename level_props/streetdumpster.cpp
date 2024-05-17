@@ -3,7 +3,7 @@
 #include <QRectF>
 
 StreetDumpster::StreetDumpster() {
-    pixmap = QPixmap(":/images/street-dumpster.png").scaledToWidth(150);
+    pixmap = QPixmap(":/images/level-2/street-dumpster.png").scaledToWidth(150);
 }
 
 void StreetDumpster::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) {

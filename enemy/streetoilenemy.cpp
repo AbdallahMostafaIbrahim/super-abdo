@@ -4,8 +4,8 @@
 #include <QRectF>
 
 StreetOilEnemy::StreetOilEnemy(int left, int right, int initialPos, int speed) : MovingEnemy(left, right, initialPos, speed, 3, 1) {
-    idle = QPixmap(":/images/street-oilenemy1.gif").scaledToWidth(100);
-    walking = QPixmap(":/images/street-oilenemy2.gif").scaledToWidth(100);
+    idle = QPixmap(":/images/level-2/street-oilenemy/street-oilenemy1.gif").scaledToWidth(100);
+    walking = QPixmap(":/images/level-2/street-oilenemy/street-oilenemy2.gif").scaledToWidth(100);
     pixmap = &idle;
     isIdle = true;
 
