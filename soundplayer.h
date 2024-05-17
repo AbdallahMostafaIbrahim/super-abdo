@@ -36,18 +36,18 @@ private:
     static QMediaPlayer* mediaPlayer_babyCrying;
     static QAudioOutput* audioOutput_babyCrying;
 public:
-    SoundPlayer();
-    static void hitAbdo();
-    static void killAbdo();
-    static void gameOver();
-    static void doubleJump();
-    static void fireSoundWave();
-    static void abdoJump();
-    static void levelFinish();
-    static void gameTheme(bool start = true);
-    static void muteTheme();
-    static void babyCrying();
-    static float volumeFactor;
+    SoundPlayer();//constructor of Soundplayer
+    static void hitAbdo();//sound of abdo when he gets hit
+    static void killAbdo();//sound of abdo dies
+    static void gameOver();//sound when game is over
+    static void doubleJump();//sound when double jump happens
+    static void fireSoundWave();//sound when shot is fired
+    static void abdoJump();//sound when abdo jumps
+    static void levelFinish();//sound when you finish level
+    static void gameTheme(bool start = true);//game theme sound
+    static void muteTheme();//function to mute the theme song
+    static void babyCrying();//sound of baby crying when he dies
+    static float volumeFactor;// sets volume factor
 };
 
 #endif // SOUNDPLAYER_H

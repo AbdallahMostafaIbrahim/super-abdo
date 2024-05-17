@@ -6,7 +6,7 @@
 #include <QGraphicsItem>
 #include <QGraphicsScene>
 
-SoundWave::SoundWave(int direction)
+SoundWave::SoundWave(int direction)//constructor of soudwave
 {
     pixmap = QPixmap(":/images/sound-wave.png");
     dir = direction;

@@ -17,16 +17,16 @@ class ShopScene : public QGraphicsScene
 {
 Q_OBJECT
 public:
-    ShopScene(Game* game);
-    void update();
+    ShopScene(Game* game);//constructor of ShopScene setting background and buttons
+    void update();//updates elements after user buys something for example
 private:
     QList<QWidget*> buyElements;
     Game* game;
     QPushButton* backButton;
     std::map<ShopItem, ItemData> itemToPrice;
 private slots:
-    void buy(ShopItem);
-    void back();
+    void buy(ShopItem);//buys element from store
+    void back();//return to menu
 };
 
 #endif // SHOPSCENE_H
