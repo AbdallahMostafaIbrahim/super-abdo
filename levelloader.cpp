@@ -6,10 +6,16 @@
 #include "level_props/pictureframe.h"
 #include "level_props/coin.h"
 #include "level_props/shelf.h"
+#include "level_props/sewerpipe.h"
+#include "level_props/wall.h"
 
 #include "enemy/hazardsign.h"
 #include "enemy/employeeenemy.h"
 #include "enemy/printerenemy.h"
+#include "enemy/leonardo.h"
+#include "enemy/raphealo.h"
+#include "enemy/burningtrash.h"
+#include "enemy/mikey.h"
 
 #include <QMessageBox>
 #include <QTextStream>
@@ -82,7 +88,7 @@ void LevelLoader::loadMap(QGraphicsScene* scene) {
 
         QString type = parts[0];
 
-        bool isPlatform = type == "platform" || type == "shelf";
+        bool isPlatform = type == "platform" || type == "shelf" || type == "pipe" || type == "wall";
 
         if(isPlatform && parts.size() < 6) {
             continue;
@@ -110,10 +116,18 @@ void LevelLoader::loadMap(QGraphicsScene* scene) {
                 Platform* platform = new Platform(width, height, p);
                 platform->setPos(x, scene->height() - y - platform->boundingRect().height());
                 scene->addItem(platform);
-            } else {
+            } else if (type == "shelf") {
                 Shelf* shelf = new Shelf(width);
                 shelf->setPos(x, scene->height() - y - shelf->boundingRect().height());
                 scene->addItem(shelf);
+            } else if (type == "pipe"){
+                SewerPipe* pipe = new SewerPipe(width);
+                pipe->setPos(x, scene->height() - y - pipe->boundingRect().height());
+                scene->addItem(pipe);
+            } else if (type == "wall") {
+                 Wall* wall = new Wall(width, height);
+                 wall->setPos(x, scene->height() - y - wall->getPixmap()->height());
+                 scene->addItem(wall);
             }
         }
         else if (constructorMap.contains(type)) {
@@ -148,6 +162,30 @@ void LevelLoader::loadEnemies(QGraphicsScene* scene) {
              printer->setPos(x, y);
              printer->setZValue(-1);
              scene->addItem(printer);
+         }},
+        {"leo", [scene](int x, int y, int left, int right, int speed) -> void {
+             Leonardo* leo = new Leonardo(left, right, x, speed);
+             leo->setPos(x, scene->height() - y - leo->getPixmap()->height());
+             leo->setZValue(-1);
+             scene->addItem(leo);
+         }},
+        {"raph", [scene](int x, int y, int left, int right, int speed) -> void {
+             Raphealo* raph = new Raphealo();
+             raph->setPos(x, y);
+             raph->setZValue(-1);
+             scene->addItem(raph);
+         }},
+        {"mike", [scene](int x, int y, int left, int right, int speed) -> void {
+             Mikey* mike = new Mikey();
+             mike->setPos(x, scene->height() - y - mike->getPixmap()->height());
+             mike->setZValue(-1);
+             scene->addItem(mike);
+         }},
+        {"trash", [scene](int x, int y, int left, int right, int speed) -> void {
+             BurningTrash* trash = new BurningTrash();
+             trash->setPos(x, scene->height() - y - trash->getPixmap()->height());
+             trash->setZValue(-1);
+             scene->addItem(trash);
          }},
     };
 

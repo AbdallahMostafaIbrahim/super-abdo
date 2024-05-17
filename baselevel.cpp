@@ -89,7 +89,7 @@ void BaseLevel::initScene() {
 
     // Creating the player
     abdo = new Abdo();
-    abdo->setPos(200, game->height() - abdo->boundingRect().height() - 100);
+    abdo->setPos(100, game->height() - abdo->boundingRect().height() - 100);
     addItem(abdo);
 
     // Uses Level Loader to load the level from file instead of creating objects manually.
@@ -228,9 +228,9 @@ void BaseLevel::moveHorizontally()
     int direction = 0;
     GroundEntity *blocked = abdo->isBlockedHorizontally(collidingItems, direction); // Direction is passed by reference, so it gets mutated here.
 
-    if (direction == 1 && rightPressed && blocked)
+    if (direction >= 0 && rightPressed && blocked)
         return;
-    if (direction == -1 && leftPressed && blocked)
+    if (direction <= 0 && leftPressed && blocked)
         return;
 
     // Move the player in the correct direction. If he is is jumping or falling, slow down his speed.

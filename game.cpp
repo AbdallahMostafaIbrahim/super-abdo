@@ -2,6 +2,7 @@
 #include "mainmenuscene.h"
 #include "baselevel.h"
 #include "level1.h"
+#include "level3.h"
 #include "levelselector.h"
 #include "shopscene.h"
 #include "gamestate.h"
@@ -33,6 +34,9 @@ void Game::startLevel(int index)
     switch (index) {
     case 1:
         newLevel = new Level1(this);
+        break;
+    case 3:
+        newLevel = new Level3(this);
         break;
     default:
         qDebug() << "Unknown level index:" << index;

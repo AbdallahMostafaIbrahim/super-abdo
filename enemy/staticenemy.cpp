@@ -2,17 +2,21 @@
 
 StaticEnemy::StaticEnemy(QPixmap pix) : BaseEnemy(100, 1, false)
 {
-    pixmap = pix;
+    currentPixmap = pix;
+}
+
+StaticEnemy::StaticEnemy(QList<QPixmap> frames) : BaseEnemy(100, 1, false)
+{
 }
 
 void StaticEnemy::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
-    painter->drawPixmap(0,0,pixmap);
+    painter->drawPixmap(0,0,currentPixmap);
 }
 
 QRectF StaticEnemy::boundingRect() const
 {
-    return QRectF(0, 0, pixmap.width()-10, pixmap.height()-10);
+    return QRectF(0, 0, currentPixmap.width()-10, currentPixmap.height()-10);
 }
 
 void StaticEnemy::move(int, int)
@@ -22,7 +26,7 @@ void StaticEnemy::move(int, int)
 
 const QPixmap* StaticEnemy::getPixmap()
 {
-    return &pixmap;
+    return &currentPixmap;
 }
 
 void StaticEnemy::animate()
