@@ -10,11 +10,6 @@ shelf 1520 415 300 40 lol
 shelf 1820 555 300 40 lol
 shelf 1600 695 300 40 lol
 shelf 2000 835 300 40 lol
--shelf 1520 975 300 40 lol
--shelf 1820 455 300 40 lol
--shelf 1450 130 240 40 lol
-
-
 
 pantry 2400 0
 pantry 2400 300
@@ -33,8 +28,6 @@ pantry 3950 0
 pantry 3950 300
 pantry 3950 600
 
-
-
 coin 2900 165
 coin 2970 165
 coin 3040 165
@@ -52,19 +45,7 @@ coin 3780 1160
 coin 3840 1160
 coin 3900 1160
 
--hag 3400 450 0 0 0
--hag 3600 450 0 0 0
--hag 3900 450 0 0 0
--hag 4600 450 0 0 0
--hag 4750 450 0 0 0
--hag 4900 450 0 0 0
--hag 5050 450 0 0 0
-
 table 4150 960
-
-
-
-
 
 tomato_frame 420 -250
 tomato_frame 4610 -250

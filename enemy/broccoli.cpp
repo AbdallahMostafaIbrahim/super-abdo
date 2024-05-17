@@ -3,7 +3,7 @@
 #include <QPainter>
 #include <QGraphicsScene>
 #include <QRandomGenerator>
-#include "employeeenemy.h"
+#include "janitor.h"
 
 int width = 300;
 Broccoli::Broccoli() : Boss({
@@ -66,16 +66,12 @@ Broccoli::Broccoli() : Boss({
              QPixmap(":/images/level-4/broccoli/frame_56_delay-0.1s.png").scaledToWidth(width)
            }, 20) {
 
-
         bulletTimer.start();
         spawnTimer.start();
         recoilRate = QRandomGenerator::global()->bounded(1500) + 700;
         newLoc = QRandomGenerator::global()->bounded(12) + 9;
 
 }
-
-
-
 
 void Broccoli::shoot()
 {
@@ -89,7 +85,7 @@ void Broccoli::shoot()
     }
 
     if (spawnTimer.elapsed() >=8000){
-        EmployeeEnemy * pawn = new EmployeeEnemy(600, 0, x(), 300);
+        Janitor * pawn = new Janitor(600, 0, x(), 300);
         pawn->setPos(x(), boundingRect().height() + y() - pawn->boundingRect().height());
         scene()->addItem(pawn);
         spawnTimer.restart();

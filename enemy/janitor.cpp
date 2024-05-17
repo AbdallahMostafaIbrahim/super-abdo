@@ -6,8 +6,8 @@
 
 
 Janitor::Janitor(int left, int right, int initialPos, int speed) : MovingEnemy(left, right, initialPos, speed, 3, 1) {
-    idle = QPixmap(":/images/level-4/janitor.png").scaledToWidth(180);
-    walking = QPixmap(":/images/level-4/janitor.png").scaledToWidth(180);
+    idle = QPixmap(":/images/level-4/janitor.png").scaledToWidth(150);
+    walking = QPixmap(":/images/level-4/janitor.png").scaledToWidth(150);
     pixmap = &idle;
     isIdle = true;
 
@@ -34,7 +34,7 @@ void Janitor::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, Q
 
 QRectF Janitor::boundingRect() const
 {
-    return QRectF(20, 20, pixmap->width()-40, pixmap->height()-40);
+    return QRectF(0,0, pixmap->width(), pixmap->height());
 }
 
 const QPixmap* Janitor::getPixmap()
