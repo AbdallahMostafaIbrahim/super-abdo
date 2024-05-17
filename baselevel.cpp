@@ -82,7 +82,7 @@ void BaseLevel::initScene() {
 
     // Creating the player
     abdo = new Abdo();
-    abdo->setPos(6500, game->height() - abdo->boundingRect().height() - 100);
+    abdo->setPos(100, game->height() - abdo->boundingRect().height() - 100);
     addItem(abdo);
 
     // Uses Level Loader to load the level from file instead of creating objects manually.

@@ -24,15 +24,16 @@ wall 3900 400 100 100 no
 
 
 coin 600 70
-coin 660 160
-coin 720 250
-coin 780 160
+coin 640 160
+coin 700 250
+coin 740 250
+coin 800 160
 coin 840 70
 
-coin 1000 360
-coin 1060 360
-coin 1120 360
-coin 1180 360
+coin 1000 330
+coin 1060 330
+coin 1120 330
+coin 1180 330
 
 coin 1400 230
 coin 1460 230
