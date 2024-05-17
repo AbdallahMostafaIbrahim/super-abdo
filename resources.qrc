@@ -322,5 +322,6 @@
         <file>images/level-5/cupboard.png</file>
         <file>videos/abdo_intro.mp4</file>
         <file>images/level-5/background-5.png</file>
+        <file>videos/abdo_final.mp4</file>
     </qresource>
 </RCC>

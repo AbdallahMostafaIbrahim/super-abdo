@@ -108,11 +108,16 @@ void Game::completeLevel(int coinsCollected, int timeSpent, int levelIndex) {
     if (currentLevel) {
         delete currentLevel;
     }
-    GameState::levelReached = levelIndex + 1;
+    GameState::levelReached = std::max(levelIndex + 1, GameState::levelReached);
     GameState::coinsCollected += coinsCollected;
     GameState::totalTimeSpendinMs += timeSpent;
     GameState::newlyPurchased.clear();
-    goToLevelSelector();
+    if(levelIndex == 5) {
+        goToMainMenu();
+        mainMenuScene->playOutro();
+    } else {
+        goToLevelSelector();
+    }
 }
 
 
