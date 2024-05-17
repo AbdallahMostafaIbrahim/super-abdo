@@ -3,7 +3,7 @@
 #include <QRectF>
 
 SplinterBullet::SplinterBullet(): EnemyBullet(6000){
-    pixmap = QPixmap(":/images/Level 3/pizza.png").scaledToWidth(60);
+    pixmap = QPixmap(":/images/level-3/pizza.png").scaledToWidth(60);
 }
 
 

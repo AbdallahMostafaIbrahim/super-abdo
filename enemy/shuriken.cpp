@@ -5,7 +5,7 @@
 #include <QRectF>
 
 Shuriken::Shuriken(): EnemyBullet(10000) {
-    pixmap = QPixmap(":/images/Level 3/shuriken.png").scaledToWidth(60);
+    pixmap = QPixmap(":/images/level-3/shuriken.png").scaledToWidth(60);
     path = Utils::createPathFromPixmap(pixmap);
 }
 

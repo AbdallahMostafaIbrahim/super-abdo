@@ -6,7 +6,7 @@
 
 Raphealo::Raphealo() : BaseEnemy(100,1,true) {
     int width = 100;
-    pixmaps << QPixmap(":/images/Level 3/Rapheal/frame_0_delay-0.1s.png").scaledToWidth(width) << QPixmap(":/images/Level 3/Rapheal/frame_1_delay-0.1s.png").scaledToWidth(width) << QPixmap(":/images/Level 3/Rapheal/frame_2_delay-0.1s.png").scaledToWidth(width) << QPixmap(":/images/Level 3/Rapheal/frame_3_delay-0.1s.png").scaledToWidth(width);
+    pixmaps << QPixmap(":/images/level-3/Rapheal/frame_0_delay-0.1s.png").scaledToWidth(width) << QPixmap(":/images/level-3/Rapheal/frame_1_delay-0.1s.png").scaledToWidth(width) << QPixmap(":/images/level-3/Rapheal/frame_2_delay-0.1s.png").scaledToWidth(width) << QPixmap(":/images/level-3/Rapheal/frame_3_delay-0.1s.png").scaledToWidth(width);
     currentPixmap = pixmaps[0];
     currentFrame = 0;
     // The drop rate is a random number so that not all printers drop papers in sync.

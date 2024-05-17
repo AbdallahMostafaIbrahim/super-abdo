@@ -3,10 +3,10 @@
 
 BurningTrash::BurningTrash() : BaseEnemy(100, 1, true) {
     int width = 100;
-    pixmaps << QPixmap(":/images/Level 3/trash/frame_0_delay-0.07s.png").scaledToWidth(width)
-            << QPixmap(":/images/Level 3/trash/frame_1_delay-0.07s.png").scaledToWidth(width)
-            << QPixmap(":/images/Level 3/trash/frame_1_delay-0.07s.png").scaledToWidth(width)
-            << QPixmap(":/images/Level 3/trash/frame_1_delay-0.07s.png").scaledToWidth(width);
+    pixmaps << QPixmap(":/images/level-3/trash/frame_0_delay-0.07s.png").scaledToWidth(width)
+            << QPixmap(":/images/level-3/trash/frame_1_delay-0.07s.png").scaledToWidth(width)
+            << QPixmap(":/images/level-3/trash/frame_1_delay-0.07s.png").scaledToWidth(width)
+            << QPixmap(":/images/level-3/trash/frame_1_delay-0.07s.png").scaledToWidth(width);
     currentPixmap = &pixmaps[0];
     currentFrame = 0;
 }

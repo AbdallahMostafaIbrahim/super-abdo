@@ -5,7 +5,7 @@
 
 Leonardo::Leonardo(int left, int right, int initialPos, int speed) : MovingEnemy(left, right, initialPos, speed, 3, 1) {
 
-    frames << QPixmap(":/images/Level 3/leonardo/frame_0_delay-0.1s.png").scaledToWidth(100) << QPixmap(":/images/Level 3/leonardo/frame_1_delay-0.1s.png").scaledToWidth(100) << QPixmap(":/images/Level 3/leonardo/frame_2_delay-0.1s.png").scaledToWidth(100) << QPixmap(":/images/Level 3/leonardo/frame_3_delay-0.1s.png").scaledToWidth(100);
+    frames << QPixmap(":/images/level-3/leonardo/frame_0_delay-0.1s.png").scaledToWidth(100) << QPixmap(":/images/level-3/leonardo/frame_1_delay-0.1s.png").scaledToWidth(100) << QPixmap(":/images/level-3/leonardo/frame_2_delay-0.1s.png").scaledToWidth(100) << QPixmap(":/images/level-3/leonardo/frame_3_delay-0.1s.png").scaledToWidth(100);
 
     currentPixmap = &frames[0];
     currentFrame = 0;

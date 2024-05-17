@@ -7,10 +7,10 @@ Level3::Level3(Game *game) : BaseLevel(game) {
     levelSettings.doubleJumpEnabled = false;
     levelSettings.galabeyaGlideEnabled = false;
     levelSettings.soundWaveEnabled = true;
-    levelSettings.triggerBossLoc = 6000;
+    levelSettings.triggerBossLoc = 6200;
     levelSettings.mapFile = ":/maps/map-3/map.txt";
     levelSettings.enemiesFile = ":/maps/map-3/enemies.txt";
-    levelSettings.backgroundImage = ":/images/Level 3/background.png";
+    levelSettings.backgroundImage = ":/images/level-3/background.png";
     levelSettings.sceneWidth = 8100;
 
     // Call Init Scene to load level using the settings

@@ -4,16 +4,7 @@
 #include <QRectF>
 
 SplinterSlime::SplinterSlime() : EnemyBullet(1700) {
-    frames << QPixmap(":/images/Level 3/slime/frame_02_delay-0.1s.png").scaledToWidth(60)
-           << QPixmap(":/images/Level 3/slime/frame_03_delay-0.1s.png").scaledToWidth(60)
-           << QPixmap(":/images/Level 3/slime/frame_04_delay-0.1s.png").scaledToWidth(60)
-           << QPixmap(":/images/Level 3/slime/frame_05_delay-0.1s.png").scaledToWidth(60)
-           << QPixmap(":/images/Level 3/slime/frame_06_delay-0.1s.png").scaledToWidth(60)
-           << QPixmap(":/images/Level 3/slime/frame_07_delay-0.1s.png").scaledToWidth(60)
-           << QPixmap(":/images/Level 3/slime/frame_08_delay-0.1s.png").scaledToWidth(60)
-           << QPixmap(":/images/Level 3/slime/frame_09_delay-0.1s.png").scaledToWidth(60)
-           << QPixmap(":/images/Level 3/slime/frame_10_delay-0.1s.png").scaledToWidth(60)
-           << QPixmap(":/images/Level 3/slime/frame_11_delay-0.1s.png").scaledToWidth(60);
+    frames << QPixmap(":/images/level-3/slime/frame_02_delay-0.1s.png").scaledToWidth(60);
 
     currentPixmap = &frames[0];
     currentFrame = 0;

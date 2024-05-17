@@ -2,9 +2,9 @@
 #include <QPainter>
 #include <QRectF>
 
-SewerPipe::SewerPipe(int w) : Platform(w, 20, QPixmap(":/images/Level 3/Sewerpipee.png").scaled(40, 40)) {
-    leftPixmap = QPixmap(":/images/Level 3/Sewerpipee.png").scaled(40, 40);
-    rightPixmap = QPixmap(":/images/Level 3/Sewerpipee.png").scaled(40, 40);
+SewerPipe::SewerPipe(int w) : Platform(w, 20, QPixmap(":/images/level-3/Sewerpipee.png").scaled(40, 40)) {
+    leftPixmap = QPixmap(":/images/level-3/Sewerpipee.png").scaled(40, 40);
+    rightPixmap = QPixmap(":/images/level-3/Sewerpipee.png").scaled(40, 40);
 }
 
 

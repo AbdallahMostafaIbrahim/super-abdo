@@ -212,7 +212,7 @@ void BaseLevel::moveHorizontally()
     // If Abdo is blocked by something horizontally don't make him move.
     int direction = 0;
     GroundEntity *blocked = abdo->isBlockedHorizontally(collidingItems, direction); // Direction is passed by reference, so it gets mutated here.
-    qDebug() << direction;
+
     if (direction >= 0 && rightPressed && blocked)
         return;
     if (direction <= 0 && leftPressed && blocked)
