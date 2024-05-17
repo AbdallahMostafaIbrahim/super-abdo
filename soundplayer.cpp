@@ -32,12 +32,23 @@ QMediaPlayer* SoundPlayer::mediaPlayer_levelFinish = new QMediaPlayer();
 QAudioOutput* SoundPlayer::audioOutput_gameTheme = new QAudioOutput();
 QMediaPlayer* SoundPlayer::mediaPlayer_gameTheme = new QMediaPlayer();
 
+QAudioOutput* SoundPlayer::audioOutput_babyCrying = new QAudioOutput();
+QMediaPlayer* SoundPlayer::mediaPlayer_babyCrying = new QMediaPlayer();
+
 void SoundPlayer::setVolume(float v) {
     volumeFactor = v;
 }
 
 float SoundPlayer::getVolume() {
     return volumeFactor;
+}
+
+void SoundPlayer::babyCrying()
+{
+    mediaPlayer_babyCrying->setSource(QUrl("qrc:/sound-effects/crying.mp3"));
+    mediaPlayer_babyCrying->setAudioOutput(audioOutput_hitAbdo);
+    audioOutput_babyCrying->setVolume(1);
+    mediaPlayer_babyCrying->play();
 }
 
 void SoundPlayer::hitAbdo()

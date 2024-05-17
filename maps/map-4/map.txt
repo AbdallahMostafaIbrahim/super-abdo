@@ -1,0 +1,59 @@
+platform 0 0 2482 55 :/images/tile-1.png
+platform 2700 0 1000 55 :/images/tile-1.png
+platform 3900 0 2000 55 :/images/tile-1.png
+platform 6100 0 2000 55 :/images/tile-1.png
+
+
+shelf 1400 135 300 40 lol
+shelf 1700 275 300 40 lol
+shelf 1520 415 300 40 lol
+shelf 1820 555 300 40 lol
+shelf 1600 695 300 40 lol
+shelf 2000 835 300 40 lol
+
+pantry 2400 0
+pantry 2400 300
+pantry 2400 600
+pantry 2850 0
+pantry 2850 300
+pantry 2850 600
+pantry 3550 0
+pantry 3550 300
+pantry 3550 600
+pantry 4150 0
+pantry 4150 300
+pantry 4150 600
+
+pantry 3950 0
+pantry 3950 300
+pantry 3950 600
+
+coin 2900 165
+coin 2970 165
+coin 3040 165
+coin 3110 165
+coin 3180 165
+coin 3250 165
+coin 1120 70
+coin 1180 70
+coin 1240 70
+
+coin 3350 1160
+coin 3660 1160
+coin 3720 1160
+coin 3780 1160
+coin 3840 1160
+coin 3900 1160
+
+table 4150 960
+
+tomato_frame 420 -250
+tomato_frame 4610 -250
+
+
+
+
+
+
+
+

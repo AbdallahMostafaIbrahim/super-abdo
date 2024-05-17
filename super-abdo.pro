@@ -14,11 +14,15 @@ SOURCES += \
     enemy/Splinterslime.cpp \
     enemy/baseenemy.cpp \
     enemy/boss.cpp \
+    enemy/broccoli.cpp \
     enemy/burningtrash.cpp \
     enemy/employeeenemy.cpp \
     enemy/enemybullet.cpp \
+    enemy/enemycart.cpp \
+    enemy/hagenemy.cpp \
     enemy/harmfulentity.cpp \
     enemy/hazardsign.cpp \
+    enemy/janitor.cpp \
     enemy/karen.cpp \
     enemy/karenbullet.cpp \
     enemy/leonardo.cpp \
@@ -32,19 +36,24 @@ SOURCES += \
     enemy/splinter.cpp \
     enemy/splinterbullet.cpp \
     enemy/staticenemy.cpp \
+    enemy/tomatobullet.cpp \
     game.cpp \
     gamestate.cpp \
     level1.cpp \
+    level4.cpp \
+    level_props/Table.cpp \
     level3.cpp \
     level_props/ceilinglight.cpp \
     level_props/coin.cpp \
     level_props/desk.cpp \
     level_props/groundentity.cpp \
     level_props/officewindow.cpp \
+    level_props/pantry.cpp \
     level_props/pictureframe.cpp \
     level_props/platform.cpp \
     level_props/sewerpipe.cpp \
     level_props/shelf.cpp \
+    level_props/tomatoframe.cpp \
     level_props/wall.cpp \
     levelloader.cpp \
     levelselector.cpp \
@@ -79,11 +88,15 @@ abdo.h \
     enemy/Splinterslime.h \
     enemy/baseenemy.h \
     enemy/boss.h \
+    enemy/broccoli.h \
     enemy/burningtrash.h \
     enemy/employeeenemy.h \
     enemy/enemybullet.h \
+    enemy/enemycart.h \
+    enemy/hagenemy.h \
     enemy/harmfulentity.h \
     enemy/hazardsign.h \
+    enemy/janitor.h \
     enemy/karen.h \
     enemy/karenbullet.h \
     enemy/leonardo.h \
@@ -97,19 +110,24 @@ abdo.h \
     enemy/splinter.h \
     enemy/splinterbullet.h \
     enemy/staticenemy.h \
+    enemy/tomatobullet.h \
     game.h \
     gamestate.h \
     level1.h \
+    level4.h \
+    level_props/Table.h \
     level3.h \
     level_props/ceilinglight.h \
     level_props/coin.h \
     level_props/desk.h \
     level_props/groundentity.h \
     level_props/officewindow.h \
+    level_props/pantry.h \
     level_props/pictureframe.h \
     level_props/platform.h \
     level_props/sewerpipe.h \
     level_props/shelf.h \
+    level_props/tomatoframe.h \
     level_props/wall.h \
     levelloader.h \
     levelselector.h \

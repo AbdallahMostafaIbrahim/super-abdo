@@ -1,4 +1,9 @@
 #include "levelloader.h"
+#include "enemy/enemycart.h"
+#include "enemy/hagenemy.h"
+#include "enemy/janitor.h"
+#include "level_props/Table.h"
+#include "level_props/pantry.h"
 #include "level_props/platform.h"
 #include "level_props/desk.h"
 #include "level_props/ceilinglight.h"
@@ -19,6 +24,7 @@
 #include "enemy/streetgarbage.h"
 #include "enemy/employeeenemy.h"
 #include "enemy/printerenemy.h"
+#include "level_props/tomatoframe.h"
 #include "enemy/streetoilenemy.h"
 #include "enemy/vehicleenemy.h"
 #include "enemy/streetrocks.h"
@@ -82,6 +88,22 @@ void LevelLoader::loadMap(QGraphicsScene* scene) {
              coin->setZValue(-1);
              scene->addItem(coin);
          }},
+        {"table", [scene](int x, int y) -> void {
+             Table* table = new Table();
+             table->setPos(x, scene->height() - y - table->getPixmap()->height());
+             scene->addItem(table);
+         }},
+        {"tomato_frame", [scene](int x, int y) -> void {
+             TomatoFrame *frame = new TomatoFrame();
+             frame->setPos(x, scene->height() / 2 + y);
+             frame->setZValue(-2);
+             scene->addItem(frame);
+         }},
+        {"pantry", [scene](int x, int y) -> void {
+             Pantry* pantry = new Pantry();
+             pantry->setPos(x, scene->height() - y - pantry->getPixmap()->height());
+             scene->addItem(pantry);
+        }},
         {"street-lowbuilding", [scene](int x, int y) -> void {
              LowBuilding* lowbuilding = new LowBuilding();
              lowbuilding->setPos(x, scene->height() - y - lowbuilding->pixmap().height());
@@ -211,6 +233,24 @@ void LevelLoader::loadEnemies(QGraphicsScene* scene) {
              printer->setPos(x, y);
              printer->setZValue(-1);
              scene->addItem(printer);
+         }},
+        {"hag", [scene](int x, int y, int left, int right, int speed) -> void {
+             HagEnemy* hag = new HagEnemy();
+             hag->setPos(x, y);
+             hag->setZValue(-1);
+             scene->addItem(hag);
+         }},
+        {"baby_cart", [scene](int x, int y, int left, int right, int speed) -> void {
+             EnemyCart* employee = new EnemyCart(left, right, x, speed);
+             employee->setPos(x, scene->height() - y - employee->getPixmap()->height());
+             employee->setZValue(-1);
+             scene->addItem(employee);
+         }},
+        {"janitor", [scene](int x, int y, int left, int right, int speed) -> void {
+             Janitor* janitor = new Janitor(left, right, x, speed);
+             janitor->setPos(x, scene->height() - y - janitor->getPixmap()->height());
+             janitor->setZValue(-1);
+             scene->addItem(janitor);
          }},
         {"garbage", [scene](int x, int y, int left, int right, int speed) -> void {
              StreetGarbage* garbage = new StreetGarbage();
