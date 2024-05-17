@@ -12,6 +12,7 @@ public:
 private:
     LevelSettings levelSettings;
     LevelSettings getLevelSettings() override;
+    int getLevelIndex() override;
     Boss *newBoss() override;
 };
 

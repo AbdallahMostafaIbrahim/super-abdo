@@ -4,9 +4,6 @@
 
 Level3::Level3(Game *game) : BaseLevel(game) {
     // Setting Level Settings
-    levelSettings.doubleJumpEnabled = false;
-    levelSettings.galabeyaGlideEnabled = false;
-    levelSettings.soundWaveEnabled = true;
     levelSettings.triggerBossLoc = 6200;
     levelSettings.mapFile = ":/maps/map-3/map.txt";
     levelSettings.enemiesFile = ":/maps/map-3/enemies.txt";
@@ -19,6 +16,11 @@ Level3::Level3(Game *game) : BaseLevel(game) {
 
 LevelSettings Level3::getLevelSettings() {
     return levelSettings;
+}
+
+int Level3::getLevelIndex()
+{
+    return 3;
 }
 
 Boss *Level3::newBoss()
