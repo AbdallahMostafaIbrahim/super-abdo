@@ -16,7 +16,6 @@ Boss::Boss(QList<QPixmap> pixie, int h) : BaseEnemy(h, 1, false)
     currentPixmap = pixmaps[0];
     currentPath = paths[0];
     currentFrame = 0;
-    showDamage=true;
 }
 
 // Boss Doesn't Move
@@ -25,10 +24,10 @@ void Boss::move(int, int) { }
 void Boss::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
     painter->drawPixmap(0, 0, currentPixmap);
-    if (showDamage) {
-         painter->setClipPath(currentPath);
-         painter->fillRect(boundingRect(), QColor(255, 0, 0, 69)); // red overlay
-     }
+    // if (showDamage) {
+    //      painter->setClipPath(currentPath);
+    //      painter->fillRect(boundingRect(), QColor(255, 0, 0, 69)); // red overlay
+    //  }
     Q_UNUSED(option);
     Q_UNUSED(widget);
 }

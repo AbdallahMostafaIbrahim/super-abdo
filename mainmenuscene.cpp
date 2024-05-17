@@ -27,6 +27,7 @@ MainMenuScene::MainMenuScene(Game* game): QGraphicsScene(game) {
 
     // Event Handlers
     connect(playButton, SIGNAL(clicked()), this, SLOT(new_game()));
+    connect(settingsButton, SIGNAL(clicked()), this, SLOT(settings()));
     connect(shopButton, SIGNAL(clicked()), this, SLOT(shop()));
 }
 
@@ -42,6 +43,11 @@ void MainMenuScene::new_game() {
 
 void MainMenuScene::shop() {
     game->goToShop();
+}
+
+void MainMenuScene::settings()
+{
+    game->gotoSettings();
 }
 
 

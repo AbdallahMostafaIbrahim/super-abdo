@@ -28,7 +28,7 @@ BaseLevel::BaseLevel(Game *game) : QGraphicsScene()
 {
     this->game = game;
 
-    QTimer *timer = new QTimer(this);
+    timer = new QTimer(this);
 
     // Level Settings Init
     doubleJumpEnabled = GameState::itemsBought.contains(DOUBLE_JUMP);
@@ -57,13 +57,14 @@ BaseLevel::BaseLevel(Game *game) : QGraphicsScene()
     isFalling = true;
 
     // Default Stats in the beginning
-    health = MAX_HEALTH;
+    health = MAX_HEALTH + (GameState::itemsBought.contains(EXTRA_HEART) ? 1 : 0);
     collectedCoins = 0;
     currentJumpCount = 0;
     maxJumps = 2;
     isGameOver = false;
     isGoodGame = false;
     isTeleport = false;
+    isPaused = false;
     finishedTime = 0;
     isFightingBoss = false;
 
@@ -87,8 +88,12 @@ BaseLevel::~BaseLevel()
 
 void BaseLevel::initScene() {
     setSceneRect(0, 0, getLevelSettings().sceneWidth, getLevelSettings().sceneHeight); // Uses the Level Settings to set the size of the scene.
-    setBackgroundBrush(QBrush(QPixmap(getLevelSettings().backgroundImage).scaledToHeight(game->height()))); // Setting Background for scene. TODO: Put this image in Level Settings.
-
+    // Setting Background for scene.
+    if(getLevelIndex() == 2) {
+        setBackgroundBrush(QBrush(QPixmap(getLevelSettings().backgroundImage).scaledToWidth(game->width())));
+    } else {
+        setBackgroundBrush(QBrush(QPixmap(getLevelSettings().backgroundImage).scaledToHeight(game->height())));
+    }
     // Creating the player
     abdo = new Abdo();
     abdo->setPos(200, sceneRect().height() - abdo->boundingRect().height() - 100);
@@ -126,7 +131,7 @@ void BaseLevel::drawForeground(QPainter *painter, const QRectF &rect)
         painter->drawText(rect.width() / 2 - 200, rect.height() / 2 + 35, "Time spent: " + QString::number(finishedTime / (1000)) + " seconds");
 
         painter->setFont(QFont("Minecraft", 18));
-        painter->drawText(rect.width() / 2 - 200, rect.height() / 2 + 75, "Press Space to continue.");
+        painter->drawText(rect.width() / 2 - 200, rect.height() / 2 + 75, "Press Enter to continue.");
     }
     // Draw Game Over Screen
     else if(isGameOver) {
@@ -189,6 +194,17 @@ void BaseLevel::drawForeground(QPainter *painter, const QRectF &rect)
             painter->drawText(150, rect.height() / 2 - 100, "\'Looks like these buildings are getting revamped!\'");
             painter->drawText(rect.width() / 2 - 200, rect.height() / 2, "Press [T] to break in.");
         }
+    }
+
+
+    if(isPaused) {
+        painter->drawRect(sceneRect());
+        painter->fillRect(sceneRect(), QColor(0, 0, 0, 120));
+        painter->setPen(Qt::white);
+        painter->setFont(QFont("Minecraft", 32));
+        painter->drawText(450, rect.height() / 2 - 100, "Game Paused");
+        painter->drawText(rect.width() / 2 - 300, rect.height() / 2, "Press [ESC] to unpause.");
+        painter->drawText(rect.width() / 2 - 300, rect.height() / 2 + 100, "Press [R] to return to menu.");
     }
 }
 
@@ -462,7 +478,7 @@ void BaseLevel::gameLoop()
 // Handle KeyPresses
 void BaseLevel::keyPressEvent(QKeyEvent *event)
 {
-    if(!isGameOver && !isGoodGame) {
+    if(!isGameOver && !isGoodGame && !isPaused) {
         // For each key press, we set the keyPressed for that key to true
         switch (event->key())
         {
@@ -515,6 +531,11 @@ void BaseLevel::keyPressEvent(QKeyEvent *event)
         case Qt::Key_0:
             emit complete(collectedCoins, finishedTime, getLevelIndex());
             break;
+        case Qt::Key_Escape:
+            isPaused = true;
+            timer->stop();
+            update();
+            break;
         }
     }
     else if(isGameOver) {
@@ -534,11 +555,24 @@ void BaseLevel::keyPressEvent(QKeyEvent *event)
     } else if(isGoodGame) {
         switch (event->key())
         {
-            case Qt::Key_Space:
+            case Qt::Key_Enter:
+            case Qt::Key_Return:
             {
                 emit complete(collectedCoins, finishedTime, getLevelIndex()); // Emit the complete event when Enter is pressed. This complete event is handled in the Game class
+                break;
             }
+        }
+    } else if(isPaused) {
+        switch (event->key())
+        {
+        case Qt::Key_Escape:
+            isPaused = false;
+            elapsedTimer.restart();
+            timer->start();
             break;
+        case Qt::Key_R:
+            emit quit(); // Quit
+            return;
         }
     }
 }

@@ -20,6 +20,7 @@ private:
 private slots:
     void new_game();
     void shop();
+    void settings();
 };
 
 #endif // MAINMENUSCENE_H

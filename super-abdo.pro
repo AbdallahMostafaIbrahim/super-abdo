@@ -60,6 +60,7 @@ SOURCES += \
     levelsettings.cpp \
     main.cpp \
     mainmenuscene.cpp \
+    settingsscene.cpp \
     shopscene.cpp \
     soundplayer.cpp \
     utils.cpp \
@@ -81,7 +82,8 @@ SOURCES += \
     level_props/mediumbuilding.cpp \
     level_props/oil.cpp \
     level_props/streetbarrier.cpp \
-    level_props/streetdumpster.cpp
+    level_props/streetdumpster.cpp \
+    gamesaver.cpp
 
 HEADERS += \
 abdo.h \
@@ -133,6 +135,7 @@ abdo.h \
     levelselector.h \
     levelsettings.h \
     mainmenuscene.h \
+    settingsscene.h \
     shopscene.h \
     soundplayer.h \
     utils.h \
@@ -154,7 +157,8 @@ abdo.h \
     level_props/mediumbuilding.h \
     level_props/oil.h \
     level_props/streetbarrier.h \
-    level_props/streetdumpster.h 
+    level_props/streetdumpster.h \
+    gamesaver.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

@@ -3,6 +3,7 @@
 #include <QTimer>
 #include <QFontDatabase>
 #include "game.h"
+#include "gamesaver.h"
 
 int main(int argc, char *argv[])
 {
@@ -12,6 +13,11 @@ int main(int argc, char *argv[])
     QSplashScreen *splash = new QSplashScreen;
     splash->setPixmap(QPixmap(":/images/splash.png").scaledToWidth(600));
     splash->show();
+
+    // Create Data File If it doesn't exist
+    GameSaver::init();
+    GameSaver::loadState();
+
 
     // Configuring Font
     QFontDatabase::addApplicationFont(":/fonts/Minecraft.ttf");
@@ -23,5 +29,9 @@ int main(int argc, char *argv[])
     QTimer::singleShot(300,splash,SLOT(close()));
     QTimer::singleShot(300,&game,SLOT(show()));
 
-    return a.exec();
+    int result = a.exec();
+
+    GameSaver::saveState();
+
+    return result;
 }

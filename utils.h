@@ -6,6 +6,7 @@
 #include <QPushButton>
 #include <QLabel>
 #include <QColor>
+#include <QSlider>
 
 // Utitlies Class
 class Utils
@@ -16,6 +17,7 @@ public:
     // static void traverseFrames(QList<QPixmap> &frames, QPixmap &character, int frameRate);
     static QPushButton* createPushButton(QString text, int x, int y, int w, int h, QColor color);
     static QLabel *createLabel(QString text, int x, int y, int w, int h, int size, QColor color);
+    static QSlider *createSlider(int x, int y, int min, int max, QString tooltip, QWidget*&);
 };
 
 #endif // UTILS_H

@@ -9,6 +9,8 @@ ShopScene::ShopScene(Game *game) : QGraphicsScene()
 
     itemToPrice.insert({ ShopItem::GALABEYA_GLIDE, { QString("Galabeya Glide"), 15 } });
     itemToPrice.insert({ ShopItem::DOUBLE_JUMP, { QString("Double Jump"), 30 } });
+    itemToPrice.insert({ ShopItem::EXTRA_HEART, { QString("Extra Heart"), 30 } });
+
 
     // Set Background Image
     QBrush bgBrush(QColor(0, 1, 26));
@@ -42,8 +44,8 @@ void ShopScene::update()
             labelText += "(" + QString::number(price) + " coins)";
         }
 
-        QLabel* label = Utils::createLabel(labelText, 200 + i * 500, 300, 300, 30, 12, QColor::fromString("#fffff"));
-        QPushButton* button = Utils::createPushButton("BUY", 200 + i * 500, 350, 100, 32, QColor::fromString("#4CAF50"));
+        QLabel* label = Utils::createLabel(labelText, 200 + i * 300, 300, 300, 30, 12, QColor::fromString("#fffff"));
+        QPushButton* button = Utils::createPushButton("BUY", 200 + i * 300, 350, 100, 32, QColor::fromString("#4CAF50"));
         buyElements.append(button);
         buyElements.append(label);
         addWidget(button);

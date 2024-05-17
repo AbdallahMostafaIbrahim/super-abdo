@@ -35,19 +35,11 @@ QMediaPlayer* SoundPlayer::mediaPlayer_gameTheme = new QMediaPlayer();
 QAudioOutput* SoundPlayer::audioOutput_babyCrying = new QAudioOutput();
 QMediaPlayer* SoundPlayer::mediaPlayer_babyCrying = new QMediaPlayer();
 
-void SoundPlayer::setVolume(float v) {
-    volumeFactor = v;
-}
-
-float SoundPlayer::getVolume() {
-    return volumeFactor;
-}
-
 void SoundPlayer::babyCrying()
 {
     mediaPlayer_babyCrying->setSource(QUrl("qrc:/sound-effects/crying.mp3"));
     mediaPlayer_babyCrying->setAudioOutput(audioOutput_hitAbdo);
-    audioOutput_babyCrying->setVolume(1);
+    audioOutput_babyCrying->setVolume(volumeFactor);
     mediaPlayer_babyCrying->play();
 }
 
@@ -55,7 +47,7 @@ void SoundPlayer::hitAbdo()
 {
     mediaPlayer_hitAbdo->setSource(QUrl("qrc:/sound-effects/ouch.m4a"));
     mediaPlayer_hitAbdo->setAudioOutput(audioOutput_hitAbdo);
-    audioOutput_hitAbdo->setVolume(1);
+    audioOutput_hitAbdo->setVolume(volumeFactor);
     mediaPlayer_hitAbdo->play();
 }
 
@@ -71,7 +63,7 @@ void SoundPlayer::gameOver()
 {
     mediaPlayer_gameOver->setSource(QUrl("qrc:/sound-effects/ouch.m4a"));
     mediaPlayer_gameOver->setAudioOutput(audioOutput_gameOver);
-    audioOutput_gameOver->setVolume(1);
+    audioOutput_gameOver->setVolume(volumeFactor);
     mediaPlayer_gameOver->play();
 }
 
@@ -79,7 +71,7 @@ void SoundPlayer::doubleJump()
 {
     mediaPlayer_doubleFart->setSource(QUrl("qrc:/sound-effects/double-jump.mp3"));
     mediaPlayer_doubleFart->setAudioOutput(audioOutput_doubleFart);
-    audioOutput_doubleFart->setVolume(1);
+    audioOutput_doubleFart->setVolume(volumeFactor);
     mediaPlayer_doubleFart->play();
 }
 
@@ -87,7 +79,7 @@ void SoundPlayer::fireSoundWave()
 {
     mediaPlayer_fireSoundWave->setSource(QUrl("qrc:/sound-effects/gun-shot.mp3"));
     mediaPlayer_fireSoundWave->setAudioOutput(audioOutput_fireSoundWave);
-    audioOutput_fireSoundWave->setVolume(0.5);
+    audioOutput_fireSoundWave->setVolume(volumeFactor * 0.5);
     mediaPlayer_fireSoundWave->play();
 }
 
@@ -95,7 +87,7 @@ void SoundPlayer::abdoJump()
 {
     mediaPlayer_abdoJump->setSource(QUrl("qrc:/sound-effects/jump.m4a"));
     mediaPlayer_abdoJump->setAudioOutput(audioOutput_abdoJump);
-    audioOutput_abdoJump->setVolume(1);
+    audioOutput_abdoJump->setVolume(volumeFactor);
     mediaPlayer_abdoJump->play();
 }
 
@@ -103,7 +95,7 @@ void SoundPlayer::levelFinish()
 {
     mediaPlayer_levelFinish->setSource(QUrl("qrc:/sound-effects/gun-shot.mp3"));
     mediaPlayer_levelFinish->setAudioOutput(audioOutput_levelFinish);
-    audioOutput_levelFinish->setVolume(1);
+    audioOutput_levelFinish->setVolume(volumeFactor);
     mediaPlayer_levelFinish->play();
 }
 
@@ -111,7 +103,7 @@ void SoundPlayer::gameTheme(bool start)
 {
     mediaPlayer_gameTheme->setSource(QUrl("qrc:/sound-effects/game-theme.mp3"));
     mediaPlayer_gameTheme->setAudioOutput(audioOutput_gameTheme);
-    audioOutput_gameTheme->setVolume(0.1);
+    audioOutput_gameTheme->setVolume(volumeFactor * 0.1);
     mediaPlayer_gameTheme->setLoops(100);
     if(start)
         mediaPlayer_gameTheme->play();

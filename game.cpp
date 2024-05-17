@@ -8,6 +8,7 @@
 #include "levelselector.h"
 #include "shopscene.h"
 #include "gamestate.h"
+#include "settingsscene.h"
 
 Game::Game(int width, int height) {
     // Remove Scrollbars
@@ -24,6 +25,7 @@ Game::Game(int width, int height) {
     mainMenuScene = new MainMenuScene(this);
     levelSelectorScene = new LevelSelector(this);
     shopScene = new ShopScene(this);
+    settingsScene = new SettingsScene(this);
 
     // Start with main menu scene
     setScene(mainMenuScene);
@@ -66,6 +68,11 @@ void Game::goToLevelSelector()
 {
     levelSelectorScene->update();
     setScene(levelSelectorScene);
+}
+
+void Game::gotoSettings()
+{
+    setScene(settingsScene);
 }
 
 void Game::goToShop()

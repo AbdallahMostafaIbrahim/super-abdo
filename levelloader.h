@@ -3,8 +3,6 @@
 
 #include <QFile>
 #include <QGraphicsScene>
-#include "baselevel.h"
-#include "abdo.h"
 
 // Utility Class to Load Levels from file
 class LevelLoader

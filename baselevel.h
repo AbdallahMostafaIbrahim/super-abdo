@@ -47,6 +47,7 @@ private:
     // Timer to calculate time (deltatime) between each game loop call and the other.
     QElapsedTimer elapsedTimer;
     int deltaTime;
+    QTimer* timer;
 
     Game* game;
     Abdo* abdo;
@@ -96,6 +97,7 @@ private:
     bool isFightingBoss;
     bool isGoodGame;
     bool isTeleport;
+    bool isPaused;
 
     // Settings From Gamestate
     bool galabeyaGlideEnabled;

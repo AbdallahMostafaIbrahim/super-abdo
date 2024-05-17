@@ -4,8 +4,9 @@
 #include <QSet>
 
 enum ShopItem {
-    DOUBLE_JUMP = 0,
-    GALABEYA_GLIDE
+    DOUBLE_JUMP = 1,
+    GALABEYA_GLIDE,
+    EXTRA_HEART
 };
 
 class GameState

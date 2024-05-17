@@ -35,7 +35,6 @@ private:
 
     static QMediaPlayer* mediaPlayer_babyCrying;
     static QAudioOutput* audioOutput_babyCrying;
-    static float volumeFactor;
 public:
     SoundPlayer();
     static void hitAbdo();
@@ -47,11 +46,8 @@ public:
     static void levelFinish();
     static void gameTheme(bool start = true);
     static void muteTheme();
-    static void setVolume(float v);
-    static float getVolume();
     static void babyCrying();
-
-    // TODO: add sounds after killing enemies
+    static float volumeFactor;
 };
 
 #endif // SOUNDPLAYER_H

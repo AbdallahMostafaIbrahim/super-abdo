@@ -114,3 +114,20 @@ QLabel *Utils::createLabel(QString text, int x, int y, int w, int h, int size, Q
 
     return label;
 }
+
+QSlider *Utils::createSlider(int x, int y, int min, int max, QString tooltip, QWidget*& widget)
+{
+    widget = new QWidget;
+    widget->setAttribute(Qt::WA_TranslucentBackground);
+    widget->setStyleSheet("background: transparent;");
+
+    QSlider* slider = new QSlider(Qt::Horizontal, widget);
+    slider->setMinimum(min);
+    slider->setMaximum(max);
+    slider->setToolTip(tooltip);
+    slider->setObjectName(tooltip);
+
+    slider->setGeometry(x, y, 200, 20);
+
+    return slider;
+}
