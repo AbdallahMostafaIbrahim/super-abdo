@@ -8,7 +8,7 @@
 class TomatoBullet : public EnemyBullet
 {
 public:
-    TomatoBullet();
+    TomatoBullet();  //constructor
     void move() override;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
     QRectF boundingRect() const override;

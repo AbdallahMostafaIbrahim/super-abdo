@@ -10,15 +10,15 @@ class LevelSelector : public QGraphicsScene
 {
 Q_OBJECT
 public:
-    LevelSelector(Game* game);
-    void update();
+    LevelSelector(Game* game);//constructor of level selectors sets background, buttons...
+    void update();//updates if a new win happens, reset ...
 private:
     QList<QPushButton*> levelButtons;
     Game* game;
     QPushButton* backButton;
 private slots:
-    void new_game(int index);
-    void back();
+    void new_game(int index);//goes to new game with index of level
+    void back();//goes back to mainmenu
 };
 
 #endif // LEVELSELECTOR_H

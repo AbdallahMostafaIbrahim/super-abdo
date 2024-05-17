@@ -6,8 +6,8 @@
 class BurningTrash : public BaseEnemy
 {
 public:
-    BurningTrash();
-    QPixmap* getPixmap();
+    BurningTrash(); //constructor
+    QPixmap* getPixmap();   //returns the pixmap
 protected:
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
     QRectF boundingRect() const override;

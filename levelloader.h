@@ -8,11 +8,11 @@
 class LevelLoader
 {
 public:
-    LevelLoader(QFile& mapFile, QFile& enemiesFile);
-    void fillScene(QGraphicsScene* scene);
+    LevelLoader(QFile& mapFile, QFile& enemiesFile);//constructor of level loader, sets file and errors of there is a problem in files
+    void fillScene(QGraphicsScene* scene);//loads enemy and map to scene
 private:
-    void loadMap(QGraphicsScene*);
-    void loadEnemies(QGraphicsScene*);
+    void loadMap(QGraphicsScene*);//loads map items
+    void loadEnemies(QGraphicsScene*);//loads enemy items
     QFile* file;
     QFile* enemiesFile;
 };

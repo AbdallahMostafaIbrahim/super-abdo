@@ -6,8 +6,8 @@
 class Broccoli : public Boss
 {
 public:
-    Broccoli();
-    void shoot() override;
+    Broccoli();     //constructor
+    void shoot() override;  //shoots the bullets
 private:
     QElapsedTimer bulletTimer;
     QElapsedTimer spawnTimer;

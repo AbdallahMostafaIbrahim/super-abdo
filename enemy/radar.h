@@ -6,7 +6,7 @@
 class Radar: public Boss
 {
 public:
-    Radar();
+    Radar();  //constructor
     void shoot() override;
 private:
     QElapsedTimer bulletTimer;

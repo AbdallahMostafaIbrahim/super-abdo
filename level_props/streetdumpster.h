@@ -6,7 +6,7 @@
 class StreetDumpster: public GroundEntity
 {
 public:
-    StreetDumpster();
+    StreetDumpster();  //constructor
     QRectF boundingRect() const override;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
     QPainterPath shape() const override;

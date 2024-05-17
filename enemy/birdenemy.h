@@ -5,17 +5,17 @@
 class BirdEnemy: public BaseEnemy
 {
 public:
-    BirdEnemy();
-    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
-    QRectF boundingRect() const override;
-    void move(int, int) override;
+    BirdEnemy();    //constructor
+    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;    //draws the object
+    QRectF boundingRect() const override;   //draws the bounding rect for collision handling
+    void move(int, int) override;      //move function
 private:
     QList<QPixmap> pixmaps;
     QPixmap currentPixmap;
     int currentFrame;
     int dropRate;
 private slots:
-    void animate() override;
+    void animate() override;        //animates the object
 };
 
 #endif // BIRDENEMY_H

@@ -14,7 +14,7 @@ public:
     QRectF boundingRect() const override;
 private:
     void animate() override;
-    void kill() override;
+    void kill() override;       //deletes the boss when health reaches zero
     QList<QPixmap> pixmaps;
     QList<QPainterPath> paths;
     QPixmap currentPixmap;

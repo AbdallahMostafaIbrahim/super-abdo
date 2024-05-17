@@ -12,12 +12,12 @@ private:
     int dir;
     QPixmap pixmap;
 public:
-    SoundWave(int);
+    SoundWave(int);//constructor of soudwave(image and timer)
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
     QRectF boundingRect() const override;
 private slots:
     void move();
-    void kill();
+    void kill();//kills item it touches and itself
 };
 
 #endif // SOUNDWAVE_H

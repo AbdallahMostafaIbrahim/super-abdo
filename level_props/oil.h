@@ -7,7 +7,7 @@
 class Oil : public QGraphicsItem
 {
 public:
-    Oil(int w);
+    Oil(int w);  //constructor
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
     QRectF boundingRect() const override;
 private:

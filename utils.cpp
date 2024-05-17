@@ -8,7 +8,7 @@
 #include <QTimer>
 #include <QElapsedTimer>
 
-float Utils::minMagnitude(float l, float r) {
+float Utils::minMagnitude(float l, float r) {//returns the minimum magnitude  of 2 floats
     if(abs(l) < abs(r)) return l;
     else {
         if(l < 0) {
@@ -60,7 +60,7 @@ QPainterPath* Utils::createPathFromPixmap(const QPixmap &pixmap, int precision)
 //     }
 // }
 
-QPushButton* Utils::createPushButton(QString text, int x, int y, int w, int h, QColor color)
+QPushButton* Utils::createPushButton(QString text, int x, int y, int w, int h, QColor color)//function to create push button easily
 {
     QPushButton* button = new QPushButton();
     button->setText(text);

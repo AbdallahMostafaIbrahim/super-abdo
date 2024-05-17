@@ -6,7 +6,7 @@
 class VehicleEnemy: public MovingEnemy
 {    Q_OBJECT
 public:
-    VehicleEnemy(int, int, int, int);
+    VehicleEnemy(int, int, int, int);  //constructor
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
     QRectF boundingRect() const override;
     const QPixmap* getPixmap();

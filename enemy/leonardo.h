@@ -7,7 +7,7 @@ class Leonardo : public MovingEnemy
 {
 Q_OBJECT
 public:
-    Leonardo(int, int, int, int);
+    Leonardo(int, int, int, int);  //constructor
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
     QRectF boundingRect() const override;
     const QPixmap* getPixmap();
