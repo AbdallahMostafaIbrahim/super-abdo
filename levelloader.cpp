@@ -19,7 +19,7 @@
 
 #include <QMessageBox>
 #include <QTextStream>
-
+//WOW
 
 LevelLoader::LevelLoader(QFile& mapFile, QFile& enemiesFile) {
     if(!mapFile.open(QIODevice::ReadOnly)) {
