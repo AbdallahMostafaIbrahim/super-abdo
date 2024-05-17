@@ -15,6 +15,7 @@ Level4::Level4(Game *game) : BaseLevel(game) {
     levelSettings.enemiesFile = ":/maps/map-4/enemies.txt";
     levelSettings.backgroundImage = ":/images/level-4/background-4.jpg";
     levelSettings.sceneWidth = 8100;
+    levelSettings.sceneHeight = 2000;
 
     // Call Init Scene to load level using the settings
     initScene();

@@ -11,6 +11,7 @@ public:
     // Stuff we override
     int triggerBossLoc;
     int sceneWidth;
+    int sceneHeight = 720;
     QString mapFile;
     QString enemiesFile;
     QString backgroundImage;
