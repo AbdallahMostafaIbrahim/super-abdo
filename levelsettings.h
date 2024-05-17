@@ -8,9 +8,7 @@ class LevelSettings
 {
 public:
     LevelSettings();
-    bool galabeyaGlideEnabled;
-    bool doubleJumpEnabled;
-    bool soundWaveEnabled;
+    // Stuff we override
     int triggerBossLoc;
     int sceneWidth;
     QString mapFile;

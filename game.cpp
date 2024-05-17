@@ -4,6 +4,8 @@
 #include "level1.h"
 #include "level3.h"
 #include "levelselector.h"
+#include "shopscene.h"
+#include "gamestate.h"
 
 Game::Game(int width, int height) {
     // Remove Scrollbars
@@ -18,7 +20,8 @@ Game::Game(int width, int height) {
     currentLevelIndex = -1;
 
     mainMenuScene = new MainMenuScene(this);
-    lSelector = new LevelSelector(this);
+    levelSelectorScene = new LevelSelector(this);
+    shopScene = new ShopScene(this);
 
     // Start with main menu scene
     setScene(mainMenuScene);
@@ -53,7 +56,19 @@ void Game::startLevel(int index)
 
 void Game::goToLevelSelector()
 {
-    setScene(lSelector);
+    levelSelectorScene->update();
+    setScene(levelSelectorScene);
+}
+
+void Game::goToShop()
+{
+    shopScene->update();
+    setScene(shopScene);
+}
+
+void Game::goToMainMenu()
+{
+    setScene(mainMenuScene);
 }
 
 void Game::restartLevel() {
@@ -70,10 +85,14 @@ void Game::quitLevel() {
     setScene(mainMenuScene);
 }
 
-void Game::completeLevel() {
+void Game::completeLevel(int coinsCollected, int timeSpent, int levelIndex) {
     if (currentLevel) {
         delete currentLevel;
     }
+    GameState::levelReached = levelIndex + 1;
+    GameState::coinsCollected += coinsCollected;
+    GameState::totalTimeSpendinMs += timeSpent;
+    GameState::newlyPurchased.clear();
     goToLevelSelector();
 }
 

@@ -59,3 +59,58 @@ QPainterPath* Utils::createPathFromPixmap(const QPixmap &pixmap, int precision)
 //         timer.restart(); // Restart the timer for the next frame change
 //     }
 // }
+
+QPushButton* Utils::createPushButton(QString text, int x, int y, int w, int h, QColor color)
+{
+    QPushButton* button = new QPushButton();
+    button->setText(text);
+    button->setObjectName(QString(text));
+    button->setToolTip(text);
+    button->setGeometry(QRect(x, y, w, h));
+    button->setAutoFillBackground(false);
+    button->setCursor(Qt::PointingHandCursor);
+
+    button->setStyleSheet(
+        "QPushButton {"
+        "   background-color: " + color.name() +
+        "   ;color: white; "
+        "   border-style: solid; "
+        "   border-width: 2px; "
+        "   border-color: " + color.darker(140).name() +
+        "   ;font: bold 14px; "
+        "   min-width: 10em; "
+        "   padding: 6px; "
+        "}"
+        "QPushButton:hover {"
+        "   background-color: " + color.darker(150).name() +
+        ";}"
+        "QPushButton:pressed {"
+        "   background-color: " + color.darker(170).name() +
+        ";}"
+        "QPushButton:disabled {"
+        "   background-color: " + color.darker(170).name() +
+        ";}"
+        );
+
+    return button;
+}
+
+QLabel *Utils::createLabel(QString text, int x, int y, int w, int h, int size, QColor color)
+{
+    QLabel* label = new QLabel();
+    label->setText(text);
+    label->setFont(QFont("Minecraft", size));
+    label->setObjectName(QString(text));
+    label->setToolTip(text);
+
+    label->setGeometry(x, y, w, h);
+
+    label->setStyleSheet(
+        "QLabel {"
+        "   color: white ;"
+        "   background-color: transparent;"
+        "}"
+        );
+
+    return label;
+}

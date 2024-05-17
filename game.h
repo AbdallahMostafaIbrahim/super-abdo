@@ -10,6 +10,7 @@
 class BaseLevel;
 class MainMenuScene;
 class LevelSelector;
+class ShopScene;
 
 class Game : public QGraphicsView
 {
@@ -18,19 +19,22 @@ public:
     Game(int, int);
     void startLevel(int index);
     void goToLevelSelector();
+    void goToShop();
+    void goToMainMenu();
 private:
     // TODO: GameState like total coins and level reached
 
     // Storing pointers to scenes that will be set on the view
     BaseLevel* currentLevel;
     MainMenuScene* mainMenuScene;
-    LevelSelector* lSelector;
+    LevelSelector* levelSelectorScene;
+    ShopScene* shopScene;
     int currentLevelIndex;
 public slots:
     // Event Handlers for events that will happen in the levels
     void restartLevel();
     void quitLevel();
-    void completeLevel();
+    void completeLevel(int coinsCollected, int timeSpentinMs, int levelIndex);
 };
 
 #endif // GAME_H

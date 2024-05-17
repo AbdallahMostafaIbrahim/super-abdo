@@ -4,9 +4,6 @@
 
 Level1::Level1(Game *game) : BaseLevel(game) {
     // Setting Level Settings
-    levelSettings.doubleJumpEnabled = false;
-    levelSettings.galabeyaGlideEnabled = false;
-    levelSettings.soundWaveEnabled = true;
     levelSettings.triggerBossLoc = 6000;
     levelSettings.mapFile = ":/maps/map-1/map.txt";
     levelSettings.enemiesFile = ":/maps/map-1/enemies.txt";
@@ -24,4 +21,8 @@ LevelSettings Level1::getLevelSettings() {
 Boss *Level1::newBoss()
 {
     return new Karen;
+}
+
+int Level1::getLevelIndex()  {
+    return 1;
 }

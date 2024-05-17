@@ -34,6 +34,7 @@ SOURCES += \
     enemy/splinterbullet.cpp \
     enemy/staticenemy.cpp \
     game.cpp \
+    gamestate.cpp \
     level1.cpp \
     level3.cpp \
     level_props/ceilinglight.cpp \
@@ -51,6 +52,7 @@ SOURCES += \
     levelsettings.cpp \
     main.cpp \
     mainmenuscene.cpp \
+    shopscene.cpp \
     soundplayer.cpp \
     utils.cpp \
     soundwave.cpp
@@ -80,6 +82,7 @@ HEADERS += \
     enemy/splinterbullet.h \
     enemy/staticenemy.h \
     game.h \
+    gamestate.h \
     level1.h \
     level3.h \
     level_props/ceilinglight.h \
@@ -96,6 +99,7 @@ HEADERS += \
     levelselector.h \
     levelsettings.h \
     mainmenuscene.h \
+    shopscene.h \
     soundplayer.h \
     utils.h \
     soundwave.h
