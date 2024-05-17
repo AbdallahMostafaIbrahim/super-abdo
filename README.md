@@ -8,7 +8,7 @@ Goal of each level is to get closer to home while evading enemies and collecting
 ## Controls
 - Arrow Keys for left and right.
 - Space to Jump
-- Z to shoot
+- Q to shoot
 
 ## Power ups
 - Double Jump

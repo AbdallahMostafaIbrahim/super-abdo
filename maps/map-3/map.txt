@@ -1,0 +1,47 @@
+platform 0 0 1800 55 :/images/tile-1.png
+wall 1610 350 200 150 no
+wall 1610 200 200 250 no
+
+platform 2700 0 1400 55 :/images/tile-1.png
+platform 6100 0 2000 55 :/images/tile-1.png
+
+
+pipe 1400 200 150 40 lol
+pipe 1000 300 300 40 lol
+
+pipe 2400 30 150 40 lol
+
+pipe 2800 200 50 40 lol
+pipe 3200 200 50 40 lol
+pipe 3600 200 50 40 lol
+
+pipe 4200 200 200 40 lol
+wall 4400 400 200 100 no
+wall 4400 300 2000 100 no
+
+pipe 3900 350 300 40 lol
+wall 3900 400 100 100 no
+
+
+coin 600 70
+coin 640 160
+coin 700 250
+coin 740 250
+coin 800 160
+coin 840 70
+
+coin 1000 330
+coin 1060 330
+coin 1120 330
+coin 1180 330
+
+coin 1400 230
+coin 1460 230
+
+coin 2410 50
+coin 2470 50
+
+coin 3910 500
+coin 3970 500
+
+

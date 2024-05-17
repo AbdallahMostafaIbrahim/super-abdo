@@ -73,7 +73,7 @@ GroundEntity* Abdo::isGrounded(const QList<QGraphicsItem*>& items) {
         GroundEntity* entity = dynamic_cast<GroundEntity*>(item);
         if(entity != nullptr) {
             QRectF rect(x(), y() + boundingRect().height() - 5, boundingRect().width(), 5);
-            QRectF otherRect(item->x() + item->boundingRect().x(), item->y() + item->boundingRect().y(), item->boundingRect().width(), 5);
+            QRectF otherRect(item->x() + item->boundingRect().x() + 6, item->y() + item->boundingRect().y(), item->boundingRect().width() - 3, 5);
             if (rect.intersects(otherRect)) {
                 return entity;
             }
@@ -84,18 +84,19 @@ GroundEntity* Abdo::isGrounded(const QList<QGraphicsItem*>& items) {
 
 // Checks if player is touching a groundentity from the sides.
 GroundEntity* Abdo::isBlockedHorizontally(const QList<QGraphicsItem*>& items, int& direction) {
+    direction = 0;
     for(QGraphicsItem* item : items) {
         GroundEntity* entity = dynamic_cast<GroundEntity*>(item);
         if(entity != nullptr) {
             QRectF rect(x(), y(), boundingRect().width(), boundingRect().height());
-            QRectF leftRect(item->x(), item->y(), 10, item->boundingRect().height());
+            QRectF leftRect(item->x() - 3, item->y() + 3, 10, item->boundingRect().height() - 6);
             if (rect.intersects(leftRect)) {
-                direction = 1;
+                direction += 1;
                 return entity;
             }
-            QRectF rightRect(item->x() + item->boundingRect().width(), item->y(), 10, item->boundingRect().height());
+            QRectF rightRect(item->x() + item->boundingRect().width() + 3, item->y() + 3, 10, item->boundingRect().height() - 6);
             if (rect.intersects(rightRect)) {
-                direction = -1;
+                direction -= 1;
                 return entity;
             }
         }
@@ -124,6 +125,17 @@ Coin* Abdo::isTouchingCoin(const QList<QGraphicsItem*>& items){
         Coin* coin = dynamic_cast<Coin*>(item);
         if(coin != nullptr) {
             return coin;
+        }
+    }
+    return nullptr;
+}
+
+Oil *Abdo::isTouchingOil(const QList<QGraphicsItem *> & items)
+{
+    for(QGraphicsItem* items : items) {
+        Oil* oil = dynamic_cast<Oil*>(items);
+        if(oil != nullptr) {
+            return oil;
         }
     }
     return nullptr;

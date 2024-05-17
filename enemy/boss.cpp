@@ -1,6 +1,6 @@
 #include "boss.h"
 #include "utils.h"
-#include "level1.h"
+#include "baselevel.h"
 #include <QRandomGenerator>
 #include <QPainter>
 #include <QPainterPath>

@@ -46,6 +46,7 @@ BaseLevel::BaseLevel(Game *game) : QGraphicsScene()
     // Movement
     elapsedTime = 0;
     speed = 750;
+    initalSpeed = speed;
     timeAfterJump = 0;
     timeWhenStartedFalling = 0;
     timeWhenShot = 0;
@@ -62,6 +63,7 @@ BaseLevel::BaseLevel(Game *game) : QGraphicsScene()
     maxJumps = 2;
     isGameOver = false;
     isGoodGame = false;
+    isTeleport = false;
     finishedTime = 0;
     isFightingBoss = false;
 
@@ -178,6 +180,15 @@ void BaseLevel::drawForeground(QPainter *painter, const QRectF &rect)
             painter->drawRoundedRect(innerHealth, 5, 5);
             painter->fillRect(innerHealth, QBrush(Qt::red));
         }
+
+        if(isTeleport){
+            painter->drawRect(sceneRect());
+            painter->fillRect(sceneRect(), QColor(0, 0, 0, 120));
+            painter->setPen(Qt::white);
+            painter->setFont(QFont("Minecraft", 32));
+            painter->drawText(150, rect.height() / 2 - 100, "\'Looks like these buildings are getting revamped!\'");
+            painter->drawText(rect.width() / 2 - 200, rect.height() / 2, "Press [T] to break in.");
+        }
     }
 }
 
@@ -218,6 +229,15 @@ void BaseLevel::moveHorizontally()
     if (!leftPressed && !rightPressed)
         return;
 
+    if(getLevelSettings().teleportStartX != -1){
+        if(abdo->x() > getLevelSettings().teleportStartX && abdo->x() < getLevelSettings().teleportEndX && abdo->y() < getLevelSettings().teleportStartY && abdo->y() > getLevelSettings().teleportEndY){
+            isTeleport = true;
+        }
+        else{
+            isTeleport = false;
+        }
+    }
+
     // If abdo is at the edge of the screen don't move.
     if (abdo->x() <= 0 && leftPressed)
         return;
@@ -228,9 +248,9 @@ void BaseLevel::moveHorizontally()
     int direction = 0;
     GroundEntity *blocked = abdo->isBlockedHorizontally(collidingItems, direction); // Direction is passed by reference, so it gets mutated here.
 
-    if (direction == 1 && rightPressed && blocked)
+    if (direction >= 0 && rightPressed && blocked)
         return;
-    if (direction == -1 && leftPressed && blocked)
+    if (direction <= 0 && leftPressed && blocked)
         return;
 
     // Move the player in the correct direction. If he is is jumping or falling, slow down his speed.
@@ -327,6 +347,19 @@ void BaseLevel::checkCoins()
     }
 }
 
+void BaseLevel::checkOil()
+{
+    Oil *oil = abdo->isTouchingOil(collidingItems);
+
+    if (oil)
+    {
+        speed = initalSpeed/2;
+    }
+    else{
+        speed = initalSpeed;
+    }
+}
+
 // Any Harmful Entity Abdo touches, we make abdo take damage.
 void BaseLevel::checkEnemies() {
     HarmfulEntity *harmfulEntity = abdo->isTouchingHarmfulEntity(collidingItems);
@@ -338,7 +371,7 @@ void BaseLevel::checkEnemies() {
         if(abdo->takeDamage()){
             SoundPlayer::hitAbdo();
             health -= harmfulEntity->getDamage();
-            // If health becomes 0 or less, we game over.
+            //If health becomes 0 or less, we game over.
             if(health <= 0) {
                 removeItem(abdo);
                 isGameOver = true;
@@ -409,6 +442,8 @@ void BaseLevel::gameLoop()
         moveVertically();
         // Check if the player touched a coin.
         checkCoins();
+        // Check if the player touched oil.
+        checkOil();
         // Take Damage from any colliding harmful entity.
         checkEnemies();
         // Spawn Boss If not already spawned when player reaches certain location.
@@ -432,6 +467,7 @@ void BaseLevel::keyPressEvent(QKeyEvent *event)
         switch (event->key())
         {
         case Qt::Key_Space: // Jump when space is pressed
+        case Qt::Key_W:
             // This allows for double jump if it is enabled.
             if (doubleJumpEnabled && (isJumping || isFalling) && !spacePressed)
             {
@@ -445,18 +481,18 @@ void BaseLevel::keyPressEvent(QKeyEvent *event)
             spacePressed = true;
             break;
         case Qt::Key_Right:
-            case Qt::Key_D:
+        case Qt::Key_D:
             rightPressed = true;
             // Make Abdo face the right direction
             abdo->setDirection(1);
             break;
         case Qt::Key_Left:
-            case Qt::Key_A:
+        case Qt::Key_A:
             leftPressed = true;
             // Make Abdo face the left direction
             abdo->setDirection(-1);
             break;
-        case Qt::Key_Z:
+        case Qt::Key_Q:
             // If sound wave (bullet) is enabled, and I am not holding the shoot button, then we can create a new bullet from the player's location
             if (soundWaveEnabled && !shootPressed)
             {
@@ -469,6 +505,16 @@ void BaseLevel::keyPressEvent(QKeyEvent *event)
                     timeWhenShot = 0;
                 }
             }
+            break;
+        case Qt::Key_T:
+            if(isTeleport){
+                abdo->setPos(7100, sceneRect().height() - 1300);
+                isTeleport = false;
+            }
+            break;
+        case Qt::Key_0:
+            emit complete(collectedCoins, finishedTime, getLevelIndex());
+            break;
         }
     }
     else if(isGameOver) {
@@ -514,7 +560,7 @@ void BaseLevel::keyReleaseEvent(QKeyEvent *event)
         case Qt::Key_Space:
             spacePressed = false;
             break;
-        case Qt::Key_Z:
+        case Qt::Key_Q:
             shootPressed = false;
             break;
         }

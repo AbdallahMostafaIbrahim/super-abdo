@@ -4,6 +4,6 @@ int GameState::coinsCollected = 0;
 int GameState::totalTimeSpendinMs = 0;
 QSet<ShopItem> GameState::itemsBought = QSet<ShopItem>();
 QSet<ShopItem> GameState::newlyPurchased = QSet<ShopItem>();
-int GameState::levelReached = 4;
+int GameState::levelReached = 5;
 
 GameState::GameState() {}

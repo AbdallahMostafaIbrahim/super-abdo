@@ -10,11 +10,12 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    abdo.cpp \
     baselevel.cpp \
+    enemy/Splinterslime.cpp \
     enemy/baseenemy.cpp \
     enemy/boss.cpp \
     enemy/broccoli.cpp \
+    enemy/burningtrash.cpp \
     enemy/employeeenemy.cpp \
     enemy/enemybullet.cpp \
     enemy/enemycart.cpp \
@@ -24,9 +25,16 @@ SOURCES += \
     enemy/janitor.cpp \
     enemy/karen.cpp \
     enemy/karenbullet.cpp \
+    enemy/leonardo.cpp \
+    enemy/mikey.cpp \
     enemy/movingenemy.cpp \
     enemy/printerbullet.cpp \
     enemy/printerenemy.cpp \
+    enemy/raphealo.cpp \
+    enemy/scythe.cpp \
+    enemy/shuriken.cpp \
+    enemy/splinter.cpp \
+    enemy/splinterbullet.cpp \
     enemy/staticenemy.cpp \
     enemy/tomatobullet.cpp \
     game.cpp \
@@ -34,6 +42,7 @@ SOURCES += \
     level1.cpp \
     level4.cpp \
     level_props/Table.cpp \
+    level3.cpp \
     level_props/ceilinglight.cpp \
     level_props/coin.cpp \
     level_props/desk.cpp \
@@ -42,8 +51,10 @@ SOURCES += \
     level_props/pantry.cpp \
     level_props/pictureframe.cpp \
     level_props/platform.cpp \
+    level_props/sewerpipe.cpp \
     level_props/shelf.cpp \
     level_props/tomatoframe.cpp \
+    level_props/wall.cpp \
     levelloader.cpp \
     levelselector.cpp \
     levelsettings.cpp \
@@ -52,14 +63,33 @@ SOURCES += \
     shopscene.cpp \
     soundplayer.cpp \
     utils.cpp \
-    soundwave.cpp
+    soundwave.cpp \
+    abdo.cpp \
+    baselevel.cpp \
+    enemy/birdegg.cpp \
+    enemy/birdenemy.cpp \
+    enemy/radar.cpp \
+    enemy/streetdrone.cpp \
+    enemy/streetdronebullets.cpp \
+    enemy/streetgarbage.cpp \
+    enemy/streetoilenemy.cpp \
+    enemy/streetrocks.cpp \
+    enemy/vehicleenemy.cpp \
+    level2.cpp \
+    level_props/highbuilding.cpp \
+    level_props/lowbuilding.cpp \
+    level_props/mediumbuilding.cpp \
+    level_props/oil.cpp \
+    level_props/streetbarrier.cpp \
+    level_props/streetdumpster.cpp
 
 HEADERS += \
-    abdo.h \
-    baselevel.h \
+abdo.h \
+    enemy/Splinterslime.h \
     enemy/baseenemy.h \
     enemy/boss.h \
     enemy/broccoli.h \
+    enemy/burningtrash.h \
     enemy/employeeenemy.h \
     enemy/enemybullet.h \
     enemy/enemycart.h \
@@ -69,9 +99,16 @@ HEADERS += \
     enemy/janitor.h \
     enemy/karen.h \
     enemy/karenbullet.h \
+    enemy/leonardo.h \
+    enemy/mikey.h \
     enemy/movingenemy.h \
     enemy/printerbullet.h \
     enemy/printerenemy.h \
+    enemy/raphealo.h \
+    enemy/scythe.h \
+    enemy/shuriken.h \
+    enemy/splinter.h \
+    enemy/splinterbullet.h \
     enemy/staticenemy.h \
     enemy/tomatobullet.h \
     game.h \
@@ -79,6 +116,7 @@ HEADERS += \
     level1.h \
     level4.h \
     level_props/Table.h \
+    level3.h \
     level_props/ceilinglight.h \
     level_props/coin.h \
     level_props/desk.h \
@@ -87,8 +125,10 @@ HEADERS += \
     level_props/pantry.h \
     level_props/pictureframe.h \
     level_props/platform.h \
+    level_props/sewerpipe.h \
     level_props/shelf.h \
     level_props/tomatoframe.h \
+    level_props/wall.h \
     levelloader.h \
     levelselector.h \
     levelsettings.h \
@@ -96,7 +136,25 @@ HEADERS += \
     shopscene.h \
     soundplayer.h \
     utils.h \
-    soundwave.h
+    soundwave.h \
+    abdo.h \
+    baselevel.h \
+    enemy/birdegg.h \
+    enemy/birdenemy.h \
+    enemy/radar.h \
+    enemy/streetdrone.h \
+    enemy/streetdronebullets.h \
+    enemy/streetgarbage.h \
+    enemy/streetoilenemy.h \
+    enemy/streetrocks.h \
+    enemy/vehicleenemy.h \
+    level2.h \
+    level_props/highbuilding.h \
+    level_props/lowbuilding.h \
+    level_props/mediumbuilding.h \
+    level_props/oil.h \
+    level_props/streetbarrier.h \
+    level_props/streetdumpster.h 
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
