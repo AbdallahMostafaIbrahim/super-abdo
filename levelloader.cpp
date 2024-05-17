@@ -19,6 +19,8 @@
 #include "level_props/oil.h"
 #include "level_props/sewerpipe.h"
 #include "level_props/wall.h"
+#include "level_props/bed.h"
+#include "level_props/cupboard.h"
 
 #include "enemy/hazardsign.h"
 #include "enemy/streetgarbage.h"
@@ -32,7 +34,6 @@
 #include "enemy/streetdrone.h"
 
 #include "baselevel.h"
-#include "abdo.h"
 #include "enemy/leonardo.h"
 #include "enemy/raphealo.h"
 #include "enemy/burningtrash.h"
@@ -123,7 +124,7 @@ void LevelLoader::loadMap(QGraphicsScene* scene) {
              scene->addItem(highbuilding);
          }},
         {"street-barrier", [scene](int x, int y) -> void {
-             streetbarrier* barrier = new streetbarrier();
+             StreetBarrier* barrier = new StreetBarrier();
              barrier->setPos(x, scene->height() - y - barrier->getPixmap()->height());
              scene->addItem(barrier);
          }},
@@ -131,6 +132,22 @@ void LevelLoader::loadMap(QGraphicsScene* scene) {
              StreetDumpster *dumpster = new StreetDumpster();
              dumpster->setPos(x, scene->height() - y - dumpster->getPixmap()->height());
              scene->addItem(dumpster);
+         }},
+        {"home-lamp", [scene](int x, int y) -> void {
+             CeilingLight *light = new CeilingLight(1);
+             light->setPos(x, 0);
+             light->setZValue(-2);
+             scene->addItem(light);
+         }},
+        {"bed", [scene](int x, int y) -> void {
+             Bed* bed = new Bed();
+             bed->setPos(x, scene->height() - y - bed->getPixmap()->height());
+             scene->addItem(bed);
+         }},
+        {"cupboard", [scene](int x, int y) -> void {
+             CupBoard* cupboard = new CupBoard();
+             cupboard->setPos(x, scene->height() - y - cupboard->getPixmap()->height());
+             scene->addItem(cupboard);
          }},
     };
 
@@ -171,7 +188,7 @@ void LevelLoader::loadMap(QGraphicsScene* scene) {
         platformTexture = isPlatform ? parts[5] : "";
 
         if (!(ok1 && ok2 && ok3 && ok4)) {
-            QMessageBox::warning(nullptr, "Warning", "Invalid numeric values.");
+            QMessageBox::warning(nullptr, "Warning", "Invalid numeric values for " + type);
             continue;
         }
 
@@ -340,7 +357,7 @@ void LevelLoader::loadEnemies(QGraphicsScene* scene) {
 
 
         if (!(ok1 && ok2 && ok3 && ok4 && ok5)) {
-            QMessageBox::warning(nullptr, "Warning", "Invalid numeric values.");
+            QMessageBox::warning(nullptr, "Warning", "Invalid numeric values for " + type);
             continue;
         }
 

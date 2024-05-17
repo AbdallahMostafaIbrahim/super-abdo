@@ -11,6 +11,7 @@ CONFIG += c++17
 
 SOURCES += \
     enemy/Splinterslime.cpp \
+    enemy/aliandjoshandabdallah.cpp \
     enemy/baseenemy.cpp \
     enemy/boss.cpp \
     enemy/broccoli.cpp \
@@ -40,10 +41,13 @@ SOURCES += \
     gamestate.cpp \
     level1.cpp \
     level4.cpp \
+    level5.cpp \
     level_props/Table.cpp \
     level3.cpp \
+    level_props/bed.cpp \
     level_props/ceilinglight.cpp \
     level_props/coin.cpp \
+    level_props/cupboard.cpp \
     level_props/desk.cpp \
     level_props/groundentity.cpp \
     level_props/officewindow.cpp \
@@ -87,6 +91,7 @@ SOURCES += \
 HEADERS += \
 abdo.h \
     enemy/Splinterslime.h \
+    enemy/aliandjoshandabdallah.h \
     enemy/baseenemy.h \
     enemy/boss.h \
     enemy/broccoli.h \
@@ -116,10 +121,13 @@ abdo.h \
     gamestate.h \
     level1.h \
     level4.h \
+    level5.h \
     level_props/Table.h \
     level3.h \
+    level_props/bed.h \
     level_props/ceilinglight.h \
     level_props/coin.h \
+    level_props/cupboard.h \
     level_props/desk.h \
     level_props/groundentity.h \
     level_props/officewindow.h \

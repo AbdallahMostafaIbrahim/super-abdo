@@ -3,10 +3,10 @@
 #include "groundentity.h"
 #include <QPixmap>
 
-class streetbarrier: public GroundEntity
+class StreetBarrier: public GroundEntity
 {
 public:
-    streetbarrier();
+    StreetBarrier();
     QRectF boundingRect() const override;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
     QPainterPath shape() const override;

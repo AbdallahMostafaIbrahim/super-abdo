@@ -89,7 +89,7 @@ BaseLevel::~BaseLevel()
 void BaseLevel::initScene() {
     setSceneRect(0, 0, getLevelSettings().sceneWidth, getLevelSettings().sceneHeight); // Uses the Level Settings to set the size of the scene.
     // Setting Background for scene.
-    if(getLevelIndex() == 2) {
+    if(getLevelIndex() == 2 || getLevelIndex() == 5) {
         setBackgroundBrush(QBrush(QPixmap(getLevelSettings().backgroundImage).scaledToWidth(game->width())));
     } else {
         setBackgroundBrush(QBrush(QPixmap(getLevelSettings().backgroundImage).scaledToHeight(game->height())));

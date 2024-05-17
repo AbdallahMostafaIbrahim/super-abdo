@@ -3,9 +3,7 @@
 #include <QRectF>
 
 Table::Table() {
-
     pixmap = QPixmap(":/images/level-4/table.png").scaledToWidth(200);
-
 }
 
 void Table::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) {

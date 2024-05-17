@@ -6,6 +6,7 @@
 #include <QBrush>
 #include <QLabel>
 #include <QColor>
+#include <QMovie>
 
 MainMenuScene::MainMenuScene(Game* game): QGraphicsScene(game) {
     this->game = game;

@@ -6,7 +6,7 @@
 class CeilingLight : public QGraphicsPixmapItem
 {
 public:
-    CeilingLight();
+    CeilingLight(int type = 0);
 };
 
 #endif // CEILINGLIGHT_H

@@ -5,7 +5,6 @@
 Desk::Desk() {
     // pixmap = QPixmap(":/images/desk-1.png");
     pixmap = QPixmap(":/images/desk-1.png").scaled(100, 60);
-
 }
 
 void Desk::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) {

@@ -5,7 +5,6 @@
         <file>images/employee-walking.png</file>
         <file>images/office-tile.png</file>
         <file>images/desk-1.png</file>
-        <file>images/ceiling-light.png</file>
         <file>images/tile-1.png</file>
         <file>images/background-1.png</file>
         <file>images/office-ceiling-lights.png</file>
@@ -210,5 +209,118 @@
         <file>images/level-3/Sewerpipe.png</file>
         <file>images/level-3/Sewerpipee.png</file>
         <file>images/level-3/shuriken.png</file>
+        <file>images/level-5/baby/frame_001_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_002_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_003_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_004_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_005_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_006_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_007_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_008_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_009_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_010_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_011_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_012_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_013_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_014_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_015_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_016_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_017_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_018_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_019_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_020_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_021_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_022_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_023_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_024_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_025_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_026_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_027_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_028_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_029_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_030_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_031_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_032_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_033_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_034_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_035_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_036_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_037_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_038_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_039_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_040_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_041_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_042_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_043_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_044_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_045_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_046_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_047_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_048_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_049_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_050_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_051_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_052_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_053_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_054_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_055_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_056_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_057_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_058_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_059_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_060_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_061_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_062_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_063_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_064_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_065_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_066_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_067_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_068_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_069_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_070_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_071_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_072_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_073_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_074_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_075_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_076_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_077_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_078_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_079_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_080_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_081_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_082_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_083_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_084_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_085_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_086_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_087_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_088_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_089_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_090_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_091_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_092_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_093_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_094_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_095_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_096_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_097_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_098_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_099_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_100_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_101_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_102_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_103_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_104_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_105_delay-0.03s.png</file>
+        <file>images/level-5/baby/frame_106_delay-0.03s.png</file>
+        <file>maps/map-5/enemies.txt</file>
+        <file>maps/map-5/map.txt</file>
+        <file>images/level-5/ceiling-light.png</file>
+        <file>images/level-5/bed.png</file>
+        <file>images/level-5/cupboard.png</file>
+        <file>videos/abdo_intro.mp4</file>
+        <file>images/level-5/background-5.png</file>
     </qresource>
 </RCC>

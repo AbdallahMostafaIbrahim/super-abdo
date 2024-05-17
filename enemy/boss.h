@@ -7,7 +7,7 @@
 class Boss : public BaseEnemy
 {
 public:
-    Boss(QList<QPixmap>, int);
+    Boss(QList<QPixmap> pixmaps, int maxHealth, int msBetweenEachFrame = 100);
     void move(int, int) override;
     virtual void shoot() = 0; // Shoot Function that will be overrided in children
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
@@ -19,6 +19,7 @@ private:
     QList<QPainterPath> paths;
     QPixmap currentPixmap;
     QPainterPath currentPath;
+    int msBetweenEachFrame;
 protected:
     int currentFrame;
 };

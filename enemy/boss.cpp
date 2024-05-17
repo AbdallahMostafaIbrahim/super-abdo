@@ -6,8 +6,9 @@
 #include <QPainterPath>
 #include <QTransform>
 
-Boss::Boss(QList<QPixmap> pixie, int h) : BaseEnemy(h, 1, false)
+Boss::Boss(QList<QPixmap> pixie, int h, int msBetweenEachFrame) : BaseEnemy(h, 1, false)
 {
+    this->msBetweenEachFrame = msBetweenEachFrame;
     // Setup pixmaps
     pixmaps = pixie;
     for(int i = 0; i < pixmaps.length(); i++) {
@@ -40,7 +41,7 @@ QRectF Boss::boundingRect() const
 void Boss::animate()
 {
     shoot();
-    if(animationTimer.elapsed() >= 100) {
+    if(animationTimer.elapsed() >= msBetweenEachFrame) {
         currentPixmap = (pixmaps[currentFrame % pixmaps.size()]);
         currentPath = (paths[currentFrame % paths.size()]);
         currentFrame++;
