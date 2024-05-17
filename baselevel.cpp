@@ -248,9 +248,9 @@ void BaseLevel::moveHorizontally()
     int direction = 0;
     GroundEntity *blocked = abdo->isBlockedHorizontally(collidingItems, direction); // Direction is passed by reference, so it gets mutated here.
 
-    if (direction == 1 && rightPressed && blocked)
+    if (direction >= 0 && rightPressed && blocked)
         return;
-    if (direction == -1 && leftPressed && blocked)
+    if (direction <= 0 && leftPressed && blocked)
         return;
 
     // Move the player in the correct direction. If he is is jumping or falling, slow down his speed.
