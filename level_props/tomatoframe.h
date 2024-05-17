@@ -5,7 +5,7 @@
 class TomatoFrame : public QGraphicsPixmapItem
 {
 public:
-    TomatoFrame();
+    TomatoFrame();  //constructor
 };
 
 #endif // TOMATOFRAME_H

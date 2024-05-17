@@ -7,7 +7,7 @@
 class Wall: public GroundEntity
 {
 public:
-    Wall(int w, int h);
+    Wall(int w, int h);  //constructor
     QRectF boundingRect() const override;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
     QPixmap* getPixmap();

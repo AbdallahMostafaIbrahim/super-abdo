@@ -6,7 +6,7 @@
 class Splinter : public Boss
 {
 public:
-    Splinter();
+    Splinter();  //constructor
     void shoot() override;
 private:
     QElapsedTimer bulletTimer;

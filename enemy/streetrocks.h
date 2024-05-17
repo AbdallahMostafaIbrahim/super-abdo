@@ -5,7 +5,7 @@
 class StreetRocks: public StaticEnemy
 {
 public:
-    StreetRocks();
+    StreetRocks();  //constructor
 };
 
 #endif // STREETROCKS_H

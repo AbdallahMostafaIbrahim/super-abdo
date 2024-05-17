@@ -6,7 +6,7 @@
 class Mikey : public BaseEnemy
 {
 public:
-    Mikey();
+    Mikey();  //constructor
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
     QRectF boundingRect() const override;
     void move(int, int) override;

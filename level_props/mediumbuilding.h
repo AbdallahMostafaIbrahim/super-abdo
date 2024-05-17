@@ -5,7 +5,7 @@
 class MediumBuilding: public QGraphicsPixmapItem
 {
 public:
-    MediumBuilding();
+    MediumBuilding();  //constructor
 };
 
 #endif // MEDIUMBUILDING_H

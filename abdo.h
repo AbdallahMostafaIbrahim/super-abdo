@@ -23,20 +23,20 @@ class Abdo: public QObject, public QGraphicsItem
 {
 Q_OBJECT
 public:
-    Abdo();
+    Abdo();  //constructor
     // Paint Function that gets called every scene update to draw the pixmap
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
-    QRectF boundingRect() const override;
-    void setDirection(int direction);
-    int getDirection();
-    GroundEntity* isGrounded(const QList<QGraphicsItem*>&);
-    GroundEntity* isBlockedHorizontally(const QList<QGraphicsItem*>&, int&);
-    GroundEntity* isTouchingHead(const QList<QGraphicsItem*>&);
-    Coin* isTouchingCoin(const QList<QGraphicsItem*>&);
-    Oil* isTouchingOil(const QList<QGraphicsItem*>&);
-    HarmfulEntity* isTouchingHarmfulEntity(const QList<QGraphicsItem*>&);
-    void setState(PlayerState s);
-    bool takeDamage();
+    QRectF boundingRect() const override;   //draws bounding rect for collision handling
+    void setDirection(int direction);   //sets the direction abdo is moving in - for animation
+    int getDirection();     //gets the direction abdo is moving in - for animation
+    GroundEntity* isGrounded(const QList<QGraphicsItem*>&);     //determines if abdo is touching a platform from above
+    GroundEntity* isBlockedHorizontally(const QList<QGraphicsItem*>&, int&);    //determines if abdo is touching a platform from the side
+    GroundEntity* isTouchingHead(const QList<QGraphicsItem*>&); //determines if abdo is touching a platform from below
+    Coin* isTouchingCoin(const QList<QGraphicsItem*>&); //determines if abdo is touching a coin
+    Oil* isTouchingOil(const QList<QGraphicsItem*>&);   //determines if abdo is touching oil
+    HarmfulEntity* isTouchingHarmfulEntity(const QList<QGraphicsItem*>&);   //determines if abdo touched a harmful entity to take damage
+    void setState(PlayerState s);       //determines abdo's state
+    bool takeDamage();      //determines if abdo took damage
 
 private:
     PlayerState currentState;
@@ -59,7 +59,7 @@ private:
     bool showDamage;
 private slots:
     void animate();
-    void removeDamageEffect();
+    void removeDamageEffect();  //the temporary invincible effect gets removed after a certian time after getting damage
 };
 
 #endif // ABDO_H

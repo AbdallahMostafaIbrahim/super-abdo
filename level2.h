@@ -9,12 +9,12 @@
 class Level2 : public BaseLevel
 {
 public:
-    Level2(Game* game);
+    Level2(Game* game); //constructor
 private:
     LevelSettings levelSettings;
-    LevelSettings getLevelSettings() override;
-    int getLevelIndex() override;
-    Boss *newBoss() override;
+    LevelSettings getLevelSettings() override;  //returns the level settings of this level
+    int getLevelIndex() override;   //returns the level index of this level
+    Boss *newBoss() override;   //creates the corresponding boss
 };
 
 #endif
