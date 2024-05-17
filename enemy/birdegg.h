@@ -5,10 +5,10 @@
 class BirdEgg: public EnemyBullet
 {
 public:
-    BirdEgg();
-    void move() override;
-    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
-    QRectF boundingRect() const override;
+    BirdEgg();      //constructor
+    void move() override;       // vertical movement function
+    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;    //draws the object
+    QRectF boundingRect() const override;       //draws a bounding rect that collides with any entity
 private:
     QPixmap pixmap;
 };

@@ -6,8 +6,8 @@
 class Karen : public Boss
 {
 public:
-    Karen();
-    void shoot() override;
+    Karen();  //constructor
+    void shoot() override;  //shoots the bullets
 private:
     QElapsedTimer bulletTimer;
     QElapsedTimer spawnTimer;

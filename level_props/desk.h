@@ -7,7 +7,7 @@
 class Desk: public GroundEntity
 {
 public:
-    Desk();
+    Desk();  //constructor
     QRectF boundingRect() const override;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
     QPainterPath shape() const override;

@@ -8,7 +8,7 @@ class Janitor : public MovingEnemy
 {
     Q_OBJECT
 public:
-    Janitor(int, int, int, int);
+    Janitor(int, int, int, int);  //constructor
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
     QRectF boundingRect() const override;
     const QPixmap* getPixmap();

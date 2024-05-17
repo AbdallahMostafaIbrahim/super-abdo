@@ -5,7 +5,7 @@
 class StreetGarbage: public StaticEnemy
 {
 public:
-    StreetGarbage();
+    StreetGarbage();  //constructor
 };
 
 #endif // STREETGARBAGE_H

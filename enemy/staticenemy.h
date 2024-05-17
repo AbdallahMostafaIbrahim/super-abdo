@@ -7,8 +7,8 @@
 class StaticEnemy : public BaseEnemy
 { 
 public:
-    StaticEnemy(QPixmap, int damage = 1);
-    StaticEnemy(QList<QPixmap>);
+    StaticEnemy(QPixmap, int damage = 1);  //constructor for non-animated static enemies
+    StaticEnemy(QList<QPixmap>);  //constructor for animated static enemies
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
     QRectF boundingRect() const override;
     void move(int, int) override;

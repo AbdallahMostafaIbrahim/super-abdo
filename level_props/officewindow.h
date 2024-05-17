@@ -6,7 +6,7 @@
 class OfficeWindow : public QGraphicsPixmapItem
 {
 public:
-    OfficeWindow();
+    OfficeWindow();  //constructor
 };
 
 #endif // OFFICEWINDOW_H

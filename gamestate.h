@@ -12,7 +12,7 @@ enum ShopItem {
 class GameState
 {
 public:
-    GameState();
+    GameState();    //constructor
     static int coinsCollected;
     static int totalTimeSpendinMs;
     static QSet<ShopItem> itemsBought;

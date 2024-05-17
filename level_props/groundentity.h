@@ -6,7 +6,7 @@
 class GroundEntity : public QGraphicsItem
 {
 public:
-    GroundEntity();
+    GroundEntity();  //constructor
 };
 
 #endif // GROUNDENTITY_H

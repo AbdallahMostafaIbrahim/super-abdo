@@ -6,7 +6,7 @@
 class MovingEnemy : public BaseEnemy
 {
 public:
-    MovingEnemy(int left, int right, int initialPos, float speed, int health, int damage, bool animates = true);
+    MovingEnemy(int left, int right, int initialPos, float speed, int health, int damage, bool animates = true);  //constructor
     void move(int, int) override;
 protected:
     int direction;

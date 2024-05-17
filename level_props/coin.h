@@ -8,7 +8,7 @@
 class Coin : public QGraphicsItem
 {
 public:
-    Coin();
+    Coin();  //constructor
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
     QRectF boundingRect() const override;
 private:

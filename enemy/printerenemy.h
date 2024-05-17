@@ -5,7 +5,7 @@
 class PrinterEnemy: public BaseEnemy
 {
 public:
-    PrinterEnemy();
+    PrinterEnemy();  //constructor
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
     QRectF boundingRect() const override;
     void move(int, int) override;

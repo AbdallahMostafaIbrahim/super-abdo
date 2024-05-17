@@ -6,7 +6,7 @@
 class PictureFrame : public QGraphicsPixmapItem
 {
 public:
-    PictureFrame();
+    PictureFrame();  //constructor
 };
 
 #endif // PICTUREFRAME_H

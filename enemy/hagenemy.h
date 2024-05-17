@@ -5,7 +5,7 @@
 class HagEnemy: public BaseEnemy{
 
 public:
-    HagEnemy();
+    HagEnemy();  //constructor
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
     QRectF boundingRect() const override;
     void move(int, int) override;

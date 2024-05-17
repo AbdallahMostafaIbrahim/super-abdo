@@ -7,11 +7,11 @@ class EnemyCart : public MovingEnemy
 {
     Q_OBJECT
 public:
-    EnemyCart(int, int, int, int);
+    EnemyCart(int, int, int, int);  //constructor
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
     QRectF boundingRect() const override;
     const QPixmap* getPixmap();
-    ~EnemyCart();
+    ~EnemyCart();  //destructor
 private:
     QPixmap idle;
     QPixmap walking;

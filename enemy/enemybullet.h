@@ -9,10 +9,10 @@ class EnemyBullet : public QObject, public QGraphicsItem, public HarmfulEntity
 {
     Q_OBJECT
 public:
-    EnemyBullet(int expiration);
+    EnemyBullet(int expiration);    //constructor
     virtual void move() = 0;
 protected slots:
-    void kill();
+    void kill();    //removes the bullet from the scene after a specific condition (time or collision)
 };
 
 #endif // ENEMYBULLET_H

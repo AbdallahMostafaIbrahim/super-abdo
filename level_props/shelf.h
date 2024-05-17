@@ -7,7 +7,7 @@
 class Shelf : public Platform
 {
 public:
-    Shelf(int w);
+    Shelf(int w);  //constructor
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
     QRectF boundingRect() const;
 private:

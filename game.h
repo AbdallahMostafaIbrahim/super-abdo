@@ -18,11 +18,11 @@ class Game : public QGraphicsView
     Q_OBJECT
 public:
     Game(int, int);
-    void startLevel(int index);
-    void goToLevelSelector();
-    void gotoSettings();
-    void goToShop();
-    void goToMainMenu();
+    void startLevel(int index);     // creates the level based on corresponding level imput
+    void goToLevelSelector();       //sets scene to level selector
+    void gotoSettings();            //sets scene to settings
+    void goToShop();                //sets scene to shop
+    void goToMainMenu();            //sets scene to main menu
 private:
     // Storing pointers to scenes that will be set on the view
     BaseLevel* currentLevel;

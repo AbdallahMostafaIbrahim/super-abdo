@@ -5,7 +5,7 @@
 class LowBuilding: public QGraphicsPixmapItem
 {
 public:
-    LowBuilding();
+    LowBuilding();  //constructor
 };
 
 #endif // LOWBUILDING_H

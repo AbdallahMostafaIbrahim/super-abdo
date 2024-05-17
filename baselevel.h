@@ -17,13 +17,13 @@ class BaseLevel : public QGraphicsScene
 {
     Q_OBJECT
 public:
-    BaseLevel(Game* game);
-    ~BaseLevel();
-    void killBoss();
+    BaseLevel(Game* game);  //constructor
+    ~BaseLevel();   //destructor
+    void killBoss();    //deletes a boss if it gets defeated
 protected:
-    void keyPressEvent(QKeyEvent *event) override;
+    void keyPressEvent(QKeyEvent *event) override;      //key press and release functions for smooth input
     void keyReleaseEvent(QKeyEvent *event) override;
-    void initScene();
+    void initScene();       //initializes the level scene
 private:
     // Overriding drawForeground to show HUD elements like health and coins.
     void drawForeground(QPainter *painter, const QRectF &rect) override;
@@ -109,8 +109,8 @@ private slots:
     void gameLoop();
 signals:
     void restart();  // Signal to notify the view of the restart event
-    void quit();
-    void complete(int coinsCollected, int timeSpendinMs, int levelIndex);
+    void quit();     // Signal to notify the view of the quit event
+    void complete(int coinsCollected, int timeSpendinMs, int levelIndex);   // Signal to notify the view of the complete event
 };
 
 #endif // BASELEVEL_H

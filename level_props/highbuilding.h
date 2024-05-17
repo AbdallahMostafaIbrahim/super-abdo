@@ -5,7 +5,7 @@
 class HighBuilding: public QGraphicsPixmapItem
 {
 public:
-    HighBuilding();
+    HighBuilding();  //constructor
 };
 
 #endif // HIGHBUILDING_H
