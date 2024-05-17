@@ -467,6 +467,7 @@ void BaseLevel::keyPressEvent(QKeyEvent *event)
         switch (event->key())
         {
         case Qt::Key_Space: // Jump when space is pressed
+        case Qt::Key_W:
             // This allows for double jump if it is enabled.
             if (doubleJumpEnabled && (isJumping || isFalling) && !spacePressed)
             {
@@ -480,13 +481,13 @@ void BaseLevel::keyPressEvent(QKeyEvent *event)
             spacePressed = true;
             break;
         case Qt::Key_Right:
-            case Qt::Key_D:
+        case Qt::Key_D:
             rightPressed = true;
             // Make Abdo face the right direction
             abdo->setDirection(1);
             break;
         case Qt::Key_Left:
-            case Qt::Key_A:
+        case Qt::Key_A:
             leftPressed = true;
             // Make Abdo face the left direction
             abdo->setDirection(-1);
