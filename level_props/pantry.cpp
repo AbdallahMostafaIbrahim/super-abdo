@@ -15,6 +15,7 @@ void Pantry::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QW
     Q_UNUSED(option);
 }
 
+
 QRectF Pantry::boundingRect() const {
     return QRectF(0,0,pixmap.width(),pixmap.height());
 }
@@ -29,4 +30,7 @@ QPainterPath Pantry::shape() const {
 QPixmap* Pantry::getPixmap() {
     return &pixmap;
 }
+
+
+
 

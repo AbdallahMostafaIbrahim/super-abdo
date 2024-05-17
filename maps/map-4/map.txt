@@ -10,42 +10,69 @@ shelf 1520 415 300 40 lol
 shelf 1820 555 300 40 lol
 shelf 1600 695 300 40 lol
 shelf 2000 835 300 40 lol
-shelf 1520 975 300 40 lol
+-shelf 1520 975 300 40 lol
 -shelf 1820 455 300 40 lol
 -shelf 1450 130 240 40 lol
 
 
-table 3330 30
-table 5600 30
 
-pantry 2000 0
+pantry 2400 0
+pantry 2400 300
+pantry 2400 600
+pantry 2850 0
+pantry 2850 300
+pantry 2850 600
+pantry 3550 0
+pantry 3550 300
+pantry 3550 600
+pantry 4150 0
+pantry 4150 300
+pantry 4150 600
+
+pantry 3950 0
+pantry 3950 300
+pantry 3950 600
+
+
+
+coin 2900 165
+coin 2970 165
+coin 3040 165
+coin 3110 165
+coin 3180 165
+coin 3250 165
+coin 1120 70
+coin 1180 70
+coin 1240 70
+
+coin 3350 1160
+coin 3660 1160
+coin 3720 1160
+coin 3780 1160
+coin 3840 1160
+coin 3900 1160
+
+-hag 3400 450 0 0 0
+-hag 3600 450 0 0 0
+-hag 3900 450 0 0 0
+-hag 4600 450 0 0 0
+-hag 4750 450 0 0 0
+-hag 4900 450 0 0 0
+-hag 5050 450 0 0 0
+
+table 4150 960
+
 
 
 
 
 tomato_frame 420 -250
-tomato_frame 4210 -250
+tomato_frame 4610 -250
 
 
 
-coin 420 165
-coin 480 165
-coin 540 165
-coin 600 165
-coin 660 165
-coin 720 165
 
-coin 1120 70
-coin 1180 70
-coin 1240 70
 
-coin 3600 70
-coin 3660 130
-coin 3720 190
-coin 3780 190
-coin 3840 130
-coin 3900 70
 
--coin 2820 250
--coin 2880 250
--coin 2940 250
+
+

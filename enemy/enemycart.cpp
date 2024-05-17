@@ -5,8 +5,8 @@
 #include <QRectF>
 
 EnemyCart::EnemyCart(int left, int right, int initialPos, int speed) : MovingEnemy(left, right, initialPos, speed, 3, 1) {
-    idle = QPixmap(":/images/level-4/baby_cart2.png").scaledToWidth(200);
-    walking = QPixmap(":/images/level-4/baby_cart2.png").scaledToWidth(200);
+    idle = QPixmap(":/images/level-4/baby_cart2.png").scaledToWidth(160);
+    walking = QPixmap(":/images/level-4/baby_cart2.png").scaledToWidth(160);
     pixmap = &idle;
     isIdle = true;
 
