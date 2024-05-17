@@ -21,6 +21,7 @@ SOURCES += \
     enemy/hagenemy.cpp \
     enemy/harmfulentity.cpp \
     enemy/hazardsign.cpp \
+    enemy/janitor.cpp \
     enemy/karen.cpp \
     enemy/karenbullet.cpp \
     enemy/movingenemy.cpp \
@@ -32,12 +33,13 @@ SOURCES += \
     gamestate.cpp \
     level1.cpp \
     level4.cpp \
-    level_props/cart.cpp \
+    level_props/Table.cpp \
     level_props/ceilinglight.cpp \
     level_props/coin.cpp \
     level_props/desk.cpp \
     level_props/groundentity.cpp \
     level_props/officewindow.cpp \
+    level_props/pantry.cpp \
     level_props/pictureframe.cpp \
     level_props/platform.cpp \
     level_props/shelf.cpp \
@@ -64,6 +66,7 @@ HEADERS += \
     enemy/hagenemy.h \
     enemy/harmfulentity.h \
     enemy/hazardsign.h \
+    enemy/janitor.h \
     enemy/karen.h \
     enemy/karenbullet.h \
     enemy/movingenemy.h \
@@ -75,12 +78,13 @@ HEADERS += \
     gamestate.h \
     level1.h \
     level4.h \
-    level_props/cart.h \
+    level_props/Table.h \
     level_props/ceilinglight.h \
     level_props/coin.h \
     level_props/desk.h \
     level_props/groundentity.h \
     level_props/officewindow.h \
+    level_props/pantry.h \
     level_props/pictureframe.h \
     level_props/platform.h \
     level_props/shelf.h \

@@ -1,12 +1,12 @@
-#ifndef CART_H
-#define CART_H
+#ifndef TABLE_H
+#define TABLE_H
 
 #include "groundentity.h"
 #include <QPixmap>
-class Cart :public GroundEntity
+class Table :public GroundEntity
 {
 public:
-    Cart();
+    Table();
     QRectF boundingRect() const override;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
     QPainterPath shape() const override;
@@ -17,4 +17,4 @@ private:
 
 };
 
-#endif // CART_H
+#endif // TABLE_H

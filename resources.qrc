@@ -107,5 +107,7 @@
         <file>images/level-4/broccoli/frame_54_delay-0.1s.png</file>
         <file>images/level-4/broccoli/frame_55_delay-0.1s.png</file>
         <file>images/level-4/broccoli/frame_56_delay-0.1s.png</file>
+        <file>images/level-4/janitor.png</file>
+        <file>images/level-4/pantry.png</file>
     </qresource>
 </RCC>

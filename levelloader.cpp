@@ -1,7 +1,9 @@
 #include "levelloader.h"
 #include "enemy/enemycart.h"
 #include "enemy/hagenemy.h"
-#include "level_props/cart.h"
+#include "enemy/janitor.h"
+#include "level_props/Table.h"
+#include "level_props/pantry.h"
 #include "level_props/platform.h"
 #include "level_props/desk.h"
 #include "level_props/ceilinglight.h"
@@ -64,17 +66,22 @@ void LevelLoader::loadMap(QGraphicsScene* scene) {
              coin->setZValue(-1);
              scene->addItem(coin);
          }},
-        {"cart", [scene](int x, int y) -> void {
-             Cart* cart = new Cart();
-             cart->setPos(x, scene->height() - y - cart->getPixmap()->height());
-             scene->addItem(cart);
+        {"table", [scene](int x, int y) -> void {
+             Table* table = new Table();
+             table->setPos(x, scene->height() - y - table->getPixmap()->height());
+             scene->addItem(table);
          }},
         {"tomato_frame", [scene](int x, int y) -> void {
              TomatoFrame *frame = new TomatoFrame();
              frame->setPos(x, scene->height() / 2 + y);
              frame->setZValue(-2);
              scene->addItem(frame);
-         }}
+         }},
+        {"pantry", [scene](int x, int y) -> void {
+             Pantry* pantry = new Pantry();
+             pantry->setPos(x, scene->height() - y - pantry->getPixmap()->height());
+             scene->addItem(pantry);
+         }},
     };
 
     QString line;
@@ -176,6 +183,12 @@ void LevelLoader::loadEnemies(QGraphicsScene* scene) {
              employee->setZValue(-1);
              scene->addItem(employee);
          }},
+        {"janitor", [scene](int x, int y, int left, int right, int speed) -> void {
+             Janitor* janitor = new Janitor(left, right, x, speed);
+             janitor->setPos(x, scene->height() - y - janitor->getPixmap()->height());
+             janitor->setZValue(-1);
+             scene->addItem(janitor);
+         }}
     };
 
     QString line;
