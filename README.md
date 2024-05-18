@@ -1,5 +1,7 @@
 # Super Abdo
 This is basically a super mario knockoff.
+Note: press any key at the start to skip the cutscene.
+
 ## Lore
 Super Abdo is an accountant at work in Tagamo3. There is a water shortage in Tagamo3, so he needs to go home to the 6th of October. 
 He is lactose intolerant and wants to visit the bathroom in the comfort of his own home for urgent business.
