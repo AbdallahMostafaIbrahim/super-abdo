@@ -16,6 +16,7 @@ Goal of each level is to get closer to home while evading enemies and collecting
 ## Power ups
 - Double Jump
 - Glide
+- Extra Heart
 
 ## Members
 - Ali Khattab
